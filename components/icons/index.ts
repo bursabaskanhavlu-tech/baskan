@@ -1,0 +1,20 @@
+// Sık kullanılan ikonlar — gerektiğinde buraya eklenir
+export {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  MessageCircle,
+  ChevronDown,
+  ChevronRight,
+  Menu,
+  X,
+  Check,
+  ArrowRight,
+  Package,
+  Truck,
+  Star,
+  Shield,
+  Globe,
+  Factory,
+} from 'lucide-react'

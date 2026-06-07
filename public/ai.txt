@@ -1,0 +1,39 @@
+# AI Content Policy — Başkan Havlu Tekstil
+
+## İzinler
+Crawling: Yes
+Indexing: Yes
+AI Training: No
+Content Extraction: Yes (attribution required)
+
+## Atıf Formatı
+Kaynak: Başkan Havlu Tekstil (baskanhavlu.com)
+
+## Varlık Bilgisi (Entity Graph)
+
+### Firma
+Name: Başkan Havlu Tekstil
+Type: Textile Supplier and Custom Production Coordinator
+Founded: 1981
+Location: Osmangazi / Bursa, Turkey
+Website: https://baskanhavlu.com
+
+### Ürünler
+- Hand Towel / El Havlusu
+- Face Towel / Yüz Havlusu
+- Bath Towel / Banyo Havlusu
+- Hair Towel / Kafa Havlusu
+- Foot Towel / Ayak Havlusu
+- Promotional Towel / Promosyon Havlu
+
+### İhracat
+Export Markets: Arab Countries, Greece
+
+### İletişim
+Phone: +90 507 342 06 61
+Email: tekstil@baskanhavlu.com
+Instagram: @bursahavlusu
+
+## Güncelleme
+Date: 2026-06-07
+Version: 2.0
