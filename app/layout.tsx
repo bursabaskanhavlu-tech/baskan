@@ -8,6 +8,8 @@ import { CookieConsentProvider } from '@/components/providers/CookieConsentProvi
 import { CookieConsentBanner } from '@/components/organisms/CookieConsentBanner'
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema'
 import { WebSiteSchema } from '@/components/schema/WebSiteSchema'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -49,6 +51,8 @@ export default function RootLayout({
           <Footer />
           <StickyWhatsApp />
           <CookieConsentBanner />
+          <Analytics />
+          <SpeedInsights />
         </CookieConsentProvider>
       </body>
     </html>
