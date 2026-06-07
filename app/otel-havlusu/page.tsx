@@ -7,8 +7,8 @@ import { CTABand } from '@/components/organisms/CTABand'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Otel Havlusu Tedarikçisi | Başkan Havlu Tekstil',
-  description: 'Oteller için yüksek gramajlı, dayanıklı ve logo nakışlı havlu tedariki. Otel sektörünün güvenilir tekstil tedarikçisi. Bursa\'dan dünyaya.',
+  title: 'Otel Havlusu Üreticisi | Bursa Otel Havlusu | Başkan Havlu Tekstil',
+  description: "1981'den beri Bursa'da otel havlusu üretimi. Yüksek gramajlı, dayanıklı ve logo nakışlı otel havluları. Butik otelden büyük zincire toplu tedarik.",
   path: '/otel-havlusu',
 })
 
@@ -30,7 +30,7 @@ export default function OtelHavlusuPage() {
       <section className="py-20" style={{ backgroundColor: '#faf8f5' }}>
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest" style={{ color: '#e87722' }}>Otel Tekstili</span>
-          <h1 className="text-4xl font-bold sm:text-5xl" style={{ color: '#1a1a1a' }}>Otel Sektörünün Güvenilir Havlu Tedarikçisi</h1>
+          <h1 className="text-4xl font-bold sm:text-5xl" style={{ color: '#1a1a1a' }}>Otel Sektörünün Havlu Üreticisi — Bursa</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed" style={{ color: '#5c5c5c' }}>
             Yüksek gramajlı, dayanıklı ve logo nakışlı otel havluları. Butik otelden büyük zincire her ölçekte tedarik.
           </p>

@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { SITE_CONFIG } from '@/lib/config/site'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
@@ -152,13 +154,25 @@ export function Footer() {
           style={{ borderColor: '#2d2d2d', color: '#5c5c5c' }}
         >
           <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. Tüm hakları saklıdır.</p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             <Link href="/gizlilik-politikasi" className="hover:text-white transition-colors">
               Gizlilik Politikası
             </Link>
             <Link href="/cerez-politikasi" className="hover:text-white transition-colors">
               Çerez Politikası
             </Link>
+            <button
+              type="button"
+              className="hover:text-white transition-colors text-left"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  localStorage.removeItem('cookie_consent')
+                  window.location.reload()
+                }
+              }}
+            >
+              Çerez Tercihleri
+            </button>
           </div>
         </div>
       </div>

@@ -46,10 +46,10 @@ export function ValueProposition() {
             Neden Başkan Havlu?
           </span>
           <h2 className="text-3xl font-bold sm:text-4xl" style={{ color: '#1a1a1a' }}>
-            Güvenilir Tekstil Tedarikçiniz
+            Neden Başkan Havlu Tekstil?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg" style={{ color: '#5c5c5c' }}>
-            1981&apos;den bu yana Bursa&apos;dan Türkiye&apos;ye ve dünyaya havlu ve tekstil çözümleri sunuyoruz.
+            1981&apos;den beri Bursa&apos;da havlu ve bornoz üretimi — otel, kurum ve promosyon sektörüne özel çözümler.
           </p>
         </div>
 

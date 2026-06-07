@@ -32,7 +32,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Telefon: +90 507 342 06 61 | WA: https://wa.me/905073420661
   - E-posta: tekstil@baskanhavlu.com | Kuruluş: 1981
   - Requires: 1.1
-- [ ] 1.9 `.env.local` şablonu oluştur (tüm zorunlu değişkenler boş ama listelenmiş)
+- [x] 1.9 `.env.local` şablonu oluştur (tüm zorunlu değişkenler boş ama listelenmiş)
   - Requires: 1.1
 
 ### 2. Design Token ve Stil Sistemi

@@ -8,9 +8,9 @@ import { FAQPreview } from '@/components/organisms/FAQPreview'
 import { CTABand } from '@/components/organisms/CTABand'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Hakkımızda | Başkan Havlu Tekstil',
+  title: 'Hakkımızda | Başkan Havlu Tekstil — 1981\'den Beri Bursa\'da Havlu Üreticisi',
   description:
-    "1981'den bu yana Bursa'da tekstil tedarik ve üretim koordinasyonu. Otel, kurum ve promosyon sektörüne özel havlu çözümleri.",
+    "1981'den beri Bursa'da havlu ve bornoz üretimi. Havlucular Çarşısı'ndan otel, kurum ve promosyon sektörüne özel çözümler.",
   path: '/about',
 })
 
@@ -53,10 +53,10 @@ export default function AboutPage() {
               Firmamız
             </span>
             <h1 className="text-3xl font-bold text-white sm:text-5xl">
-              {SITE_CONFIG.founded}&apos;den Bu Yana Güvenilir Tekstil Tedarikçisi
+              1981&apos;den Beri Bursa&apos;da Havlu ve Bornoz Üreticisi
             </h1>
             <p className="mt-4 text-lg" style={{ color: '#b3b3b3' }}>
-              Bursa Havlucular Çarşısı&apos;nda {SITE_CONFIG.founded}&apos;dan bu yana tekstil tedarik ve özel üretim koordinasyonu yapıyoruz.
+              Bursa Havlucular Çarşısı&apos;nda 1981&apos;den bu yana havlu ve bornoz üretimi, toptan satış ve ihracat.
             </p>
           </div>
         </div>
@@ -71,13 +71,13 @@ export default function AboutPage() {
                 Kim Biz?
               </span>
               <h2 className="text-3xl font-bold sm:text-4xl" style={{ color: '#1a1a1a' }}>
-                Tekstil Tedarik ve Üretim Koordinasyonu
+                Bursa&apos;da Havlu ve Bornoz Üretimi
               </h2>
               <p className="mt-4 leading-relaxed" style={{ color: '#5c5c5c' }}>
-                Başkan Havlu Tekstil, {SITE_CONFIG.founded} yılından bu yana Bursa&apos;da faaliyet gösteren bir tekstil tedarik ve özel üretim koordinasyon firmasıdır. Doğrudan fabrika olmamamıza rağmen, sektördeki köklü deneyimimiz ve güvenilir üretici ağımız sayesinde müşterilerimize yüksek kaliteli ürün tedariki sağlıyoruz.
+                Başkan Havlu Tekstil, {SITE_CONFIG.founded} yılından bu yana Bursa Havlucular Çarşısı&apos;nda faaliyet gösteren bir havlu ve bornoz üreticisidir. Otel, güzellik salonu, kurumsal firma ve promosyon sektörüne özel üretim çözümleri sunuyoruz.
               </p>
               <p className="mt-4 leading-relaxed" style={{ color: '#5c5c5c' }}>
-                Oteller, güzellik salonları, kurumsal firmalar ve promosyon şirketleri başta olmak üzere geniş bir müşteri kitlesine hizmet veriyoruz. Başta Arap ülkeleri ve Yunanistan olmak üzere uluslararası pazarlara da ihracat gerçekleştiriyoruz.
+                Oteller, güzellik salonları, kurumsal firmalar ve promosyon şirketleri başta olmak üzere geniş bir müşteri kitlesine hizmet veriyoruz. Arap ülkeleri ve Yunanistan başta olmak üzere uluslararası pazarlara da ihracat gerçekleştiriyoruz.
               </p>
 
               {/* Öne çıkan veriler */}

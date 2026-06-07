@@ -76,10 +76,10 @@ export const SITE_CONFIG = {
 
   // SEO varsayılanları
   seo: {
-    defaultTitle: 'Başkan Havlu Tekstil | Bursa Havlu Tedarikçisi',
+    defaultTitle: "Başkan Havlu Tekstil | 1981'den Beri Bursa'da Havlu ve Bornoz Üretimi",
     titleTemplate: '%s | Başkan Havlu Tekstil',
     defaultDescription:
-      "1981'den bu yana Bursa'da havlu ve tekstil tedariki. Otel, kurum ve promosyon sektörüne özel çözümler.",
+      "1981'den beri Bursa'da havlu ve bornoz üretimi. Otel, kurumsal firma, promosyon ve toptan satış çözümleri. Havlucular Çarşısı, Osmangazi.",
     ogImage: 'https://baskanhavlu.com/og-default.jpg',
   },
 } as const

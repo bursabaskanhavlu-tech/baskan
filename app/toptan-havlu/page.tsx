@@ -7,8 +7,8 @@ import { CTABand } from '@/components/organisms/CTABand'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Toptan Havlu Tedarikçisi | Başkan Havlu Tekstil',
-  description: 'Toptan havlu siparişi için Bursa\'nın güvenilir tekstil tedarikçisi. Esnek MOQ, özel üretim, hızlı teklif. Otel ve kurumsal sektöre toptan satış.',
+  title: 'Toptan Havlu Üreticisi | Bursa Toptan Havlu | Başkan Havlu Tekstil',
+  description: "1981'den beri Bursa'da toptan havlu üretimi. Otel, kurum ve perakende sektörüne esnek MOQ ile toplu havlu siparişi. Hızlı teklif.",
   path: '/toptan-havlu',
 })
 
@@ -30,7 +30,7 @@ export default function ToptanHavluPage() {
       <section className="py-20" style={{ backgroundColor: '#faf8f5' }}>
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest" style={{ color: '#e87722' }}>Toptan Satış</span>
-          <h1 className="text-4xl font-bold sm:text-5xl" style={{ color: '#1a1a1a' }}>Fabrikadan Direkt Toptan Havlu Tedariki</h1>
+          <h1 className="text-4xl font-bold sm:text-5xl" style={{ color: '#1a1a1a' }}>Bursa&apos;dan Toptan Havlu Üretimi ve Satışı</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed" style={{ color: '#5c5c5c' }}>
             Esnek sipariş miktarı, rekabetçi fiyatlar ve hızlı teklif süreci. Otel, kurum ve perakende sektörüne toptan havlu.
           </p>

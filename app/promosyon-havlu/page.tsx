@@ -7,8 +7,8 @@ import { CTABand } from '@/components/organisms/CTABand'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Promosyon Havlu | Logolu Kurumsal Havlu | Başkan Havlu Tekstil',
-  description: 'Kurumsal kimliğinizi yansıtan logolu promosyon havluları. Etkinlik, fuar ve kurumsal hediye için özel üretim. Teklif için iletişime geçin.',
+  title: 'Promosyon Havlu Üreticisi | Logolu Kurumsal Havlu | Başkan Havlu Tekstil',
+  description: "Kurumsal kimliğinizi yansıtan logolu promosyon havluları. Etkinlik, fuar ve kurumsal hediye için özel üretim. Bursa'da 1981'den beri.",
   path: '/promosyon-havlu',
 })
 

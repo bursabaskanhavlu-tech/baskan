@@ -1,4 +1,10 @@
 import type { NextConfig } from 'next'
+import { withSentryConfig } from '@sentry/nextjs'
+import withBundleAnalyzer from '@next/bundle-analyzer'
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const securityHeaders = [
   {
@@ -97,4 +103,22 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 }
 
-export default nextConfig
+export default withSentryConfig(bundleAnalyzer(nextConfig), {
+  // Sentry organizasyon ve proje
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+
+  // Source map yükleme (CI/CD'de SENTRY_AUTH_TOKEN ile aktif edilir)
+  silent: !process.env.CI,
+
+  // Performansı artırmak için tree-shaking
+  disableLogger: true,
+
+  // Source map'leri production'da gizle
+  sourcemaps: {
+    disable: false,
+  },
+
+  // Otomatik araç ekleme
+  automaticVercelMonitors: false,
+})
