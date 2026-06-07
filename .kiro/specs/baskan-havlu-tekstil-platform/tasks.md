@@ -36,7 +36,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.1
 
 ### 2. Design Token ve Stil Sistemi
-- [ ] 2.1 `tailwind.config.ts` — renk tokenları tanımla (orange-500: #E87722, beige, charcoal paleti)
+- [x] 2.1 `tailwind.config.ts` — renk tokenları tanımla (orange-500: #E87722, beige, charcoal paleti)
   - Requires: 1.1
 - [x] 2.2 `app/globals.css` — CSS custom properties (--color-orange, --space-*, --radius-*)
   - Requires: 2.1
@@ -56,11 +56,11 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 2.1, 3.3
 - [x] 3.5 `Textarea` bileşeni — min 120px, aynı stil sistemi
   - Requires: 2.1, 3.3
-- [ ] 3.6 `FormGroup` bileşeni — label + field + error mesajı sarmalayıcı
+- [x] 3.6 `FormGroup` bileşeni — label + field + error mesajı sarmalayıcı
   - Requires: 3.3
 
 ### 4. Güvenlik ve next.config.ts
-- [ ] 4.1 `next.config.ts` — CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy güvenlik başlıkları
+- [x] 4.1 `next.config.ts` — CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy güvenlik başlıkları
   - Requires: 1.1
 - [x] 4.2 `next.config.ts` — 301 yönlendirmeler (`/urunler` → `/new-collection`, `/hakkimizda` → `/about`, `/iletisim` → `/contact`)
   - Requires: 4.1
@@ -80,7 +80,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.1
 - [x] 5.4 `app/image-sitemap.ts` — görsel sitemap (ürün görselleri)
   - Requires: 1.1
-- [ ] 5.5 `/public/llms.txt` — gerçek firma verileriyle AI kılavuz dosyası
+- [x] 5.5 `/public/llms.txt` — gerçek firma verileriyle AI kılavuz dosyası
   - Requires: 1.8
 - [x] 5.6 `/public/ai.txt` — AI içerik izin ve entity dosyası
   - Requires: 1.8
@@ -88,47 +88,47 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.1
 
 ### 6. Layout ve Navigasyon
-- [~] 6.1 `app/[locale]/layout.tsx` — root layout (Navbar, Footer, StickyWhatsApp, CookieConsent)
+- [x] 6.1 `app/[locale]/layout.tsx` — root layout (Navbar, Footer, StickyWhatsApp, CookieConsent)
   - Requires: 3.1, 5.1
-- [~] 6.2 `Navbar` organism — logo, nav linkleri, dil değiştirici, "Teklif Al" CTA; scroll'da mat arka plan
+- [x] 6.2 `Navbar` organism — logo, nav linkleri, dil değiştirici, "Teklif Al" CTA; scroll'da mat arka plan
   - Requires: 3.1, 6.1
-- [~] 6.3 `Navbar` mobil hamburger menü — tam ekran overlay, animasyon
+- [x] 6.3 `Navbar` mobil hamburger menü — tam ekran overlay, animasyon
   - Requires: 6.2
-- [~] 6.4 `Footer` organism — 4 sütun ızgara; NAP bilgileri, linkler, sosyal medya
+- [x] 6.4 `Footer` organism — 4 sütun ızgara; NAP bilgileri, linkler, sosyal medya
   - Requires: 1.8, 3.1
-- [~] 6.5 `StickyWhatsApp` bileşeni — sağ alt sabit, `https://wa.me/905073420661`, ön mesaj
+- [x] 6.5 `StickyWhatsApp` bileşeni — sağ alt sabit, `https://wa.me/905073420661`, ön mesaj
   - Requires: 1.8, 3.1
 
 ### 7. Form ve Lead API Sistemi
-- [~] 7.1 `lib/validations/lead.schema.ts` — Zod şemaları (quote, sample, bulk, export, contact)
+- [x] 7.1 `lib/validations/lead.schema.ts` — Zod şemaları (quote, sample, bulk, export, contact)
   - Requires: 1.7
-- [~] 7.2 Resend kurulumu (`npm install resend`) + domain doğrulaması (baskanhavlu.com DNS kaydı)
+- [x] 7.2 Resend kurulumu (`npm install resend`) + domain doğrulaması (baskanhavlu.com DNS kaydı)
   - Requires: 1.1
-- [~] 7.3 `lib/services/email.service.ts` — Resend adaptörü (tekstil@baskanhavlu.com hedef)
+- [x] 7.3 `lib/services/email.service.ts` — Resend adaptörü (tekstil@baskanhavlu.com hedef)
   - Requires: 7.2
-- [~] 7.4 Upstash Redis kurulumu (`npm install @upstash/redis`) + `lib/utils/rate-limit.ts`
+- [x] 7.4 Upstash Redis kurulumu (`npm install @upstash/redis`) + `lib/utils/rate-limit.ts`
   - Requires: 1.1
-- [~] 7.5 `app/api/lead/quote/route.ts` — Edge Runtime, Zod doğrulama, honeypot, rate limit, Resend
+- [x] 7.5 `app/api/lead/quote/route.ts` — Edge Runtime, Zod doğrulama, honeypot, rate limit, Resend
   - Requires: 7.1, 7.3, 7.4
-- [~] 7.6 `app/api/lead/sample/route.ts` — aynı yapı
+- [x] 7.6 `app/api/lead/sample/route.ts` — aynı yapı
   - Requires: 7.5
-- [~] 7.7 `app/api/lead/export/route.ts` — aynı yapı
+- [x] 7.7 `app/api/lead/export/route.ts` — aynı yapı
   - Requires: 7.5
-- [~] 7.8 `app/api/contact/route.ts` — aynı yapı
+- [x] 7.8 `app/api/contact/route.ts` — aynı yapı
   - Requires: 7.5
-- [~] 7.9 `ContactForm` organism — React Hook Form + Zod + form gönderim akışı + başarı/hata durumları
+- [x] 7.9 `ContactForm` organism — React Hook Form + Zod + form gönderim akışı + başarı/hata durumları
   - Requires: 3.3, 3.6, 7.1
-- [~] 7.10 Form başarısında `/tesekkurler/` yönlendirme veya inline başarı mesajı
+- [x] 7.10 Form başarısında `/tesekkurler/` yönlendirme veya inline başarı mesajı
   - Requires: 7.9
 
 ### 8. GDPR Çerez Sistemi
-- [~] 8.1 `components/providers/CookieConsentProvider.tsx` — context + localStorage yönetimi
+- [x] 8.1 `components/providers/CookieConsentProvider.tsx` — context + localStorage yönetimi
   - Requires: 1.1
-- [~] 8.2 `CookieConsentBanner` bileşeni — "Kabul Et" + "Yalnızca Zorunlu" butonları
+- [x] 8.2 `CookieConsentBanner` bileşeni — "Kabul Et" + "Yalnızca Zorunlu" butonları
   - Requires: 3.1, 8.1
-- [~] 8.3 GDPR banner root layout'a entegre et
+- [x] 8.3 GDPR banner root layout'a entegre et
   - Requires: 6.1, 8.2
-- [~] 8.4 Koşullu GA4 yükleme (consent = analytics ise yükle)
+- [x] 8.4 Koşullu GA4 yükleme (consent = analytics ise yükle)
   - Requires: 8.1
 
 ---
@@ -136,99 +136,99 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## P1 — Yüksek Öncelik (İlk Hafta)
 
 ### 9. Schema Markup Bileşenleri
-- [~] 9.1 `components/schema/OrganizationSchema.tsx` — gerçek NAP verileri (site.ts'den)
+- [x] 9.1 `components/schema/OrganizationSchema.tsx` — gerçek NAP verileri (site.ts'den)
   - Requires: 1.8
-- [~] 9.2 `components/schema/LocalBusinessSchema.tsx` — açılış saatleri, geo koordinat
+- [x] 9.2 `components/schema/LocalBusinessSchema.tsx` — açılış saatleri, geo koordinat
   - Requires: 9.1
-- [~] 9.3 `components/schema/WebSiteSchema.tsx` — SearchAction (site içi arama varsa)
+- [x] 9.3 `components/schema/WebSiteSchema.tsx` — SearchAction (site içi arama varsa)
   - Requires: 1.8
-- [~] 9.4 `components/schema/ProductSchema.tsx`
+- [x] 9.4 `components/schema/ProductSchema.tsx`
   - Requires: 1.8
-- [~] 9.5 `components/schema/FAQSchema.tsx`
+- [x] 9.5 `components/schema/FAQSchema.tsx`
   - Requires: 1.8
-- [~] 9.6 `components/schema/BreadcrumbSchema.tsx`
+- [x] 9.6 `components/schema/BreadcrumbSchema.tsx`
   - Requires: 1.8
-- [~] 9.7 `components/schema/ReviewSchema.tsx`
+- [x] 9.7 `components/schema/ReviewSchema.tsx`
   - Requires: 1.8
 
 ### 10. Ana Sayfa
-- [~] 10.1 `HeroSection` — H1 başlık, CTA çifti (Teklif Al + Koleksiyonu Gör), güven sinyalleri (1981, Arap ülkeleri, Yunanistan)
+- [x] 10.1 `HeroSection` — H1 başlık, CTA çifti (Teklif Al + Koleksiyonu Gör), güven sinyalleri (1981, Arap ülkeleri, Yunanistan)
   - Requires: 3.1, 6.1
-- [~] 10.2 `TrustBar` — partner/müşteri logoları yatay şerit
+- [x] 10.2 `TrustBar` — partner/müşteri logoları yatay şerit
   - Requires: 6.1
-- [~] 10.3 `ValueProposition` — 6 özellik kartı (1981 kuruluş, esnek MOQ, özel üretim vb.)
+- [x] 10.3 `ValueProposition` — 6 özellik kartı (1981 kuruluş, esnek MOQ, özel üretim vb.)
   - Requires: 3.1
-- [~] 10.4 `ProductCategories` — asimetrik ızgara, 6 kategori kartı, görsel + CTA
+- [x] 10.4 `ProductCategories` — asimetrik ızgara, 6 kategori kartı, görsel + CTA
   - Requires: 3.1
-- [~] 10.5 `WhyUsSection` — dürüst 6 kart (sayaç YOK — iş modeline uygun)
+- [x] 10.5 `WhyUsSection` — dürüst 6 kart (sayaç YOK — iş modeline uygun)
   - Requires: 3.1
-- [~] 10.6 `FactoryShowcase` — 2 sütun, metin + fabrika fotoğraf kolajı
+- [x] 10.6 `FactoryShowcase` — 2 sütun, metin + fabrika fotoğraf kolajı
   - Requires: 3.1
-- [~] 10.7 `TestimonialCarousel` — 5s otomatik, dokunma desteği
+- [x] 10.7 `TestimonialCarousel` — 5s otomatik, dokunma desteği
   - Requires: 3.1
-- [~] 10.8 `FAQPreview` — 6 soru, akordeon, "Tüm SSS" linki
+- [x] 10.8 `FAQPreview` — 6 soru, akordeon, "Tüm SSS" linki
   - Requires: 3.1
-- [~] 10.9 `CTABand` — turuncu arka plan, "Teklif Al" + "WhatsApp" butonları
+- [x] 10.9 `CTABand` — turuncu arka plan, "Teklif Al" + "WhatsApp" butonları
   - Requires: 3.1
-- [~] 10.10 Ana sayfa metadata (generateMetadata), Organization + LocalBusiness + WebSite Schema
+- [x] 10.10 Ana sayfa metadata (generateMetadata), Organization + LocalBusiness + WebSite Schema
   - Requires: 5.1, 9.1, 9.2, 9.3
 
 ### 11. Ürün Sistemi
-- [~] 11.1 `content/products/` — 6 kategori JSON verisi (el, yüz, banyo, kafa, ayak havlusu, promosyon)
+- [x] 11.1 `content/products/` — 6 kategori JSON verisi (el, yüz, banyo, kafa, ayak havlusu, promosyon)
   - Requires: 1.8
-- [~] 11.2 `ProductCard` molecule — görsel, ad, kullanım alanı, özelleştirme, "Teklif İste" CTA
+- [x] 11.2 `ProductCard` molecule — görsel, ad, kullanım alanı, özelleştirme, "Teklif İste" CTA
   - Requires: 3.1
-- [~] 11.3 `QuickFacts` bileşeni — kategori, materyal, MOQ (dinamik), teslimat notu
+- [x] 11.3 `QuickFacts` bileşeni — kategori, materyal, MOQ (dinamik), teslimat notu
   - Requires: 3.1
-- [~] 11.4 `/new-collection/` sayfa — filtre sidebar + ProductCard ızgarası (ISR r:3600)
+- [x] 11.4 `/new-collection/` sayfa — filtre sidebar + ProductCard ızgarası (ISR r:3600)
   - Requires: 11.1, 11.2, 9.4
-- [~] 11.5 `/new-collection/[slug]/` sayfa — görsel galeri + ürün bilgisi + CTA + ImageObject Schema
+- [x] 11.5 `/new-collection/[slug]/` sayfa — görsel galeri + ürün bilgisi + CTA + ImageObject Schema
   - Requires: 11.1, 11.2, 9.4
-- [~] 11.6 Filtre bileşeni — kategori, kullanım alanı (URL parametresi ile, kanonik yönetimi dahil)
+- [x] 11.6 Filtre bileşeni — kategori, kullanım alanı (URL parametresi ile, kanonik yönetimi dahil)
   - Requires: 11.4
 
 ### 12. Hakkımızda Sayfası
-- [~] 12.1 `/about/` sayfa — hero, firma hakkında (1981, fason model dürüst tanım)
+- [x] 12.1 `/about/` sayfa — hero, firma hakkında (1981, fason model dürüst tanım)
   - Requires: 6.1, 5.1
-- [~] 12.2 `ProcessStep` bileşeni + üretim süreci bölümü (5 adım, yatay/dikey zaman çizelgesi)
+- [x] 12.2 `ProcessStep` bileşeni + üretim süreci bölümü (5 adım, yatay/dikey zaman çizelgesi)
   - Requires: 3.1
-- [~] 12.3 İhracat hizmetleri bölümü — Arap Ülkeleri, Yunanistan
+- [x] 12.3 İhracat hizmetleri bölümü — Arap Ülkeleri, Yunanistan
   - Requires: 12.1
-- [~] 12.4 Özel üretim / Private Label bölümü
+- [x] 12.4 Özel üretim / Private Label bölümü
   - Requires: 12.1
-- [~] 12.5 `FAQItem` bileşeni + tam SSS listesi (55 soru, 10 kategori, akordeon)
+- [x] 12.5 `FAQItem` bileşeni + tam SSS listesi (55 soru, 10 kategori, akordeon)
   - Requires: 3.1
-- [~] 12.6 `content/faq/` — JSON SSS verisi (CONV-3'teki 55 soru)
+- [x] 12.6 `content/faq/` — JSON SSS verisi (CONV-3'teki 55 soru)
   - Requires: 1.1
-- [~] 12.7 Sertifikalar bölümü — "Henüz doğrulanmamış" notu ile placeholder yapı
+- [x] 12.7 Sertifikalar bölümü — "Henüz doğrulanmamış" notu ile placeholder yapı
   - Requires: 12.1
-- [~] 12.8 Referanslar bölümü — TestimonialCard ızgarası (gerçek veri gelince dolacak)
+- [x] 12.8 Referanslar bölümü — TestimonialCard ızgarası (gerçek veri gelince dolacak)
   - Requires: 3.1
-- [~] 12.9 `/about/` metadata + Organization + Brand + FAQPage Schema
+- [x] 12.9 `/about/` metadata + Organization + Brand + FAQPage Schema
   - Requires: 5.1, 9.1, 9.5
 
 ### 13. İletişim Sayfası
-- [~] 13.1 `/contact/` sayfa — iki sütun layout (form sol, bilgi + harita sağ)
+- [x] 13.1 `/contact/` sayfa — iki sütun layout (form sol, bilgi + harita sağ)
   - Requires: 7.9, 6.1
-- [~] 13.2 WhatsApp öncelikli kart — yeşil kart, +90 507 342 06 61, ön mesajlı link
+- [x] 13.2 WhatsApp öncelikli kart — yeşil kart, +90 507 342 06 61, ön mesajlı link
   - Requires: 1.8
-- [~] 13.3 NAP bilgi bloku — adres, telefon (`tel:` link), e-posta (`mailto:` link), çalışma saatleri
+- [x] 13.3 NAP bilgi bloku — adres, telefon (`tel:` link), e-posta (`mailto:` link), çalışma saatleri
   - Requires: 1.8
-- [~] 13.4 Statik harita görseli veya Google Maps embed (GDPR uyumlu — onay sonrası yükle)
+- [x] 13.4 Statik harita görseli veya Google Maps embed (GDPR uyumlu — onay sonrası yükle)
   - Requires: 8.1
-- [~] 13.5 `/contact/` metadata + LocalBusiness + ContactPage Schema
+- [x] 13.5 `/contact/` metadata + LocalBusiness + ContactPage Schema
   - Requires: 5.1, 9.2
 
 ### 14. Öncelikli 4 Landing Sayfa
-- [~] 14.1 `/havlu-ureticisi/` — AITA yapısı, FAQPage Schema, hedef: "havlu tedarikçisi bursa"
+- [x] 14.1 `/havlu-ureticisi/` — AITA yapısı, FAQPage Schema, hedef: "havlu tedarikçisi bursa"
   - Requires: 7.9, 9.5, 5.1
-- [~] 14.2 `/toptan-havlu/` — AITA yapısı, FAQPage Schema, hedef: "toptan havlu tedarikçisi"
+- [x] 14.2 `/toptan-havlu/` — AITA yapısı, FAQPage Schema, hedef: "toptan havlu tedarikçisi"
   - Requires: 14.1
-- [~] 14.3 `/otel-havlusu/` — AITA yapısı, FAQPage Schema, hedef: "otel havlusu tedarikçisi"
+- [x] 14.3 `/otel-havlusu/` — AITA yapısı, FAQPage Schema, hedef: "otel havlusu tedarikçisi"
   - Requires: 14.1
-- [~] 14.4 `/promosyon-havlu/` — AITA yapısı, FAQPage Schema, hedef: "promosyon havlu logolu"
+- [x] 14.4 `/promosyon-havlu/` — AITA yapısı, FAQPage Schema, hedef: "promosyon havlu logolu"
   - Requires: 14.1
-- [~] 14.5 Her landing sayfa için dahili bağlantı kontrolü (hub & spoke doğrulaması)
+- [x] 14.5 Her landing sayfa için dahili bağlantı kontrolü (hub & spoke doğrulaması)
   - Requires: 14.1, 14.2, 14.3, 14.4
 
 ---
@@ -236,39 +236,39 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## P2 — Orta Öncelik (İkinci Hafta)
 
 ### 15. Kalan 7 Landing Sayfa
-- [~] 15.1 `/bornoz-ureticisi/` — AITA yapısı, FAQPage Schema
+- [x] 15.1 `/bornoz-ureticisi/` — AITA yapısı, FAQPage Schema
   - Requires: 14.1
-- [~] 15.2 `/toptan-bornoz/`
+- [x] 15.2 `/toptan-bornoz/`
   - Requires: 14.1
-- [~] 15.3 `/otel-bornozu/`
+- [x] 15.3 `/otel-bornozu/`
   - Requires: 14.1
-- [~] 15.4 `/nakisli-havlu/`
+- [x] 15.4 `/nakisli-havlu/`
   - Requires: 14.1
-- [~] 15.5 `/turkish-towel-manufacturer/` — İngilizce AITA, ihracat alıcısı odaklı
+- [x] 15.5 `/turkish-towel-manufacturer/` — İngilizce AITA, ihracat alıcısı odaklı
   - Requires: 14.1
-- [~] 15.6 `/bathrobe-manufacturer/` — İngilizce
+- [x] 15.6 `/bathrobe-manufacturer/` — İngilizce
   - Requires: 14.1
-- [~] 15.7 `/wholesale-towel-supplier/` — İngilizce
+- [x] 15.7 `/wholesale-towel-supplier/` — İngilizce
   - Requires: 14.1
 
 ### 16. Blog Sistemi
-- [~] 16.1 `app/[locale]/blog/page.tsx` — blog listesi (ISR r:1800), BreadcrumbList Schema
+- [x] 16.1 `app/[locale]/blog/page.tsx` — blog listesi (ISR r:1800), BreadcrumbList Schema
   - Requires: 6.1
-- [~] 16.2 `app/[locale]/blog/[slug]/page.tsx` — makale sayfası, Article Schema, ilgili makaleler
+- [x] 16.2 `app/[locale]/blog/[slug]/page.tsx` — makale sayfası, Article Schema, ilgili makaleler
   - Requires: 16.1
-- [~] 16.3 `content/blog/` — MDX veya JSON içerik yapısı
+- [x] 16.3 `content/blog/` — MDX veya JSON içerik yapısı
   - Requires: 1.1
-- [~] 16.4 İlk 10 blog makalesi içeriğini yaz ve yayınla (LAUNCH-6 listesi, Gün 8–28 arası)
+- [x] 16.4 İlk 10 blog makalesi içeriğini yaz ve yayınla (LAUNCH-6 listesi, Gün 8–28 arası)
   - Requires: 16.2, 16.3
 
 ### 17. Analytics ve Gözlemlenebilirlik
-- [~] 17.1 GA4 entegrasyonu — `next/script` strategy="afterInteractive", GDPR koşullu
+- [x] 17.1 GA4 entegrasyonu — `next/script` strategy="afterInteractive", GDPR koşullu
   - Requires: 8.1
-- [~] 17.2 GA4 custom eventler: `form_submit`, `whatsapp_click`, `cta_click`, `product_view`
+- [x] 17.2 GA4 custom eventler: `form_submit`, `whatsapp_click`, `cta_click`, `product_view`
   - Requires: 17.1
-- [~] 17.3 `/tesekkurler/` sayfası + GA4 `conversion` eventi
+- [x] 17.3 `/tesekkurler/` sayfası + GA4 `conversion` eventi
   - Requires: 17.1, 7.10
-- [~] 17.4 Vercel Analytics + Speed Insights kurulumu (`@vercel/analytics`, `@vercel/speed-insights`)
+- [x] 17.4 Vercel Analytics + Speed Insights kurulumu (`@vercel/analytics`, `@vercel/speed-insights`)
   - Requires: 1.1
 - [~] 17.5 Sentry kurulumu (`@sentry/nextjs`), source map CI adımı
   - Requires: 1.1
@@ -278,9 +278,9 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 6.1
 
 ### 18. GDPR Sayfaları
-- [~] 18.1 `/gizlilik-politikasi/` sayfası — GDPR uyumlu içerik
+- [x] 18.1 `/gizlilik-politikasi/` sayfası — GDPR uyumlu içerik
   - Requires: 6.1
-- [~] 18.2 `/cerez-politikasi/` sayfası — çerez kategorileri ve kullanım
+- [x] 18.2 `/cerez-politikasi/` sayfası — çerez kategorileri ve kullanım
   - Requires: 6.1
 - [~] 18.3 Footer'a "Çerez Tercihleri" + "Gizlilik Politikası" + "Çerez Politikası" linkleri ekle
   - Requires: 6.4, 18.1, 18.2
@@ -324,7 +324,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 21.1
 
 ### 22. CI/CD Pipeline
-- [~] 22.1 GitHub Actions workflow — lint → type-check → npm audit → build
+- [x] 22.1 GitHub Actions workflow — lint → type-check → npm audit → build
   - Requires: 1.3
 - [~] 22.2 Lighthouse CI kurulumu (`lighthouserc.js`, 6 URL, 3 tekrar)
   - Requires: 22.1
