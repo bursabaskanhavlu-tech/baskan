@@ -32,6 +32,10 @@ export default function ContactPage() {
       })
       if (res.ok) {
         setStatus('success')
+        // GA4 event
+        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+          window.gtag('event', 'form_submit', { form_type: 'quote', source_page: window.location.pathname })
+        }
         setForm({ fullName: '', company: '', email: '', phone: '', productType: '', quantity: '', message: '', honeypot: '' })
       } else {
         setStatus('error')

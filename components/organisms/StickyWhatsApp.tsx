@@ -5,6 +5,14 @@ import { SITE_CONFIG } from '@/lib/config/site'
 export function StickyWhatsApp() {
   const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${SITE_CONFIG.contact.whatsappMessageTr}`
 
+  const handleClick = () => {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'whatsapp_click', {
+        source: 'sticky_button',
+        page: window.location.pathname,
+      })
+    }
+  }
   return (
     <a
       href={waUrl}
@@ -12,7 +20,8 @@ export function StickyWhatsApp() {
       rel="noopener noreferrer"
       aria-label="WhatsApp ile iletişime geçin"
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-      style={{ backgroundColor: '#25d366', focusRingColor: '#25d366' } as React.CSSProperties}
+      style={{ backgroundColor: '#25d366' } as React.CSSProperties}
+      onClick={handleClick}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
