@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { SITE_CONFIG } from '@/lib/config/site'
 import { Menu, X, Phone } from 'lucide-react'
@@ -35,10 +36,15 @@ export function Navbar() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold" style={{ color: '#1a1a1a' }}>
-              Başkan<span style={{ color: '#e87722' }}>Havlu</span>
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo-text.png"
+              alt="Başkan Havlu Tekstil"
+              width={160}
+              height={48}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Masaüstü nav */}
@@ -93,9 +99,13 @@ export function Navbar() {
         <div className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-8">
           <div className="flex items-center justify-between">
             <Link href="/" onClick={() => setMobileOpen(false)}>
-              <span className="text-xl font-bold">
-                Başkan<span style={{ color: '#e87722' }}>Havlu</span>
-              </span>
+              <Image
+                src="/images/logo-text.png"
+                alt="Başkan Havlu Tekstil"
+                width={140}
+                height={42}
+                className="h-9 w-auto object-contain"
+              />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}

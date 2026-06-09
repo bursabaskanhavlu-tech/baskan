@@ -27,9 +27,9 @@ const categories = [
     large: false,
   },
   {
-    title: 'Bornoz',
-    desc: 'Otel ve SPA için özel üretim',
-    href: '/bornoz-ureticisi',
+    title: 'El & Yüz Havlusu',
+    desc: 'Otel ve kurum için set çözümleri',
+    href: '/otel-havlusu',
     bg: '#2d2d2d',
     color: 'white',
     large: false,
