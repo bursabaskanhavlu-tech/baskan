@@ -40,9 +40,9 @@ export function Navbar() {
             <Image
               src="/images/logo-text.png"
               alt="Başkan Havlu Tekstil"
-              width={160}
-              height={48}
-              className="h-10 w-auto object-contain"
+              width={220}
+              height={66}
+              className="h-14 w-auto object-contain"
               priority
             />
           </Link>
@@ -102,9 +102,9 @@ export function Navbar() {
               <Image
                 src="/images/logo-text.png"
                 alt="Başkan Havlu Tekstil"
-                width={140}
-                height={42}
-                className="h-9 w-auto object-contain"
+                width={200}
+                height={60}
+                className="h-12 w-auto object-contain"
               />
             </Link>
             <button

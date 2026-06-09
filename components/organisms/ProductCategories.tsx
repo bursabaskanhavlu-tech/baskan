@@ -35,6 +35,14 @@ const categories = [
     large: false,
   },
   {
+    title: 'Bornoz',
+    desc: 'Otel ve SPA için toptan bornoz',
+    href: '/toptan-bornoz',
+    bg: '#4a3728',
+    color: 'white',
+    large: false,
+  },
+  {
     title: 'Nakışlı Havlu',
     desc: 'Kişiselleştirilmiş tasarımlar',
     href: '/nakisli-havlu',
