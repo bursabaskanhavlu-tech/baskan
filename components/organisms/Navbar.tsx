@@ -44,7 +44,7 @@ export function Navbar() {
                 width={2000}
                 height={2000}
                 className="w-full h-full"
-                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.5)', transformOrigin: 'center' }}
+                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.5)', transformOrigin: 'left center' }}
                 priority
               />
             </div>
@@ -102,13 +102,16 @@ export function Navbar() {
         <div className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-8">
           <div className="flex items-center justify-between">
             <Link href="/" onClick={() => setMobileOpen(false)}>
-              <Image
-                src="/images/logo-text.png"
-                alt="Başkan Havlu Tekstil"
-                width={280}
-                height={84}
-                className="h-16 w-auto object-contain"
-              />
+              <div className="overflow-hidden" style={{ width: '200px', height: '80px' }}>
+                <Image
+                  src="/images/logo-text.png"
+                  alt="Başkan Havlu Tekstil"
+                  width={2000}
+                  height={2000}
+                  className="w-full h-full"
+                  style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.5)', transformOrigin: 'left center' }}
+                />
+              </div>
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
