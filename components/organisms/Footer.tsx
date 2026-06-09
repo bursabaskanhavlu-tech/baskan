@@ -37,7 +37,7 @@ export function Footer() {
                   width={2000}
                   height={2000}
                   className="w-full h-full brightness-0 invert"
-                  style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(3)', transformOrigin: 'center' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.5)', transformOrigin: 'center' }}
                 />
               </div>
             </Link>

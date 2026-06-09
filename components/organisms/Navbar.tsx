@@ -44,7 +44,7 @@ export function Navbar() {
                 width={2000}
                 height={2000}
                 className="w-full h-full"
-                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(3)', transformOrigin: 'center' }}
+                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.5)', transformOrigin: 'center' }}
                 priority
               />
             </div>
