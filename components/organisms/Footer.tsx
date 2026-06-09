@@ -1,6 +1,5 @@
-'use client'
-
 import Link from 'next/link'
+import Image from 'next/image'
 import { SITE_CONFIG } from '@/lib/config/site'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
@@ -31,9 +30,13 @@ export function Footer() {
           {/* Kolon 1: Logo + açıklama */}
           <div>
             <Link href="/">
-              <span className="text-xl font-bold text-white">
-                Başkan<span style={{ color: '#e87722' }}>Havlu</span>
-              </span>
+              <Image
+                src="/images/logo-text.png"
+                alt="Başkan Havlu Tekstil"
+                width={240}
+                height={72}
+                className="h-16 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="mt-4 text-sm leading-relaxed" style={{ color: '#b3b3b3' }}>
               {SITE_CONFIG.description.tr}
@@ -154,25 +157,13 @@ export function Footer() {
           style={{ borderColor: '#2d2d2d', color: '#5c5c5c' }}
         >
           <p>© {new Date().getFullYear()} {SITE_CONFIG.name}. Tüm hakları saklıdır.</p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex gap-4">
             <Link href="/gizlilik-politikasi" className="hover:text-white transition-colors">
               Gizlilik Politikası
             </Link>
             <Link href="/cerez-politikasi" className="hover:text-white transition-colors">
               Çerez Politikası
             </Link>
-            <button
-              type="button"
-              className="hover:text-white transition-colors text-left"
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  localStorage.removeItem('cookie_consent')
-                  window.location.reload()
-                }
-              }}
-            >
-              Çerez Tercihleri
-            </button>
           </div>
         </div>
       </div>

@@ -34,15 +34,15 @@ export function Navbar() {
           boxShadow: scrolled ? '0 2px 16px rgba(0,0,0,0.08)' : 'none',
         }}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/images/logo-text.png"
               alt="Başkan Havlu Tekstil"
-              width={220}
-              height={66}
-              className="h-14 w-auto object-contain"
+              width={320}
+              height={96}
+              className="h-20 w-auto object-contain"
               priority
             />
           </Link>
@@ -102,9 +102,9 @@ export function Navbar() {
               <Image
                 src="/images/logo-text.png"
                 alt="Başkan Havlu Tekstil"
-                width={200}
-                height={60}
-                className="h-12 w-auto object-contain"
+                width={280}
+                height={84}
+                className="h-16 w-auto object-contain"
               />
             </Link>
             <button

@@ -52,7 +52,7 @@ export default function RootLayout({
         <WebSiteSchema />
         <CookieConsentProvider>
           <Navbar />
-          <main className="flex-1 pt-16">{children}</main>
+          <main className="flex-1 pt-24">{children}</main>
           <Footer />
           <StickyWhatsApp />
           <CookieConsentBanner />

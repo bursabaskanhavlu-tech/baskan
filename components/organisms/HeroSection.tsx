@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { SITE_CONFIG } from '@/lib/config/site'
 
 const stats = [
@@ -135,22 +136,14 @@ export function HeroSection() {
               */}
               <div className="flex h-full items-center justify-center">
                 <div className="text-center">
-                  {/* Tekstil dokusu simgesi */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 80 80"
-                    className="mx-auto h-20 w-20 opacity-40"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <rect x="8" y="8" width="64" height="64" rx="4" stroke="#a88c64" strokeWidth="2" />
-                    <line x1="8" y1="26" x2="72" y2="26" stroke="#a88c64" strokeWidth="1.5" />
-                    <line x1="8" y1="44" x2="72" y2="44" stroke="#a88c64" strokeWidth="1.5" />
-                    <line x1="8" y1="62" x2="72" y2="62" stroke="#a88c64" strokeWidth="1.5" />
-                    <line x1="26" y1="8" x2="26" y2="72" stroke="#a88c64" strokeWidth="1.5" />
-                    <line x1="44" y1="8" x2="44" y2="72" stroke="#a88c64" strokeWidth="1.5" />
-                    <line x1="62" y1="8" x2="62" y2="72" stroke="#a88c64" strokeWidth="1.5" />
-                  </svg>
+                  {/* Logo ikon */}
+                  <Image
+                    src="/images/logo-icon.png"
+                    alt="Başkan Havlu Tekstil"
+                    width={200}
+                    height={200}
+                    className="mx-auto h-40 w-auto object-contain opacity-80"
+                  />
                   <p
                     className="mt-4 text-sm font-medium"
                     style={{ color: '#a88c64' }}
