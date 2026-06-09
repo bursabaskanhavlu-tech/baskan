@@ -30,13 +30,16 @@ export function Footer() {
           {/* Kolon 1: Logo + açıklama */}
           <div>
             <Link href="/">
-              <Image
-                src="/images/logo-text.png"
-                alt="Başkan Havlu Tekstil"
-                width={240}
-                height={72}
-                className="h-16 w-auto object-contain brightness-0 invert"
-              />
+              <div className="overflow-hidden" style={{ width: '220px', height: '80px' }}>
+                <Image
+                  src="/images/logo-text.png"
+                  alt="Başkan Havlu Tekstil"
+                  width={2000}
+                  height={2000}
+                  className="w-full h-full brightness-0 invert"
+                  style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(3)', transformOrigin: 'center' }}
+                />
+              </div>
             </Link>
             <p className="mt-4 text-sm leading-relaxed" style={{ color: '#b3b3b3' }}>
               {SITE_CONFIG.description.tr}

@@ -37,14 +37,17 @@ export function Navbar() {
         <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
-              src="/images/logo-text.png"
-              alt="Başkan Havlu Tekstil"
-              width={320}
-              height={96}
-              className="h-20 w-auto object-contain"
-              priority
-            />
+            <div className="overflow-hidden" style={{ width: '200px', height: '80px' }}>
+              <Image
+                src="/images/logo-text.png"
+                alt="Başkan Havlu Tekstil"
+                width={2000}
+                height={2000}
+                className="w-full h-full"
+                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(3)', transformOrigin: 'center' }}
+                priority
+              />
+            </div>
           </Link>
 
           {/* Masaüstü nav */}
