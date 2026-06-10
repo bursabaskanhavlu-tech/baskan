@@ -35,19 +35,26 @@ export async function POST(request: NextRequest) {
     const emailTo = process.env['EMAIL_TO_SALES'] ?? 'tekstil@baskanhavlu.com'
 
     if (resendKey) {
-      await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: process.env['EMAIL_FROM'] ?? 'no-reply@baskanhavlu.com',
-          to: emailTo,
-          subject: `Yeni Teklif Talebi — ${parsed.data.fullName}`,
-          text: JSON.stringify(lead, null, 2),
-        }),
-      })
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 8000)
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${resendKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: process.env['EMAIL_FROM'] ?? 'no-reply@baskanhavlu.com',
+            to: emailTo,
+            subject: `Yeni Teklif Talebi — ${parsed.data.fullName}`,
+            text: JSON.stringify(lead, null, 2),
+          }),
+          signal: controller.signal,
+        })
+      } finally {
+        clearTimeout(timeout)
+      }
     }
 
     return NextResponse.json({ success: true })

@@ -1,10 +1,4 @@
 import type { NextConfig } from 'next'
-import { withSentryConfig } from '@sentry/nextjs'
-import withBundleAnalyzer from '@next/bundle-analyzer'
-
-const bundleAnalyzer = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-})
 
 const securityHeaders = [
   {
@@ -35,7 +29,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: blob: https:",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://*.upstash.io",
+      "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://www.google-analytics.com https://*.upstash.io",
       "frame-src 'none'",
       "object-src 'none'",
       "base-uri 'self'",
@@ -61,7 +55,13 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/(.*)',
-        headers: securityHeaders,
+        headers: [
+          ...securityHeaders,
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, stale-while-revalidate=86400',
+          },
+        ],
       },
     ]
   },
@@ -103,22 +103,4 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 }
 
-export default withSentryConfig(bundleAnalyzer(nextConfig), {
-  // Sentry organizasyon ve proje
-  org: process.env.SENTRY_ORG,
-  project: process.env.SENTRY_PROJECT,
-
-  // Source map yükleme (CI/CD'de SENTRY_AUTH_TOKEN ile aktif edilir)
-  silent: !process.env.CI,
-
-  // Performansı artırmak için tree-shaking
-  disableLogger: true,
-
-  // Source map'leri production'da gizle
-  sourcemaps: {
-    disable: false,
-  },
-
-  // Otomatik araç ekleme
-  automaticVercelMonitors: false,
-})
+export default nextConfig
