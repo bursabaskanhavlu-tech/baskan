@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState, startTransition } from 'react'
 
 type ConsentState = {
   necessary: true
@@ -29,7 +29,9 @@ export function CookieConsentProvider({ children }: { children: React.ReactNode 
       if (stored) {
         const parsed = JSON.parse(stored) as ConsentState & { version?: string }
         if (parsed.version === VERSION) {
-          setConsent({ necessary: true, analytics: parsed.analytics, marketing: parsed.marketing })
+          startTransition(() => {
+            setConsent({ necessary: true, analytics: parsed.analytics, marketing: parsed.marketing })
+          })
         }
       }
     } catch {
