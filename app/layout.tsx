@@ -6,10 +6,8 @@ import { Footer } from '@/components/organisms/Footer'
 import { StickyWhatsApp } from '@/components/organisms/StickyWhatsApp'
 import { CookieConsentProvider } from '@/components/providers/CookieConsentProvider'
 import { CookieConsentBanner } from '@/components/organisms/CookieConsentBanner'
-import { OrganizationSchema } from '@/components/schema/OrganizationSchema'
-import { WebSiteSchema } from '@/components/schema/WebSiteSchema'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleAnalytics } from '@/components/organisms/GoogleAnalytics'
+import { SITE_CONFIG } from '@/lib/config/site'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -26,15 +24,48 @@ const dmSerifDisplay = DM_Serif_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Başkan Havlu Tekstil | Havlu ve Bornoz Üretimi, Toptan Satış',
-  description:
-    "1981'den bu yana Bursa'da havlu ve bornoz üreten Başkan Havlu Tekstil. Otel, kurum ve promosyon sektörüne toptan satış. +10 ülkeye ihracat.",
-  metadataBase: new URL('https://baskanhavlu.com'),
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: {
+    default: `${SITE_CONFIG.name} | Havlu ve Bornoz Tedarikçisi, Bursa`,
+    template: `%s | ${SITE_CONFIG.name}`,
+  },
+  description: SITE_CONFIG.seo.defaultDescription,
+  keywords: [
+    'havlu tedarikçisi',
+    'toptan havlu',
+    'otel havlusu',
+    'bornoz tedarikçisi',
+    'promosyon havlu',
+    'havlu üreticisi',
+    'Bursa havlu',
+    'Turkish towel supplier',
+    'wholesale towel Turkey',
+  ],
+  authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  formatDetection: { telephone: true, email: true, address: true },
   icons: {
     icon: '/images/logo-icon.png',
     shortcut: '/images/logo-icon.png',
     apple: '/images/logo-icon.png',
   },
+  openGraph: {
+    type: 'website',
+    locale: 'tr_TR',
+    siteName: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@bursahavlusu',
+  },
+  // Google Search Console doğrulama — .env'den okur
+  ...(process.env['NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION'] && {
+    verification: {
+      google: process.env['NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION'],
+    },
+  }),
 }
 
 export default function RootLayout({
@@ -47,17 +78,27 @@ export default function RootLayout({
       lang="tr"
       className={`${plusJakartaSans.variable} ${dmSerifDisplay.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col" style={{ backgroundColor: '#faf8f5', color: '#1a1a1a' }}>
-        <OrganizationSchema />
-        <WebSiteSchema />
+      <head>
+        {/* Preconnect — performans için kritik */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        {/* Bing Webmaster doğrulama */}
+        {process.env['NEXT_PUBLIC_BING_SITE_VERIFICATION'] && (
+          <meta name="msvalidate.01" content={process.env['NEXT_PUBLIC_BING_SITE_VERIFICATION']} />
+        )}
+      </head>
+      <body
+        className="flex min-h-full flex-col"
+        style={{ backgroundColor: '#faf8f5', color: '#1a1a1a' }}
+      >
         <CookieConsentProvider>
           <Navbar />
           <main className="flex-1 pt-24">{children}</main>
           <Footer />
           <StickyWhatsApp />
           <CookieConsentBanner />
-          <Analytics />
-          <SpeedInsights />
+          <GoogleAnalytics />
         </CookieConsentProvider>
       </body>
     </html>

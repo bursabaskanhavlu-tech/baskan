@@ -3,6 +3,8 @@ import { PRODUCTS } from '@/content/products'
 import { BreadcrumbSchema } from '@/components/schema/BreadcrumbSchema'
 import { generatePageMetadata } from '@/lib/utils/metadata'
 import { SITE_CONFIG } from '@/lib/config/site'
+import { BrandPatternPanel } from '@/components/atoms/BrandPatternPanel'
+import { FadeIn } from '@/components/motion-primitives/fade-in'
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
 
@@ -11,6 +13,15 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     'El havlusu, yüz havlusu, banyo havlusu, promosyon havlu ve daha fazlası. Otel, kurum ve promosyon sektörüne özel havlu çözümleri.',
   path: '/new-collection',
+  keywords: [
+    'havlu koleksiyonu',
+    'el havlusu',
+    'banyo havlusu',
+    'yüz havlusu',
+    'kafa havlusu',
+    'promosyon havlu',
+    'otel havlusu',
+  ],
 })
 
 export default function CollectionPage() {
@@ -30,7 +41,11 @@ export default function CollectionPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-4">
             <ol className="flex items-center gap-2 text-sm" style={{ color: '#b3b3b3' }}>
-              <li><Link href="/" className="hover:text-white">Ana Sayfa</Link></li>
+              <li>
+                <Link href="/" className="hover:text-white">
+                  Ana Sayfa
+                </Link>
+              </li>
               <li aria-hidden="true">/</li>
               <li className="text-white">Koleksiyon</li>
             </ol>
@@ -46,29 +61,33 @@ export default function CollectionPage() {
       <section className="py-20" style={{ backgroundColor: '#faf8f5' }}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product) => {
-              const waMsg = encodeURIComponent(`Merhaba, "${product.name.tr}" hakkında bilgi almak istiyorum.`)
+            {PRODUCTS.map((product, i) => {
+              const waMsg = encodeURIComponent(
+                `Merhaba, "${product.name.tr}" hakkında bilgi almak istiyorum.`
+              )
               return (
-                <div
+                <FadeIn
                   key={product.id}
+                  delay={(i % 3) * 0.06}
                   className="flex flex-col overflow-hidden rounded-2xl bg-white transition-shadow hover:shadow-md"
                   style={{ border: '1px solid #e0d4c0' }}
                 >
-                  {/* Görsel placeholder */}
-                  <div
-                    className="flex h-48 items-center justify-center"
+                  {/* Görsel */}
+                  <Link
+                    href={`/new-collection/${product.slug}`}
+                    className="block h-48 overflow-hidden"
                     style={{ backgroundColor: '#ede5d8' }}
                   >
-                    <span className="text-sm font-medium" style={{ color: '#a88c64' }}>
-                      {product.name.tr}
-                    </span>
-                  </div>
+                    <BrandPatternPanel iconSize={56} />
+                  </Link>
 
                   {/* İçerik */}
                   <div className="flex flex-1 flex-col gap-3 p-5">
                     <div>
                       <h2 className="text-base font-semibold" style={{ color: '#1a1a1a' }}>
-                        {product.name.tr}
+                        <Link href={`/new-collection/${product.slug}`} className="hover:opacity-70">
+                          {product.name.tr}
+                        </Link>
                       </h2>
                       <p className="mt-1 text-sm leading-relaxed" style={{ color: '#5c5c5c' }}>
                         {product.description.tr}
@@ -114,13 +133,16 @@ export default function CollectionPage() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </FadeIn>
               )
             })}
           </div>
 
           {/* Alt CTA */}
-          <div className="mt-16 rounded-2xl p-10 text-center" style={{ backgroundColor: '#1a1a1a' }}>
+          <div
+            className="mt-16 rounded-2xl p-10 text-center"
+            style={{ backgroundColor: '#1a1a1a' }}
+          >
             <h2 className="text-2xl font-bold text-white">Aradığınızı Bulamadınız mı?</h2>
             <p className="mt-3" style={{ color: '#b3b3b3' }}>
               Özel üretim ve toplu sipariş için bize ulaşın.

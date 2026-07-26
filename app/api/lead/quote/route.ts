@@ -2,19 +2,23 @@ export const runtime = 'edge'
 
 import { NextRequest, NextResponse } from 'next/server'
 import { quoteSchema } from '@/lib/validations/lead.schema'
+import { isHoneypotFilled } from '@/lib/utils/honeypot'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
+import { sendLeadEmail } from '@/lib/services/email.service'
 
 export async function POST(request: NextRequest) {
   try {
+    const allowed = await checkRateLimit(request)
+    if (!allowed) {
+      return NextResponse.json(
+        { error: 'Çok fazla istek gönderildi. Lütfen bir dakika sonra tekrar deneyin.' },
+        { status: 429 }
+      )
+    }
+
     const body = (await request.json()) as unknown
 
-    // Honeypot kontrolü
-    if (
-      body !== null &&
-      typeof body === 'object' &&
-      'honeypot' in body &&
-      typeof (body as { honeypot: unknown }).honeypot === 'string' &&
-      (body as { honeypot: string }).honeypot.length > 0
-    ) {
+    if (isHoneypotFilled(body)) {
       return NextResponse.json({ success: true }) // sessiz reddet
     }
 
@@ -23,39 +27,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
     }
 
-    const lead = {
-      ...parsed.data,
-      formType: 'quote',
-      sourcePage: request.headers.get('referer') ?? '/',
-      timestamp: new Date().toISOString(),
-    }
-
-    // E-posta gönderimi (Resend - env hazır olduğunda aktif)
-    const resendKey = process.env['RESEND_API_KEY']
-    const emailTo = process.env['EMAIL_TO_SALES'] ?? 'tekstil@baskanhavlu.com'
-
-    if (resendKey) {
-      const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), 8000)
-      try {
-        await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${resendKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: process.env['EMAIL_FROM'] ?? 'no-reply@baskanhavlu.com',
-            to: emailTo,
-            subject: `Yeni Teklif Talebi — ${parsed.data.fullName}`,
-            text: JSON.stringify(lead, null, 2),
-          }),
-          signal: controller.signal,
-        })
-      } finally {
-        clearTimeout(timeout)
-      }
-    }
+    await sendLeadEmail({
+      subject: `Yeni Teklif Talebi — ${parsed.data.fullName}`,
+      data: {
+        ...parsed.data,
+        formType: 'quote',
+        sourcePage: request.headers.get('referer') ?? '/',
+        timestamp: new Date().toISOString(),
+      },
+    })
 
     return NextResponse.json({ success: true })
   } catch {

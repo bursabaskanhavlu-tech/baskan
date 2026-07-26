@@ -6,43 +6,30 @@ import { useRef } from 'react'
 interface FadeInProps {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   delay?: number
-  /** y ekseni kayma miktarı (px). prefers-reduced-motion aktifse 0 olur. */
-  yOffset?: number
+  'aria-hidden'?: boolean
 }
 
-/**
- * Scroll-triggered fade-in animasyonu.
- * Görev 21.2: useInView ile scroll-triggered
- * Görev 21.4: prefers-reduced-motion desteği
- */
-export function FadeIn({ children, className, delay = 0, yOffset = 24 }: FadeInProps) {
+export function FadeIn({ children, className, delay = 0, ...rest }: FadeInProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-15% 0px' })
-  const shouldReduceMotion = useReducedMotion()
+  const reduceMotion = useReducedMotion()
 
-  // prefers-reduced-motion aktifse animasyonu devre dışı bırak
-  const initial = shouldReduceMotion
-    ? { opacity: 0 }
-    : { opacity: 0, y: yOffset }
-
-  const animate = isInView
-    ? shouldReduceMotion
-      ? { opacity: 1 }
-      : { opacity: 1, y: 0 }
-    : initial
-
-  const transition = shouldReduceMotion
-    ? { duration: 0 }
-    : { duration: 0.5, ease: 'easeOut' as const, delay }
+  const hiddenState = { opacity: 0, y: reduceMotion ? 0 : 24 }
 
   return (
     <motion.div
       ref={ref}
-      initial={initial}
-      animate={animate}
-      transition={transition}
+      initial={hiddenState}
+      animate={isInView ? { opacity: 1, y: 0 } : hiddenState}
+      transition={{
+        duration: reduceMotion ? 0 : 0.5,
+        ease: 'easeOut',
+        delay: reduceMotion ? 0 : delay,
+      }}
       className={className}
+      {...rest}
     >
       {children}
     </motion.div>

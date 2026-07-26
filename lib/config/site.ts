@@ -7,8 +7,7 @@ export const SITE_CONFIG = {
     tr: "1981'den bu yana Bursa'da faaliyet gösteren tekstil tedarik ve özel üretim koordinasyon firması. Oteller, kurumlar ve perakende sektörüne havlu ve tekstil çözümleri.",
     en: 'Başkan Havlu Tekstil, based in Bursa, Turkey, has been providing textile supply and custom production coordination services since 1981.',
   },
-  businessModel:
-    'Tekstil tedarik ve özel/fason üretim koordinasyonu — doğrudan fabrika değil',
+  businessModel: 'Tekstil tedarik ve özel/fason üretim koordinasyonu — doğrudan fabrika değil',
 
   // İletişim — NAP (tüm sayfalarda birebir aynı kullanılacak)
   contact: {
@@ -64,23 +63,16 @@ export const SITE_CONFIG = {
       'Ayak Havlusu',
       'Promosyon Havlu',
     ],
-    en: [
-      'Hand Towel',
-      'Face Towel',
-      'Bath Towel',
-      'Hair Towel',
-      'Foot Towel',
-      'Promotional Towel',
-    ],
+    en: ['Hand Towel', 'Face Towel', 'Bath Towel', 'Hair Towel', 'Foot Towel', 'Promotional Towel'],
   },
 
   // SEO varsayılanları
   seo: {
-    defaultTitle: "Başkan Havlu Tekstil | 1981'den Beri Bursa'da Havlu ve Bornoz Üretimi",
+    defaultTitle: 'Başkan Havlu Tekstil | Bursa Havlu Tedarikçisi',
     titleTemplate: '%s | Başkan Havlu Tekstil',
     defaultDescription:
-      "1981'den beri Bursa'da havlu ve bornoz üretimi. Otel, kurumsal firma, promosyon ve toptan satış çözümleri. Havlucular Çarşısı, Osmangazi.",
-    ogImage: 'https://baskanhavlu.com/og-default.jpg',
+      "1981'den bu yana Bursa'da havlu ve tekstil tedariki. Otel, kurum ve promosyon sektörüne özel çözümler.",
+    ogImage: 'https://baskanhavlu.com/images/logo-icon.png',
   },
 } as const
 

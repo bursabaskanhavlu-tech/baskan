@@ -4,8 +4,9 @@ export function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': `${SITE_CONFIG.url}/#localbusiness`,
     name: SITE_CONFIG.name,
-    image: `${SITE_CONFIG.url}/og-default.jpg`,
+    image: `${SITE_CONFIG.url}/images/logo-icon.png`,
     url: SITE_CONFIG.url,
     telephone: SITE_CONFIG.contact.phone,
     email: SITE_CONFIG.contact.email,

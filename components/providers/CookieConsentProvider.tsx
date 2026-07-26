@@ -30,7 +30,11 @@ export function CookieConsentProvider({ children }: { children: React.ReactNode 
         const parsed = JSON.parse(stored) as ConsentState & { version?: string }
         if (parsed.version === VERSION) {
           startTransition(() => {
-            setConsent({ necessary: true, analytics: parsed.analytics, marketing: parsed.marketing })
+            setConsent({
+              necessary: true,
+              analytics: parsed.analytics,
+              marketing: parsed.marketing,
+            })
           })
         }
       }

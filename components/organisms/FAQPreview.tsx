@@ -1,8 +1,6 @@
-'use client'
-
 import Link from 'next/link'
-import { useState } from 'react'
-import { Plus, X } from 'lucide-react'
+import { FAQAccordion } from '@/components/molecules/FAQAccordion'
+import { FadeIn } from '@/components/motion-primitives/fade-in'
 
 const faqs = [
   {
@@ -32,13 +30,17 @@ const faqs = [
 ]
 
 export function FAQPreview() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
   return (
-    <section className="py-24" style={{ backgroundColor: '#faf8f5' }}>
+    <section
+      className="py-24"
+      style={{
+        background:
+          'radial-gradient(circle at 15% 0%, rgba(232,119,34,0.05), transparent 55%), #faf8f5',
+      }}
+    >
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Başlık */}
-        <div className="mb-12 text-center">
+        <FadeIn className="mb-12 text-center">
           <span
             className="mb-2 block text-xs font-semibold uppercase tracking-widest"
             style={{ color: '#e87722' }}
@@ -48,36 +50,11 @@ export function FAQPreview() {
           <h2 className="text-3xl font-bold sm:text-4xl" style={{ color: '#1a1a1a' }}>
             Aklınızdaki Sorular
           </h2>
-        </div>
+        </FadeIn>
 
-        {/* SSS listesi */}
-        <div className="flex flex-col divide-y" style={{ borderColor: '#e0d4c0' }}>
-          {faqs.map((faq, i) => (
-            <div key={i}>
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between py-5 text-left"
-                aria-expanded={openIndex === i}
-              >
-                <span className="pr-4 text-base font-medium" style={{ color: '#1a1a1a' }}>
-                  {faq.q}
-                </span>
-                {openIndex === i ? (
-                  <X className="h-5 w-5 shrink-0" style={{ color: '#e87722' }} aria-hidden="true" />
-                ) : (
-                  <Plus className="h-5 w-5 shrink-0" style={{ color: '#e87722' }} aria-hidden="true" />
-                )}
-              </button>
-              {openIndex === i && (
-                <div className="pb-5">
-                  <p className="text-sm leading-relaxed" style={{ color: '#5c5c5c' }}>
-                    {faq.a}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        <FadeIn delay={0.1}>
+          <FAQAccordion items={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
+        </FadeIn>
 
         {/* Tüm SSS linki */}
         <div className="mt-10 text-center">

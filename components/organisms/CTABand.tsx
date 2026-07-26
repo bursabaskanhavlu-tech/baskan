@@ -1,12 +1,19 @@
 import Link from 'next/link'
 import { SITE_CONFIG } from '@/lib/config/site'
+import { FadeIn } from '@/components/motion-primitives/fade-in'
 
 export function CTABand() {
   const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${SITE_CONFIG.contact.whatsappMessageTr}`
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#e87722' }}>
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+    <section
+      className="py-20"
+      style={{
+        background:
+          'radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 45%), #e87722',
+      }}
+    >
+      <FadeIn className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2
           className="text-3xl font-bold text-white sm:text-4xl"
           style={{ fontFamily: 'var(--font-heading, serif)' }}
@@ -34,7 +41,7 @@ export function CTABand() {
             WhatsApp ile Ulaş
           </a>
         </div>
-      </div>
+      </FadeIn>
     </section>
   )
 }

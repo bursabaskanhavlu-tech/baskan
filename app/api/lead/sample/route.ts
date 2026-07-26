@@ -2,44 +2,43 @@ export const runtime = 'edge'
 
 import { NextRequest, NextResponse } from 'next/server'
 import { sampleSchema } from '@/lib/validations/lead.schema'
+import { isHoneypotFilled } from '@/lib/utils/honeypot'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
+import { sendLeadEmail } from '@/lib/services/email.service'
 
 export async function POST(request: NextRequest) {
   try {
+    const allowed = await checkRateLimit(request)
+    if (!allowed) {
+      return NextResponse.json(
+        { error: 'Çok fazla istek gönderildi. Lütfen bir dakika sonra tekrar deneyin.' },
+        { status: 429 }
+      )
+    }
+
     const body = (await request.json()) as unknown
+
+    if (isHoneypotFilled(body)) {
+      return NextResponse.json({ success: true }) // sessiz reddet
+    }
 
     const parsed = sampleSchema.safeParse(body)
     if (!parsed.success) {
       return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
     }
 
-    const resendKey = process.env['RESEND_API_KEY']
-    const emailTo = process.env['EMAIL_TO_SALES'] ?? 'tekstil@baskanhavlu.com'
-
-    if (resendKey) {
-      const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), 8000)
-      try {
-        await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${resendKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: process.env['EMAIL_FROM'] ?? 'no-reply@baskanhavlu.com',
-            to: emailTo,
-            subject: `Yeni Numune Talebi — ${parsed.data.fullName}`,
-            text: JSON.stringify({ ...parsed.data, formType: 'sample', timestamp: new Date().toISOString() }, null, 2),
-          }),
-          signal: controller.signal,
-        })
-      } finally {
-        clearTimeout(timeout)
-      }
-    }
+    await sendLeadEmail({
+      subject: `Yeni Numune Talebi — ${parsed.data.fullName}`,
+      data: {
+        ...parsed.data,
+        formType: 'sample',
+        sourcePage: request.headers.get('referer') ?? '/',
+        timestamp: new Date().toISOString(),
+      },
+    })
 
     return NextResponse.json({ success: true })
   } catch {
-    return NextResponse.json({ error: 'Bir hata oluştu.' }, { status: 500 })
+    return NextResponse.json({ error: 'Bir hata oluştu. Lütfen tekrar deneyin.' }, { status: 500 })
   }
 }

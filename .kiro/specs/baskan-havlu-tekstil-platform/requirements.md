@@ -286,7 +286,6 @@ Başkan Havlu Tekstil (https://baskanhavlu.com) için kapsamlı, AI-optimize edi
 
 Bu gereksinimler dokümanı **Phase 1: Master Architecture** kapsamını tanımlamaktadır.
 
-
 ---
 
 ## Phase 3: SEO + GEO Authority Gereksinimleri
@@ -448,7 +447,6 @@ Bu gereksinimler dokümanı **Phase 1: Master Architecture** kapsamını tanıml
 6. THE Platform SHALL blog veya içerik sayfaları oluşturulduğunda, ilgili ürün veya landing page'e en az 2 bağlantı içermesini zorunlu kılmalıdır.
 7. THE Platform SHALL orphan page (hiçbir dahili bağlantıyla ulaşılamayan sayfa) oluşmamasını sağlamalı; tüm sayfalar en az bir dahili bağlantıyla erişilebilir olmalıdır.
 
-
 ---
 
 ## Phase 4: Content Authority + Conversion Engine Gereksinimleri
@@ -569,7 +567,6 @@ Bu gereksinimler dokümanı **Phase 1: Master Architecture** kapsamını tanıml
 4. THE Platform SHALL blog makalelerini ve landing page içeriklerini paragraf başı 3 cümle maksimum kuralıyla yapılandırmalıdır; uzun paragraflar AI tarayıcılarının içerik çıkarmasını güçleştirir.
 5. THE Platform SHALL tablo ve liste formatını tercih etmelidir; kıyaslama, özellik ve süreç içerikleri düz paragraf yerine tablo veya madde listesiyle sunulmalıdır.
 6. THE Platform SHALL her içerik sayfasına `datePublished` ve `dateModified` meta alanlarını eklemeli; bu alanlar Article Schema ile işaretlenmelidir.
-
 
 ---
 
@@ -731,7 +728,6 @@ Bu gereksinimler dokümanı **Phase 1: Master Architecture** kapsamını tanıml
 4. WHEN bir denetim kriteri başarısız olduğunda, THE Platform SHALL hatanın kaynağını (sayfa URL'si, bileşen adı veya kural) ve önerilen düzeltme adımını içeren bir rapor üretmelidir.
 5. THE Platform SHALL Lighthouse CI'yi `lighthouserc.js` konfigürasyonu ile CI pipeline'ına entegre etmeli; `performance: 95`, `accessibility: 95`, `best-practices: 90`, `seo: 100` eşik değerlerini geçemeyen build'ler fail olarak işaretlenmelidir.
 
-
 ---
 
 ## Phase 7: Kritik Düzeltmeler + Gerçek Veri Entegrasyonu
@@ -810,7 +806,6 @@ Bu gereksinimler dokümanı **Phase 1: Master Architecture** kapsamını tanıml
 3. THE Platform SHALL MOQ bilgisini "Stok ve ürüne göre değişir — teklif için iletişime geçin" olarak göstermelidir; sabit rakam belirtilmemelidir.
 4. THE Platform SHALL teslimat süresini "Sipariş büyüklüğüne göre belirlenir — teklif aşamasında netleştirilir" olarak göstermelidir.
 5. THE Platform SHALL her ürün kategorisi sayfasına "Teklif Al" CTA'sını ve WhatsApp hızlı iletişim butonunu yerleştirmelidir; ziyaretçinin doğrudan sipariş yapabileceği izlenimi verilmemelidir (önce teklif, sonra sipariş akışı).
-
 
 ---
 

@@ -44,7 +44,12 @@ export function Navbar() {
                 width={2000}
                 height={2000}
                 className="w-full h-full"
-                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.5)', transformOrigin: 'left center' }}
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  transform: 'scale(1.5)',
+                  transformOrigin: 'left center',
+                }}
                 priority
               />
             </div>
@@ -109,7 +114,12 @@ export function Navbar() {
                   width={2000}
                   height={2000}
                   className="w-full h-full"
-                  style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.5)', transformOrigin: 'left center' }}
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    transform: 'scale(1.5)',
+                    transformOrigin: 'left center',
+                  }}
                 />
               </div>
             </Link>

@@ -12,7 +12,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'otel-havlusu-secim-rehberi',
     title: 'Otel Havlusu Nasıl Seçilir? Gramaj, Malzeme ve Kalite Rehberi',
-    description: 'Otel sektörü için doğru havlu seçimi: gramaj, malzeme tipi ve dayanıklılık kriterleri.',
+    description:
+      'Otel sektörü için doğru havlu seçimi: gramaj, malzeme tipi ve dayanıklılık kriterleri.',
     date: '2026-06-07',
     category: 'Otel Tekstili',
     readTime: 5,
@@ -47,7 +48,8 @@ Otel havlusu seçiminde gramaj, malzeme kalitesi ve dayanıklılık bir arada de
   {
     slug: 'toptan-havlu-alim-rehberi',
     title: 'Toptan Havlu Alırken Sormanız Gereken 7 Soru',
-    description: 'B2B havlu alımında dikkat edilmesi gereken kritik sorular ve değerlendirme kriterleri.',
+    description:
+      'B2B havlu alımında dikkat edilmesi gereken kritik sorular ve değerlendirme kriterleri.',
     date: '2026-06-07',
     category: 'Toptan Tekstil',
     readTime: 4,
@@ -89,8 +91,9 @@ Yurt dışına ihracat yapıyorsanız tedarikçinizin ihracat deneyimi kritik ö
   },
   {
     slug: 'bursa-havlucular-carsisi',
-    title: 'Bursa Havlucular Çarşısı: Türkiye\'nin Tekstil Kalbi',
-    description: "Bursa Osmangazi'deki Havlucular Çarşısı'nın tarihi ve Türkiye tekstil sektöründeki yeri.",
+    title: "Bursa Havlucular Çarşısı: Türkiye'nin Tekstil Kalbi",
+    description:
+      "Bursa Osmangazi'deki Havlucular Çarşısı'nın tarihi ve Türkiye tekstil sektöründeki yeri.",
     date: '2026-06-07',
     category: 'Türk Tekstil Sektörü',
     readTime: 3,
@@ -109,218 +112,253 @@ Osmangazi ilçesindeki Havlucular Çarşısı, havlu ticaretinin kalbi konumunda
 [Bize ulaşın →](/contact)`,
   },
   {
-    slug: 'bornoz-cesitleri-ve-kullanim-alanlari',
-    title: 'Bornoz Çeşitleri ve Kullanım Alanları: Otel Bornozu Rehberi',
-    description: 'Otel, SPA ve kurumsal kullanım için bornoz seçimi — kumaş tipleri, gramaj ve özelleştirme seçenekleri.',
+    slug: 'bornoz-secim-rehberi',
+    title: 'Otel ve SPA için Bornoz Seçimi: Gramaj, Model ve Malzeme Rehberi',
+    description:
+      'Kimono, şal yaka ve waffle bornoz arasındaki farklar. Otel ve SPA sektörü için doğru bornoz seçimi.',
     date: '2026-06-08',
     category: 'Otel Tekstili',
     readTime: 5,
-    content: `## Bornoz Neden Önemli?
+    content: `## Otel ve SPA için Bornoz Seçimi
 
-Otel ve SPA işletmelerinde bornoz, misafir deneyimini şekillendiren ürünlerin başında gelir. Doğru bornoz seçimi hem konfor hem de marka algısı açısından kritik bir karardır.
+Bornoz seçimi, misafir deneyimini doğrudan etkileyen kritik bir karardır. Yanlış model veya gramaj seçimi hem kullanım konforunu hem de maliyeti olumsuz etkiler.
 
-## Bornoz Kumaş Tipleri
+## Bornoz Modelleri
 
-**Terry (Havlu Kumaşı)**: En yaygın otel bornozu kumaşı. Emici, dayanıklı ve kolay bakımlı. 300-500 g/m² arası gramajlarda üretilir.
+### Kimono Bornoz
+Hafif ve pratik. Özellikle SPA ve wellness merkezlerinde tercih edilir.
 
-**Waffle**: Izgara dokulu, daha ince ve hızlı kuruyan bir seçenek. SPA ve spor tesisleri için idealdir.
+### Şal Yaka Bornoz
+Klasik otel bornozu. Yüksek gramaj ve uzun ömür için ideal. 5 yıldızlı otellerin favorisi.
 
-**Velour**: Kadife yüzeyli, lüks görünüm. 5 yıldızlı otel konseptleri için tercih edilir.
-
-**Kimono Kesim**: Japon tarzı bağlamalı model. Minimum dikiş, maksimum konfor.
+### Waffle Bornoz
+Örgü dokusu sayesinde hızlı kurur. Havuz kenarı ve plaj tesisleri için mükemmel.
 
 ## Gramaj Seçimi
 
-- **300-350 g/m²**: Yaz kullanımı, havuzbaşı
-- **350-450 g/m²**: Standart otel kullanımı
-- **450-550 g/m²**: Lüks otel ve SPA
+- **300-350 g/m²**: Hafif ve pratik SPA kullanımı
+- **350-450 g/m²**: Orta segment otel standardı
+- **450-600 g/m²**: Premium ve lüks otel kullanımı
 
-## Özelleştirme Seçenekleri
+## Logo Nakışı
 
-Logo nakışı, marka renkleri ve özel ambalaj ile otel kimliğinizi yansıtan bornoz üretimi yapıyoruz.
+Otel kimliğinizi yansıtan logo nakışı, kurumsal algıyı güçlendirir. Nakışın yeri ve boyutu estetik dengeyi belirler.
 
----
+## Sonuç
 
-**Başkan Havlu Tekstil** olarak otel ve SPA sektörüne özel bornoz tedariki konusunda [iletişime geçin →](/contact)`,
+Doğru bornoz seçimi için kullanım alanı, beklenen kullanım sıklığı ve bütçe birlikte değerlendirilmelidir.
+
+[Bornoz teklifi almak için iletişime geçin →](/bornoz-ureticisi)`,
   },
   {
-    slug: 'promosyon-havlu-nasil-hazirlanir',
-    title: 'Promosyon Havlu Nasıl Hazırlanır? Logo Nakıştan Teslimatına',
-    description: 'Kurumsal hediye ve promosyon kampanyaları için logolu havlu üretim süreci — tasarım, nakış ve teslimat.',
+    slug: 'promosyon-havlu-rehberi',
+    title: 'Promosyon Havlu: Logo Nakışı mı, Baskı mı?',
+    description:
+      'Kurumsal havlularda logo nakışı ve baskı arasındaki farklar. Promosyon kampanyası için doğru tekniği seçin.',
     date: '2026-06-09',
-    category: 'Promosyon Tekstil',
+    category: 'Promosyon',
     readTime: 4,
-    content: `## Promosyon Havluda Süreç Nasıl İşler?
+    content: `## Promosyon Havlularında Logo Tekniği Seçimi
 
-Logolu promosyon havlu siparişinde müşterilerimizin sıkça merak ettiği süreç adımları şunlardır:
+Kurumsal kimliğinizi havlulara taşımanın iki temel yöntemi vardır: nakış ve baskı.
 
-## 1. Ürün ve Miktar Belirleme
+## Logo Nakışı
 
-İhtiyacınıza göre ürün tipi (el havlusu, banyo havlusu, plaj havlusu vb.) ve sipariş miktarı netleştirilir. Her ürün tipi için farklı minimum sipariş miktarı uygulanabilir.
+**Avantajları:**
+- Yıkamaya karşı son derece dayanıklı
+- Premium görünüm ve dokunuş
+- 3 boyutlu tekstür etkisi
 
-## 2. Tasarım ve Logo Onayı
+**Dezavantajları:**
+- Daha yüksek setup maliyeti
+- Çok renkli ve detaylı tasarımlar zorlu olabilir
 
-Kurumsal logonuzu vektör formatında (.ai, .eps, .svg) iletmeniz yeterlidir. Nakış için uygun renk sayısı ve boyut birlikte belirlenir.
+**İdeal kullanım:** Otel, kurum ve uzun vadeli kurumsal kullanım
 
-## 3. Nakış veya Baskı Tercihi
+## Logo Baskısı
 
-**Nakış**: Uzun ömürlü, prestijli görünüm. 1-8 renk arası. Özellikle otel ve kurumsal kullanım için önerilir.
+**Avantajları:**
+- Daha düşük setup maliyeti
+- Çok renkli ve karmaşık tasarımlara uygun
+- Hızlı üretim
 
-**Baskı**: Daha geniş renk skalası, fotoğraf kalitesi. Promosyon kampanyaları ve tek kullanımlık etkinlikler için uygun.
+**Dezavantajları:**
+- Zaman içinde solabilir
 
-## 4. Numune Üretimi
+**İdeal kullanım:** Etkinlik, fuar ve kısa vadeli promosyon
 
-Büyük siparişlerde üretim öncesi onay numunesi hazırlanır.
+## Sonuç
 
-## 5. Toplu Üretim ve Teslimat
+Uzun vadeli kurumsal kullanım için nakış, kısa vadeli kampanya için baskı önerilir.
 
-Onay sonrası toplu üretim başlar. Teslimat süresi sipariş büyüklüğüne ve ürün tipine göre belirlenir.
+[Promosyon havlu teklifi →](/promosyon-havlu)`,
+  },
+  {
+    slug: 'toptan-havlu-ihracat',
+    title: "Türkiye'den Toptan Havlu İhracatı: Süreç ve Avantajlar",
+    description:
+      "Türkiye'den havlu ihracatı nasıl yapılır? Fiyat avantajları, ödeme koşulları ve teslimat süreci.",
+    date: '2026-06-10',
+    category: 'İhracat',
+    readTime: 6,
+    content: `## Türkiye'den Havlu İhracatı
 
----
+Türkiye, dünya havlu üretiminde önemli bir konuma sahiptir. Bursa başta olmak üzere Denizli, dünya genelinde havlu tedarikçisi olarak tanınmaktadır.
 
-Promosyon havlu siparişi için [teklif alın →](/promosyon-havlu)`,
+## Neden Türkiye'den Havlu Alınır?
+
+**Kalite:** Türk pamuğu ve üretim teknolojileri dünya standartlarındadır.
+
+**Fiyat Avantajı:** Avrupa'ya kıyasla rekabetçi fiyatlar sunulmaktadır.
+
+**Esneklik:** Küçük veya büyük MOQ, özel renk ve nakış seçenekleri mevcuttur.
+
+## İhracat Süreci
+
+1. Teklif talebi ve ürün seçimi
+2. Numune onayı
+3. Üretim ve kalite kontrolü
+4. Paketleme ve sevkiyat
+5. Gümrük ve belgelendirme
+
+## Başkan Havlu Tekstil ile İhracat
+
+1981'den bu yana Arap ülkeleri ve Yunanistan'a ihracat yapıyoruz.
+
+[İhracat teklifi için iletişime geçin →](/contact)`,
+  },
+  {
+    slug: 'kurumsal-havlu-neden-onemli',
+    title: 'Kurumsal Kimlik İçin Havlu Seçimi Neden Önemlidir?',
+    description:
+      'Kurumsal kimlik açısından havlu seçiminin önemi. Marka bilinirliğini artırmak için doğru havlu stratejisi.',
+    date: '2026-06-11',
+    category: 'Kurumsal',
+    readTime: 4,
+    content: `## Kurumsal Kimlik ve Havlu
+
+Havlu, güzellik salonu, otel veya kurumsal ortamda markanızın sessiz elçisidir. Kaliteli ve logolu bir havlu, müşterilerinizde profesyonellik ve güven algısı yaratır.
+
+## Sektörde Havlunun Rolü
+
+### Otel ve Konaklama
+Yüksek kaliteli havlular, misafir memnuniyetini doğrudan etkiler.
+
+### Güzellik Salonu ve Kuaför
+Temiz, beyaz ve logolu havlular, hijyen ve profesyonellik algısını güçlendirir.
+
+### Kurumsal Hediye
+Logolu havlular, etkinlik ve fuarlarda marka bilinirliğini artıran pratik hediyelerdir.
+
+## Dikkat Edilmesi Gerekenler
+
+- Renk: Kurumsal renk paleti ile uyum
+- Malzeme: Kullanım alanına göre gramaj seçimi
+- Nakış: Logo yerleşimi ve boyutu
+
+[Kurumsal teklif alın →](/contact)`,
+  },
+  {
+    slug: 'havlu-bakim-rehberi',
+    title: 'Otel Havlularını Uzun Süre Kullanmanın Yolları: Bakım Rehberi',
+    description:
+      'Otel havlularının ömrünü uzatmak için bakım ipuçları. Endüstriyel yıkama ve depolama rehberi.',
+    date: '2026-06-12',
+    category: 'Otel Tekstili',
+    readTime: 5,
+    content: `## Otel Havlularını Uzun Süre Kullanmak
+
+Kaliteli havlular doğru bakımla yıllarca servis verebilir.
+
+## Yıkama Sıcaklığı
+
+- **60°C**: Standart otel havlusu yıkama sıcaklığı
+- **40°C**: Renkli veya hassas havlular için
+- **90°C**: Yalnızca beyaz pamuk, istisnai hijyen gerektiren durumlarda
+
+## Kimyasal Kullanımı
+
+Çamaşır suyu dikkatli kullanılmalıdır. Aşırı kullanım kumaş liflerini zayıflatır. Enzim bazlı deterjanlar hem temizliği sağlar hem de yumuşaklığı korur.
+
+## Kurutma
+
+Orta sıcaklık ve düzenli temizlenmiş kurutucu filtresi önerilir.
+
+## Depolama
+
+Kuru ve iyi havalandırılmış alanlarda depolayın.
+
+[Otel havlusu tedariki için iletişime geçin →](/otel-havlusu)`,
+  },
+  {
+    slug: 'turkish-bath-towel-guide',
+    title: 'Turkish Bath Towels: Why Hotels Choose Turkey as Their Supplier',
+    description:
+      'Why do international hotels prefer Turkish bath towels? Quality, durability and competitive pricing explained.',
+    date: '2026-06-13',
+    category: 'Export',
+    readTime: 5,
+    content: `## Why Hotels Choose Turkish Towels
+
+Turkish towels have long been regarded as some of the best in the world. Hotels from the Middle East to Europe consistently source their linens from Turkish suppliers.
+
+## The Turkish Advantage
+
+### Cotton Quality
+Turkey produces high-quality long-staple cotton. This results in softer, more absorbent and durable towels.
+
+### Manufacturing Expertise
+Bursa is home to generations of textile merchants with deep expertise in towel supply.
+
+### Competitive Pricing
+Turkish suppliers offer exceptional quality-to-price ratios.
+
+## What to Look for When Sourcing
+
+- GSM: 400-600 for hotel use
+- Fiber content: 100% cotton
+- Weave type: terry, waffle or velour
+
+## Working with Başkan Havlu Tekstil
+
+We have been supplying quality towels from Bursa, Turkey since 1981. Our clients include hotels, spas and corporate buyers in Arab countries and Greece.
+
+[Request a wholesale quote →](/contact)`,
   },
   {
     slug: 'nakisli-havlu-rehberi',
-    title: 'Nakışlı Havlu Rehberi: Kurumsal Kimliğinizi Havluya Yansıtın',
-    description: 'Nakışlı havluda dikkat edilmesi gerekenler, iplik renkleri, dikiş yoğunluğu ve kalite kriterleri.',
-    date: '2026-06-10',
-    category: 'Promosyon Tekstil',
+    title: 'Nakışlı Havlu Üretimi: Teknikler, Maliyetler ve İpuçları',
+    description:
+      'Logo nakışlı havlu üretiminde kullanılan teknikler, maliyet faktörleri ve dikkat edilmesi gerekenler.',
+    date: '2026-06-14',
+    category: 'Özel Üretim',
     readTime: 4,
-    content: `## Nakış Neden Tercih Edilir?
+    content: `## Nakışlı Havlu Üretimi
 
-Havlu nakışı, baskıya kıyasla çok daha uzun ömürlüdür. Onlarca yıkama sonrası bile kalite kaybı yaşanmaz. Oteller ve kurumsal alıcılar bu nedenle nakışı tercih eder.
+Logo nakışı, havlulara kurumsal kimlik kazandırmanın en kalıcı yöntemidir.
 
-## Nakış Kalitesini Belirleyen Faktörler
+## Nakış Teknikleri
 
-**Dikiş Yoğunluğu (Density)**: Milimetrekare başına dikiş sayısı. Yüksek yoğunluk daha net görünüm sağlar ancak maliyeti artırır.
+### Bordür Nakış
+Bilgisayar destekli nakış makineleriyle uygulanan standart yöntem. Her renge ve şekle uyum sağlar.
 
-**İplik Kalitesi**: Polyester veya rayon iplikler kullanılır. Polyester daha dayanıklı, rayon daha parlak görünüm sunar.
+### Jakar Dokuma
+Logo, üretim aşamasında kumaşın dokusuna işlenir. En kalıcı yöntem.
 
-**Renk Sayısı**: 1-8 arası renk kullanılabilir. Her ek renk maliyeti artırır.
+## Maliyet Faktörleri
 
-**Boyut**: Küçük logolar için maksimum 5x5 cm önerilir. Büyük tasarımlar için yerleştirme konumu önemlidir.
+- Tasarım karmaşıklığı (renk sayısı, iplik geçişi)
+- Nakış alanı (cm²)
+- Sipariş miktarı (daha fazla = daha düşük birim maliyet)
 
-## Havluya Nakış Yerleşim Seçenekleri
+## Tasarım Hazırlama
 
-- Köşe (sol veya sağ alt)
-- Kenar şeridi boyunca
-- Orta bölüm (büyük tasarımlar için)
+Logo vektörel formatta (AI, EPS veya SVG) sağlanmalıdır. Renk kodları Pantone veya CMYK olarak belirtilmelidir.
 
-## Bursa Nakışlı Havlu Tedariki
+## Sonuç
 
-**Başkan Havlu Tekstil** olarak Bursa'dan Türkiye geneline nakışlı havlu tedariki yapıyoruz. [Nakışlı havlu teklifi →](/nakisli-havlu)`,
-  },
-  {
-    slug: 'toptan-havlu-fiyatlari-nasil-belirlenir',
-    title: 'Toptan Havlu Fiyatları Nasıl Belirlenir?',
-    description: 'Toptan havlu fiyatlandırmasını etkileyen faktörler: gramaj, materyal, sipariş miktarı ve özelleştirme.',
-    date: '2026-06-11',
-    category: 'Toptan Tekstil',
-    readTime: 4,
-    content: `## Toptan Havlu Fiyatını Etkileyen Faktörler
+Nakışlı havlu, kurumsal kimliğinizi uzun yıllar boyunca taşıyacak kalıcı bir yatırımdır.
 
-Havlu fiyatlandırması birden fazla değişkene bağlıdır. Bu faktörleri anlayan alıcı, doğru ürünü doğru bütçeyle temin eder.
-
-## 1. Gramaj (GSM)
-
-En belirleyici faktördür. 300 g/m² ile 600 g/m² arasında ürünler bulunur. Her 100 g/m² artışı belirgin bir maliyet farkı yaratır.
-
-## 2. Materyal Kalitesi
-
-**Open End İplik**: Ekonomik segment. Kaba dokusu nedeniyle otel sektöründe tercih edilmez.
-
-**Ring İplik**: Orta-üst segment. En yaygın tercih. Uzun ömürlü ve yumuşak.
-
-**Combed Ring İplik**: Üst segment. İplikler taranır, kısa lifler ayrılır. En yumuşak ve dayanıklı seçenek.
-
-## 3. Sipariş Miktarı
-
-Toptan alımlarda miktar arttıkça birim fiyat düşer. Düzenli sipariş yapan müşterilere özel fiyat avantajı sağlanabilir.
-
-## 4. Özelleştirme
-
-Logo nakışı, özel renk veya ambalaj standart ürüne ek maliyet getirir.
-
-## 5. Teslimat Koşulları
-
-Şehir içi, şehir dışı veya ihracat — her seçenek farklı lojistik maliyeti içerir.
-
----
-
-Toptan havlu fiyat teklifi için [iletişime geçin →](/toptan-havlu)`,
-  },
-  {
-    slug: 'turkish-towel-export-guide',
-    title: 'Exporting Turkish Towels: A Complete B2B Buyer\'s Guide',
-    description: 'Everything international buyers need to know about sourcing quality towels from Bursa, Turkey.',
-    date: '2026-06-12',
-    category: 'Export & International',
-    readTime: 6,
-    content: `## Why Source Towels from Turkey?
-
-Turkey has been one of the world's leading textile producers for centuries. Bursa, in particular, is home to a concentrated ecosystem of towel and bathrobe manufacturers with deep expertise in cotton processing and weaving.
-
-## What Makes Turkish Towels Different?
-
-Turkish cotton — particularly grown in the Aegean region — is known for its long fiber length, resulting in softer and more absorbent towels. Turkish manufacturing combines this raw material advantage with decades of production experience.
-
-## Key Sourcing Considerations
-
-**Product Quality**
-Ask for GSM specifications, yarn type (ring-spun vs open-end), and washing durability data before placing orders.
-
-**Minimum Order Quantities**
-MOQ varies by product type and customization requirements. Contact us to discuss your specific needs.
-
-**Lead Times**
-Standard production typically requires several weeks depending on order volume and customization requirements. Confirm exact timelines during negotiation.
-
-**Customization**
-Logo embroidery, custom colors, and private label packaging are all available.
-
-## About Başkan Havlu Tekstil
-
-Based in Bursa's historic Havlucular Çarşısı since 1981, **Başkan Havlu Tekstil** serves international buyers from Arab countries and Greece with reliable towel and bathrobe supply.
-
-[Request an export quote →](/turkish-towel-manufacturer)`,
-  },
-  {
-    slug: 'otel-tekstili-satin-alma-rehberi',
-    title: 'Otel Tekstili Satın Alma Rehberi: Doğru Tedarikçiyi Nasıl Seçersiniz?',
-    description: 'Otel tekstili alımında dikkat edilmesi gereken kriterler, tedarikçi değerlendirmesi ve uzun vadeli iş birliği ipuçları.',
-    date: '2026-06-13',
-    category: 'Otel Tekstili',
-    readTime: 5,
-    content: `## Otel Tekstili Alımında Öncelikler
-
-Otel tekstili alımı, tek seferlik bir karar değil, uzun vadeli bir tedarik ilişkisinin başlangıcıdır. Bu rehber, otel satın alma yöneticilerinin dikkat etmesi gereken temel kriterleri ele alır.
-
-## Kalite Standartları
-
-Otel havlularında endüstriyel yıkama dayanıklılığı en kritik kriterdir. Aşağıdakilere dikkat edin:
-
-- **Renk haslığı**: 60°C yıkamada renk solmaması
-- **Boyut stabilitesi**: Yıkama sonrası boyut değişimi %3'ü geçmemeli
-- **Tüy bırakmama**: Özellikle ilk yıkamalarda tüy sorunu olmayacak ürünler tercih edin
-- **Gramaj tutarlılığı**: Sipariş ettiğiniz gramajın her partide karşılanması
-
-## Tedarikçi Değerlendirme Kriterleri
-
-**Deneyim ve Referanslar**: Otel sektöründe deneyimli tedarikçiler özel gereksinimleri daha iyi anlar.
-
-**Numune Politikası**: Büyük sipariş öncesi numune talep edin ve gerçek kullanım koşullarında test edin.
-
-**Teslimat Güvenilirliği**: Sezon öncesi stok planlaması için güvenilir teslimat tarihleri şarttır.
-
-**Özel Üretim Kapasitesi**: Otel logonuzu ve renklerinizi yansıtacak özelleştirme yapılabiliyor mu?
-
-## Uzun Vadeli İş Birliği
-
-Güvenilir bir tekstil tedarikçisiyle uzun vadeli çalışmak, yıllık sipariş hacminde maliyet avantajı ve öncelikli hizmet anlamına gelir.
-
----
-
-**Başkan Havlu Tekstil** ile otel tekstili tedariki için [iletişime geçin →](/otel-havlusu)`,
+[Nakışlı havlu teklifi →](/nakisli-havlu)`,
   },
 ]

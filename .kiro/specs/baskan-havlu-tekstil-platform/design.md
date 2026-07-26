@@ -11,44 +11,48 @@ Başkan Havlu Tekstil dijital platformunun tam UI/UX mimarisi. Bu doküman Phase
 ### 1.1 Renk Sistemi
 
 #### Birincil — Premium Turuncu
-| Token | Değer | Kullanım |
-|---|---|---|
-| `orange-50` | `#FFF7F0` | Açık arka plan vurgusu |
-| `orange-100` | `#FFE8CC` | Hover arka planları |
-| `orange-200` | `#FFD0A3` | Devre dışı durumlar |
-| `orange-400` | `#FF9F52` | Açık vurgular |
-| `orange-500` | `#E87722` | **Ana marka rengi** |
-| `orange-600` | `#CC6419` | Hover durumu |
-| `orange-700` | `#A85210` | Basılı durum |
-| `orange-900` | `#6B2F08` | Koyu aksan |
+
+| Token        | Değer     | Kullanım               |
+| ------------ | --------- | ---------------------- |
+| `orange-50`  | `#FFF7F0` | Açık arka plan vurgusu |
+| `orange-100` | `#FFE8CC` | Hover arka planları    |
+| `orange-200` | `#FFD0A3` | Devre dışı durumlar    |
+| `orange-400` | `#FF9F52` | Açık vurgular          |
+| `orange-500` | `#E87722` | **Ana marka rengi**    |
+| `orange-600` | `#CC6419` | Hover durumu           |
+| `orange-700` | `#A85210` | Basılı durum           |
+| `orange-900` | `#6B2F08` | Koyu aksan             |
 
 #### İkincil — Bej / Krem
-| Token | Değer | Kullanım |
-|---|---|---|
-| `beige-50` | `#FAF8F5` | Sayfa arka planı |
-| `beige-100` | `#F5F0EA` | Kart arka planı |
-| `beige-200` | `#EDE5D8` | Bölücüler |
-| `beige-300` | `#E0D4C0` | Kenarlıklar |
-| `beige-500` | `#C4A882` | Taş Bej vurgu |
-| `beige-600` | `#A88C64` | İkincil metin |
-| `beige-700` | `#8A7050` | Koyu bej |
+
+| Token       | Değer     | Kullanım         |
+| ----------- | --------- | ---------------- |
+| `beige-50`  | `#FAF8F5` | Sayfa arka planı |
+| `beige-100` | `#F5F0EA` | Kart arka planı  |
+| `beige-200` | `#EDE5D8` | Bölücüler        |
+| `beige-300` | `#E0D4C0` | Kenarlıklar      |
+| `beige-500` | `#C4A882` | Taş Bej vurgu    |
+| `beige-600` | `#A88C64` | İkincil metin    |
+| `beige-700` | `#8A7050` | Koyu bej         |
 
 #### Nötr — Koyu Kömür
-| Token | Değer | Kullanım |
-|---|---|---|
-| `charcoal-900` | `#1A1A1A` | Birincil metin |
-| `charcoal-800` | `#2D2D2D` | İkincil metin |
-| `charcoal-700` | `#404040` | Üçüncül metin |
+
+| Token          | Değer     | Kullanım         |
+| -------------- | --------- | ---------------- |
+| `charcoal-900` | `#1A1A1A` | Birincil metin   |
+| `charcoal-800` | `#2D2D2D` | İkincil metin    |
+| `charcoal-700` | `#404040` | Üçüncül metin    |
 | `charcoal-600` | `#5C5C5C` | Devre dışı metin |
-| `charcoal-300` | `#B3B3B3` | Kenarlıklar |
-| `charcoal-100` | `#F0F0F0` | Bölücüler |
+| `charcoal-300` | `#B3B3B3` | Kenarlıklar      |
+| `charcoal-100` | `#F0F0F0` | Bölücüler        |
 
 #### Anlamsal Renkler
-| Token | Değer | Kullanım |
-|---|---|---|
-| `success` | `#16A34A` | Form başarısı |
-| `error` | `#DC2626` | Form hatası |
-| `warning` | `#D97706` | Uyarı durumları |
+
+| Token      | Değer     | Kullanım        |
+| ---------- | --------- | --------------- |
+| `success`  | `#16A34A` | Form başarısı   |
+| `error`    | `#DC2626` | Form hatası     |
+| `warning`  | `#D97706` | Uyarı durumları |
 | `whatsapp` | `#25D366` | WhatsApp butonu |
 
 ---
@@ -59,17 +63,18 @@ Başkan Havlu Tekstil dijital platformunun tam UI/UX mimarisi. Bu doküman Phase
 **Aksan Yazı Tipi:** DM Serif Display (premium başlıklar, hero)
 
 #### Ölçek Tablosu
-| Sınıf | Mobil | Tablet | Masaüstü | Ağırlık | Satır Y. | Harf A. |
-|---|---|---|---|---|---|---|
-| Display | 36px | 52px | 72px | 800 | 1.05 | -0.03em |
-| H1 | 28px | 40px | 56px | 700 | 1.10 | -0.02em |
-| H2 | 24px | 32px | 40px | 700 | 1.15 | -0.01em |
-| H3 | 20px | 24px | 28px | 600 | 1.25 | 0em |
-| H4 | 18px | 20px | 22px | 600 | 1.35 | 0em |
-| Body LG | 16px | 17px | 18px | 400 | 1.65 | 0em |
-| Body | 14px | 15px | 16px | 400 | 1.65 | 0em |
-| Caption | 11px | 12px | 13px | 500 | 1.50 | 0.06em |
-| Label | 11px | 12px | 12px | 600 | 1.40 | 0.08em |
+
+| Sınıf   | Mobil | Tablet | Masaüstü | Ağırlık | Satır Y. | Harf A. |
+| ------- | ----- | ------ | -------- | ------- | -------- | ------- |
+| Display | 36px  | 52px   | 72px     | 800     | 1.05     | -0.03em |
+| H1      | 28px  | 40px   | 56px     | 700     | 1.10     | -0.02em |
+| H2      | 24px  | 32px   | 40px     | 700     | 1.15     | -0.01em |
+| H3      | 20px  | 24px   | 28px     | 600     | 1.25     | 0em     |
+| H4      | 18px  | 20px   | 22px     | 600     | 1.35     | 0em     |
+| Body LG | 16px  | 17px   | 18px     | 400     | 1.65     | 0em     |
+| Body    | 14px  | 15px   | 16px     | 400     | 1.65     | 0em     |
+| Caption | 11px  | 12px   | 13px     | 500     | 1.50     | 0.06em  |
+| Label   | 11px  | 12px   | 12px     | 600     | 1.40     | 0.08em  |
 
 **Maksimum satır uzunluğu:** 65ch (gövde metni okunabilirliği)
 **Metin hizalama:** Mobilde soldan hizalı (merkez değil — daha güçlü hissettiriri)
@@ -78,46 +83,46 @@ Başkan Havlu Tekstil dijital platformunun tam UI/UX mimarisi. Bu doküman Phase
 
 ### 1.3 Boşluk Sistemi (8px Tabanlı)
 
-| Token | Değer | Kullanım |
-|---|---|---|
-| `space-1` | 4px | Mikro boşluk (ikon–metin) |
-| `space-2` | 8px | Bileşen içi padding |
-| `space-3` | 12px | Etiket padding |
-| `space-4` | 16px | Kart padding (mobil) |
-| `space-6` | 24px | Kart padding (masaüstü) |
-| `space-8` | 32px | Bölüm içi boşluk |
-| `space-12` | 48px | Bölüm boşluğu (mobil) |
-| `space-16` | 64px | Bölüm boşluğu (masaüstü) |
-| `space-24` | 96px | Büyük bölüm padding |
-| `space-32` | 128px | Hero padding |
+| Token      | Değer | Kullanım                  |
+| ---------- | ----- | ------------------------- |
+| `space-1`  | 4px   | Mikro boşluk (ikon–metin) |
+| `space-2`  | 8px   | Bileşen içi padding       |
+| `space-3`  | 12px  | Etiket padding            |
+| `space-4`  | 16px  | Kart padding (mobil)      |
+| `space-6`  | 24px  | Kart padding (masaüstü)   |
+| `space-8`  | 32px  | Bölüm içi boşluk          |
+| `space-12` | 48px  | Bölüm boşluğu (mobil)     |
+| `space-16` | 64px  | Bölüm boşluğu (masaüstü)  |
+| `space-24` | 96px  | Büyük bölüm padding       |
+| `space-32` | 128px | Hero padding              |
 
 ---
 
 ### 1.4 Köşe Yarıçapı
 
-| Token | Değer | Kullanım |
-|---|---|---|
-| `radius-xs` | 4px | Küçük rozetler |
-| `radius-sm` | 6px | Etiketler |
-| `radius-md` | 8px | Butonlar, inputlar |
-| `radius-lg` | 12px | Küçük kartlar |
-| `radius-xl` | 16px | Ürün kartları |
-| `radius-2xl` | 24px | Modallar, paneller |
-| `radius-3xl` | 32px | Hero görseli |
+| Token         | Değer  | Kullanım                |
+| ------------- | ------ | ----------------------- |
+| `radius-xs`   | 4px    | Küçük rozetler          |
+| `radius-sm`   | 6px    | Etiketler               |
+| `radius-md`   | 8px    | Butonlar, inputlar      |
+| `radius-lg`   | 12px   | Küçük kartlar           |
+| `radius-xl`   | 16px   | Ürün kartları           |
+| `radius-2xl`  | 24px   | Modallar, paneller      |
+| `radius-3xl`  | 32px   | Hero görseli            |
 | `radius-full` | 9999px | Hap butonlar, avatarlar |
 
 ---
 
 ### 1.5 Gölge Sistemi
 
-| Token | Değer | Kullanım |
-|---|---|---|
-| `shadow-xs` | `0 1px 2px rgba(0,0,0,0.04)` | Subtle elevation |
-| `shadow-sm` | `0 2px 8px rgba(0,0,0,0.06)` | Kartlar (default) |
-| `shadow-md` | `0 4px 16px rgba(0,0,0,0.08)` | Kartlar (hover) |
-| `shadow-lg` | `0 8px 32px rgba(0,0,0,0.10)` | Açılır menüler |
-| `shadow-xl` | `0 16px 48px rgba(0,0,0,0.12)` | Modallar |
-| `shadow-2xl` | `0 24px 64px rgba(0,0,0,0.14)` | Hero elementleri |
+| Token           | Değer                              | Kullanım             |
+| --------------- | ---------------------------------- | -------------------- |
+| `shadow-xs`     | `0 1px 2px rgba(0,0,0,0.04)`       | Subtle elevation     |
+| `shadow-sm`     | `0 2px 8px rgba(0,0,0,0.06)`       | Kartlar (default)    |
+| `shadow-md`     | `0 4px 16px rgba(0,0,0,0.08)`      | Kartlar (hover)      |
+| `shadow-lg`     | `0 8px 32px rgba(0,0,0,0.10)`      | Açılır menüler       |
+| `shadow-xl`     | `0 16px 48px rgba(0,0,0,0.12)`     | Modallar             |
+| `shadow-2xl`    | `0 24px 64px rgba(0,0,0,0.14)`     | Hero elementleri     |
 | `shadow-orange` | `0 8px 24px rgba(232,119,34,0.30)` | CTA butonlar (hover) |
 
 ---
@@ -125,21 +130,23 @@ Başkan Havlu Tekstil dijital platformunun tam UI/UX mimarisi. Bu doküman Phase
 ### 1.6 Animasyon Değerleri
 
 #### Zamanlama
-| Token | Değer | Kullanım |
-|---|---|---|
-| `duration-instant` | 0ms | Anında değişimler |
-| `duration-fast` | 150ms | Hover renk değişimi |
-| `duration-normal` | 200ms | Buton hover, küçük geçişler |
-| `duration-medium` | 300ms | Kart hover, açılır panel |
-| `duration-slow` | 400ms | Sayfa içi scroll animasyonu |
-| `duration-deliberate` | 600ms | Hero giriş animasyonu |
+
+| Token                 | Değer | Kullanım                    |
+| --------------------- | ----- | --------------------------- |
+| `duration-instant`    | 0ms   | Anında değişimler           |
+| `duration-fast`       | 150ms | Hover renk değişimi         |
+| `duration-normal`     | 200ms | Buton hover, küçük geçişler |
+| `duration-medium`     | 300ms | Kart hover, açılır panel    |
+| `duration-slow`       | 400ms | Sayfa içi scroll animasyonu |
+| `duration-deliberate` | 600ms | Hero giriş animasyonu       |
 
 #### Eğriler
-| Token | Değer | Kullanım |
-|---|---|---|
-| `ease-out` | `cubic-bezier(0, 0, 0.2, 1)` | Giriş animasyonları |
-| `ease-in` | `cubic-bezier(0.4, 0, 1, 1)` | Çıkış animasyonları |
-| `ease-spring` | `stiffness: 300, damping: 30` | Elastik efektler |
+
+| Token         | Değer                         | Kullanım            |
+| ------------- | ----------------------------- | ------------------- |
+| `ease-out`    | `cubic-bezier(0, 0, 0.2, 1)`  | Giriş animasyonları |
+| `ease-in`     | `cubic-bezier(0.4, 0, 1, 1)`  | Çıkış animasyonları |
+| `ease-spring` | `stiffness: 300, damping: 30` | Elastik efektler    |
 
 ---
 
@@ -148,6 +155,7 @@ Başkan Havlu Tekstil dijital platformunun tam UI/UX mimarisi. Bu doküman Phase
 ### 2.1 Temel Bileşenler (Atoms)
 
 #### Button
+
 ```
 Varyantlar:
   primary    → turuncu dolu, beyaz metin, shadow-orange (hover)
@@ -173,6 +181,7 @@ Erişilebilirlik:
 ```
 
 #### Badge / Tag
+
 ```
 Varyantlar:
   default     → beige-100 arka plan, charcoal-700 metin
@@ -187,6 +196,7 @@ Büyük harf: evet, letter-spacing:0.06em
 ```
 
 #### Input / Select / Textarea
+
 ```
 Yükseklik: 48px (tekli satır), textarea: min 120px
 Kenarlık: 1.5px charcoal-300
@@ -199,6 +209,7 @@ radius-md
 ```
 
 #### Icon
+
 ```
 Kütüphane: Lucide Icons
 Boyutlar:
@@ -216,6 +227,7 @@ Stroke: 1.5px
 ### 2.2 Bileşik Bileşenler (Molecules)
 
 #### ProductCard
+
 ```
 Boyut: 280×380px (masaüstü), tam genişlik (mobil)
 Görsel bölge: 2:3 oran, object-fit:cover, radius-xl üst
@@ -234,6 +246,7 @@ Kart hover:
 ```
 
 #### TestimonialCard
+
 ```
 Padding: 24px
 Arka plan: beige-50
@@ -248,6 +261,7 @@ radius-lg, shadow-sm
 ```
 
 #### StatCounter
+
 ```
 Düzen: ortalanmış dikey yığın
 Sayı: Display boyutunda, orange-500, mono yazı tipi
@@ -261,6 +275,7 @@ Izgara:
 ```
 
 #### ProcessStep
+
 ```
 Mobil: dikey zaman çizelgesi
   → Turuncu nokta (16px daire) + dikey çizgi
@@ -274,6 +289,7 @@ Adımlar: 5 (iplik → dokuma → boyama → kalite → paketleme)
 ```
 
 #### FAQItem
+
 ```
 Padding: 20px yatay, 18px dikey
 Soru: H4 ağırlığı, kömür-900
@@ -284,6 +300,7 @@ Alt kenarlık: 1px charcoal-100
 ```
 
 #### CertificateBadge
+
 ```
 Boyut: sabit genişlik kart
 Padding: 20px
@@ -299,6 +316,7 @@ radius-lg, shadow-sm, kenarlık: beige-300
 ### 2.3 Organizmasal Bileşenler (Organisms)
 
 #### Navbar
+
 ```
 Yükseklik: 64px (masaüstü) / 56px (mobil)
 Arka plan: şeffaf → beige-50/95 + blur + shadow-sm (80px kaydırmadan sonra)
@@ -322,6 +340,7 @@ Aktif sayfa: turuncu metin + alt vurgu
 ```
 
 #### StickyWhatsApp
+
 ```
 Konum: sabit, sağ alt, bottom:24px, right:24px, z:50
 Boyut: 56×56px, tam yuvarlak
@@ -333,6 +352,7 @@ Davranış: tıklandığında → wa.me linki, önceden yazılmış Türkçe mes
 ```
 
 #### Footer
+
 ```
 Arka plan: charcoal-900
 Metin: beyaz / beige-300
@@ -358,6 +378,7 @@ Link hover: beige-300 → beyaz, 150ms
 ### 3.1 Ana Sayfa (/)
 
 #### Bölüm 1: Hero
+
 ```
 Yükseklik: 100vh (mobil: min 600px)
 Düzen:
@@ -401,6 +422,7 @@ Animasyon (page load):
 ```
 
 #### Bölüm 2: Güven Şeridi (Trust Bar)
+
 ```
 Yükseklik: 72px (masaüstü), otomatik (mobil)
 Arka plan: beyaz, üst/alt kenarlık: beige-200
@@ -414,6 +436,7 @@ Etiket: Solda küçük "Güvenen Markalar" → charcoal-400, caption
 ```
 
 #### Bölüm 3: Değer Önerisi
+
 ```
 Padding: section (96px dikey)
 Arka plan: beige-50
@@ -444,6 +467,7 @@ Her kart:
 ```
 
 #### Bölüm 4: Ürün Kategorileri
+
 ```
 Padding: section
 Arka plan: beyaz
@@ -470,6 +494,7 @@ radius-2xl, overflow:hidden
 ```
 
 #### Bölüm 5: Üretim Kapasitesi Sayaçları
+
 ```
 Padding: section
 Arka plan: charcoal-900 (koyu — güçlü kontrast)
@@ -494,6 +519,7 @@ Animasyon: IntersectionObserver ile tetikle → 0'dan sayıya, 1.5s, ease-out
 ```
 
 #### Bölüm 6: Ürün Vitrini
+
 ```
 Padding: section
 Arka plan: beige-50
@@ -509,6 +535,7 @@ Arka plan: beige-50
 ```
 
 #### Bölüm 7: Fabrika Vitrini
+
 ```
 Padding: section
 Arka plan: beyaz
@@ -529,6 +556,7 @@ Görsel kolajı:
 ```
 
 #### Bölüm 8: Referanslar / Görüşler
+
 ```
 Padding: section
 Arka plan: charcoal-900
@@ -544,6 +572,7 @@ Her kart: TestimonialCard bileşeni (koyu arka plan üzerinde)
 ```
 
 #### Bölüm 9: SSS Önizleme
+
 ```
 Padding: section
 Arka plan: beige-50
@@ -558,6 +587,7 @@ Sorular: en yaygın, dönüşüm odaklı (MOQ, teslimat, numune, sertifika)
 ```
 
 #### Bölüm 10: CTA Bandı
+
 ```
 Padding: 80px dikey
 Arka plan: orange-500
@@ -578,6 +608,7 @@ Arka plan dokusunun hafif desen varyasyonu (subtle noise/grain)
 ### 3.2 Ürün / Koleksiyon Sayfası (/new-collection/)
 
 #### Sayfa Başlığı Bölümü
+
 ```
 Yükseklik: 240px (masaüstü), 180px (mobil)
 Arka plan: charcoal-900 veya zengin fabrika görseli + koyu katman
@@ -587,6 +618,7 @@ Ekmek Kırıntısı: Anasayfa → Koleksiyon
 ```
 
 #### Filtre + Ürün Izgarası
+
 ```
 Masaüstü düzeni: 2 sütun
   Sol (%22): Yapışkan filtre kenar çubuğu
@@ -612,6 +644,7 @@ Sıralama çubuğu (ızgaranın üstünde):
 ```
 
 #### Ürün Detay Sayfası
+
 ```
 Masaüstü: 2 eşit sütun, yapışkan sağ panel (kaydırmada sabit)
 Mobil: dikey yığın
@@ -643,6 +676,7 @@ Sağ: Ürün Bilgisi
 ### 3.3 Katalog / Hakkımızda Sayfası (/about/)
 
 #### Hero
+
 ```
 Yükseklik: 500px (masaüstü), 360px (mobil)
 Görsel: Fabrika havadan veya geniş üretim alanı fotoğrafı
@@ -654,6 +688,7 @@ Katman: %40 koyu gradyan
 ```
 
 #### Firma Hakkında
+
 ```
 Düzen: iki sütun (metin sol / fabrika fotoğrafı sağ)
 Metin: H2 + 3 paragraf içerik
@@ -662,6 +697,7 @@ Görsel: radius-2xl, shadow-lg, hafif çerçeve desen
 ```
 
 #### Üretim Süreci
+
 ```
 Arka plan: beige-50
 Üst etiket + H2
@@ -680,6 +716,7 @@ Her adım:
 ```
 
 #### Üretim Kapasitesi
+
 ```
 Arka plan: beyaz
 StatCounter bileşeni — 4 büyük sayaç
@@ -687,6 +724,7 @@ Alt kısım: kapasite özellikleri listesi (ikon + metin)
 ```
 
 #### Kalite Kontrol
+
 ```
 Arka plan: beige-50
 Sol: metin içeriği, süreç adımları
@@ -698,6 +736,7 @@ Sertifikalar ızgarası:
 ```
 
 #### İhracat Hizmetleri
+
 ```
 Arka plan: charcoal-900 (koyu — güçlü etki)
 İçerik: H2 (beyaz) + dünya haritası görseli + ihracat yaptığı ülke sayısı
@@ -706,6 +745,7 @@ CTA: "İhracat Teklifini Al" — turuncu buton
 ```
 
 #### Referanslar
+
 ```
 İki bölüm:
   1. Logo Izgarası: müşteri/partner logoları, gri filtre → renkli hover
@@ -713,6 +753,7 @@ CTA: "İhracat Teklifini Al" — turuncu buton
 ```
 
 #### SSS (Tümü — 50+ madde)
+
 ```
 Arka plan: beige-50
 Kategori sekmeleri: Genel / Ürünler / Sipariş / İhracat / Kargo
@@ -725,6 +766,7 @@ FAQItem bileşeni, tam liste, akordeon
 ### 3.4 İletişim Sayfası (/contact/)
 
 #### Düzen
+
 ```
 Üst: Sayfa başlığı bölümü (240px, koyu arka plan)
   H1: "İletişime Geçin"
@@ -736,6 +778,7 @@ Ana İçerik: iki sütun
 ```
 
 #### İletişim Formu
+
 ```
 Arka plan: beyaz kart, shadow-lg, radius-2xl, padding:40px
 
@@ -755,6 +798,7 @@ Mobil: tüm satırlar tek sütun
 ```
 
 #### İletişim Bilgileri Paneli
+
 ```
 WhatsApp Öncelikli Kart:
   → Yeşil arka plan (#25D366), beyaz metin
@@ -797,21 +841,24 @@ Her sayfa için benzersiz içerik, renk tonu aynı, düzen aynı.
 ## 5. ERİŞİLEBİLİRLİK KILAVUZLARRi
 
 ### Renk Kontrastı Matrisi
-| Ön Plan | Arka Plan | Oran | Sonuç |
-|---|---|---|---|
-| Beyaz | orange-500 | 3.2:1 | AA (büyük metin) ✓ |
-| charcoal-900 | orange-500 | 4.8:1 | AA (tüm metin) ✓ |
-| Beyaz | charcoal-900 | 18.1:1 | AAA ✓ |
-| charcoal-900 | beige-50 | 15.5:1 | AAA ✓ |
-| charcoal-600 | beyaz | 5.9:1 | AA ✓ |
+
+| Ön Plan      | Arka Plan    | Oran   | Sonuç              |
+| ------------ | ------------ | ------ | ------------------ |
+| Beyaz        | orange-500   | 3.2:1  | AA (büyük metin) ✓ |
+| charcoal-900 | orange-500   | 4.8:1  | AA (tüm metin) ✓   |
+| Beyaz        | charcoal-900 | 18.1:1 | AAA ✓              |
+| charcoal-900 | beige-50     | 15.5:1 | AAA ✓              |
+| charcoal-600 | beyaz        | 5.9:1  | AA ✓               |
 
 ### Odak Yönetimi
+
 - Tüm etkileşimli elementler: `focus-visible` ile 2px turuncu halka
 - Modal açıldığında: odak modal'a taşır
 - Modal kapandığında: odak tetikleyici elemana döner
 - "İçeriğe Geç" gizli bağlantısı — klavye kullanıcıları için
 
 ### Dokunma Hedefleri
+
 - Tüm butonlar, bağlantılar, form alanları: minimum 44×44px
 - Kartlar: tüm kart alanı tıklanabilir
 
@@ -820,12 +867,14 @@ Her sayfa için benzersiz içerik, renk tonu aynı, düzen aynı.
 ## 6. DÖNÜŞÜM OPTİMİZASYON ÇERÇEÇ
 
 ### CTA Hiyerarşisi (Her Sayfada)
+
 1. **Seviye 1 — Birincil CTA:** "Teklif Al" (turuncu dolu, lg)
 2. **Seviye 2 — İkincil CTA:** "WhatsApp ile Ulaş" (yeşil veya ghost)
 3. **Seviye 3 — Keşif CTA:** "Koleksiyonu Gör" (secondary buton)
 4. **Seviye 4 — Pasif:** Sayfa alt bağlantıları
 
 ### Güven Sinyali Hiyerarşisi
+
 1. Müşteri logo şeridi — hero'nun hemen altında
 2. Sayısal kapasite rakamları — somut, büyük, dikkat çekici
 3. Sertifika rozetleri — ürün ve fabrika sayfasında
@@ -833,9 +882,10 @@ Her sayfa için benzersiz içerik, renk tonu aynı, düzen aynı.
 5. İletişim bilgilerinin netliği — adres, tel, harita
 
 ### Form Psikolojisi
+
 - Alan sayısı: maksimum 7 (fazlası terk artırır)
 - İlk alan: "Ad Soyad" (düşük sürtünme, güven inşa eder)
-- Zorunlu alan işareti: "*" değil — yalnızca isteğe bağlı alanları "(isteğe bağlı)" ile işaretle
+- Zorunlu alan işareti: "\*" değil — yalnızca isteğe bağlı alanları "(isteğe bağlı)" ile işaretle
 - Gönder butonu metni: "Teklif Gönder" (değer odaklı, "Gönder" değil)
 - Güven metni buton altında: "Spam göndermiyoruz • 24 saat içinde yanıt"
 
@@ -844,26 +894,29 @@ Her sayfa için benzersiz içerik, renk tonu aynı, düzen aynı.
 ## 7. MOBİL-ÖNCE DUYARLI STRATEJİ
 
 ### Breakpoint'ler
-| İsim | px | Hedef Cihaz |
-|---|---|---|
-| xs | 320px | iPhone SE |
-| sm | 375px | iPhone standart |
-| sm+ | 430px | iPhone Plus / Pro Max |
-| md | 768px | iPad, tablet |
-| lg | 1024px | iPad Pro, küçük laptop |
-| xl | 1280px | Masaüstü |
-| 2xl | 1536px | Geniş masaüstü |
+
+| İsim | px     | Hedef Cihaz            |
+| ---- | ------ | ---------------------- |
+| xs   | 320px  | iPhone SE              |
+| sm   | 375px  | iPhone standart        |
+| sm+  | 430px  | iPhone Plus / Pro Max  |
+| md   | 768px  | iPad, tablet           |
+| lg   | 1024px | iPad Pro, küçük laptop |
+| xl   | 1280px | Masaüstü               |
+| 2xl  | 1536px | Geniş masaüstü         |
 
 ### Izgara Sistemi
+
 | Breakpoint | Sütunlar | Kenar Boşluğu | Boşluk |
-|---|---|---|---|
-| xs–sm | 4 | 16px | 16px |
-| md | 8 | 24px | 24px |
-| lg+ | 12 | 32px | 24px |
+| ---------- | -------- | ------------- | ------ |
+| xs–sm      | 4        | 16px          | 16px   |
+| md         | 8        | 24px          | 24px   |
+| lg+        | 12       | 32px          | 24px   |
 
 **Maksimum konteyner genişliği:** 1280px, merkezi
 
 ### Kritik Mobil Kararlar
+
 - Navbar: hamburger menü, tam ekran overlay (dokunma dostu)
 - Hero: görsel üstte (dikkat çeker), metin altta (dönüşüm için)
 - Ürün ızgarası: 2 sütun (1 sütun çok büyük, 3 sütun çok küçük)
@@ -876,7 +929,9 @@ Her sayfa için benzersiz içerik, renk tonu aynı, düzen aynı.
 ## 8. GÖRSEL KİMLİK KILAVUZu
 
 ### Fotoğrafçılık Standardı
+
 **Ürün Çekimleri:**
+
 - Arka plan: saf beyaz veya yumuşak krem
 - Işık: yumuşak kutu ışığı, sert gölge yok
 - Açı: üst, ¾, yakın makro (tekstür için)
@@ -884,23 +939,27 @@ Her sayfa için benzersiz içerik, renk tonu aynı, düzen aynı.
 - Minimum çözünürlük: 2400×3200px (2:3 oran)
 
 **Fabrika Çekimleri:**
+
 - Temiz, aydınlık, modern tesisi yansıtır
 - İşçiler odaklanmış, profesyonel
 - Makine ve ekipman açıkça görünür
 - Geniş açı panoramik çekimler
 
 **Bağlam Çekimleri:**
+
 - Otel banyosu kurulumu (asılı havlu, spa ambiyansı)
 - Kişisel bakım anı çekimleri
 - Paketleme ve kurumsal kimlik
 
 ### İkon Stili
+
 - Kütüphane: Lucide Icons (tutarlılık için)
 - Stroke genişliği: 1.5px
 - Stil: outline (filled değil — daha premium görünür)
 - Boyut: tasarım sisteminden (16/20/24/32/48px)
 
 ### İllüstrasyon / Soyut Grafik
+
 Kullanılmaz. Yalnızca gerçek fotoğraflar ve ikonlar.
 Stok görsel: kesinlikle kullanılmaz. Orijinal veya özel çekim.
 
@@ -911,10 +970,10 @@ Stok görsel: kesinlikle kullanılmaz. Orijinal veya özel çekim.
 Bu tasarım dokümanı **Phase 2: Elite UI/UX Architecture** kapsamını tanımlamaktadır.
 
 Sonraki Fazlar:
+
 - **Phase 3:** SEO + GEO Authority — içerik stratejisi ve anahtar kelime mimarisi
 - **Phase 4:** Content Authority + Conversion — kopya, görseller ve dönüşüm optimizasyonu
 - **Phase 5:** Technical Infrastructure — CI/CD, izleme, ölçeklendirme ve güvenlik
-
 
 ---
 
@@ -923,6 +982,7 @@ Sonraki Fazlar:
 Başkan Havlu Tekstil UI/UX mimarisi üç katmanlı bir yapı üzerine inşa edilmiştir:
 
 ### Katman 1: Tasarım Sistemi (Design System)
+
 Tüm görsel kararların tek kaynağı. Design token'ları (renkler, boşluk, tipografi, gölge, animasyon değerleri) bu katmanda tanımlanır. Tailwind CSS konfigürasyonu ve CSS custom properties bu token'ları yansıtır. Değişiklik tek noktadan yapılır, tüm platforma yayılır.
 
 ```
@@ -933,6 +993,7 @@ DesignSystem
 ```
 
 ### Katman 2: Bileşen Hiyerarşisi (Component Hierarchy)
+
 Atomic Design metodolojisi:
 
 ```
@@ -963,6 +1024,7 @@ Organisms (Organizmasal)
 ```
 
 ### Katman 3: Sayfa Mimarisi (Page Architecture)
+
 Her sayfa, organizmasal bileşenlerin düzenli kombinasyonundan oluşur:
 
 ```
@@ -994,6 +1056,7 @@ Pages
 ```
 
 ### Animasyon Mimarisi
+
 ```
 AnimationSystem
   ├── Scroll-Triggered (IntersectionObserver)
@@ -1015,6 +1078,7 @@ AnimationSystem
 ```
 
 ### Yapışkan Elementler Mimarisi
+
 ```
 StickyLayer (z-index: 40–50)
   ├── Navbar (z:40, scroll sonrası arka plan değişir)
@@ -1028,6 +1092,7 @@ StickyLayer (z-index: 40–50)
 ### Bileşen API Tanımları
 
 #### Button
+
 ```typescript
 interface ButtonProps {
   variant: 'primary' | 'secondary' | 'ghost' | 'whatsapp' | 'destructive'
@@ -1038,12 +1103,13 @@ interface ButtonProps {
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   onClick?: () => void
-  href?: string        // link modu
+  href?: string // link modu
   children: ReactNode
 }
 ```
 
 #### ProductCard
+
 ```typescript
 interface ProductCardProps {
   id: string
@@ -1051,7 +1117,7 @@ interface ProductCardProps {
   slug: string
   imageUrl: string
   imageAlt: string
-  gramWeight: number      // g/m²
+  gramWeight: number // g/m²
   availableColors: string[]
   sizeOptions: string[]
   badges?: Array<'new' | 'bestseller' | 'export' | 'hotel'>
@@ -1060,30 +1126,33 @@ interface ProductCardProps {
 ```
 
 #### TestimonialCard
+
 ```typescript
 interface TestimonialCardProps {
   quote: string
   customerName: string
   customerTitle: string
   companyName: string
-  countryCode: string    // bayrak için ISO kodu
+  countryCode: string // bayrak için ISO kodu
   rating: 1 | 2 | 3 | 4 | 5
   logoUrl?: string
 }
 ```
 
 #### StatCounter
+
 ```typescript
 interface StatCounterProps {
   value: number
-  suffix?: string        // "+", "K+", "M+"
+  suffix?: string // "+", "K+", "M+"
   label: string
   description?: string
-  animationDuration?: number  // ms, varsayılan: 1500
+  animationDuration?: number // ms, varsayılan: 1500
 }
 ```
 
 #### FAQItem
+
 ```typescript
 interface FAQItemProps {
   question: string
@@ -1095,16 +1164,18 @@ interface FAQItemProps {
 ```
 
 #### NavigationItem
+
 ```typescript
 interface NavItem {
   label: string
   href: string
   isActive?: boolean
-  children?: NavItem[]   // açılır alt menü
+  children?: NavItem[] // açılır alt menü
 }
 ```
 
 #### ContactForm
+
 ```typescript
 interface ContactFormProps {
   variant: 'full' | 'compact' | 'quote' | 'sample' | 'export'
@@ -1117,26 +1188,28 @@ interface ContactFormProps {
 ### Sayfa Düzeni Bileşenleri
 
 #### PageLayout (Temel Sarmalayıcı)
+
 ```typescript
 interface PageLayoutProps {
   children: ReactNode
-  showNavbar?: boolean      // varsayılan: true
-  showFooter?: boolean      // varsayılan: true
-  showWhatsApp?: boolean    // varsayılan: true
-  navTransparent?: boolean  // hero sayfalar için
+  showNavbar?: boolean // varsayılan: true
+  showFooter?: boolean // varsayılan: true
+  showWhatsApp?: boolean // varsayılan: true
+  navTransparent?: boolean // hero sayfalar için
   pageTitle?: string
   pageDescription?: string
 }
 ```
 
 #### Section (Standart Bölüm Kapsayıcı)
+
 ```typescript
 interface SectionProps {
   children: ReactNode
   background?: 'white' | 'beige' | 'charcoal' | 'orange' | 'cream'
-  paddingY?: 'sm' | 'md' | 'lg' | 'xl'  // bölüm dikey dolgusu
+  paddingY?: 'sm' | 'md' | 'lg' | 'xl' // bölüm dikey dolgusu
   fullWidth?: boolean
-  id?: string   // anchor navigasyonu
+  id?: string // anchor navigasyonu
 }
 ```
 
@@ -1145,6 +1218,7 @@ interface SectionProps {
 ## Data Models
 
 ### Ürün Veri Modeli
+
 ```typescript
 interface Product {
   id: string
@@ -1159,10 +1233,10 @@ interface Product {
     full: { tr: string; en: string }
   }
   specifications: {
-    gramWeight: number           // g/m²
-    dimensions: Dimension[]      // ör: ["50x90", "70x140"]
-    material: string             // ör: "100% Pamuk"
-    threadType: string           // ör: "Combed Ring"
+    gramWeight: number // g/m²
+    dimensions: Dimension[] // ör: ["50x90", "70x140"]
+    material: string // ör: "100% Pamuk"
+    threadType: string // ör: "Combed Ring"
   }
   colors: ProductColor[]
   images: ProductImage[]
@@ -1193,6 +1267,7 @@ type Dimension = string
 ```
 
 ### İçerik Veri Modeli
+
 ```typescript
 interface FAQItem {
   id: string
@@ -1235,6 +1310,7 @@ interface StatItem {
 ```
 
 ### Form Veri Modeli
+
 ```typescript
 interface QuoteRequest {
   id?: string
@@ -1248,21 +1324,22 @@ interface QuoteRequest {
   message?: string
   formType: 'quote' | 'bulk' | 'sample' | 'export' | 'contact'
   createdAt?: Date
-  source?: string   // hangi sayfadan geldi
+  source?: string // hangi sayfadan geldi
   language?: 'tr' | 'en'
 }
 
 // Zod doğrulama şeması karşılığı
 interface QuoteRequestValidation {
-  fullName: { min: 2, max: 100 }
+  fullName: { min: 2; max: 100 }
   email: { format: 'email' }
-  phone: { min: 10, max: 20 }
+  phone: { min: 10; max: 20 }
   message: { max: 2000 }
   // honeypot alanı: sunucu tarafında kontrol
 }
 ```
 
 ### Navigasyon Veri Modeli
+
 ```typescript
 interface NavigationConfig {
   main: NavItem[]
@@ -1283,57 +1360,70 @@ interface NavigationConfig {
 ## Correctness Properties
 
 ### Property 1: Renk Tutarlılığı
+
 Tüm sayfalarda Renk_Paleti token'ları doğrudan CSS değerleri yerine kullanılır. `#E87722` değeri yalnızca `orange-500` token üzerinden erişilir.
 **Validates: Requirements 3.3**
 
 ### Property 2: Tipografi Tutarlılığı
+
 Tanımlanmış ölçek tablosu dışında herhangi bir font boyutu kullanılmaz. Ölçek tablosundaki 9 sınıf dışında `font-size` tanımlanmaz.
 **Validates: Requirements 3.4**
 
 ### Property 3: Boşluk Tutarlılığı
+
 Tüm margin ve padding değerleri `space-*` token'larından türetilir. Rastgele piksel değerleri kullanılmaz.
 **Validates: Requirements 3.2**
 
 ### Property 4: Animasyon Erişilebilirliği
+
 `prefers-reduced-motion: reduce` medya sorgusu aktifken hiçbir transform veya opacity animasyonu çalışmaz — yalnızca anlık geçişler kalır.
 **Validates: Requirements 16.3**
 
 ### Property 5: Kontrast Oranı
+
 Hiçbir metin–arka plan kombinasyonu WCAG 2.1 AA minimumunun (4.5:1 normal, 3:1 büyük metin) altına düşmez.
 **Validates: Requirements 3.8, 14.4**
 
 ### Property 6: Odak Görünürlüğü
+
 Tüm interaktif elementler klavyeyle odaklandığında görünür bir odak halkası gösterir. `outline:none` yalnızca `focus-visible` alternatifiyle birlikte kullanılır.
 **Validates: Requirements 14.4**
 
 ### Property 7: Dokunma Hedefi
+
 Tüm tıklanabilir/dokunulabilir elementler minimum 44×44px alanı kapsar.
 **Validates: Requirements 3.7**
 
 ### Property 8: CTA Görünürlüğü
+
 Her sayfada en az bir birincil CTA ve yapışkan WhatsApp butonu her zaman görünür durumda olur.
 **Validates: Requirements 4.6, 9.8**
 
 ### Property 9: Form Veri Bütünlüğü
+
 Form gönderimi başarısız olduğunda kullanıcının girdiği veriler kaybolmaz; hata mesajı gösterilir.
 **Validates: Requirements 9.5**
 
 ### Property 10: Güven Sinyali Önceliği
+
 Müşteri logoları hero bölümünün hemen altında (Trust Bar) her sayfada görünür; sertifika rozetleri ürün ve fabrika sayfalarında daima görülebilir konumda yer alır.
 **Validates: Requirements 4.1, 6.3**
 
 ### Görsel Doğruluk (Detay Notları)
+
 1. **Renk Tutarlılığı:** Tüm sayfalarda Renk_Paleti token'ları doğrudan CSS değerleri yerine kullanılır. `#E87722` değeri yalnızca `orange-500` token üzerinden erişilir.
 2. **Tipografi Tutarlılığı:** Tanımlanmış ölçek tablosu dışında herhangi bir font boyutu kullanılmaz. Ölçek tablosundaki 9 sınıf dışında `font-size` tanımlanmaz.
 3. **Boşluk Tutarlılığı:** Tüm margin ve padding değerleri `space-*` token'larından türetilir. Rastgele piksel değerleri kullanılmaz.
 4. **Animasyon Doğruluğu:** `prefers-reduced-motion: reduce` medya sorgusu aktifken hiçbir transform veya opacity animasyonu çalışmaz — yalnızca anlık geçişler kalır.
 
 ### Erişilebilirlik Doğruluğu
+
 5. **Kontrast Oranı:** Hiçbir metin–arka plan kombinasyonu WCAG 2.1 AA minimumunun (4.5:1 normal, 3:1 büyük metin) altına düşmez.
 6. **Odak Görünürlüğü:** Tüm interaktif elementler klavyeyle odaklandığında görünür bir odak halkası gösterir. `outline:none` yalnızca `focus-visible` alternatifiyle birlikte kullanılır.
 7. **Dokunma Hedefi:** Tüm tıklanabilir/dokunulabilir elementler minimum 44×44px alanı kapsar.
 
 ### Dönüşüm Doğruluğu
+
 8. **CTA Görünürlüğü:** Her sayfada en az bir birincil CTA ve yapışkan WhatsApp butonu her zaman görünür durumda olur.
 9. **Form Bütünlüğü:** Form gönderimi başarısız olduğunda kullanıcının girdiği veriler kaybolmaz.
 10. **Güven Sinyali Önceliği:** Müşteri logoları her zaman hero bölümünden önce veya hemen altında görünür.
@@ -1345,6 +1435,7 @@ Müşteri logoları hero bölümünün hemen altında (Trust Bar) her sayfada g�
 ### Görsel Hata Durumları
 
 #### Eksik Görsel
+
 ```
 Ürün görseli yüklenemezse:
 → Yer tutucu: beige-100 arka plan + marka logosu (ortalanmış)
@@ -1353,6 +1444,7 @@ Müşteri logoları hero bölümünün hemen altında (Trust Bar) her sayfada g�
 ```
 
 #### Form Hataları
+
 ```
 Doğrulama hatası:
 → İlgili alan: error kenarlık (kırmızı, 1.5px)
@@ -1368,6 +1460,7 @@ Gönderim hatası (ağ/sunucu):
 ```
 
 #### Sayfa/Bölüm Yükleme Hatası
+
 ```
 İçerik yüklenemezse:
 → İskelet (skeleton) animasyonu gösterilmeye devam eder
@@ -1376,6 +1469,7 @@ Gönderim hatası (ağ/sunucu):
 ```
 
 #### 404 Sayfası
+
 ```
 Tasarım:
 → Merkezi düzen, büyük "404" sayısı (turuncu, Display boyutu)
@@ -1389,35 +1483,40 @@ Tasarım:
 ## Testing Strategy
 
 ### Görsel Regresyon
+
 - Chromatic veya Percy ile her PR'da otomatik ekran görüntüsü karşılaştırması
 - Kritik breakpoint'ler: 320px, 375px, 768px, 1280px
 - Test edilen sayfalar: Ana Sayfa, Ürün Listesi, Ürün Detay, Hakkımızda, İletişim
 
 ### Erişilebilirlik Testi
+
 - Axe-core entegrasyonu: her Storybook bileşeninde otomatik a11y kontrolü
 - Lighthouse CI: her deploy'da accessibility skoru minimum 95
 - Manuel test: VoiceOver (iOS/macOS) + NVDA (Windows) ile kritik akışlar
 
 ### Bileşen Testi (Storybook)
+
 - Her Atom ve Molecule için ayrı story
 - Varyant matrisi: tüm prop kombinasyonları görsel olarak doğrulanır
 - Dark mode story'leri ayrıca oluşturulur
 
 ### Kullanıcı Deneyimi Testi
+
 - Kullanılabilirlik testi: 5 potansiyel kullanıcı (toptan alıcı persona)
 - Kritik akış: Ana Sayfa → Ürün → Teklif Formu → Gönderim
 - Başarı metriği: 3 tıkla teklif formuna ulaşabilme
 
 ### Performans — Görsel Stabilite
+
 - CLS kontrolü: her yeni bileşen eklenmesinde `0.05` eşiği
 - LCP hedefi: hero görselinin `<1.5s` yüklenmesi
 - Animasyon: düşük güçlü cihazlarda (`prefers-reduced-motion`) bozulma yok
 
 ### Duyarlılık Kontrolü
+
 - BrowserStack ile hedef cihazlar: iPhone SE, iPhone 15, Samsung Galaxy S24, iPad, MacBook, 4K monitör
 - Yatay mod testi: tüm sayfalar
 - Yazı tipi ölçeklendirme: sistem yazı tipi %200'e büyütüldüğünde düzen bozulmamalı
-
 
 ---
 
@@ -1447,6 +1546,7 @@ Landing Page (/havlu-ureticisi/):
 ```
 
 Open Graph zorunlu alanlar (tüm sayfalarda):
+
 - `og:type` — website / article / product
 - `og:title` — sayfa title ile aynı
 - `og:description` — meta description ile aynı
@@ -1456,6 +1556,7 @@ Open Graph zorunlu alanlar (tüm sayfalarda):
 - `og:site_name` — "Başkan Havlu Tekstil"
 
 Twitter Card zorunlu alanlar:
+
 - `twitter:card` — summary_large_image
 - `twitter:site` — @baskanhavlu (varsa)
 - `twitter:title`, `twitter:description`, `twitter:image`
@@ -1571,16 +1672,16 @@ Sitemap: https://baskanhavlu.com/image-sitemap.xml
 
 ### SEO-5: Sitemap Öncelik Tablosu
 
-| Sayfa | changefreq | priority |
-|---|---|---|
-| `/` | weekly | 1.0 |
-| `/new-collection/` | daily | 0.9 |
-| `/about/` | monthly | 0.8 |
-| `/contact/` | monthly | 0.7 |
-| `/havlu-ureticisi/` | weekly | 0.9 |
-| `/turkish-towel-manufacturer/` | weekly | 0.9 |
-| Diğer landing sayfalar | weekly | 0.8 |
-| `/new-collection/[slug]/` | weekly | 0.7 |
+| Sayfa                          | changefreq | priority |
+| ------------------------------ | ---------- | -------- |
+| `/`                            | weekly     | 1.0      |
+| `/new-collection/`             | daily      | 0.9      |
+| `/about/`                      | monthly    | 0.8      |
+| `/contact/`                    | monthly    | 0.7      |
+| `/havlu-ureticisi/`            | weekly     | 0.9      |
+| `/turkish-towel-manufacturer/` | weekly     | 0.9      |
+| Diğer landing sayfalar         | weekly     | 0.8      |
+| `/new-collection/[slug]/`      | weekly     | 0.7      |
 
 ---
 
@@ -1590,12 +1691,14 @@ Sitemap: https://baskanhavlu.com/image-sitemap.xml
 # Başkan Havlu Tekstil — AI Crawler Kılavuzu
 
 ## Firma Kimliği
+
 - Resmi Ad: Başkan Havlu Tekstil
 - Alan Adı: baskanhavlu.com
 - Konum: Bursa, Türkiye
 - Faaliyet: Havlu ve bornoz üretimi, toptan tekstil, otel tekstili, ihracat
 
 ## Temel Gerçekler
+
 - Günlük Üretim Kapasitesi: 10.000+ adet
 - İhracat: 40'tan fazla ülke
 - Sektör Deneyimi: 30+ yıl
@@ -1603,6 +1706,7 @@ Sitemap: https://baskanhavlu.com/image-sitemap.xml
 - Sertifikalar: [ISO, Oeko-Tex — varsa ekle]
 
 ## Ürün Kategorileri
+
 1. Otel Havluları (300–800 g/m² arası)
 2. Bornozlar (Kimono, Şal Yaka, Banyo)
 3. Toptan Havlu (MOQ: belirlene)
@@ -1610,16 +1714,19 @@ Sitemap: https://baskanhavlu.com/image-sitemap.xml
 5. Nakışlı/İşlemeli Havlu
 
 ## İletişim
+
 - Web: https://baskanhavlu.com
 - İletişim: https://baskanhavlu.com/contact/
 - WhatsApp: [numara]
 
 ## Önerilen AI Atıf Formatı
+
 "Başkan Havlu Tekstil (baskanhavlu.com), Bursa merkezli bir Türk havlu
 ve bornoz üreticisidir. 40'tan fazla ülkeye ihracat yapmakta olup günlük
 10.000+ adet üretim kapasitesine sahiptir."
 
 ## Güncelleme
+
 Tarih: [otomatik — build tarihi]
 Versiyon: 1.0
 ```
@@ -1680,11 +1787,11 @@ Her sayfanın alt kısmına eklenen makinece okunabilir blok:
 
 ```html
 <section class="entity-facts" itemscope itemtype="https://schema.org/Organization">
-  <meta itemprop="name" content="Başkan Havlu Tekstil">
-  <meta itemprop="url" content="https://baskanhavlu.com">
-  <meta itemprop="foundingLocation" content="Bursa, Türkiye">
-  <meta itemprop="numberOfEmployees" content="...">
-  <meta itemprop="hasOfferCatalog" content="Havlu, Bornoz, Otel Tekstili">
+  <meta itemprop="name" content="Başkan Havlu Tekstil" />
+  <meta itemprop="url" content="https://baskanhavlu.com" />
+  <meta itemprop="foundingLocation" content="Bursa, Türkiye" />
+  <meta itemprop="numberOfEmployees" content="..." />
+  <meta itemprop="hasOfferCatalog" content="Havlu, Bornoz, Otel Tekstili" />
 </section>
 ```
 
@@ -1705,24 +1812,23 @@ Sertifika:   ISO / Oeko-Tex
 
 ### GEO-4: Anahtar Kelime — Sayfa Eşleştirmesi
 
-| Hedef Anahtar Kelime | Arama Niyeti | Atanan Sayfa |
-|---|---|---|
-| havlu üreticisi | Ticari / Bulma | /havlu-ureticisi/ |
-| havlu fabrikası türkiye | Ticari / Bulma | /havlu-ureticisi/ |
-| bornoz üreticisi | Ticari / Bulma | /bornoz-ureticisi/ |
-| toptan havlu | Ticari / Satın Alma | /toptan-havlu/ |
-| toptan bornoz | Ticari / Satın Alma | /toptan-bornoz/ |
-| otel havlusu tedarikçisi | B2B / Ticari | /otel-havlusu/ |
-| otel bornozu | B2B / Ticari | /otel-bornozu/ |
-| promosyon havlu | B2B / Ticari | /promosyon-havlu/ |
-| nakışlı havlu | Ticari / Özel Üretim | /nakisli-havlu/ |
-| turkish towel manufacturer | İhracat / EN | /turkish-towel-manufacturer/ |
-| bathrobe manufacturer turkey | İhracat / EN | /bathrobe-manufacturer/ |
-| wholesale towel supplier | İhracat / EN | /wholesale-towel-supplier/ |
-| havlu üretim süreci | Bilgi / İçerik | /about/#uretim-sureci |
-| otel havlusu gramajı | Bilgi / İçerik | /otel-havlusu/#faq |
-| başkan havlu | Marka / Navigasyon | / (Ana Sayfa) |
-
+| Hedef Anahtar Kelime         | Arama Niyeti         | Atanan Sayfa                 |
+| ---------------------------- | -------------------- | ---------------------------- |
+| havlu üreticisi              | Ticari / Bulma       | /havlu-ureticisi/            |
+| havlu fabrikası türkiye      | Ticari / Bulma       | /havlu-ureticisi/            |
+| bornoz üreticisi             | Ticari / Bulma       | /bornoz-ureticisi/           |
+| toptan havlu                 | Ticari / Satın Alma  | /toptan-havlu/               |
+| toptan bornoz                | Ticari / Satın Alma  | /toptan-bornoz/              |
+| otel havlusu tedarikçisi     | B2B / Ticari         | /otel-havlusu/               |
+| otel bornozu                 | B2B / Ticari         | /otel-bornozu/               |
+| promosyon havlu              | B2B / Ticari         | /promosyon-havlu/            |
+| nakışlı havlu                | Ticari / Özel Üretim | /nakisli-havlu/              |
+| turkish towel manufacturer   | İhracat / EN         | /turkish-towel-manufacturer/ |
+| bathrobe manufacturer turkey | İhracat / EN         | /bathrobe-manufacturer/      |
+| wholesale towel supplier     | İhracat / EN         | /wholesale-towel-supplier/   |
+| havlu üretim süreci          | Bilgi / İçerik       | /about/#uretim-sureci        |
+| otel havlusu gramajı         | Bilgi / İçerik       | /otel-havlusu/#faq           |
+| başkan havlu                 | Marka / Navigasyon   | / (Ana Sayfa)                |
 
 ---
 
@@ -1733,12 +1839,14 @@ Sertifika:   ISO / Oeko-Tex
 **Temel Ton:** Fabrika otoritesi. Lüks B2B. Kurumsal güven.
 
 **Kaçınılacaklar:**
+
 - "En iyi", "mükemmel", "eşsiz" gibi kanıtsız süperlatifler
 - "Kaliteli ürünler sunuyoruz" gibi muğlak pazarlama dili
 - Pazaryeri veya bayi tonu
 - Edilgen cümle yapıları
 
 **Kullanılacaklar:**
+
 - Sayısal veriler: "600 g/m²", "40+ ülke", "30+ yıl"
 - Sertifika referansları: "Oeko-Tex Standard 100 sertifikalı"
 - Süreç tanımları: "Combed ring pamuk, çift halkalı dokuma"
@@ -1746,14 +1854,14 @@ Sertifika:   ISO / Oeko-Tex
 
 **Standart CTA Metinleri:**
 
-| Bağlam | Türkçe | İngilizce |
-|---|---|---|
-| Birincil | Toptan Teklif Al | Get Wholesale Quote |
-| İkincil | Numune İste | Request Sample |
-| Toplu Sipariş | Toplu Sipariş Başlat | Start Bulk Order |
-| Fabrika İletişim | Fabrikayla İletişime Geç | Contact Factory |
-| İhracat | İhracat Sorgulama | Export Inquiry |
-| WhatsApp | WhatsApp ile Yaz | Chat on WhatsApp |
+| Bağlam           | Türkçe                   | İngilizce           |
+| ---------------- | ------------------------ | ------------------- |
+| Birincil         | Toptan Teklif Al         | Get Wholesale Quote |
+| İkincil          | Numune İste              | Request Sample      |
+| Toplu Sipariş    | Toplu Sipariş Başlat     | Start Bulk Order    |
+| Fabrika İletişim | Fabrikayla İletişime Geç | Contact Factory     |
+| İhracat          | İhracat Sorgulama        | Export Inquiry      |
+| WhatsApp         | WhatsApp ile Yaz         | Chat on WhatsApp    |
 
 ---
 
@@ -1823,6 +1931,7 @@ H2:    "Sık Sorulan Sorular"
 ### CONV-3: 50+ SSS Soru Bankası
 
 #### Kategori 1: Üretim (8 soru)
+
 1. Başkan Havlu Tekstil hangi tür havlular üretiyor?
 2. Havlularınız hangi hammaddeden üretiliyor?
 3. Günlük üretim kapasiteniz nedir?
@@ -1833,6 +1942,7 @@ H2:    "Sık Sorulan Sorular"
 8. Organik pamuk kullanıyor musunuz?
 
 #### Kategori 2: Fiyatlandırma (5 soru)
+
 9. Fiyatlarınız nedir?
 10. Fiyatlar hangi faktörlere göre değişiyor?
 11. Numune için ücret alıyor musunuz?
@@ -1840,6 +1950,7 @@ H2:    "Sık Sorulan Sorular"
 13. Fiyat teklifiniz ne kadar sürede geliyor?
 
 #### Kategori 3: Minimum Sipariş (MOQ) (5 soru)
+
 14. Minimum sipariş miktarınız (MOQ) nedir?
 15. İlk siparişte daha düşük miktar mümkün mü?
 16. Farklı ürün çeşitleri için MOQ ayrı mı hesaplanıyor?
@@ -1847,6 +1958,7 @@ H2:    "Sık Sorulan Sorular"
 18. Promosyon siparişlerde MOQ nedir?
 
 #### Kategori 4: İhracat Süreci (6 soru)
+
 19. Hangi ülkelere ihracat yapıyorsunuz?
 20. İhracat belgelerini siz mi hazırlıyorsunuz?
 21. CIF, FOB, EXW gibi teslim şekillerini destekliyor musunuz?
@@ -1855,6 +1967,7 @@ H2:    "Sık Sorulan Sorular"
 24. Ürünlerin ambalajı ihracat standartlarına uygun mu?
 
 #### Kategori 5: Numune Süreci (5 soru)
+
 25. Numune siparişi nasıl verebilirim?
 26. Numune teslim süresi ne kadar?
 27. Numune ücretsiz mi?
@@ -1862,6 +1975,7 @@ H2:    "Sık Sorulan Sorular"
 29. Kendi tasarımıma göre numune üretebilir misiniz?
 
 #### Kategori 6: Özelleştirme / Logo Nakışı (6 soru)
+
 30. Havlulara özel logo nakışı yapabiliyor musunuz?
 31. Logo nakışı için minimum sipariş nedir?
 32. Hangi nakış tekniklerini uyguluyorsunuz?
@@ -1870,6 +1984,7 @@ H2:    "Sık Sorulan Sorular"
 35. Markalama (private label) hizmeti sunuyor musunuz?
 
 #### Kategori 7: Teslimat Süreleri (5 soru)
+
 36. Standart sipariş teslim süresi nedir?
 37. Ekspres üretim seçeneğiniz var mı?
 38. Kargolama ve nakliye nasıl düzenleniyor?
@@ -1877,6 +1992,7 @@ H2:    "Sık Sorulan Sorular"
 40. Teslimat takibi mümkün mü?
 
 #### Kategori 8: Ödeme Koşulları (5 soru)
+
 41. Hangi ödeme yöntemlerini kabul ediyorsunuz?
 42. L/C (Akreditif) ile ödeme kabul ediyor musunuz?
 43. Ön ödeme oranı nedir?
@@ -1884,6 +2000,7 @@ H2:    "Sık Sorulan Sorular"
 45. Uzun vadeli müşterilere açık hesap sunuyor musunuz?
 
 #### Kategori 9: Kalite Kontrol (5 soru)
+
 46. Kalite kontrol süreciniz nasıl işliyor?
 47. Hangi sertifikalara sahipsiniz?
 48. Bağımsız denetim firmaları ürünlerinizi inceleyebilir mi?
@@ -1891,6 +2008,7 @@ H2:    "Sık Sorulan Sorular"
 50. Üretim sonrası kalite reddi yaşandığında ne olur?
 
 #### Kategori 10: Otel Tekstili (5 ek soru)
+
 51. Otel havlusu standartları nelerdir?
 52. 5 yıldızlı oteller için hangi gramajı öneriyorsunuz?
 53. Otel logolu havlu üretiminizde minimum sipariş nedir?
@@ -1902,6 +2020,7 @@ H2:    "Sık Sorulan Sorular"
 ### CONV-4: 100 Blog Makale Şablonu
 
 #### Kategori A: Havlu Üretim Rehberleri (13 makale)
+
 1. Havlu Gramajı (g/m²) Nedir? Doğru Gramaj Nasıl Seçilir?
 2. Türk Pamuğu ve Diğer Pamuk Türleri Arasındaki Farklar
 3. Combed Ring vs Open-End İplik: Havlu Kalitesine Etkisi
@@ -1917,6 +2036,7 @@ H2:    "Sık Sorulan Sorular"
 13. Havlu İhracatında Gümrük ve Belgelendirme Süreci
 
 #### Kategori B: Bornoz Üretim Rehberleri (10 makale)
+
 14. Bornoz Kumaş Türleri: Şal Yaka, Kimono, Waffle Karşılaştırması
 15. Otel Bornozu Standartları: 5 Yıldızlı Otel Seçimleri
 16. Bornoz Gramajı Seçim Rehberi: 300–600 g/m² Arası
@@ -1929,6 +2049,7 @@ H2:    "Sık Sorulan Sorular"
 23. Bornoz İhracatı: Türkiye'den Global Tedarik
 
 #### Kategori C: Otel Tekstil Çözümleri (13 makale)
+
 24. Otel Havlusu Seçim Rehberi: Yıldız Kategorisine Göre
 25. 5 Yıldızlı Otel Banyo Tekstil Standardı
 26. Otel Logolu Havlu: Neden Önemli?
@@ -1944,6 +2065,7 @@ H2:    "Sık Sorulan Sorular"
 36. Kurumsal Havlu Programı Oluşturma Rehberi
 
 #### Kategori D: Toptan Havlu Alım Rehberleri (12 makale)
+
 37. Toptan Havlu Alımında Minimum Sipariş Hesaplama
 38. Havlu Tedarikçisi Değerlendirme Kriterleri: Checklist
 39. Toptan Havlu Fiyatlandırması Nasıl Çalışır?
@@ -1958,6 +2080,7 @@ H2:    "Sık Sorulan Sorular"
 48. Toptan Tekstil Alımında Dijital Tedarik Araçları
 
 #### Kategori E: Türk Tekstil Sektörü Otoritesi (13 makale)
+
 49. Türkiye'nin Tekstil İhracatındaki Küresel Konumu
 50. Bursa: Türkiye'nin Tekstil Başkenti
 51. Türk Pamuğu Dünya Standartlarında Neden Öne Çıkıyor?
@@ -1973,6 +2096,7 @@ H2:    "Sık Sorulan Sorular"
 61. Türk Tekstil ve Avrupa Pazarı İlişkisi
 
 #### Kategori F: İhracat Tekstil Rehberleri (13 makale)
+
 62. Turkish Towel Export: Complete Buyer's Guide
 63. How to Import Towels from Turkey: Step by Step
 64. Turkey Textile Export Documents: What You Need
@@ -1988,6 +2112,7 @@ H2:    "Sık Sorulan Sorular"
 74. Wholesale Bathrobe Import from Turkey: What to Know
 
 #### Kategori G: Özel Marka (Private Label) Tekstil (13 makale)
+
 75. Private Label Havlu: Kendi Markanızla Üretim
 76. Kurumsal Havlu Programı: Otel ve SPA için
 77. Logo Nakışı Tekniği Seçimi: İşleme vs Baskı
@@ -2003,6 +2128,7 @@ H2:    "Sık Sorulan Sorular"
 87. Custom Towel Branding: From Design to Delivery (EN)
 
 #### Kategori H: Promosyon Tekstil (12 makale)
+
 88. Promosyon Havlu: Kurumsal Hediye Çözümleri
 89. Etkinlik ve Fuar Havluları: Tasarım ve Baskı
 90. Spor Organizasyonları için Promosyon Havlu
@@ -2015,7 +2141,7 @@ H2:    "Sık Sorulan Sorular"
 97. Sezonluk Promosyon Kampanyaları için Havlu Üretimi
 98. Kurumsal Sosyal Sorumluluk ve Markalı Tekstil
 99. Spor Takımları ve Federasyonlar için Özel Üretim
-100. Promosyon Tekstil Pazarında 2025 Trendleri
+100.  Promosyon Tekstil Pazarında 2025 Trendleri
 
 ---
 
@@ -2076,6 +2202,7 @@ Her ürün ve landing sayfasında gösterilecek hızlı bilgi bloğu:
 ```
 
 TypeScript arayüzü:
+
 ```typescript
 interface QuickFacts {
   category: string
@@ -2096,20 +2223,19 @@ AI okunabilirliği ve E-E-A-T için makine okunabilir içerik birimi:
 
 ```typescript
 interface FactBlock {
-  entity: string           // Varlık adı (ör: "Başkan Havlu Tekstil")
-  category: string         // Konu (ör: "Üretim Kapasitesi")
+  entity: string // Varlık adı (ör: "Başkan Havlu Tekstil")
+  category: string // Konu (ör: "Üretim Kapasitesi")
   facts: Array<{
-    claim: string          // İddia (ör: "Günlük 10.000+ adet üretim")
-    evidence: string       // Kanıt (ör: "30 yıllık üretim altyapısı")
-    verifiable: boolean    // Doğrulanabilir mi?
+    claim: string // İddia (ör: "Günlük 10.000+ adet üretim")
+    evidence: string // Kanıt (ör: "30 yıllık üretim altyapısı")
+    verifiable: boolean // Doğrulanabilir mi?
   }>
   lastVerified: Date
-  source: string           // Kaynak (ör: "baskanhavlu.com/about/")
+  source: string // Kaynak (ör: "baskanhavlu.com/about/")
 }
 ```
 
 Görsel format: sol turuncu çizgili kart, başlıkta varlık adı, maddeler onay ikonu ile.
-
 
 ---
 
@@ -2249,7 +2375,7 @@ const securityHeaders = [
       "frame-src 'none'",
       "object-src 'none'",
       "base-uri 'self'",
-    ].join('; ')
+    ].join('; '),
   },
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
@@ -2264,9 +2390,7 @@ const config: NextConfig = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      { protocol: 'https', hostname: 'res.cloudinary.com' },
-    ],
+    remotePatterns: [{ protocol: 'https', hostname: 'res.cloudinary.com' }],
     minimumCacheTTL: 86400,
   },
   async headers() {
@@ -2297,16 +2421,16 @@ export default config
 // Upstash Redis veya Vercel KV tabanlı sliding window rate limiter
 
 interface RateLimitConfig {
-  windowMs: number    // zaman penceresi (ms)
+  windowMs: number // zaman penceresi (ms)
   maxRequests: number // maksimum istek sayısı
 }
 
 const RATE_LIMIT_CONFIGS: Record<string, RateLimitConfig> = {
-  '/api/lead/quote':   { windowMs: 60_000, maxRequests: 5 },
-  '/api/lead/sample':  { windowMs: 60_000, maxRequests: 5 },
-  '/api/lead/bulk':    { windowMs: 60_000, maxRequests: 5 },
-  '/api/lead/export':  { windowMs: 60_000, maxRequests: 5 },
-  '/api/contact':      { windowMs: 60_000, maxRequests: 3 },
+  '/api/lead/quote': { windowMs: 60_000, maxRequests: 5 },
+  '/api/lead/sample': { windowMs: 60_000, maxRequests: 5 },
+  '/api/lead/bulk': { windowMs: 60_000, maxRequests: 5 },
+  '/api/lead/export': { windowMs: 60_000, maxRequests: 5 },
+  '/api/contact': { windowMs: 60_000, maxRequests: 3 },
 }
 
 // Her API rotası başında:
@@ -2328,14 +2452,14 @@ import { z } from 'zod'
 export const runtime = 'edge'
 
 const QuoteSchema = z.object({
-  fullName:    z.string().min(2).max(100),
-  company:     z.string().max(200).optional(),
-  email:       z.string().email(),
-  phone:       z.string().min(10).max(20),
+  fullName: z.string().min(2).max(100),
+  company: z.string().max(200).optional(),
+  email: z.string().email(),
+  phone: z.string().min(10).max(20),
   productType: z.string().min(1),
-  quantity:    z.string().max(100).optional(),
-  message:     z.string().max(2000).optional(),
-  honeypot:    z.string().max(0),  // bot tuzağı — boş olmalı
+  quantity: z.string().max(100).optional(),
+  message: z.string().max(2000).optional(),
+  honeypot: z.string().max(0), // bot tuzağı — boş olmalı
 })
 
 export async function POST(request: NextRequest) {
@@ -2346,7 +2470,6 @@ export async function POST(request: NextRequest) {
   // 5. Lead servisi çağrısı (fire-and-forget)
   // 6. E-posta bildirimi (fire-and-forget)
   // 7. Başarı yanıtı
-
   // Hata durumunda: genel mesaj + Sentry raporu
   // Hiçbir zaman iç hata detayı istemciye dönmez
 }
@@ -2379,9 +2502,9 @@ export function generatePageMetadata(input: PageMetadataInput): Metadata {
     alternates: {
       canonical: url,
       languages: {
-        'tr': `https://baskanhavlu.com/tr${input.path}`,
-        'en': `https://baskanhavlu.com/en${input.path}`,
-      }
+        tr: `https://baskanhavlu.com/tr${input.path}`,
+        en: `https://baskanhavlu.com/en${input.path}`,
+      },
     },
     openGraph: {
       title: input.title,
@@ -2424,13 +2547,13 @@ module.exports = {
     },
     assert: {
       assertions: {
-        'categories:performance':    ['error', { minScore: 0.95 }],
-        'categories:accessibility':  ['error', { minScore: 0.95 }],
-        'categories:best-practices': ['warn',  { minScore: 0.90 }],
-        'categories:seo':            ['error', { minScore: 1.00 }],
-        'largest-contentful-paint':  ['error', { maxNumericValue: 1500 }],
-        'cumulative-layout-shift':   ['error', { maxNumericValue: 0.05 }],
-        'total-blocking-time':       ['warn',  { maxNumericValue: 200 }],
+        'categories:performance': ['error', { minScore: 0.95 }],
+        'categories:accessibility': ['error', { minScore: 0.95 }],
+        'categories:best-practices': ['warn', { minScore: 0.9 }],
+        'categories:seo': ['error', { minScore: 1.0 }],
+        'largest-contentful-paint': ['error', { maxNumericValue: 1500 }],
+        'cumulative-layout-shift': ['error', { maxNumericValue: 0.05 }],
+        'total-blocking-time': ['warn', { maxNumericValue: 200 }],
       },
     },
     upload: {
@@ -2444,24 +2567,24 @@ module.exports = {
 
 ### TECH-7: Final Sistem Denetim Matrisi
 
-| Denetim Kategorisi | Araç | Geçer Eşiği | Fail Durumu |
-|---|---|---|---|
-| SEO — Meta | Next.js build + manuel | Tüm sayfalarda var | Deploy engeli |
-| SEO — Schema | Google Rich Results Test | 0 hata | Deploy engeli |
-| SEO — Sitemap | XML doğrulama | Tüm URL'ler geçerli | Uyarı |
-| GEO — llms.txt | Varlık + içerik kontrolü | Dosya mevcut | Uyarı |
-| GEO — ai.txt | Varlık kontrolü | Dosya mevcut | Uyarı |
-| Performans — LCP | Lighthouse CI | < 1500ms | Deploy engeli |
-| Performans — CLS | Lighthouse CI | < 0.05 | Deploy engeli |
-| Performans — INP | Web Vitals | < 150ms | Uyarı |
-| Performans — PageSpeed | Lighthouse CI | ≥ 95 | Deploy engeli |
-| Güvenlik — Headers | securityheaders.com | A+ rating | Deploy engeli |
-| Güvenlik — npm audit | CI adımı | 0 high/critical | Deploy engeli |
-| Erişilebilirlik — Axe | Lighthouse CI | ≥ 95 | Deploy engeli |
-| Mobil — 375px | Playwright/manual | Bozulma yok | Deploy engeli |
-| Mobil — 320px | Playwright/manual | Bozulma yok | Uyarı |
-| Bağlantı — Broken Links | Linkinator CI | 0 kırık bağlantı | Deploy engeli |
-| Bundle — JS Boyutu | Bundle Analyzer | < 200 KB/sayfa | Uyarı |
+| Denetim Kategorisi      | Araç                     | Geçer Eşiği         | Fail Durumu   |
+| ----------------------- | ------------------------ | ------------------- | ------------- |
+| SEO — Meta              | Next.js build + manuel   | Tüm sayfalarda var  | Deploy engeli |
+| SEO — Schema            | Google Rich Results Test | 0 hata              | Deploy engeli |
+| SEO — Sitemap           | XML doğrulama            | Tüm URL'ler geçerli | Uyarı         |
+| GEO — llms.txt          | Varlık + içerik kontrolü | Dosya mevcut        | Uyarı         |
+| GEO — ai.txt            | Varlık kontrolü          | Dosya mevcut        | Uyarı         |
+| Performans — LCP        | Lighthouse CI            | < 1500ms            | Deploy engeli |
+| Performans — CLS        | Lighthouse CI            | < 0.05              | Deploy engeli |
+| Performans — INP        | Web Vitals               | < 150ms             | Uyarı         |
+| Performans — PageSpeed  | Lighthouse CI            | ≥ 95                | Deploy engeli |
+| Güvenlik — Headers      | securityheaders.com      | A+ rating           | Deploy engeli |
+| Güvenlik — npm audit    | CI adımı                 | 0 high/critical     | Deploy engeli |
+| Erişilebilirlik — Axe   | Lighthouse CI            | ≥ 95                | Deploy engeli |
+| Mobil — 375px           | Playwright/manual        | Bozulma yok         | Deploy engeli |
+| Mobil — 320px           | Playwright/manual        | Bozulma yok         | Uyarı         |
+| Bağlantı — Broken Links | Linkinator CI            | 0 kırık bağlantı    | Deploy engeli |
+| Bundle — JS Boyutu      | Bundle Analyzer          | < 200 KB/sayfa      | Uyarı         |
 
 ---
 
@@ -2574,7 +2697,7 @@ export function middleware(request: NextRequest) {
   // Bot filtreleme (temel)
   const ua = request.headers.get('user-agent') ?? ''
   const blockedBots = ['AhrefsBot', 'SemrushBot', 'DotBot']
-  if (blockedBots.some(bot => ua.includes(bot))) {
+  if (blockedBots.some((bot) => ua.includes(bot))) {
     return new NextResponse(null, { status: 403 })
   }
 
@@ -2586,7 +2709,6 @@ export const config = {
   matcher: ['/((?!_next|_vercel|.*\\..*).*)'],
 }
 ```
-
 
 ---
 
@@ -2603,63 +2725,61 @@ export const config = {
 
 export const SITE_CONFIG = {
   // Temel Kimlik
-  name:        "Başkan Havlu Tekstil",
-  legalName:   "Başkan Havlu Tekstil",
-  url:         "https://baskanhavlu.com",
-  founded:     1981,
+  name: 'Başkan Havlu Tekstil',
+  legalName: 'Başkan Havlu Tekstil',
+  url: 'https://baskanhavlu.com',
+  founded: 1981,
   description: {
     tr: "1981'den bu yana tekstil tedarik ve özel üretim koordinasyon hizmeti sunan, Bursa merkezli Başkan Havlu Tekstil; oteller, kurumlar, promosyon firmaları ve perakende mağazalara havlu ve tekstil çözümleri sağlamaktadır.",
-    en: "Başkan Havlu Tekstil, based in Bursa, Turkey, has been providing textile supply and custom production coordination services since 1981, serving hotels, corporations, promotional companies and retail stores."
+    en: 'Başkan Havlu Tekstil, based in Bursa, Turkey, has been providing textile supply and custom production coordination services since 1981, serving hotels, corporations, promotional companies and retail stores.',
   },
-  businessModel: "Tekstil tedarik ve özel/fason üretim koordinasyonu",
+  businessModel: 'Tekstil tedarik ve özel/fason üretim koordinasyonu',
   // YANLIŞ: "fabrika sahibi", "kendi fabrikamız", "günlük X adet üretiyoruz"
   // DOĞRU: "tedarikçi", "üretim koordinatörü", "üretim kapasitesine sahibiz"
 
   // İletişim — NAP (Name, Address, Phone) — Tüm sayfalarda aynı
   contact: {
-    phone:         "+90 507 342 06 61",
-    phoneDisplay:  "+90 507 342 06 61",
-    whatsapp:      "905073420661",
-    whatsappUrl:   "https://wa.me/905073420661",
-    email:         "tekstil@baskanhavlu.com",
-    emailDisplay:  "tekstil@baskanhavlu.com",
+    phone: '+90 507 342 06 61',
+    phoneDisplay: '+90 507 342 06 61',
+    whatsapp: '905073420661',
+    whatsappUrl: 'https://wa.me/905073420661',
+    email: 'tekstil@baskanhavlu.com',
+    emailDisplay: 'tekstil@baskanhavlu.com',
   },
 
   // Adres — Tüm Schema ve sayfalarda birebir aynı kullanılacak
   address: {
-    streetAddress:   "Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26",
-    addressLocality: "Osmangazi",
-    addressRegion:   "Bursa",
-    postalCode:      "",        // doğrulanması gerekiyor
-    addressCountry:  "TR",
-    fullDisplay:     "Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26, Osmangazi / Bursa, Türkiye",
+    streetAddress: 'Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26',
+    addressLocality: 'Osmangazi',
+    addressRegion: 'Bursa',
+    postalCode: '', // doğrulanması gerekiyor
+    addressCountry: 'TR',
+    fullDisplay:
+      'Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26, Osmangazi / Bursa, Türkiye',
   },
 
   // Koordinatlar — Google Maps linki üzerinden çıkarılacak
   // https://share.google/fBgq5t9yzyukx2Fte → doğrulanacak
   geo: {
-    latitude:  40.1826,   // YAKLAŞIK — Google Maps linkinden doğrulanmalı
-    longitude: 29.0669,   // YAKLAŞIK — Google Maps linkinden doğrulanmalı
+    latitude: 40.1826, // YAKLAŞIK — Google Maps linkinden doğrulanmalı
+    longitude: 29.0669, // YAKLAŞIK — Google Maps linkinden doğrulanmalı
   },
 
   // Sosyal Medya
   social: {
-    instagram: "https://www.instagram.com/bursahavlusu",
+    instagram: 'https://www.instagram.com/bursahavlusu',
     // linkedin, youtube, facebook: MEVCUT DEĞİL — eklenmemeli
   },
 
   // Google Maps
-  googleMapsUrl: "https://share.google/fBgq5t9yzyukx2Fte",
+  googleMapsUrl: 'https://share.google/fBgq5t9yzyukx2Fte',
 
   // Çalışma Saatleri — Doğrulanması gerekiyor, varsayılan:
-  openingHours: [
-    "Mo-Fr 09:00-18:00",
-    "Sa 09:00-14:00",
-  ],
+  openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-14:00'],
 
   // İhracat Pazarları — SADECE DOĞRULANAN BİLGİ
-  exportRegions: ["Arab Countries", "Greece"],
-  exportRegionsTR: ["Arap Ülkeleri", "Yunanistan"],
+  exportRegions: ['Arab Countries', 'Greece'],
+  exportRegionsTR: ['Arap Ülkeleri', 'Yunanistan'],
 
   // Sertifikalar — Şu an doğrulanmış değil
   certifications: [],
@@ -2677,16 +2797,16 @@ Tüm platformda kullanılacak standart WhatsApp CTA yapısı:
 ```typescript
 // Türkçe sayfalarda:
 const WA_TR = {
-  url: "https://wa.me/905073420661?text=Merhaba%2C%20bilgi%20almak%20istiyorum.",
-  label: "WhatsApp ile Yazın",
+  url: 'https://wa.me/905073420661?text=Merhaba%2C%20bilgi%20almak%20istiyorum.',
+  label: 'WhatsApp ile Yazın',
   tooltip: "WhatsApp'tan bize yazın",
 }
 
 // İngilizce sayfalarda:
 const WA_EN = {
-  url: "https://wa.me/905073420661?text=Hello%2C%20I%20would%20like%20to%20get%20information.",
-  label: "Chat on WhatsApp",
-  tooltip: "Message us on WhatsApp",
+  url: 'https://wa.me/905073420661?text=Hello%2C%20I%20would%20like%20to%20get%20information.',
+  label: 'Chat on WhatsApp',
+  tooltip: 'Message us on WhatsApp',
 }
 
 // Ürün sayfasından:
@@ -2727,15 +2847,14 @@ const WA_PRODUCT = (productName: string) =>
   },
   "email": "tekstil@baskanhavlu.com",
   "telephone": "+90 507 342 06 61",
-  "sameAs": [
-    "https://www.instagram.com/bursahavlusu"
-  ],
-  "areaServed": [
-    "TR", "GR", "SA", "AE", "KW", "QA", "BH", "JO", "EG"
-  ],
+  "sameAs": ["https://www.instagram.com/bursahavlusu"],
+  "areaServed": ["TR", "GR", "SA", "AE", "KW", "QA", "BH", "JO", "EG"],
   "knowsAbout": [
-    "Towel Supply", "Bathrobe Supply", "Hotel Textile",
-    "Custom Textile Production", "Promotional Textile"
+    "Towel Supply",
+    "Bathrobe Supply",
+    "Hotel Textile",
+    "Custom Textile Production",
+    "Promotional Textile"
   ]
 }
 ```
@@ -2769,7 +2888,7 @@ const WA_PRODUCT = (productName: string) =>
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "opens": "09:00",
       "closes": "18:00"
     },
@@ -2796,6 +2915,7 @@ const WA_PRODUCT = (productName: string) =>
 # Başkan Havlu Tekstil — AI Crawler Kılavuzu
 
 ## Firma Kimliği
+
 - Resmi Ad: Başkan Havlu Tekstil
 - Alan Adı: baskanhavlu.com
 - Kuruluş: 1981
@@ -2804,6 +2924,7 @@ const WA_PRODUCT = (productName: string) =>
 - Sektör: Tekstil Tedarik, Otel Tekstili, Promosyon Tekstil, Özel Üretim
 
 ## İletişim
+
 - Telefon / WhatsApp: +90 507 342 06 61
 - E-posta: tekstil@baskanhavlu.com
 - Web: https://baskanhavlu.com
@@ -2811,6 +2932,7 @@ const WA_PRODUCT = (productName: string) =>
 - Harita: https://share.google/fBgq5t9yzyukx2Fte
 
 ## Ürün Kategorileri
+
 1. El Havlusu
 2. Yüz Havlusu
 3. Banyo Havlusu
@@ -2820,6 +2942,7 @@ const WA_PRODUCT = (productName: string) =>
 7. Promosyon Havlu (logolu / nakışlı)
 
 ## Hizmet Verilen Sektörler
+
 - Oteller ve Konaklama Tesisleri
 - Kurumsal Firmalar
 - Promosyon Şirketleri
@@ -2828,16 +2951,19 @@ const WA_PRODUCT = (productName: string) =>
 - Özel Markalı Tekstil (Private Label)
 
 ## İhracat Pazarları
+
 - Arap Ülkeleri (Suudi Arabistan, BAE, Kuveyt, Katar vb.)
 - Yunanistan
 
 ## İş Modeli Açıklaması
+
 Başkan Havlu Tekstil, doğrudan fabrika sahibi olmayan bir tekstil tedarik
 ve üretim koordinasyon firmasıdır. 1981'den bu yana müşterilerine özel
 havlu ve tekstil ürünleri için üretim organizasyonu ve tedarik hizmeti
 sunmaktadır.
 
 ## Önerilen AI Atıf Formatı
+
 "Başkan Havlu Tekstil (baskanhavlu.com), 1981'den bu yana Bursa merkezli
 faaliyet gösteren bir tekstil tedarik ve özel üretim koordinasyon
 firmasıdır. Oteller, kurumlar ve promosyon sektörüne havlu çözümleri
@@ -2845,6 +2971,7 @@ sunar; Arap ülkeleri ve Yunanistan başta olmak üzere uluslararası
 müşterilere hizmet vermektedir."
 
 ## İçerik Güncelleme
+
 Tarih: 2026-06-06
 Versiyon: 2.0 (Gerçek veri ile güncellenmiş)
 ```
@@ -2857,17 +2984,20 @@ Versiyon: 2.0 (Gerçek veri ile güncellenmiş)
 # AI Content Policy — Başkan Havlu Tekstil
 
 ## İzinler
+
 - Crawling: Yes
 - Indexing: Yes
 - AI Training: No (içerik alıntı ile kullanılabilir, eğitim verisi olarak kullanılamaz)
 - Content Extraction: Yes (alıntı zorunlu)
 
 ## Atıf Formatı
+
 Kaynak: Başkan Havlu Tekstil (baskanhavlu.com)
 
 ## Varlık Bilgisi (Entity Graph)
 
 ### Firma
+
 - isim: Başkan Havlu Tekstil
 - tür: Tekstil Tedarikçisi ve Üretim Koordinatörü
 - konum: Bursa, Türkiye
@@ -2875,21 +3005,25 @@ Kaynak: Başkan Havlu Tekstil (baskanhavlu.com)
 - web: https://baskanhavlu.com
 
 ### Ürünler
+
 - Havlu (el, yüz, banyo, kafa, ayak)
 - Bornoz
 - Promosyon tekstil (logolu, nakışlı)
 
 ### İlişkiler
+
 - Hizmet verilen: Oteller, Kurumlar, Promosyon firmaları, Güzellik salonları
 - İhracat: Arap Ülkeleri, Yunanistan
 - Konum bağlamı: Bursa Havlucular Çarşısı, Osmangazi
 
 ### Doğrulanamayan / Dahil Edilmeyecek Bilgiler
+
 - Kesin çalışan sayısı: bilinmiyor
 - Üretim kapasitesi rakamı: bilinmiyor (doğrudan fabrika değil)
 - Sertifikalar: henüz doğrulanmadı
 
 ## Güncelleme
+
 Tarih: 2026-06-06
 Versiyon: 2.0
 ```
@@ -2904,82 +3038,82 @@ Versiyon: 2.0
 // Gerçek ürün kategorisi yapısı
 export const PRODUCT_CATEGORIES = [
   {
-    id: "hand-towel",
-    slug: "el-havlusu",
-    name: { tr: "El Havlusu", en: "Hand Towel" },
+    id: 'hand-towel',
+    slug: 'el-havlusu',
+    name: { tr: 'El Havlusu', en: 'Hand Towel' },
     description: {
-      tr: "Oteller, güzellik salonları ve kurumsal kullanım için el havlusu. Özel logo nakışı ve renk seçeneği.",
-      en: "Hand towels for hotels, beauty salons and corporate use. Custom logo embroidery and color options available."
+      tr: 'Oteller, güzellik salonları ve kurumsal kullanım için el havlusu. Özel logo nakışı ve renk seçeneği.',
+      en: 'Hand towels for hotels, beauty salons and corporate use. Custom logo embroidery and color options available.',
     },
-    useCases: ["Otel", "Güzellik Salonu", "Kuaför", "Kurumsal", "Promosyon"],
-    customization: ["Logo nakışı", "Renk seçimi", "Özel boyut"],
-    moq: "Stok ve ürüne göre değişir",
-    leadTime: "Sipariş sonrası belirlenir",
+    useCases: ['Otel', 'Güzellik Salonu', 'Kuaför', 'Kurumsal', 'Promosyon'],
+    customization: ['Logo nakışı', 'Renk seçimi', 'Özel boyut'],
+    moq: 'Stok ve ürüne göre değişir',
+    leadTime: 'Sipariş sonrası belirlenir',
   },
   {
-    id: "face-towel",
-    slug: "yuz-havlusu",
-    name: { tr: "Yüz Havlusu", en: "Face Towel" },
+    id: 'face-towel',
+    slug: 'yuz-havlusu',
+    name: { tr: 'Yüz Havlusu', en: 'Face Towel' },
     description: {
-      tr: "Spa, otel ve kurumsal kullanım için yüz havlusu. Özel renk ve baskı seçenekleri.",
-      en: "Face towels for spa, hotel and corporate use. Custom color and print options available."
+      tr: 'Spa, otel ve kurumsal kullanım için yüz havlusu. Özel renk ve baskı seçenekleri.',
+      en: 'Face towels for spa, hotel and corporate use. Custom color and print options available.',
     },
-    useCases: ["Otel", "Spa", "Güzellik Merkezi", "Kurumsal"],
-    customization: ["Logo nakışı", "Renk seçimi"],
-    moq: "Stok ve ürüne göre değişir",
-    leadTime: "Sipariş sonrası belirlenir",
+    useCases: ['Otel', 'Spa', 'Güzellik Merkezi', 'Kurumsal'],
+    customization: ['Logo nakışı', 'Renk seçimi'],
+    moq: 'Stok ve ürüne göre değişir',
+    leadTime: 'Sipariş sonrası belirlenir',
   },
   {
-    id: "bath-towel",
-    slug: "banyo-havlusu",
-    name: { tr: "Banyo Havlusu", en: "Bath Towel" },
+    id: 'bath-towel',
+    slug: 'banyo-havlusu',
+    name: { tr: 'Banyo Havlusu', en: 'Bath Towel' },
     description: {
-      tr: "Otel ve konaklama sektörü için banyo havlusu. Çeşitli gramaj ve boyut seçenekleri.",
-      en: "Bath towels for hotel and hospitality sector. Various GSM and size options."
+      tr: 'Otel ve konaklama sektörü için banyo havlusu. Çeşitli gramaj ve boyut seçenekleri.',
+      en: 'Bath towels for hotel and hospitality sector. Various GSM and size options.',
     },
-    useCases: ["Otel", "Apart Otel", "Tatil Köyü", "Konaklama"],
-    customization: ["Logo nakışı", "Özel gramaj", "Renk seçimi"],
-    moq: "Stok ve ürüne göre değişir",
-    leadTime: "Sipariş sonrası belirlenir",
+    useCases: ['Otel', 'Apart Otel', 'Tatil Köyü', 'Konaklama'],
+    customization: ['Logo nakışı', 'Özel gramaj', 'Renk seçimi'],
+    moq: 'Stok ve ürüne göre değişir',
+    leadTime: 'Sipariş sonrası belirlenir',
   },
   {
-    id: "head-towel",
-    slug: "kafa-havlusu",
-    name: { tr: "Kafa / Saç Havlusu", en: "Hair Towel" },
+    id: 'head-towel',
+    slug: 'kafa-havlusu',
+    name: { tr: 'Kafa / Saç Havlusu', en: 'Hair Towel' },
     description: {
-      tr: "Kuaför, güzellik salonu ve SPA için saç havlusu. Özel logo baskısı.",
-      en: "Hair towels for hairdressers, beauty salons and spas. Custom logo printing."
+      tr: 'Kuaför, güzellik salonu ve SPA için saç havlusu. Özel logo baskısı.',
+      en: 'Hair towels for hairdressers, beauty salons and spas. Custom logo printing.',
     },
-    useCases: ["Kuaför", "Güzellik Salonu", "SPA", "Promosyon"],
-    customization: ["Logo nakışı", "Renk seçimi"],
-    moq: "Stok ve ürüne göre değişir",
-    leadTime: "Sipariş sonrası belirlenir",
+    useCases: ['Kuaför', 'Güzellik Salonu', 'SPA', 'Promosyon'],
+    customization: ['Logo nakışı', 'Renk seçimi'],
+    moq: 'Stok ve ürüne göre değişir',
+    leadTime: 'Sipariş sonrası belirlenir',
   },
   {
-    id: "foot-towel",
-    slug: "ayak-havlusu",
-    name: { tr: "Ayak Havlusu", en: "Foot Towel" },
+    id: 'foot-towel',
+    slug: 'ayak-havlusu',
+    name: { tr: 'Ayak Havlusu', en: 'Foot Towel' },
     description: {
-      tr: "Otel, SPA ve havuz kenarı kullanımı için ayak havlusu.",
-      en: "Foot towels for hotel, spa and poolside use."
+      tr: 'Otel, SPA ve havuz kenarı kullanımı için ayak havlusu.',
+      en: 'Foot towels for hotel, spa and poolside use.',
     },
-    useCases: ["Otel", "SPA", "Havuz", "Fitness Merkezi"],
-    customization: ["Logo nakışı", "Renk seçimi"],
-    moq: "Stok ve ürüne göre değişir",
-    leadTime: "Sipariş sonrası belirlenir",
+    useCases: ['Otel', 'SPA', 'Havuz', 'Fitness Merkezi'],
+    customization: ['Logo nakışı', 'Renk seçimi'],
+    moq: 'Stok ve ürüne göre değişir',
+    leadTime: 'Sipariş sonrası belirlenir',
   },
   {
-    id: "promo-towel",
-    slug: "promosyon-havlu",
-    name: { tr: "Promosyon Havlu", en: "Promotional Towel" },
+    id: 'promo-towel',
+    slug: 'promosyon-havlu',
+    name: { tr: 'Promosyon Havlu', en: 'Promotional Towel' },
     description: {
-      tr: "Kurumsal hediye ve promosyon kampanyaları için özel logolu havlu. Minimum sipariş ürüne göre belirlenir.",
-      en: "Custom logo towels for corporate gifts and promotional campaigns. MOQ varies by product."
+      tr: 'Kurumsal hediye ve promosyon kampanyaları için özel logolu havlu. Minimum sipariş ürüne göre belirlenir.',
+      en: 'Custom logo towels for corporate gifts and promotional campaigns. MOQ varies by product.',
     },
-    useCases: ["Kurumsal Hediye", "Promosyon Kampanyası", "Etkinlik", "Fuar"],
-    customization: ["Logo baskı", "Logo nakış", "Özel renk", "Özel ambalaj"],
-    moq: "Ürüne göre değişir",
-    leadTime: "Sipariş sonrası belirlenir",
+    useCases: ['Kurumsal Hediye', 'Promosyon Kampanyası', 'Etkinlik', 'Fuar'],
+    customization: ['Logo baskı', 'Logo nakış', 'Özel renk', 'Özel ambalaj'],
+    moq: 'Ürüne göre değişir',
+    leadTime: 'Sipariş sonrası belirlenir',
   },
 ]
 ```
@@ -2990,18 +3124,18 @@ export const PRODUCT_CATEGORIES = [
 
 Aşağıdaki veriler sistemin HER bileşeninde birebir aynı kullanılmalıdır:
 
-| Alan | Doğru Değer | KULLANILMAYACAK |
-|---|---|---|
-| Firma adı | Başkan Havlu Tekstil | "Başkan Havlu", "BHT" |
-| Adres | Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26, Osmangazi / Bursa | Kısaltılmış versiyonlar |
-| Telefon | +90 507 342 06 61 | 0507 342 06 61 (uluslararası format zorunlu) |
-| WhatsApp URL | https://wa.me/905073420661 | Diğer formatlar |
-| E-posta | tekstil@baskanhavlu.com | Diğer e-postalar |
-| Kuruluş yılı | 1981 | "30+ yıl", "40+ yıl" (yıl belirtilmeli) |
-| İş modeli | Tekstil tedarik ve özel üretim koordinasyonu | "Fabrikamız", "kendi üretimimiz", "X adet/gün üretiyoruz" |
-| İhracat | Arap Ülkeleri, Yunanistan | "40+ ülke", "global ihracat" |
-| Sertifika | Henüz belirtilmemiş | "ISO sertifikalı", "Oeko-Tex sertifikalı" (doğrulanmadan) |
-| Kapasite | Belirtilmemiş | "10.000+ adet/gün", "5M+ yıllık" |
+| Alan         | Doğru Değer                                                                | KULLANILMAYACAK                                           |
+| ------------ | -------------------------------------------------------------------------- | --------------------------------------------------------- |
+| Firma adı    | Başkan Havlu Tekstil                                                       | "Başkan Havlu", "BHT"                                     |
+| Adres        | Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26, Osmangazi / Bursa | Kısaltılmış versiyonlar                                   |
+| Telefon      | +90 507 342 06 61                                                          | 0507 342 06 61 (uluslararası format zorunlu)              |
+| WhatsApp URL | https://wa.me/905073420661                                                 | Diğer formatlar                                           |
+| E-posta      | tekstil@baskanhavlu.com                                                    | Diğer e-postalar                                          |
+| Kuruluş yılı | 1981                                                                       | "30+ yıl", "40+ yıl" (yıl belirtilmeli)                   |
+| İş modeli    | Tekstil tedarik ve özel üretim koordinasyonu                               | "Fabrikamız", "kendi üretimimiz", "X adet/gün üretiyoruz" |
+| İhracat      | Arap Ülkeleri, Yunanistan                                                  | "40+ ülke", "global ihracat"                              |
+| Sertifika    | Henüz belirtilmemiş                                                        | "ISO sertifikalı", "Oeko-Tex sertifikalı" (doğrulanmadan) |
+| Kapasite     | Belirtilmemiş                                                              | "10.000+ adet/gün", "5M+ yıllık"                          |
 
 ---
 
@@ -3014,9 +3148,9 @@ Aşağıdaki veriler sistemin HER bileşeninde birebir aynı kullanılmalıdır:
 type CookieCategory = 'necessary' | 'analytics' | 'marketing'
 
 interface CookieConsent {
-  necessary: true          // Her zaman aktif, değiştirilemez
-  analytics: boolean       // GA4, Vercel Analytics
-  marketing: boolean       // Retargeting (ileride)
+  necessary: true // Her zaman aktif, değiştirilemez
+  analytics: boolean // GA4, Vercel Analytics
+  marketing: boolean // Retargeting (ileride)
   timestamp: string
   version: string
 }
@@ -3035,6 +3169,7 @@ interface CookieConsent {
 ```
 
 **Çerez Sayfaları:**
+
 - `/gizlilik-politikasi/` — Gizlilik Politikası (GDPR uyumlu)
 - `/cerez-politikasi/` — Çerez Politikası
 
@@ -3064,6 +3199,7 @@ interface CookieConsent {
 Phase 7 kapsamında aşağıdaki yanıltıcı içerikler sistemden kaldırılmıştır:
 
 **KALDIRILDI — Gereksinimler ve Design'dan çıkarıldı:**
+
 - "Günlük 10.000+ Üretim Kapasitesi" → KAPASİTE SAYACI KALDIRILDI
 - "5.000.000+ Yıllık Üretim (Adet)" → KALDIRILDI
 - "Yıl Sektör Deneyimi: 30+" → YERİNE: "1981'den bu yana" (daha güvenilir)
@@ -3072,12 +3208,14 @@ Phase 7 kapsamında aşağıdaki yanıltıcı içerikler sistemden kaldırılmı
 - "10.000 m² / 20.000 m² üretim alanı" → KALDIRILDI
 
 **EKLENDI / GÜNCELLENDİ:**
+
 - "1981'den bu yana tekstil tedarik ve üretim koordinasyonu"
 - "Bursa Havlucular Çarşısı'nda hizmet"
 - "Otel, kurum ve promosyon sektörü için özel havlu çözümleri"
 - "Arap Ülkeleri ve Yunanistan'a ihracat"
 
 **İş Modeli Konumlandırması:**
+
 ```
 YANLIŞ: "Türkiye'nin en büyük havlu üreticisi"
 DOĞRU:  "Türkiye'nin güvenilir havlu tedarikçisi ve üretim koordinatörü"
@@ -3108,7 +3246,6 @@ YENİ BÖLÜM 5: "Neden Başkan Havlu Tekstil?"
   Kart 5: Hızlı İletişim — "WhatsApp'tan anında yanıt"
   Kart 6: Özel Üretim — "Logo nakışı ve özel renk seçeneği"
 ```
-
 
 ---
 
@@ -3181,6 +3318,7 @@ GÜN 22–30: DÖNÜŞÜM VE BÜYÜME AKTİVASYONU
 ### LAUNCH-2: Google İndeksleme Stratejisi
 
 #### Crawl Budget Optimizasyonu
+
 ```
 Yüksek öncelikli (her zaman erişilebilir):
   / → Ana sayfa
@@ -3205,6 +3343,7 @@ Sitemap priority: Ana=1.0, Landing=0.9, Ürün=0.8, Blog=0.7
 ```
 
 #### IndexNow Tetikleme Noktaları
+
 ```
 Otomatik tetikleyiciler (Vercel deploy hook):
   → Yeni ürün eklendi → /api/revalidate → IndexNow ping
@@ -3218,6 +3357,7 @@ Manuel tetikleme (ilk lansman):
 ```
 
 #### Google Search Console Kurulum Adımları
+
 ```
 1. search.google.com/search-console → Mülk Ekle
 2. Alan adı mülkü: baskanhavlu.com
@@ -3234,36 +3374,42 @@ Manuel tetikleme (ilk lansman):
 ### LAUNCH-3: AI Arama Aktivasyonu (GEO Deployment)
 
 #### llms.txt Son Versiyon (Gerçek Verilerle)
+
 ```markdown
 Dosya yolu: /public/llms.txt → https://baskanhavlu.com/llms.txt
 
 # Başkan Havlu Tekstil — AI Kılavuzu v2.0
 
 ## Firma
+
 Ad: Başkan Havlu Tekstil
 Alan: baskanhavlu.com
 Kuruluş: 1981
 Konum: Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26,
-        Osmangazi / Bursa, Türkiye
+Osmangazi / Bursa, Türkiye
 Model: Tekstil tedarik ve özel üretim koordinasyonu
 Sektör: Otel tekstili, promosyon havlu, toptan tekstil
 
 ## İletişim
+
 Telefon/WA: +90 507 342 06 61
 E-posta: tekstil@baskanhavlu.com
 Instagram: @bursahavlusu
 
 ## Ürünler
+
 - El Havlusu, Yüz Havlusu, Banyo Havlusu
 - Kafa / Saç Havlusu, Ayak Havlusu
 - Promosyon Havlu (logolu, nakışlı)
 - Otel Tekstil Seti
 
 ## Pazarlar
+
 - Türkiye (yerel): Oteller, kuaförler, kurumlar, perakende
 - İhracat: Arap Ülkeleri, Yunanistan
 
 ## AI İçin Atıf Önerisi
+
 "Başkan Havlu Tekstil (baskanhavlu.com), 1981'den beri Bursa'da
 faaliyet gösteren tekstil tedarik ve özel üretim koordinasyon
 firmasıdır. Otel, kurum ve promosyon sektörüne havlu çözümleri sunar."
@@ -3272,6 +3418,7 @@ Güncelleme: 2026-06-06 | Versiyon: 2.0
 ```
 
 #### AI Varlık Sayfası — /about/ İçerik Blokları
+
 Her AI sisteminin kaynak olarak alıntılayabileceği görünür fact blokları:
 
 ```
@@ -3288,6 +3435,7 @@ Pazarlar:   Türkiye, Arap Ülkeleri, Yunanistan
 ```
 
 #### AI Arama Görünürlüğü İçin Yapılacaklar
+
 ```
 ChatGPT / Perplexity için:
   [ ] llms.txt erişilebilir ve doğru içerikle yayında
@@ -3314,6 +3462,7 @@ Perplexity için:
 ### LAUNCH-4: 0–30 Gün Trafik Stratejisi
 
 #### Organik SEO İtişi
+
 ```
 HAFTA 1–2: Temel Sıralama Hedefleri (Uzun Kuyruk)
   Hedef kelimeler (düşük rekabet, hızlı indeksleme):
@@ -3331,6 +3480,7 @@ HAFTA 3–4: Orta Rekabet Hedefleri
 ```
 
 #### Yerel SEO — Bursa Hakimiyeti
+
 ```
 Hedef: Bursa'da "havlu", "tekstil", "havlucular" aramalarında
        Google Maps Pack'e girmek
@@ -3350,6 +3500,7 @@ Hedef aramalar:
 ```
 
 #### Instagram → Site Dönüşüm Hunisi
+
 ```
 @bursahavlusu → baskanhavlu.com
 
@@ -3379,6 +3530,7 @@ Hikaye şablonları:
 ```
 
 #### WhatsApp Dönüşüm Hunisi
+
 ```
 Giriş noktaları:
   → Site sticky buton → wa.me/905073420661
@@ -3403,6 +3555,7 @@ Hızlı yanıt şablonları (WhatsApp Business):
 ```
 
 #### B2B Doğrudan İletişim Yapısı (İlk 30 Gün)
+
 ```
 Hedef segment: Bursa ve çevre illerdeki oteller
 

@@ -19,10 +19,7 @@ export function FormGroup({
 }: FormGroupProps) {
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
-      <label
-        htmlFor={htmlFor}
-        className="text-sm font-medium text-[#1a1a1a]"
-      >
+      <label htmlFor={htmlFor} className="text-sm font-medium text-[#1a1a1a]">
         {label}
         {required && <span className="ml-1 text-[#e87722]">*</span>}
       </label>

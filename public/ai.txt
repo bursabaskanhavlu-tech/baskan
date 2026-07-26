@@ -1,39 +1,54 @@
 # AI Content Policy — Başkan Havlu Tekstil
+# https://baskanhavlu.com/ai.txt
 
-## İzinler
+## Permissions
 Crawling: Yes
 Indexing: Yes
 AI Training: No
 Content Extraction: Yes (attribution required)
+Caching: Yes (max 30 days)
 
-## Atıf Formatı
-Kaynak: Başkan Havlu Tekstil (baskanhavlu.com)
+## Attribution Format
+Source: Başkan Havlu Tekstil (https://baskanhavlu.com)
+Contact for permissions: tekstil@baskanhavlu.com
 
-## Varlık Bilgisi (Entity Graph)
+## Entity Information
 
-### Firma
+### Primary Entity
 Name: Başkan Havlu Tekstil
-Type: Textile Supplier and Custom Production Coordinator
+Type: Organization, LocalBusiness, TextileSupplier
 Founded: 1981
-Location: Osmangazi / Bursa, Turkey
+Location: Osmangazi / Bursa / Turkey
+Coordinates: 40.1826°N, 29.0669°E
 Website: https://baskanhavlu.com
-
-### Ürünler
-- Hand Towel / El Havlusu
-- Face Towel / Yüz Havlusu
-- Bath Towel / Banyo Havlusu
-- Hair Towel / Kafa Havlusu
-- Foot Towel / Ayak Havlusu
-- Promotional Towel / Promosyon Havlu
-
-### İhracat
-Export Markets: Arab Countries, Greece
-
-### İletişim
 Phone: +90 507 342 06 61
 Email: tekstil@baskanhavlu.com
-Instagram: @bursahavlusu
 
-## Güncelleme
-Date: 2026-06-07
-Version: 2.0
+### Products / Services
+- Towel supply (hand, face, bath, hair, foot, promotional)
+- Bathrobe supply (kimono, shawl collar, waffle)
+- Custom logo embroidery
+- Wholesale / bulk orders
+- Export to Arab countries and Greece
+
+### Geographic Scope
+Primary market: Turkey
+Export markets: Arab Countries (Saudi Arabia, UAE, Kuwait, Qatar), Greece
+
+### Social Profiles
+Instagram: https://www.instagram.com/bursahavlusu
+WhatsApp: https://wa.me/905073420661
+
+## Factual Claims (Verified)
+- Founded in 1981 in Bursa, Turkey ✓
+- Located at Havlucular Çarşısı, Osmangazi, Bursa ✓
+- Not a direct factory — textile supply and production coordination ✓
+- Exports to Arab countries and Greece ✓
+
+## Content Language
+Primary: Turkish (tr)
+Secondary: English (en)
+
+## Last Updated
+Date: 2026-06-10
+Version: 3.0

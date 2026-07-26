@@ -13,6 +13,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## P0 — Kritik (Deploy Öncesi Zorunlu)
 
 ### 1. Proje İskeleti ve Temel Yapılandırma
+
 - [x] 1.1 Next.js 15 App Router projesi oluştur (`npx create-next-app@latest --typescript --tailwind --app`)
   - Requires: -
 - [x] 1.2 TypeScript strict mode `tsconfig.json` yapılandır (`"strict": true`)
@@ -36,9 +37,10 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.1
 
 ### 2. Design Token ve Stil Sistemi
+
 - [x] 2.1 `tailwind.config.ts` — renk tokenları tanımla (orange-500: #E87722, beige, charcoal paleti)
   - Requires: 1.1
-- [x] 2.2 `app/globals.css` — CSS custom properties (--color-orange, --space-*, --radius-*)
+- [x] 2.2 `app/globals.css` — CSS custom properties (--color-orange, --space-_, --radius-_)
   - Requires: 2.1
 - [x] 2.3 `next/font` ile Plus Jakarta Sans ve DM Serif Display fontlarını kur
   - Requires: 1.1
@@ -46,6 +48,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 2.1
 
 ### 3. Temel Atom Bileşenler
+
 - [x] 3.1 `Button` bileşeni — 5 varyant (primary/secondary/ghost/whatsapp/destructive), 3 boyut, tüm durumlar
   - Requires: 2.1
 - [x] 3.2 `Badge` bileşeni — 6 varyant (default/premium/new/export/hotel/certificate)
@@ -60,6 +63,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 3.3
 
 ### 4. Güvenlik ve next.config.ts
+
 - [x] 4.1 `next.config.ts` — CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy güvenlik başlıkları
   - Requires: 1.1
 - [x] 4.2 `next.config.ts` — 301 yönlendirmeler (`/urunler` → `/new-collection`, `/hakkimizda` → `/about`, `/iletisim` → `/contact`)
@@ -72,9 +76,10 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.1
 
 ### 5. SEO Temel Altyapı
+
 - [x] 5.1 `lib/utils/metadata.ts` — `generatePageMetadata()` fonksiyonu (title, description, OG, Twitter Card, canonical, hreflang)
   - Requires: 1.8
-- [x] 5.2 `app/robots.ts` — robots.txt (/api/, /_next/ engelleme, GPTBot/Google-Extended izin, sitemap referansı)
+- [x] 5.2 `app/robots.ts` — robots.txt (/api/, /\_next/ engelleme, GPTBot/Google-Extended izin, sitemap referansı)
   - Requires: 1.1
 - [x] 5.3 `app/sitemap.ts` — otomatik sitemap.xml (tüm sayfalar, lastmod, priority, changefreq)
   - Requires: 1.1
@@ -88,6 +93,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.1
 
 ### 6. Layout ve Navigasyon
+
 - [x] 6.1 `app/[locale]/layout.tsx` — root layout (Navbar, Footer, StickyWhatsApp, CookieConsent)
   - Requires: 3.1, 5.1
 - [x] 6.2 `Navbar` organism — logo, nav linkleri, dil değiştirici, "Teklif Al" CTA; scroll'da mat arka plan
@@ -100,6 +106,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.8, 3.1
 
 ### 7. Form ve Lead API Sistemi
+
 - [x] 7.1 `lib/validations/lead.schema.ts` — Zod şemaları (quote, sample, bulk, export, contact)
   - Requires: 1.7
 - [x] 7.2 Resend kurulumu (`npm install resend`) + domain doğrulaması (baskanhavlu.com DNS kaydı)
@@ -122,6 +129,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 7.9
 
 ### 8. GDPR Çerez Sistemi
+
 - [x] 8.1 `components/providers/CookieConsentProvider.tsx` — context + localStorage yönetimi
   - Requires: 1.1
 - [x] 8.2 `CookieConsentBanner` bileşeni — "Kabul Et" + "Yalnızca Zorunlu" butonları
@@ -136,6 +144,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## P1 — Yüksek Öncelik (İlk Hafta)
 
 ### 9. Schema Markup Bileşenleri
+
 - [x] 9.1 `components/schema/OrganizationSchema.tsx` — gerçek NAP verileri (site.ts'den)
   - Requires: 1.8
 - [x] 9.2 `components/schema/LocalBusinessSchema.tsx` — açılış saatleri, geo koordinat
@@ -152,6 +161,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 1.8
 
 ### 10. Ana Sayfa
+
 - [x] 10.1 `HeroSection` — H1 başlık, CTA çifti (Teklif Al + Koleksiyonu Gör), güven sinyalleri (1981, Arap ülkeleri, Yunanistan)
   - Requires: 3.1, 6.1
 - [x] 10.2 `TrustBar` — partner/müşteri logoları yatay şerit
@@ -174,6 +184,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 5.1, 9.1, 9.2, 9.3
 
 ### 11. Ürün Sistemi
+
 - [x] 11.1 `content/products/` — 6 kategori JSON verisi (el, yüz, banyo, kafa, ayak havlusu, promosyon)
   - Requires: 1.8
 - [x] 11.2 `ProductCard` molecule — görsel, ad, kullanım alanı, özelleştirme, "Teklif İste" CTA
@@ -188,6 +199,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 11.4
 
 ### 12. Hakkımızda Sayfası
+
 - [x] 12.1 `/about/` sayfa — hero, firma hakkında (1981, fason model dürüst tanım)
   - Requires: 6.1, 5.1
 - [x] 12.2 `ProcessStep` bileşeni + üretim süreci bölümü (5 adım, yatay/dikey zaman çizelgesi)
@@ -208,6 +220,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 5.1, 9.1, 9.5
 
 ### 13. İletişim Sayfası
+
 - [x] 13.1 `/contact/` sayfa — iki sütun layout (form sol, bilgi + harita sağ)
   - Requires: 7.9, 6.1
 - [x] 13.2 WhatsApp öncelikli kart — yeşil kart, +90 507 342 06 61, ön mesajlı link
@@ -220,6 +233,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 5.1, 9.2
 
 ### 14. Öncelikli 4 Landing Sayfa
+
 - [x] 14.1 `/havlu-ureticisi/` — AITA yapısı, FAQPage Schema, hedef: "havlu tedarikçisi bursa"
   - Requires: 7.9, 9.5, 5.1
 - [x] 14.2 `/toptan-havlu/` — AITA yapısı, FAQPage Schema, hedef: "toptan havlu tedarikçisi"
@@ -236,6 +250,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## P2 — Orta Öncelik (İkinci Hafta)
 
 ### 15. Kalan 7 Landing Sayfa
+
 - [x] 15.1 `/bornoz-ureticisi/` — AITA yapısı, FAQPage Schema
   - Requires: 14.1
 - [x] 15.2 `/toptan-bornoz/`
@@ -252,6 +267,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 14.1
 
 ### 16. Blog Sistemi
+
 - [x] 16.1 `app/[locale]/blog/page.tsx` — blog listesi (ISR r:1800), BreadcrumbList Schema
   - Requires: 6.1
 - [x] 16.2 `app/[locale]/blog/[slug]/page.tsx` — makale sayfası, Article Schema, ilgili makaleler
@@ -262,6 +278,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 16.2, 16.3
 
 ### 17. Analytics ve Gözlemlenebilirlik
+
 - [x] 17.1 GA4 entegrasyonu — `next/script` strategy="afterInteractive", GDPR koşullu
   - Requires: 8.1
 - [x] 17.2 GA4 custom eventler: `form_submit`, `whatsapp_click`, `cta_click`, `product_view`
@@ -278,6 +295,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 6.1
 
 ### 18. GDPR Sayfaları
+
 - [x] 18.1 `/gizlilik-politikasi/` sayfası — GDPR uyumlu içerik
   - Requires: 6.1
 - [x] 18.2 `/cerez-politikasi/` sayfası — çerez kategorileri ve kullanım
@@ -286,6 +304,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 6.4, 18.1, 18.2
 
 ### 19. Çok Dilli Destek
+
 - [~] 19.1 `next-intl` kurulumu (`npm install next-intl`)
   - Requires: 1.1
 - [~] 19.2 `messages/tr.json` — tüm Türkçe UI metinleri
@@ -298,6 +317,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 5.1
 
 ### 20. Performans Optimizasyonu
+
 - [~] 20.1 Bundle analyzer kur ve ilk rapor üret (`npm install @next/bundle-analyzer`)
   - Requires: 1.1
 - [~] 20.2 Tüm `<Image>` bileşenlerine `width`, `height`, `sizes` prop'larını ekle
@@ -314,6 +334,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## P3 — Düşük Öncelik (Üçüncü Hafta ve Sonrası)
 
 ### 21. Gelişmiş Animasyonlar
+
 - [~] 21.1 Sayfa geçiş animasyonları — Framer Motion `AnimatePresence` + layout
   - Requires: 1.5
 - [~] 21.2 Scroll-triggered fade-in (useInView, opacity+y, stagger 80ms)
@@ -324,6 +345,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 21.1
 
 ### 22. CI/CD Pipeline
+
 - [x] 22.1 GitHub Actions workflow — lint → type-check → npm audit → build
   - Requires: 1.3
 - [~] 22.2 Lighthouse CI kurulumu (`lighthouserc.js`, 6 URL, 3 tekrar)
@@ -334,6 +356,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: 17.5, 22.1
 
 ### 23. İndeksleme ve Büyüme Aktivasyonu
+
 - [~] 23.1 Google Search Console property kur, sitemap.xml gönder
   - Requires: 5.3
 - [~] 23.2 Bing Webmaster Tools kurulumu + sitemap gönder
@@ -348,6 +371,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
   - Requires: -
 
 ### 24. Chatbot ve CMS (Opsiyonel)
+
 - [~] 24.1 Chatbot hook point bileşeni — env variable ile aktif/pasif
   - Requires: 6.1
 - [~] 24.2 CMS adaptör katmanı — `lib/services/product.service.ts` (JSON/Sanity anahtarı)
@@ -360,6 +384,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## Lansman Kontrol Listesi
 
 ### Teknik Hazırlık
+
 - [~] domain baskanhavlu.com → Vercel DNS doğrulaması
 - [~] SSL sertifikası aktif (Vercel otomatik Let's Encrypt)
 - [~] robots.txt erişilebilir: `curl https://baskanhavlu.com/robots.txt`
@@ -368,6 +393,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 - [~] 404 sayfası doğru çalışıyor: `/var-olmayan-sayfa` testi
 
 ### Dönüşüm Hazırlığı
+
 - [~] WhatsApp tıklama testi: `https://wa.me/905073420661` açılıyor
 - [~] Teklif formu gönderim testi → tekstil@baskanhavlu.com e-posta alıyor
 - [~] Numune formu gönderim testi → e-posta alıyor
@@ -376,6 +402,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 - [~] GDPR banner ilk ziyarette görünüyor
 
 ### SEO Hazırlığı
+
 - [~] Google Search Console doğrulaması tamamlandı
 - [~] sitemap.xml GSC'ye eklendi
 - [~] Ana sayfa GSC "URL İnceleme → İndeksleme İste" tıklandı
@@ -383,6 +410,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 - [~] Bing Webmaster Tools kuruldu
 
 ### Analitik Hazırlık
+
 - [~] GA4 ölçüm kimliği aktif
 - [~] `form_submit` eventi test edildi (GA4 Realtime görünüyor)
 - [~] `whatsapp_click` eventi test edildi
@@ -393,6 +421,7 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 ## Go / No-Go Kriterleri
 
 ### LAUNCH BLOCKER (Bunlar olmadan deploy yapılamaz)
+
 1. `lib/config/site.ts` → tüm NAP alanları dolu (boş string yok)
 2. `wa.me/905073420661` → WhatsApp açılıyor (test edildi)
 3. `tekstil@baskanhavlu.com` → test e-postası alındı (Resend aktif)
@@ -405,12 +434,14 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 10. Form başarısında e-posta geliyor → KRITIK
 
 ### LAUNCH UYARI (Lansman sonrası 48 saat içinde tamamlanmalı)
+
 - Google Search Console doğrulaması
 - sitemap.xml GSC'ye gönderim
 - Google Business Profile başvurusu
 - İlk blog makalesi yayını
 
 ### GENEL HAZIRLIK SKORU HEDEFİ
+
 - Lighthouse Mobile Performance: ≥ 85 (lansman için minimum)
 - Lighthouse Accessibility: ≥ 90
 - Lighthouse SEO: ≥ 95
@@ -436,7 +467,6 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
 23.1–23.6 → büyüme aktivasyonu
 ```
 
-
 ## Task Dependency Graph
 
 ```json
@@ -445,27 +475,119 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
     {
       "wave": 1,
       "name": "Temel Altyapı ve Konfigürasyon",
-      "tasks": ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.1", "2.2", "2.3", "2.4", "4.1", "4.2", "4.3", "4.4", "4.5"]
+      "tasks": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "1.7",
+        "1.8",
+        "1.9",
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5"
+      ]
     },
     {
       "wave": 2,
       "name": "Atom Bileşenler ve Güvenlik",
-      "tasks": ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7"]
+      "tasks": [
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5",
+        "3.6",
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4",
+        "5.5",
+        "5.6",
+        "5.7"
+      ]
     },
     {
       "wave": 3,
       "name": "Layout, GDPR ve Form API",
-      "tasks": ["6.1", "6.2", "6.3", "6.4", "6.5", "7.1", "7.2", "7.3", "7.4", "7.5", "7.6", "7.7", "7.8", "7.9", "7.10", "8.1", "8.2", "8.3", "8.4"]
+      "tasks": [
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5",
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5",
+        "7.6",
+        "7.7",
+        "7.8",
+        "7.9",
+        "7.10",
+        "8.1",
+        "8.2",
+        "8.3",
+        "8.4"
+      ]
     },
     {
       "wave": 4,
       "name": "Schema ve Ana Sayfa",
-      "tasks": ["9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.7", "10.1", "10.2", "10.3", "10.4", "10.5", "10.6", "10.7", "10.8", "10.9", "10.10"]
+      "tasks": [
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.4",
+        "9.5",
+        "9.6",
+        "9.7",
+        "10.1",
+        "10.2",
+        "10.3",
+        "10.4",
+        "10.5",
+        "10.6",
+        "10.7",
+        "10.8",
+        "10.9",
+        "10.10"
+      ]
     },
     {
       "wave": 5,
       "name": "Ürün Sistemi, Hakkımızda ve İletişim",
-      "tasks": ["11.1", "11.2", "11.3", "11.4", "11.5", "11.6", "12.1", "12.2", "12.3", "12.4", "12.5", "12.6", "12.7", "12.8", "12.9", "13.1", "13.2", "13.3", "13.4", "13.5"]
+      "tasks": [
+        "11.1",
+        "11.2",
+        "11.3",
+        "11.4",
+        "11.5",
+        "11.6",
+        "12.1",
+        "12.2",
+        "12.3",
+        "12.4",
+        "12.5",
+        "12.6",
+        "12.7",
+        "12.8",
+        "12.9",
+        "13.1",
+        "13.2",
+        "13.3",
+        "13.4",
+        "13.5"
+      ]
     },
     {
       "wave": 6,
@@ -475,66 +597,118 @@ Başkan Havlu Tekstil dijital platformunun Next.js 15 App Router tabanlı tam im
     {
       "wave": 7,
       "name": "Kalan Landing Sayfalar, Blog ve Analytics",
-      "tasks": ["15.1", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7", "16.1", "16.2", "16.3", "16.4", "17.1", "17.2", "17.3", "17.4", "17.5", "17.6", "17.7", "18.1", "18.2", "18.3", "19.1", "19.2", "19.3", "19.4", "19.5", "20.1", "20.2", "20.3", "20.4", "20.5"]
+      "tasks": [
+        "15.1",
+        "15.2",
+        "15.3",
+        "15.4",
+        "15.5",
+        "15.6",
+        "15.7",
+        "16.1",
+        "16.2",
+        "16.3",
+        "16.4",
+        "17.1",
+        "17.2",
+        "17.3",
+        "17.4",
+        "17.5",
+        "17.6",
+        "17.7",
+        "18.1",
+        "18.2",
+        "18.3",
+        "19.1",
+        "19.2",
+        "19.3",
+        "19.4",
+        "19.5",
+        "20.1",
+        "20.2",
+        "20.3",
+        "20.4",
+        "20.5"
+      ]
     },
     {
       "wave": 8,
       "name": "CI/CD, İndeksleme ve Büyüme Aktivasyonu",
-      "tasks": ["21.1", "21.2", "21.3", "21.4", "22.1", "22.2", "22.3", "22.4", "23.1", "23.2", "23.3", "23.4", "23.5", "23.6", "24.1", "24.2", "24.3"]
+      "tasks": [
+        "21.1",
+        "21.2",
+        "21.3",
+        "21.4",
+        "22.1",
+        "22.2",
+        "22.3",
+        "22.4",
+        "23.1",
+        "23.2",
+        "23.3",
+        "23.4",
+        "23.5",
+        "23.6",
+        "24.1",
+        "24.2",
+        "24.3"
+      ]
     }
   ]
 }
 ```
-  1.1 (Next.js init)
-    ├── 1.2 (TypeScript)
-    ├── 1.3 (ESLint/Prettier)
-    ├── 1.4 (Shadcn UI)
-    ├── 1.5 (Framer Motion)
-    ├── 1.6 (Lucide Icons)
-    ├── 1.7 (React Hook Form + Zod)
-    └── 1.8 (site.ts — NAP sabitleri)
-          └── tüm schema + içerik bileşenleri
+
+1.1 (Next.js init)
+├── 1.2 (TypeScript)
+├── 1.3 (ESLint/Prettier)
+├── 1.4 (Shadcn UI)
+├── 1.5 (Framer Motion)
+├── 1.6 (Lucide Icons)
+├── 1.7 (React Hook Form + Zod)
+└── 1.8 (site.ts — NAP sabitleri)
+└── tüm schema + içerik bileşenleri
 
 Katman 1 — Stil Sistemi:
-  2.1 (Tailwind tokens)
-    └── 3.1–3.6 (Atom bileşenler)
-          └── 6.1–6.5 (Layout + Nav + Footer + WhatsApp)
+2.1 (Tailwind tokens)
+└── 3.1–3.6 (Atom bileşenler)
+└── 6.1–6.5 (Layout + Nav + Footer + WhatsApp)
 
 Katman 2 — Güvenlik + SEO:
-  4.1–4.5 (next.config.ts + middleware)
-  5.1–5.7 (metadata, robots, sitemap, llms.txt, ai.txt)
+4.1–4.5 (next.config.ts + middleware)
+5.1–5.7 (metadata, robots, sitemap, llms.txt, ai.txt)
 
 Katman 3 — GDPR (Analytics öncesi zorunlu):
-  8.1 → 8.2 → 8.3 → 8.4
-    └── 17.1 (GA4 — GDPR koşullu)
+8.1 → 8.2 → 8.3 → 8.4
+└── 17.1 (GA4 — GDPR koşullu)
 
 Katman 4 — API + Form:
-  7.1 (Zod) → 7.2 (Resend) → 7.3 (email service)
-  7.4 (Redis rate limit)
-    └── 7.5–7.8 (API routes)
-          └── 7.9 (ContactForm)
-                └── 7.10 (teşekkür)
+7.1 (Zod) → 7.2 (Resend) → 7.3 (email service)
+7.4 (Redis rate limit)
+└── 7.5–7.8 (API routes)
+└── 7.9 (ContactForm)
+└── 7.10 (teşekkür)
 
 Katman 5 — Sayfa İçerikleri:
-  Schema (9.1–9.7) + Layout (6.1) + Metadata (5.1)
-    └── Ana Sayfa (10.1–10.10)
-    └── Ürün Sistemi (11.1–11.6)
-    └── Hakkımızda (12.1–12.9)
-    └── İletişim (13.1–13.5)
-    └── Landing Sayfalar (14.1–14.5 → 15.1–15.7)
+Schema (9.1–9.7) + Layout (6.1) + Metadata (5.1)
+└── Ana Sayfa (10.1–10.10)
+└── Ürün Sistemi (11.1–11.6)
+└── Hakkımızda (12.1–12.9)
+└── İletişim (13.1–13.5)
+└── Landing Sayfalar (14.1–14.5 → 15.1–15.7)
 
 Katman 6 — Blog + i18n + Analytics:
-  16.1–16.4 (Blog)
-  17.1–17.7 (Analytics)
-  19.1–19.5 (i18n)
-  18.1–18.3 (GDPR sayfaları)
-  20.1–20.5 (Performans)
+16.1–16.4 (Blog)
+17.1–17.7 (Analytics)
+19.1–19.5 (i18n)
+18.1–18.3 (GDPR sayfaları)
+20.1–20.5 (Performans)
 
 Katman 7 — CI/CD + Büyüme:
-  22.1–22.4 (CI/CD)
-  23.1–23.6 (İndeksleme + GBP)
-  21.1–21.4 (Animasyonlar)
-  24.1–24.3 (Opsiyonel)
+22.1–22.4 (CI/CD)
+23.1–23.6 (İndeksleme + GBP)
+21.1–21.4 (Animasyonlar)
+24.1–24.3 (Opsiyonel)
+
 ```
 
 ## Notes
@@ -550,35 +724,39 @@ Katman 7 — CI/CD + Büyüme:
 ### Dalga Açıklamaları
 
 ```
+
 Dalga 1 — Temel Altyapı:
-  1.1 (Next.js init) → 1.2–1.9 (bağımlılıklar + site.ts NAP sabitleri)
-  2.1–2.4 (Design tokens)
-  4.1–4.5 (Güvenlik + next.config.ts + middleware)
+1.1 (Next.js init) → 1.2–1.9 (bağımlılıklar + site.ts NAP sabitleri)
+2.1–2.4 (Design tokens)
+4.1–4.5 (Güvenlik + next.config.ts + middleware)
 
 Dalga 2 — Atom Bileşenler + SEO Temel:
-  3.1–3.6 (Button, Badge, Input, FormGroup)
-  5.1–5.7 (metadata, robots.txt, sitemap.xml, llms.txt, ai.txt, 404)
+3.1–3.6 (Button, Badge, Input, FormGroup)
+5.1–5.7 (metadata, robots.txt, sitemap.xml, llms.txt, ai.txt, 404)
 
 Dalga 3 — Layout + GDPR + Form API (bu olmadan sayfa yok):
-  6.1–6.5 (Root layout, Navbar, Footer, StickyWhatsApp)
-  7.1–7.10 (Zod, Resend, rate limit, API routes, ContactForm)
-  8.1–8.4 (CookieConsentProvider, banner, koşullu GA4)
+6.1–6.5 (Root layout, Navbar, Footer, StickyWhatsApp)
+7.1–7.10 (Zod, Resend, rate limit, API routes, ContactForm)
+8.1–8.4 (CookieConsentProvider, banner, koşullu GA4)
 
 Dalga 4 — Schema + Ana Sayfa (görünür içerik başlar):
-  9.1–9.7 (Organization, LocalBusiness, Product, FAQ, Breadcrumb, Review, ImageObject Schema)
-  10.1–10.10 (Hero, TrustBar, ValueProp, ProductCategories, WhyUs, Factory, Testimonial, FAQ, CTA Band)
+9.1–9.7 (Organization, LocalBusiness, Product, FAQ, Breadcrumb, Review, ImageObject Schema)
+10.1–10.10 (Hero, TrustBar, ValueProp, ProductCategories, WhyUs, Factory, Testimonial, FAQ, CTA Band)
 
 Dalga 5 — Ürün, Hakkımızda, İletişim:
-  11.1–11.6 (Ürün sistemi + koleksiyon sayfaları)
-  12.1–12.9 (Hakkımızda — fabrika otorite)
-  13.1–13.5 (İletişim — NAP, harita, form)
+11.1–11.6 (Ürün sistemi + koleksiyon sayfaları)
+12.1–12.9 (Hakkımızda — fabrika otorite)
+13.1–13.5 (İletişim — NAP, harita, form)
 
 Dalga 6 — Öncelikli 4 Landing Sayfa (P0 deploy sonrası ilk hedef):
-  14.1–14.5 (havlu-ureticisi, toptan-havlu, otel-havlusu, promosyon-havlu)
+14.1–14.5 (havlu-ureticisi, toptan-havlu, otel-havlusu, promosyon-havlu)
 
 Dalga 7 — Kalan 7 Landing + Blog + Analytics + i18n + Performans:
-  15.1–15.7 | 16.1–16.4 | 17.1–17.7 | 18.1–18.3 | 19.1–19.5 | 20.1–20.5
+15.1–15.7 | 16.1–16.4 | 17.1–17.7 | 18.1–18.3 | 19.1–19.5 | 20.1–20.5
 
 Dalga 8 — CI/CD + İndeksleme + Büyüme + Opsiyonel:
-  21.1–21.4 (animasyonlar) | 22.1–22.4 (CI/CD) | 23.1–23.6 (GSC, GBP, dizinler) | 24.1–24.3 (chatbot, CMS)
+21.1–21.4 (animasyonlar) | 22.1–22.4 (CI/CD) | 23.1–23.6 (GSC, GBP, dizinler) | 24.1–24.3 (chatbot, CMS)
+
+```
+
 ```

@@ -4,13 +4,13 @@ Premium Türk havlu ve tekstil tedarikçisi için Next.js 15 tabanlı dijital pl
 
 ## Teknoloji Yığını
 
-- **Framework:** Next.js 15 (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Dil:** TypeScript (strict mode)
 - **Stil:** Tailwind CSS v4 + Shadcn UI
 - **Animasyon:** Framer Motion
-- **Deploy:** Vercel
+- **Deploy:** Netlify
 - **E-posta:** Resend
-- **Analitik:** GA4 + Vercel Analytics
+- **Analitik:** GA4 (çerez onayı sonrası koşullu yüklenir)
 
 ## Başlangıç
 
