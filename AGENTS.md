@@ -337,7 +337,7 @@ Tüm scroll-reveal animasyonu `components/motion-primitives/fade-in.tsx` → `<F
 
 - **Mobile-first zorunlu.** Taban stil 320px için tasarlanır, yukarı doğru `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` genişletilir.
 - Dokunma hedefleri (buton, link, form alanı) minimum **44×44px**.
-- `Navbar` masaüstünde yatay menü, `lg:` altında tam ekran mobil overlay menüsüne düşer — bu davranış korunur, yeni nav öğesi eklenirken her iki durum da güncellenir.
+- `Navbar` masaüstünde yatay menü, `md:` altında tam ekran mobil overlay menüsüne düşer — bu davranış korunur, yeni nav öğesi eklenirken her iki durum da güncellenir.
 - Hero, ürün grid'i, landing page bölümleri her zaman `sm:grid-cols-2 lg:grid-cols-3` gibi kademeli artış deseni izler; tek adımda 1→4 sütun gibi sıçramalar yapılmaz.
 - Yatay taşma (`overflow-x`) sıfır tolerans — yeni bir geniş içerik (tablo, kod bloğu, grid) eklenirken kendi `overflow-x-auto` konteynerine alınır.
 
@@ -433,8 +433,8 @@ Adres, telefon, e-posta, WhatsApp numarası, kuruluş yılı — **hiçbir zaman
 
 | Bileşen | Nerede kullanılır |
 |---|---|
-| `OrganizationSchema` | Ana sayfa, Hakkımızda |
-| `LocalBusinessSchema` | Ana sayfa, Hakkımızda, İletişim |
+| `OrganizationSchema` | Ana sayfa, Hakkımızda — `@type: ["Organization","LocalBusiness"]` birleşik, tek `@id` |
+| `LocalBusinessSchema` | Yalnızca İletişim — Ana sayfa/Hakkımızda'da `OrganizationSchema` ile birlikte KULLANILMAZ (aynı entity için farklı `@id`'li ikinci beyan, GEO entity tutarlılığını zayıflatırdı; FAZ 11 Görev 62'de düzeltildi) |
 | `WebSiteSchema` | Ana sayfa (`SearchAction` **kasıtlı olarak kaldırılmış** — site içi arama yok, bkz. yorum satırı) |
 | `ProductSchema` | Ürün detay sayfaları |
 | `FAQSchema` | Hakkımızda, tüm landing page'ler |
@@ -454,7 +454,7 @@ Adres, telefon, e-posta, WhatsApp numarası, kuruluş yılı — **hiçbir zaman
 - Hiçbir API anahtarı, webhook URL'si veya gizli değer kaynak kodda sabit yazılmaz; `.env.local` / hosting ortam değişkeni olarak tutulur. `.env.example` şablon olarak güncel tutulur ama gerçek değer içermez.
 - Tüm form girdileri Zod ile sunucu tarafında doğrulanır (istemci doğrulaması **tek başına yeterli değildir**).
 - Her formda honeypot alanı zorunludur (mevcut desen: gizli `honeypot` input, dolu gelirse "sessizce" `{success:true}` dönülür — saldırgana bilgi sızdırılmaz).
-- **Bilinen boşluk:** Rate limiting kodu şu an yok (Upstash Redis env şablonu var, implementasyon yok). Bu alanda çalışan bir geliştirici bunu "zaten var" varsaymamalı, `tasks.md`'nin bu maddeyi yanlışlıkla `[x]` işaretlediğini bilmelidir (bkz. §26).
+- **Rate limiting** `lib/utils/rate-limit.ts`'te implemente edildi ve tüm 4 API route'unda (`contact`, `lead/quote`, `lead/sample`, `lead/export`) `checkRateLimit()` çağrısıyla aktif (V2 roadmap FAZ 0/13). Upstash env değişkenleri (`UPSTASH_REDIS_REST_URL/TOKEN`) tanımlı değilse sessizce no-op'a düşer (form hiçbir zaman bu yüzden kırılmaz) — prod'da gerçek koruma için Netlify ortam değişkenlerinin ayarlanması gerekir.
 - API rotaları yalnızca `POST` kabul eder, `export const runtime = 'edge'` ile çalışır.
 - Bilinmeyen/beklenmeyen API hatalarında istemciye asla stack trace veya iç detay döndürülmez — genel hata mesajı (mevcut desen).
 
@@ -569,11 +569,11 @@ Belirsizlik durumunda (örn. bir spec maddesi mevcut kodla çelişiyor, veya bir
 
 Bu bölüm, sıfırdan keşif yapmayı önlemek için, kod tabanı okunarak doğrulanmış mevcut boşlukları listeler:
 
-- **`tasks.md` ve `audit-report.md` güvenilir değildir** — birçok madde `[x]` işaretli ama kodda yok: rate limiting (Upstash Redis), Sentry/hata izleme, Lighthouse CI, dark mode, gerçek i18n routing, Storybook/axe-core testleri.
+- **`tasks.md` ve `audit-report.md` güvenilir değildir** — birçok madde `[x]` işaretli ama kodda yok: Sentry/hata izleme, dark mode, gerçek i18n routing, Storybook/axe-core testleri. (Rate limiting ve Lighthouse CI artık V2 roadmap kapsamında koda eklendi — bkz. yukarı.)
 - Deploy platformu **Netlify**, spec dokümanları **Vercel** varsayıyor — spec'i harfiyen uygulamadan önce bu sapma akılda tutulur.
 - Gerçek fotoğraf, gerçek müşteri referansı, gerçek sertifika **yok** — bunlar sahte veriyle doldurulmaz, kullanıcıdan istenir.
 - Ürün kataloğu 6 genel kategoriden ibaret; gerçek SKU/gramaj/renk verisi yok.
-- Blog'da 3 makale var (hedef: en az 10).
+- Blog'da 10 makale var (`content/blog/index.ts`) — hedef karşılandı.
 - `lib/services/` soyutlama katmanı yok; e-posta gönderim mantığı 4 API route dosyasında (`quote`, `sample`, `export`, `contact`) benzer şekilde tekrarlanıyor — bu, ileride gerçek bir "3+ tekrar" refactor adayıdır (§20 kriterini karşılar), ama kullanıcı onayı olmadan başlatılmaz.
 - `i18n/` ve `messages/` dizinleri disk üzerinde boş halde duruyor (içerikleri silinmiş, dizinler kalmış) — zararsız ama temizlenebilir.
 

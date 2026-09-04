@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FAQAccordion } from '@/components/molecules/FAQAccordion'
+import { FAQSchema } from '@/components/schema/FAQSchema'
 import { FadeIn } from '@/components/motion-primitives/fade-in'
 
 const faqs = [
@@ -31,42 +32,48 @@ const faqs = [
 
 export function FAQPreview() {
   return (
-    <section
-      className="py-24"
-      style={{
-        background:
-          'radial-gradient(circle at 15% 0%, rgba(232,119,34,0.05), transparent 55%), #faf8f5',
-      }}
-    >
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        {/* Başlık */}
-        <FadeIn className="mb-12 text-center">
-          <span
-            className="mb-2 block text-xs font-semibold uppercase tracking-widest"
-            style={{ color: '#e87722' }}
-          >
-            Sık Sorulan Sorular
-          </span>
-          <h2 className="text-3xl font-bold sm:text-4xl" style={{ color: '#1a1a1a' }}>
-            Aklınızdaki Sorular
-          </h2>
-        </FadeIn>
+    <>
+      {/* Görünür SSS içeriğiyle birebir eşleşen şema — schema/görsel içerik
+          uyuşmazlığı Google Rich Results için risklidir, bu yüzden veri
+          burada tek kaynaktan (faqs dizisi) besleniyor. */}
+      <FAQSchema items={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
+      <section
+        className="py-24"
+        style={{
+          background:
+            'radial-gradient(circle at 15% 0%, rgba(232,119,34,0.05), transparent 55%), #faf8f5',
+        }}
+      >
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          {/* Başlık */}
+          <FadeIn className="mb-12 text-center">
+            <span
+              className="mb-2 block text-xs font-semibold uppercase tracking-widest"
+              style={{ color: '#e87722' }}
+            >
+              Sık Sorulan Sorular
+            </span>
+            <h2 className="text-3xl font-bold sm:text-4xl" style={{ color: '#1a1a1a' }}>
+              Aklınızdaki Sorular
+            </h2>
+          </FadeIn>
 
-        <FadeIn delay={0.1}>
-          <FAQAccordion items={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
-        </FadeIn>
+          <FadeIn delay={0.1}>
+            <FAQAccordion items={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
+          </FadeIn>
 
-        {/* Tüm SSS linki */}
-        <div className="mt-10 text-center">
-          <Link
-            href="/about#sss"
-            className="text-sm font-medium underline underline-offset-4 transition-colors hover:opacity-70"
-            style={{ color: '#e87722' }}
-          >
-            Tüm soruları görüntüle →
-          </Link>
+          {/* Başka soru için iletişim CTA'sı */}
+          <div className="mt-10 text-center">
+            <Link
+              href="/contact"
+              className="text-sm font-medium underline underline-offset-4 transition-colors hover:opacity-70"
+              style={{ color: '#e87722' }}
+            >
+              Başka bir sorunuz mu var? İletişime geçin →
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

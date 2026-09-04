@@ -40,11 +40,7 @@ export function EntityBlock() {
             <p className="font-semibold uppercase tracking-wider" style={{ color: '#5c5c5c' }}>
               İhracat
             </p>
-            {SITE_CONFIG.exportRegions.tr.map((r) => (
-              <p key={r} className="mt-1">
-                {r}
-              </p>
-            ))}
+            <p className="mt-1">{SITE_CONFIG.exportRegions.tr.length} Ülkeye İhracat</p>
           </div>
         </div>
       </div>

@@ -493,6 +493,8 @@ _Bu denetim raporu Phase 6 kapsamında spec dokümanları baz alınarak hazırla
 | CRITICAL-04: WhatsApp placeholder | ✅ ÇÖZÜLDÜ | `https://wa.me/905073420661` tüm sistemde kilitlendi                           |
 | CRITICAL-05: E-posta servisi      | ✅ ÇÖZÜLDÜ | Resend seçildi, `tekstil@baskanhavlu.com` hedef adresi kilitlendi              |
 
+[SUPERSEDED 2026-09-03 — bkz. AGENTS.md, lib/config/site.ts. Firma 1996'dan beri doğrudan havlu/bornoz imalatçısıdır; "Fabrikamız" satırı ve "Kuruluş: 1981" / "İş Modeli: Tekstil tedarik..." aşağıdaki değerler artık eskidir.]
+
 ### Kaldırılan Yanıltıcı İddialar
 
 | Kaldırılan İddia             | Neden                      | Yerine                                 |
@@ -512,9 +514,9 @@ _Bu denetim raporu Phase 6 kapsamında spec dokümanları baz alınarak hazırla
 - WhatsApp: https://wa.me/905073420661
 - E-posta: tekstil@baskanhavlu.com
 - Instagram: https://www.instagram.com/bursahavlusu
-- Kuruluş: 1981
+- Kuruluş: 1996 [güncellendi 2026-09-03]
 - İhracat: Arap Ülkeleri, Yunanistan
-- İş Modeli: Tekstil tedarik ve özel üretim koordinasyonu
+- İş Modeli: Havlu ve bornoz imalatı — doğrudan üretici [güncellendi 2026-09-03]
 
 ---
 

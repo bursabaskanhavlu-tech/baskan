@@ -1,4 +1,11 @@
 import type { NextConfig } from 'next'
+import withBundleAnalyzerInit from '@next/bundle-analyzer'
+
+// Yalnızca `ANALYZE=true npm run build` ile çalıştırıldığında devreye girer;
+// normal build/deploy davranışını hiçbir şekilde etkilemez (AGENTS.md §13).
+const withBundleAnalyzer = withBundleAnalyzerInit({
+  enabled: process.env['ANALYZE'] === 'true',
+})
 
 const securityHeaders = [
   {
@@ -25,12 +32,12 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://elfsightcdn.com https://*.elfsightcdn.com https://elfsight.com https://*.elfsight.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://elfsightcdn.com https://*.elfsightcdn.com",
       "img-src 'self' data: blob: https:",
-      "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.upstash.io",
-      "frame-src 'none'",
+      "font-src 'self' https://fonts.gstatic.com https://elfsightcdn.com https://*.elfsightcdn.com",
+      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.upstash.io https://elfsight.com https://*.elfsight.com https://elfsightcdn.com https://*.elfsightcdn.com",
+      "frame-src 'self' https://elfsightcdn.com https://*.elfsightcdn.com https://elfsight.com https://*.elfsight.com",
       "object-src 'none'",
       "base-uri 'self'",
     ].join('; '),
@@ -47,6 +54,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 86400,
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: 'https',
@@ -100,10 +108,26 @@ const nextConfig: NextConfig = {
         destination: '/new-collection',
         permanent: true,
       },
+      // Eski düz-slug İngilizce sayfalar artık /en/ önekiyle sunuluyor.
+      {
+        source: '/turkish-towel-manufacturer',
+        destination: '/en/turkish-towel-manufacturer',
+        permanent: true,
+      },
+      {
+        source: '/wholesale-towel-supplier',
+        destination: '/en/wholesale-towel-supplier',
+        permanent: true,
+      },
+      {
+        source: '/bathrobe-manufacturer',
+        destination: '/en/bathrobe-manufacturer',
+        permanent: true,
+      },
     ]
   },
   compress: true,
   poweredByHeader: false,
 }
 
-export default nextConfig
+export default withBundleAnalyzer(nextConfig)

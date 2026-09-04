@@ -51,7 +51,7 @@ export default function BlogPage() {
               <FadeIn key={post.slug} delay={(i % 3) * 0.06}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-2xl bg-white transition-shadow hover:shadow-md"
+                  className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
                   style={{ border: '1px solid #e0d4c0' }}
                 >
                   <div className="h-48 overflow-hidden" style={{ backgroundColor: '#ede5d8' }}>
@@ -73,7 +73,7 @@ export default function BlogPage() {
                       </span>
                     </div>
                     <h2
-                      className="text-base font-semibold leading-snug transition-colors group-hover:text-[#e87722]"
+                      className="text-base font-semibold leading-snug transition-colors group-hover:text-orange-500"
                       style={{ color: '#1a1a1a' }}
                     >
                       {post.title}

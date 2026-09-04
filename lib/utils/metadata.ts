@@ -10,6 +10,22 @@ interface PageMetadataInput {
   type?: 'website' | 'article'
   keywords?: string[]
   datePublished?: string
+  /**
+   * Bu sayfanın gerçek karşı-dil eşleniğinin path'i (ör. TR sayfası için
+   * '/turkish-towel-manufacturer', EN sayfası için '/toptan-havlu').
+   * Projede gerçek /en/ prefix routing yoktur (bkz. AGENTS.md §3.1, §26) —
+   * bu yüzden karşı dil linki asla `/en${path}` formülüyle üretilmez, yalnızca
+   * burada açıkça verilen gerçek bir sayfaya işaret eder. Verilmezse o dil
+   * için hreflang eklenmez (var olmayan bir sayfaya link vermektense).
+   */
+  alternatePath?: string
+  /**
+   * true ise sayfa arama motorlarından hariç tutulur (`noindex, nofollow`).
+   * Yalnızca doğrudan link/QR ile paylaşılan, SEO değeri olmayan yardımcı
+   * sayfalar için kullanılır (ör. /yorum) — varsayılan davranış (index: true)
+   * tüm sayfalar için korunur.
+   */
+  noIndex?: boolean
 }
 
 /**
@@ -24,6 +40,7 @@ export function generatePageMetadata(input: PageMetadataInput): Metadata {
   // kaldırılmadı; `image` parametresiyle açıkça istenirse hâlâ kullanılabilir.
   const image = input.image ?? `${SITE_CONFIG.url}/og?title=${encodeURIComponent(input.title)}`
   const locale = input.locale ?? 'tr'
+  const alternateUrl = input.alternatePath ? `${SITE_CONFIG.url}${input.alternatePath}` : undefined
 
   return {
     title: input.title,
@@ -32,9 +49,9 @@ export function generatePageMetadata(input: PageMetadataInput): Metadata {
     alternates: {
       canonical: url,
       languages: {
-        tr: locale === 'tr' ? url : `${SITE_CONFIG.url}${input.path}`,
-        en: locale === 'en' ? url : `${SITE_CONFIG.url}/en${input.path}`,
-        'x-default': url,
+        [locale]: url,
+        ...(alternateUrl && { [locale === 'tr' ? 'en' : 'tr']: alternateUrl }),
+        'x-default': locale === 'tr' ? url : (alternateUrl ?? url),
       },
     },
     openGraph: {
@@ -67,16 +84,18 @@ export function generatePageMetadata(input: PageMetadataInput): Metadata {
       images: [image],
       site: '@bursahavlusu',
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-        'max-video-preview': -1,
-      },
-    },
+    robots: input.noIndex
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
+          },
+        },
   }
 }

@@ -33,7 +33,7 @@ Gramaj, kumaşın metrekare başına gram cinsinden ağırlığını ifade eder.
 
 **%100 Pamuk**: En yaygın tercih. Nefes alabilir, yumuşak ve bakımı kolay.
 
-**Combed Ring Pamuk**: İplikler tarandığı için daha düzgün yüzey ve uzun ömür sağlar. Otel sektörünün favori seçeneği.
+**Combed Ring Pamuk**: İplikler tarandığı için daha düzgün yüzey ve uzun ömür sağlar. Otel sektöründe sıkça tercih edilir.
 
 ## Dayanıklılık Kriterleri
 
@@ -41,7 +41,7 @@ Otel havlularının endüstriyel yıkama koşullarına dayanıklı olması gerek
 
 ## Sonuç
 
-Otel havlusu seçiminde gramaj, malzeme kalitesi ve dayanıklılık bir arada değerlendirilmelidir. **Başkan Havlu Tekstil** olarak 1981'den bu yana otel sektörüne özel havlu tedariki yapıyoruz.
+Otel havlusu seçiminde gramaj, malzeme kalitesi ve dayanıklılık bir arada değerlendirilmelidir. **Başkan Havlu Tekstil** olarak 1996'dan bu yana otel sektörüne özel havlu imalatı yapıyoruz.
 
 [Otel havlusu teklifi almak için iletişime geçin →](/contact)`,
   },
@@ -107,7 +107,7 @@ Osmangazi ilçesindeki Havlucular Çarşısı, havlu ticaretinin kalbi konumunda
 
 ## Başkan Havlu Tekstil
 
-**Başkan Havlu Tekstil**, 1981'den bu yana bu köklü çarşıda faaliyet göstermektedir. Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26 adresindeki mağazamızda otel, kurum ve promosyon sektörüne özel havlu çözümleri sunuyoruz.
+**Başkan Havlu Tekstil**, 1996'dan bu yana bu köklü çarşıda faaliyet göstermektedir. Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26 adresindeki mağazamızda otel, kurum ve promosyon sektörüne kendi ürettiğimiz havlu çözümlerini sunuyoruz.
 
 [Bize ulaşın →](/contact)`,
   },
@@ -129,10 +129,10 @@ Bornoz seçimi, misafir deneyimini doğrudan etkileyen kritik bir karardır. Yan
 Hafif ve pratik. Özellikle SPA ve wellness merkezlerinde tercih edilir.
 
 ### Şal Yaka Bornoz
-Klasik otel bornozu. Yüksek gramaj ve uzun ömür için ideal. 5 yıldızlı otellerin favorisi.
+Klasik otel bornozu. Yüksek gramaj ve uzun ömürlü kullanım için tercih edilir.
 
 ### Waffle Bornoz
-Örgü dokusu sayesinde hızlı kurur. Havuz kenarı ve plaj tesisleri için mükemmel.
+Örgü dokusu sayesinde hızlı kurur. Havuz kenarı ve plaj tesislerinde tercih edilir.
 
 ## Gramaj Seçimi
 
@@ -223,7 +223,7 @@ Türkiye, dünya havlu üretiminde önemli bir konuma sahiptir. Bursa başta olm
 
 ## Başkan Havlu Tekstil ile İhracat
 
-1981'den bu yana Arap ülkeleri ve Yunanistan'a ihracat yapıyoruz.
+1996'dan bu yana Arap ülkeleri ve Yunanistan'a ihracat yapıyoruz.
 
 [İhracat teklifi için iletişime geçin →](/contact)`,
   },
@@ -321,7 +321,7 @@ Turkish suppliers offer exceptional quality-to-price ratios.
 
 ## Working with Başkan Havlu Tekstil
 
-We have been supplying quality towels from Bursa, Turkey since 1981. Our clients include hotels, spas and corporate buyers in Arab countries and Greece.
+We have been manufacturing quality towels in Bursa, Turkey since 1996. Our clients include hotels, spas and corporate buyers in Arab countries and Greece.
 
 [Request a wholesale quote →](/contact)`,
   },

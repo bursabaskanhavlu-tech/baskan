@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${product.name.tr} | Başkan Havlu Tekstil`,
     description: product.description.tr,
     path: `/new-collection/${product.slug}`,
-    keywords: [product.name.tr, ...product.useCases, 'toptan havlu', 'Bursa havlu tedarikçisi'],
+    keywords: [product.name.tr, ...product.useCases, 'toptan havlu', 'Bursa havlu imalatçısı'],
   })
 }
 
@@ -55,7 +55,7 @@ export default async function ProductDetailPage({ params }: Props) {
       <ProductSchema
         name={product.name.tr}
         description={product.description.tr}
-        image={SITE_CONFIG.seo.ogImage}
+        image={`${SITE_CONFIG.url}/og?title=${encodeURIComponent(product.name.tr)}`}
         url={`${SITE_CONFIG.url}/new-collection/${product.slug}`}
         category={product.category}
       />
@@ -106,7 +106,10 @@ export default async function ProductDetailPage({ params }: Props) {
             </FadeIn>
 
             <FadeIn delay={0.1} className="flex flex-col gap-6">
-              <div className="rounded-2xl bg-white p-6" style={{ border: '1px solid #e0d4c0' }}>
+              <div
+                className="rounded-2xl bg-white p-6 shadow-sm"
+                style={{ border: '1px solid #e0d4c0' }}
+              >
                 <h2
                   className="text-sm font-semibold uppercase tracking-wider"
                   style={{ color: '#8a7050' }}
@@ -209,15 +212,20 @@ export default async function ProductDetailPage({ params }: Props) {
                   <FadeIn key={r.slug} delay={i * 0.06}>
                     <Link
                       href={`/new-collection/${r.slug}`}
-                      className="block rounded-xl bg-white p-4 transition-shadow hover:shadow-sm"
+                      className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
                       style={{ border: '1px solid #e0d4c0' }}
                     >
-                      <p className="font-medium text-sm" style={{ color: '#1a1a1a' }}>
-                        {r.name.tr}
-                      </p>
-                      <p className="mt-1 text-xs leading-relaxed" style={{ color: '#8a7050' }}>
-                        {r.description.tr}
-                      </p>
+                      <div className="h-28 overflow-hidden" style={{ backgroundColor: '#ede5d8' }}>
+                        <BrandPatternPanel iconSize={36} />
+                      </div>
+                      <div className="p-4">
+                        <p className="font-medium text-sm" style={{ color: '#1a1a1a' }}>
+                          {r.name.tr}
+                        </p>
+                        <p className="mt-1 text-xs leading-relaxed" style={{ color: '#8a7050' }}>
+                          {r.description.tr}
+                        </p>
+                      </div>
                     </Link>
                   </FadeIn>
                 ))}

@@ -2,12 +2,12 @@ export const SITE_CONFIG = {
   // Temel Kimlik
   name: 'Başkan Havlu Tekstil',
   url: 'https://baskanhavlu.com',
-  founded: 1981,
+  founded: 1996,
   description: {
-    tr: "1981'den bu yana Bursa'da faaliyet gösteren tekstil tedarik ve özel üretim koordinasyon firması. Oteller, kurumlar ve perakende sektörüne havlu ve tekstil çözümleri.",
-    en: 'Başkan Havlu Tekstil, based in Bursa, Turkey, has been providing textile supply and custom production coordination services since 1981.',
+    tr: "1996'dan bu yana Bursa'da havlu ve bornoz üreten bir imalatçı firma. Oteller, kurumlar ve perakende sektörüne kendi üretimimiz havlu ve tekstil çözümleri.",
+    en: 'Başkan Havlu Tekstil is a towel and bathrobe manufacturer based in Bursa, Turkey, producing since 1996.',
   },
-  businessModel: 'Tekstil tedarik ve özel/fason üretim koordinasyonu — doğrudan fabrika değil',
+  businessModel: 'Havlu ve bornoz imalatı — doğrudan üretici',
 
   // İletişim — NAP (tüm sayfalarda birebir aynı kullanılacak)
   contact: {
@@ -42,36 +42,92 @@ export const SITE_CONFIG = {
   },
 
   // Google Maps
-  googleMapsUrl: 'https://share.google/fBgq5t9yzyukx2Fte',
+  googleMapsUrl: 'https://share.google/eu6S69JKkWPwql7Pi',
+  googlePlaceId: 'ChIJhyX53cA-yhQRlmKIkucXAV8',
+  googleReviewUrl:
+    'https://search.google.com/local/writereview?placeid=ChIJhyX53cA-yhQRlmKIkucXAV8',
 
   // Çalışma Saatleri
   openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-14:00'],
 
   // İhracat Pazarları
   exportRegions: {
-    tr: ['Arap Ülkeleri', 'Yunanistan'],
-    en: ['Arab Countries', 'Greece'],
+    tr: [
+      'Yunanistan',
+      'Bulgaristan',
+      'Almanya',
+      'Amerika',
+      'İtalya',
+      'Fas',
+      'Cezayir',
+      'Kuveyt',
+      'Arap Ülkeleri',
+      'Fransa',
+      'Rusya',
+      'Ukrayna',
+      'Filistin',
+    ],
+    en: [
+      'Greece',
+      'Bulgaria',
+      'Germany',
+      'United States',
+      'Italy',
+      'Morocco',
+      'Algeria',
+      'Kuwait',
+      'Arab Countries',
+      'France',
+      'Russia',
+      'Ukraine',
+      'Palestine',
+    ],
   },
 
   // Ürün Kategorileri
   productCategories: {
     tr: [
       'El Havlusu',
+      'Mutfak Havlusu',
       'Yüz Havlusu',
-      'Banyo Havlusu',
-      'Kafa / Saç Havlusu',
       'Ayak Havlusu',
-      'Promosyon Havlu',
+      'Baş Havlusu',
+      'Banyo Havlusu',
+      'Bornoz',
+      'Nevresim Takımı',
+      'Pike Takımı',
+      'Çarşaf',
+      'Yastık Kılıfı',
+      'Otel Yatak Takımı',
+      'Nevresim',
+      'Yastık',
+      'Yorgan',
     ],
-    en: ['Hand Towel', 'Face Towel', 'Bath Towel', 'Hair Towel', 'Foot Towel', 'Promotional Towel'],
+    en: [
+      'Hand Towel',
+      'Kitchen Towel',
+      'Face Towel',
+      'Foot Towel',
+      'Head Towel',
+      'Bath Towel',
+      'Bathrobe',
+      'Duvet Cover Set',
+      'Bedspread Set',
+      'Bed Sheet',
+      'Pillowcase',
+      'Hotel Bed Linen Set',
+      'Duvet Cover',
+      'Pillow',
+      'Quilt',
+    ],
   },
 
   // SEO varsayılanları
   seo: {
-    defaultTitle: 'Başkan Havlu Tekstil | Bursa Havlu Tedarikçisi',
+    defaultTitle: 'Başkan Havlu Tekstil | Bursa Havlu İmalatçısı',
     titleTemplate: '%s | Başkan Havlu Tekstil',
     defaultDescription:
-      "1981'den bu yana Bursa'da havlu ve tekstil tedariki. Otel, kurum ve promosyon sektörüne özel çözümler.",
+      "1996'dan bu yana Bursa'da havlu ve bornoz imalatı. Otel, kurum ve promosyon sektörüne özel üretim çözümleri.",
     ogImage: 'https://baskanhavlu.com/images/logo-icon.png',
   },
 } as const

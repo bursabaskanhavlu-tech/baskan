@@ -1,13 +1,21 @@
 import Link from 'next/link'
 import { SITE_CONFIG } from '@/lib/config/site'
 import { FadeIn } from '@/components/motion-primitives/fade-in'
+import { TextReveal } from '@/components/motion-primitives/text-reveal'
+import { MagneticButton } from '@/components/motion-primitives/magnetic-button'
 
-export function CTABand() {
-  const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${SITE_CONFIG.contact.whatsappMessageTr}`
+interface CTABandProps {
+  locale?: 'tr' | 'en'
+}
+
+export function CTABand({ locale = 'tr' }: CTABandProps) {
+  const isEn = locale === 'en'
+  const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${isEn ? SITE_CONFIG.contact.whatsappMessageEn : SITE_CONFIG.contact.whatsappMessageTr}`
+  const contactHref = isEn ? '/en/contact' : '/contact'
 
   return (
     <section
-      className="py-20"
+      className="py-24"
       style={{
         background:
           'radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 45%), #e87722',
@@ -18,28 +26,32 @@ export function CTABand() {
           className="text-3xl font-bold text-white sm:text-4xl"
           style={{ fontFamily: 'var(--font-heading, serif)' }}
         >
-          Hemen Teklif Alın
+          <TextReveal text={isEn ? 'Get a Quote Now' : 'Hemen Teklif Alın'} wordDelay={0.08} />
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg" style={{ color: 'rgba(255,255,255,0.85)' }}>
-          Otel, kurum veya promosyon sektörü için havlu tedariki hakkında bilgi almak ister misiniz?
+          {isEn
+            ? 'Want to learn more about our hotel, corporate or promotional towel manufacturing?'
+            : 'Otel, kurum veya promosyon sektörü için havlu imalatımız hakkında bilgi almak ister misiniz?'}
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href="/contact"
-            className="flex h-12 items-center justify-center rounded-md px-8 text-sm font-semibold transition-opacity hover:opacity-90"
-            style={{ backgroundColor: 'white', color: '#e87722' }}
-          >
-            Teklif Formu
-          </Link>
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-12 items-center justify-center rounded-md border-2 px-8 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-            style={{ borderColor: 'white' }}
-          >
-            WhatsApp ile Ulaş
-          </a>
+          <MagneticButton>
+            <Link
+              href={contactHref}
+              className="flex h-14 items-center justify-center rounded-full bg-white px-9 text-sm font-semibold text-orange-500 shadow-lg transition-colors hover:bg-beige-50"
+            >
+              {isEn ? 'Quote Form' : 'Teklif Formu'}
+            </Link>
+          </MagneticButton>
+          <MagneticButton>
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-14 items-center justify-center rounded-full border-2 border-white px-9 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              {isEn ? 'Contact via WhatsApp' : 'WhatsApp ile Ulaş'}
+            </a>
+          </MagneticButton>
         </div>
       </FadeIn>
     </section>

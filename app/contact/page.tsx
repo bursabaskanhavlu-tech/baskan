@@ -13,6 +13,7 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     "Bursa Havlucular Çarşısı'ndan havlu ve bornoz için teklif alın. +90 507 342 06 61 — tekstil@baskanhavlu.com",
   path: '/contact',
+  alternatePath: '/en/contact',
 })
 
 export default function ContactPage() {
@@ -73,7 +74,7 @@ export default function ContactPage() {
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-2xl p-6 transition-opacity hover:opacity-90"
+                className="flex items-center gap-4 rounded-2xl p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
                 style={{ backgroundColor: '#25d366' }}
                 aria-label="WhatsApp ile iletişime geçin"
               >
@@ -82,12 +83,15 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-white">WhatsApp ile Yazın</p>
-                  <p className="text-sm text-white/80">Ortalama yanıt: 5 dakika</p>
+                  <p className="text-sm text-white/80">Anında iletişim ve hızlı yanıt</p>
                 </div>
               </a>
 
               {/* NAP bilgileri */}
-              <div className="rounded-2xl bg-white p-6" style={{ border: '1px solid #e0d4c0' }}>
+              <div
+                className="rounded-2xl bg-white p-6 shadow-sm"
+                style={{ border: '1px solid #e0d4c0' }}
+              >
                 <h3 className="mb-4 font-semibold" style={{ color: '#1a1a1a' }}>
                   İletişim Bilgileri
                 </h3>

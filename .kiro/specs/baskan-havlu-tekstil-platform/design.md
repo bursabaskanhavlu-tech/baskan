@@ -3122,6 +3122,8 @@ export const PRODUCT_CATEGORIES = [
 
 ### PROD-8: İçerik Tutarlılık Matrisi
 
+[SUPERSEDED 2026-09-03 — bkz. AGENTS.md, lib/config/site.ts. Firma 1996'dan beri doğrudan havlu/bornoz imalatçısıdır; aşağıdaki "Kuruluş yılı" ve "İş modeli" satırları eskidir, güncel değerler için SITE_CONFIG kullanılmalıdır.]
+
 Aşağıdaki veriler sistemin HER bileşeninde birebir aynı kullanılmalıdır:
 
 | Alan         | Doğru Değer                                                                | KULLANILMAYACAK                                           |

@@ -6,13 +6,14 @@ import { Shirt, Pencil, Package } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Otel Bornozu Tedarikçisi | Başkan Havlu Tekstil',
+  title: 'Otel Bornozu İmalatçısı | Başkan Havlu Tekstil',
   description:
-    'Otel ve SPA için yüksek kaliteli bornoz tedariki. Logo nakışı, özel gramaj seçeneği. Toplu otel bornozu siparişi için teklif alın.',
+    'Otel ve SPA için yüksek kaliteli bornoz imalatı. Logo nakışı, özel gramaj seçeneği. Toplu otel bornozu siparişi için teklif alın.',
   path: '/otel-bornozu',
+  alternatePath: '/en/hotel-bathrobes',
   keywords: [
     'otel bornozu',
-    'otel bornozu tedarikçisi',
+    'otel bornozu imalatçısı',
     'SPA bornozu',
     'otel tekstili',
     'logolu bornoz',
@@ -22,9 +23,9 @@ export const metadata: Metadata = generatePageMetadata({
 
 const faqs = [
   {
-    question: 'Otel bornozu için hangi modelleri tedarik ediyorsunuz?',
+    question: 'Otel bornozu için hangi modelleri üretiyorsunuz?',
     answer:
-      'Şal yaka, kimono ve waffle bornoz modelleri mevcuttur. Her model otel standartlarına uygun gramajlarda tedarik edilmektedir.',
+      'Şal Yaka Bornoz, Kimono Yaka Bornoz, Çocuk Bornoz, Kapüşonlu Bornoz ve Özel Üretim Bornoz modellerini üretiyoruz. Her model 250 g/m² ve üzeri gramajlarda otel standartlarında imal edilmektedir.',
   },
   {
     question: 'Otel logolu bornoz üretebiliyor musunuz?',
@@ -57,15 +58,15 @@ export default function OtelBornozuPage() {
 
       <LandingPage
         eyebrow="Otel Tekstili"
-        title="Otel ve SPA için Bornoz Tedarikçisi"
-        intro="Yüksek gramajlı, dayanıklı ve logolu otel bornozu. Şal yaka, kimono ve waffle seçenekleri."
+        title="Otel ve SPA için Bornoz İmalatçısı"
+        intro="250 g/m² ve üzeri gramajlarda, dayanıklı ve logolu otel bornozu. Şal yaka, kimono yaka, çocuk, kapüşonlu ve özel üretim seçenekleri."
         ctaPrimaryLabel="Teklif Al"
         ctaWhatsappLabel="WhatsApp"
-        waMessage="Otel bornozu tedariki hakkında bilgi almak istiyorum."
+        waMessage="Otel bornozu imalatı hakkında bilgi almak istiyorum."
         features={[
           {
             icon: Shirt,
-            title: 'Şal Yaka / Kimono / Waffle',
+            title: 'Şal Yaka / Kimono Yaka / Kapüşonlu',
             desc: 'Otel standartlarına uygun model çeşitliliği',
           },
           { icon: Pencil, title: 'Logo Nakışı', desc: 'Otel logonuz nakışla bornoza işlenir' },

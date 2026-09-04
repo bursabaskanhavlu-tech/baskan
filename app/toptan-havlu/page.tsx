@@ -6,13 +6,14 @@ import { Package, FileText, Truck } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Toptan Havlu Tedarikçisi | Başkan Havlu Tekstil',
+  title: 'Toptan Havlu İmalatçısı | Başkan Havlu Tekstil',
   description:
-    "Toptan havlu siparişi için Bursa'nın güvenilir tekstil tedarikçisi. Esnek MOQ, özel üretim, hızlı teklif. Otel ve kurumsal sektöre toptan satış.",
+    "Toptan havlu siparişi için Bursa'nın güvenilir havlu imalatçısı. Esnek MOQ, özel üretim, hızlı teklif. Otel ve kurumsal sektöre toptan satış.",
   path: '/toptan-havlu',
+  alternatePath: '/en/wholesale-towel-supplier',
   keywords: [
     'toptan havlu',
-    'toptan havlu tedarikçisi',
+    'toptan havlu imalatçısı',
     'toplu havlu siparişi',
     'havlu toptan satış',
     'toptan havlu fiyatları',
@@ -70,7 +71,7 @@ export default function ToptanHavluPage() {
 
       <LandingPage
         eyebrow="Toptan Satış"
-        title="Güvenilir Tedarikçiden Toptan Havlu"
+        title="Üreticiden Doğrudan Toptan Havlu"
         intro="Esnek sipariş miktarı, rekabetçi fiyatlar ve hızlı teklif süreci. Otel, kurum ve perakende sektörüne toptan havlu."
         ctaPrimaryLabel="Toptan Teklif Al"
         ctaWhatsappLabel="WhatsApp ile Sor"

@@ -16,8 +16,8 @@ Contact for permissions: tekstil@baskanhavlu.com
 
 ### Primary Entity
 Name: Başkan Havlu Tekstil
-Type: Organization, LocalBusiness, TextileSupplier
-Founded: 1981
+Type: Organization, LocalBusiness, Manufacturer
+Founded: 1996
 Location: Osmangazi / Bursa / Turkey
 Coordinates: 40.1826°N, 29.0669°E
 Website: https://baskanhavlu.com
@@ -33,22 +33,23 @@ Email: tekstil@baskanhavlu.com
 
 ### Geographic Scope
 Primary market: Turkey
-Export markets: Arab Countries (Saudi Arabia, UAE, Kuwait, Qatar), Greece
+Export markets: Greece, Bulgaria, Germany, United States, Italy, Morocco, Algeria, Kuwait, Arab Countries (Saudi Arabia, UAE, Qatar), France, Russia, Ukraine, Palestine
 
 ### Social Profiles
 Instagram: https://www.instagram.com/bursahavlusu
 WhatsApp: https://wa.me/905073420661
 
 ## Factual Claims (Verified)
-- Founded in 1981 in Bursa, Turkey ✓
+- Founded in 1996 in Bursa, Turkey ✓
 - Located at Havlucular Çarşısı, Osmangazi, Bursa ✓
-- Not a direct factory — textile supply and production coordination ✓
-- Exports to Arab countries and Greece ✓
+- Direct towel and bathrobe manufacturer — own production facility ✓
+- Exports to 13+ markets including Greece, Germany, Italy, Arab countries, Russia and Ukraine ✓
 
 ## Content Language
-Primary: Turkish (tr)
-Secondary: English (en)
+Primary: Turkish (tr) — canonical site content
+Secondary: English (en) — full parallel site under /en/
+Target export markets without localized content yet: Russian-speaking (ru), Arabic-speaking (ar) buyers — served today via the English pages; native-language content is planned but not yet published.
 
 ## Last Updated
-Date: 2026-06-10
-Version: 3.0
+Date: 2026-09-03
+Version: 4.0

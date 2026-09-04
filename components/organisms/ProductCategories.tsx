@@ -87,20 +87,34 @@ export function ProductCategories() {
           </Link>
         </FadeIn>
 
-        {/* Izgara */}
+        {/* Izgara — ilk kart (large) bento düzeninde 2 sütun kaplar */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((cat, i) => (
-            <FadeIn key={cat.title} delay={i * 0.05}>
+            <FadeIn
+              key={cat.title}
+              delay={i * 0.05}
+              className={cat.large ? 'sm:col-span-2' : undefined}
+            >
               <Link
                 href={cat.href}
-                className="group relative flex min-h-[160px] flex-col justify-between overflow-hidden rounded-2xl p-6 transition-transform hover:-translate-y-1"
-                style={{ backgroundColor: cat.bg }}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
+                  cat.large ? 'min-h-55 sm:min-h-60 sm:p-8' : 'min-h-40'
+                }`}
+                style={{
+                  background: `radial-gradient(circle at 88% 12%, rgba(255,255,255,0.12), transparent 55%), ${cat.bg}`,
+                }}
               >
                 <div>
-                  <h3 className="text-lg font-bold" style={{ color: cat.color }}>
+                  <h3
+                    className={cat.large ? 'text-2xl font-bold' : 'text-lg font-bold'}
+                    style={{ color: cat.color }}
+                  >
                     {cat.title}
                   </h3>
-                  <p className="mt-1 text-sm" style={{ color: cat.color, opacity: 0.75 }}>
+                  <p
+                    className={cat.large ? 'mt-2 max-w-sm text-sm' : 'mt-1 text-sm'}
+                    style={{ color: cat.color, opacity: 0.75 }}
+                  >
                     {cat.desc}
                   </p>
                 </div>

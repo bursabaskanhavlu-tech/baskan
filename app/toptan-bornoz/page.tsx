@@ -8,8 +8,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = generatePageMetadata({
   title: 'Toptan Bornoz | Toplu Bornoz Siparişi | Başkan Havlu Tekstil',
   description:
-    'Toptan bornoz siparişi için güvenilir tedarikçi. Esnek MOQ, rekabetçi fiyat ve hızlı teklif. Otel, SPA ve kurumsal sektöre toptan bornoz.',
+    'Toptan bornoz siparişi için güvenilir imalatçı. Esnek MOQ, rekabetçi fiyat ve hızlı teklif. Otel, SPA ve kurumsal sektöre toptan bornoz.',
   path: '/toptan-bornoz',
+  alternatePath: '/en/wholesale-bathrobes',
   keywords: [
     'toptan bornoz',
     'toplu bornoz',
@@ -37,7 +38,7 @@ const faqs = [
   {
     question: 'Farklı modeller için ayrı ayrı sipariş verilebilir mi?',
     answer:
-      'Evet, kimono, şal yaka ve waffle gibi farklı modelleri aynı sipariş içinde birleştirebilirsiniz.',
+      'Evet, şal yaka, kimono yaka, çocuk, kapüşonlu ve özel üretim gibi farklı modelleri aynı sipariş içinde birleştirebilirsiniz.',
   },
 ]
 
@@ -61,7 +62,7 @@ export default function ToptanBornozPage() {
 
       <LandingPage
         eyebrow="Toptan Satış"
-        title="Toptan Bornoz Tedarikçisi"
+        title="Toptan Bornoz İmalatçısı"
         intro="Otel, SPA ve kurumsal sektöre toptan bornoz. Esnek sipariş miktarı ve rekabetçi fiyatlar."
         ctaPrimaryLabel="Toptan Teklif Al"
         ctaWhatsappLabel="WhatsApp ile Sor"
@@ -76,7 +77,7 @@ export default function ToptanBornozPage() {
           {
             icon: Shirt,
             title: 'Model Çeşitliliği',
-            desc: 'Kimono, şal yaka ve waffle bir arada sipariş edilebilir',
+            desc: 'Şal yaka, kimono yaka, çocuk ve kapüşonlu modeller bir arada sipariş edilebilir',
           },
         ]}
         faqs={faqs.map((f) => ({ question: f.question, answer: f.answer }))}

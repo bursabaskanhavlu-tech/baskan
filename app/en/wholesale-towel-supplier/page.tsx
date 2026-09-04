@@ -6,18 +6,19 @@ import { Package, Tag, Pencil } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Wholesale Towel Supplier Turkey | Başkan Havlu Tekstil',
+  title: 'Wholesale Towel Manufacturer Turkey | Başkan Havlu Tekstil',
   description:
-    'Wholesale towel supplier from Bursa, Turkey. Bulk towel orders for hotels, corporations and retailers. Flexible MOQ. Export worldwide. Request a quote.',
-  path: '/wholesale-towel-supplier',
+    'Wholesale towel manufacturer from Bursa, Turkey. Bulk towel orders for hotels, corporations and retailers. Flexible MOQ. Export worldwide. Request a quote.',
+  path: '/en/wholesale-towel-supplier',
+  alternatePath: '/toptan-havlu',
   locale: 'en',
   keywords: [
-    'wholesale towel supplier',
+    'wholesale towel manufacturer',
     'bulk towels Turkey',
     'wholesale towels Turkey',
     'hotel towel wholesale',
     'towel exporter Turkey',
-    'towel supplier Bursa',
+    'towel manufacturer Bursa',
   ],
 })
 
@@ -37,7 +38,7 @@ const faqs = [
   },
   {
     question: 'Do you export wholesale towels?',
-    answer: 'Yes. We export to Arab countries and Greece and can arrange international shipping.',
+    answer: 'Yes. We export to 13+ countries and can arrange international shipping.',
   },
   {
     question: 'How do I get a wholesale quote?',
@@ -46,8 +47,8 @@ const faqs = [
 ]
 
 const relatedLinks = [
-  { label: 'Turkish Towel Manufacturer', href: '/turkish-towel-manufacturer' },
-  { label: 'Bathrobe Manufacturer', href: '/bathrobe-manufacturer' },
+  { label: 'Turkish Towel Manufacturer', href: '/en/turkish-towel-manufacturer' },
+  { label: 'Bathrobe Manufacturer', href: '/en/bathrobe-manufacturer' },
   { label: 'Collection', href: '/new-collection' },
 ]
 
@@ -56,10 +57,10 @@ export default function WholesaleTowelSupplierPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://baskanhavlu.com' },
+          { name: 'Home', url: 'https://baskanhavlu.com/en' },
           {
-            name: 'Wholesale Towel Supplier',
-            url: 'https://baskanhavlu.com/wholesale-towel-supplier',
+            name: 'Wholesale Towel Manufacturer',
+            url: 'https://baskanhavlu.com/en/wholesale-towel-supplier',
           },
         ]}
       />
@@ -67,8 +68,8 @@ export default function WholesaleTowelSupplierPage() {
 
       <LandingPage
         locale="en"
-        eyebrow="Bursa, Turkey — Since 1981"
-        title="Wholesale Towel Supplier from Turkey"
+        eyebrow="Bursa, Turkey — Since 1996"
+        title="Wholesale Towel Manufacturer from Turkey"
         intro="Bulk towel supply for hotels, corporations and retailers. Flexible minimum order, custom branding available."
         ctaPrimaryLabel="Get Wholesale Quote"
         ctaWhatsappLabel="WhatsApp"

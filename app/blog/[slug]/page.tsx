@@ -124,7 +124,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <Link
                   key={r.slug}
                   href={`/blog/${r.slug}`}
-                  className="rounded-xl p-4 transition-shadow hover:shadow-sm"
+                  className="rounded-xl p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                   style={{ border: '1px solid #e0d4c0', backgroundColor: '#faf8f5' }}
                 >
                   <p className="font-medium text-sm" style={{ color: '#1a1a1a' }}>

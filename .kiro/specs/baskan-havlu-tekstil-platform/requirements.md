@@ -747,7 +747,7 @@ Bu gereksinimler dokümanı **Phase 1: Master Architecture** kapsamını tanıml
    - **Telefon:** +90 507 342 06 61
    - **E-posta:** tekstil@baskanhavlu.com
 3. THE Platform SHALL WhatsApp bağlantılarını yalnızca `https://wa.me/905073420661` formatında kullanmalıdır; diğer format varyasyonları kullanılmamalıdır.
-4. THE Platform SHALL firma kuruluş yılını "1981" olarak tüm Schema ve içeriklerde doğru yansıtmalıdır; "30+ yıl" veya "40+ yıl" gibi türev ifadeler Schema'da değil yalnızca pazarlama metninde kullanılabilir.
+4. [SUPERSEDED 2026-09-03 — bkz. AGENTS.md, lib/config/site.ts] THE Platform SHALL firma kuruluş yılını "1996" olarak tüm Schema ve içeriklerde doğru yansıtmalıdır; iş modeli "doğrudan havlu ve bornoz imalatı"dır (eski "1981 / tedarik-koordinasyon" tanımı geçersizdir). "25+ yıl" gibi türev ifadeler Schema'da değil yalnızca pazarlama metninde kullanılabilir.
 5. WHEN bir bileşen iletişim bilgisi gösterdiğinde, THE Platform SHALL `SITE_CONFIG` nesnesinden değeri okumalı; hiçbir zaman sabit string kullanmamalıdır.
 
 ---

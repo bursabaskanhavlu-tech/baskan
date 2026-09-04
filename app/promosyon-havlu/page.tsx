@@ -10,6 +10,7 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     'Kurumsal kimliğinizi yansıtan logolu promosyon havluları. Etkinlik, fuar ve kurumsal hediye için özel üretim. Teklif için iletişime geçin.',
   path: '/promosyon-havlu',
+  alternatePath: '/en/promotional-towels',
   keywords: [
     'promosyon havlu',
     'logolu havlu',

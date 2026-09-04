@@ -6,13 +6,14 @@ import { Gauge, Pencil, Package } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Otel Havlusu Tedarikçisi | Başkan Havlu Tekstil',
+  title: 'Otel Havlusu İmalatçısı | Başkan Havlu Tekstil',
   description:
-    "Oteller için yüksek gramajlı, dayanıklı ve logo nakışlı havlu tedariki. Otel sektörünün güvenilir tekstil tedarikçisi. Bursa'dan dünyaya.",
+    "Oteller için 250 g/m² ve üzeri gramajlarda, dayanıklı ve logo nakışlı havlu imalatı. Otel sektörünün güvenilir havlu üreticisi. Bursa'dan dünyaya.",
   path: '/otel-havlusu',
+  alternatePath: '/en/hotel-towels',
   keywords: [
     'otel havlusu',
-    'otel havlusu tedarikçisi',
+    'otel havlusu imalatçısı',
     'otel havlusu toptan',
     'otel tekstili',
     'lüks otel havlusu',
@@ -34,7 +35,7 @@ const faqs = [
   {
     question: 'Otel havluları ne kadar dayanıklıdır?',
     answer:
-      'Otel kullanımına özel seçilen ürünlerimiz yoğun kullanım ve endüstriyel yıkama koşullarına dayanıklı olacak şekilde tedarik edilmektedir.',
+      'Otel kullanımına özel ürettiğimiz havlular, yoğun kullanım ve endüstriyel yıkama koşullarına dayanıklı olacak şekilde imal edilmektedir.',
   },
   {
     question: 'Büyük otel zincirleri için toplu sipariş alıyor musunuz?',
@@ -70,16 +71,16 @@ export default function OtelHavlusuPage() {
 
       <LandingPage
         eyebrow="Otel Tekstili"
-        title="Otel Sektörünün Güvenilir Havlu Tedarikçisi"
-        intro="Yüksek gramajlı, dayanıklı ve logo nakışlı otel havluları. Butik otelden büyük zincire her ölçekte tedarik."
+        title="Otel Sektörünün Güvenilir Havlu İmalatçısı"
+        intro="250 g/m² ve üzeri gramajlarda, dayanıklı ve logo nakışlı otel havluları. Butik otelden büyük zincire her ölçekte tedarik."
         ctaPrimaryLabel="Otel Teklifi Al"
         ctaWhatsappLabel="WhatsApp ile Sor"
-        waMessage="Otel havlusu tedariki hakkında bilgi almak istiyorum."
+        waMessage="Otel havlusu imalatı hakkında bilgi almak istiyorum."
         features={[
           {
             icon: Gauge,
-            title: 'Yüksek Gramaj',
-            desc: '400–600 g/m² otel standartlarında ürünler',
+            title: '250 g/m² ve Üzeri',
+            desc: 'Otel standartlarında dayanıklı gramaj seçenekleri',
           },
           { icon: Pencil, title: 'Logo Nakışı', desc: 'Otel kimliğinize özel nakış seçeneği' },
           {

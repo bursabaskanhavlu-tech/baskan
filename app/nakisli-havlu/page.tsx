@@ -10,6 +10,7 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     'Logo nakışlı ve özel işlemeli havlular. Kurumsal ve otel sektörü için kişiselleştirilmiş havlu üretimi. Teklif için iletişime geçin.',
   path: '/nakisli-havlu',
+  alternatePath: '/en/embroidered-towels',
   keywords: [
     'nakışlı havlu',
     'işlemeli havlu',

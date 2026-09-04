@@ -52,10 +52,11 @@ export function LandingPage({
   relatedHeading,
 }: LandingPageProps) {
   const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${encodeURIComponent(waMessage)}`
+  const exportRegionCount = SITE_CONFIG.exportRegions.tr.length
   const exportRegion =
     locale === 'en'
-      ? SITE_CONFIG.exportRegions.en.join(' & ')
-      : SITE_CONFIG.exportRegions.tr.join(' & ')
+      ? `${exportRegionCount}+ Export Markets`
+      : `${exportRegionCount}+ Ülkeye İhracat`
 
   return (
     <>
@@ -108,15 +109,26 @@ export function LandingPage({
           </FadeIn>
 
           <FadeIn delay={0.18}>
-            <div
-              className="mx-auto mt-10 flex w-fit flex-wrap items-center justify-center gap-6 border-t pt-6"
-              style={{ borderColor: '#e0d4c0' }}
-            >
-              <span className="flex items-center gap-2 text-sm" style={{ color: '#8a7050' }}>
+            <div className="mx-auto mt-10 flex w-fit flex-wrap items-center justify-center gap-3">
+              <span
+                className="flex items-center gap-2 rounded-full px-4 py-2 text-sm shadow-sm"
+                style={{
+                  backgroundColor: '#ffffff',
+                  border: '1px solid #e0d4c0',
+                  color: '#5c5c5c',
+                }}
+              >
                 <Calendar className="h-4 w-4" style={{ color: '#e87722' }} aria-hidden="true" />
                 {locale === 'en' ? 'Since' : 'Kuruluş'} {SITE_CONFIG.founded}
               </span>
-              <span className="flex items-center gap-2 text-sm" style={{ color: '#8a7050' }}>
+              <span
+                className="flex items-center gap-2 rounded-full px-4 py-2 text-sm shadow-sm"
+                style={{
+                  backgroundColor: '#ffffff',
+                  border: '1px solid #e0d4c0',
+                  color: '#5c5c5c',
+                }}
+              >
                 <Globe2 className="h-4 w-4" style={{ color: '#e87722' }} aria-hidden="true" />
                 {exportRegion}
               </span>
@@ -134,14 +146,17 @@ export function LandingPage({
               return (
                 <FadeIn key={feature.title} delay={i * 0.08}>
                   <div
-                    className="h-full rounded-xl p-6 text-center transition-shadow hover:shadow-md"
+                    className="h-full rounded-2xl p-7 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
                     style={{ backgroundColor: '#faf8f5', border: '1px solid #e0d4c0' }}
                   >
                     <div
-                      className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full"
-                      style={{ backgroundColor: '#fff7f0' }}
+                      className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl"
+                      style={{
+                        background: 'linear-gradient(135deg, #fff7f0, #ffe8cc)',
+                        border: '1px solid #ffd0a3',
+                      }}
                     >
-                      <Icon className="h-5 w-5" style={{ color: '#e87722' }} aria-hidden="true" />
+                      <Icon className="h-6 w-6" style={{ color: '#e87722' }} aria-hidden="true" />
                     </div>
                     <h3 className="font-semibold" style={{ color: '#1a1a1a' }}>
                       {feature.title}
@@ -185,8 +200,8 @@ export function LandingPage({
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="rounded-full border px-4 py-2 text-sm transition-colors hover:border-[#e87722] hover:text-[#e87722]"
-                    style={{ borderColor: '#e0d4c0', color: '#5c5c5c' }}
+                    className="rounded-full border px-4 py-2 text-sm shadow-sm transition-all hover:-translate-y-0.5 hover:border-orange-500 hover:text-orange-500 hover:shadow-md"
+                    style={{ borderColor: '#e0d4c0', color: '#5c5c5c', backgroundColor: '#ffffff' }}
                   >
                     {link.label}
                   </Link>
@@ -197,7 +212,7 @@ export function LandingPage({
         </section>
       )}
 
-      <CTABand />
+      <CTABand locale={locale} />
     </>
   )
 }

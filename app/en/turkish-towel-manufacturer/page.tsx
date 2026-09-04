@@ -6,18 +6,19 @@ import { Clock, Globe, Pencil } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Turkish Towel Manufacturer & Supplier | Başkan Havlu Tekstil',
+  title: 'Turkish Towel Manufacturer | Başkan Havlu Tekstil',
   description:
-    'Başkan Havlu Tekstil — Turkish towel supplier based in Bursa since 1981. Hotel, corporate and promotional towels. Export to Arab countries and Greece. Get a quote.',
-  path: '/turkish-towel-manufacturer',
+    'Başkan Havlu Tekstil — Turkish towel manufacturer based in Bursa since 1996. Hotel, corporate and promotional towels. Export worldwide. Get a quote.',
+  path: '/en/turkish-towel-manufacturer',
   locale: 'en',
+  alternatePath: '/havlu-ureticisi',
   keywords: [
     'Turkish towel manufacturer',
-    'towel supplier Turkey',
+    'towel manufacturer Turkey',
     'wholesale towels Turkey',
     'hotel towels Turkey',
     'Bursa towel manufacturer',
-    'Turkish bath towel supplier',
+    'Turkish bath towel manufacturer',
   ],
 })
 
@@ -25,17 +26,17 @@ const faqs = [
   {
     question: 'Are you a towel manufacturer or supplier?',
     answer:
-      'We are a textile supply and custom production coordination company based in Bursa, Turkey, since 1981. We work with trusted manufacturers to deliver high-quality towels.',
+      'We are a direct towel manufacturer based in Bursa, Turkey, since 1996. We produce all our towels in our own facility — not a third-party trading company.',
   },
   {
-    question: 'What types of towels do you supply?',
+    question: 'What types of towels do you manufacture?',
     answer:
-      'We supply hand towels, face towels, bath towels, hair towels, foot towels and promotional towels.',
+      'We manufacture hand towels, kitchen towels, face towels, foot towels, head towels, bath towels and promotional towels.',
   },
   {
     question: 'Do you export towels internationally?',
     answer:
-      'Yes. We export to Arab countries and Greece. We can accommodate international shipping requirements.',
+      'Yes. We export to markets including Greece, Bulgaria, Germany, the United States, Italy, Morocco, Algeria, Kuwait, Arab countries, France, Russia, Ukraine and Palestine.',
   },
   {
     question: 'Can you produce towels with custom logo embroidery?',
@@ -50,8 +51,8 @@ const faqs = [
 ]
 
 const relatedLinks = [
-  { label: 'Wholesale Towel Supplier', href: '/wholesale-towel-supplier' },
-  { label: 'Bathrobe Manufacturer', href: '/bathrobe-manufacturer' },
+  { label: 'Wholesale Towel Manufacturer', href: '/en/wholesale-towel-supplier' },
+  { label: 'Bathrobe Manufacturer', href: '/en/bathrobe-manufacturer' },
   { label: 'Collection', href: '/new-collection' },
 ]
 
@@ -60,10 +61,10 @@ export default function TurkishTowelManufacturerPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://baskanhavlu.com' },
+          { name: 'Home', url: 'https://baskanhavlu.com/en' },
           {
             name: 'Turkish Towel Manufacturer',
-            url: 'https://baskanhavlu.com/turkish-towel-manufacturer',
+            url: 'https://baskanhavlu.com/en/turkish-towel-manufacturer',
           },
         ]}
       />
@@ -71,19 +72,19 @@ export default function TurkishTowelManufacturerPage() {
 
       <LandingPage
         locale="en"
-        eyebrow="Bursa, Turkey — Since 1981"
-        title="Turkish Towel Supplier & Production Coordinator"
-        intro="Başkan Havlu Tekstil has been supplying quality towels from Bursa, Turkey since 1981. Hotel, corporate and promotional towels with custom logo options."
+        eyebrow="Bursa, Turkey — Since 1996"
+        title="Turkish Towel Manufacturer"
+        intro="Başkan Havlu Tekstil has been manufacturing quality towels in Bursa, Turkey since 1996. Hotel, corporate and promotional towels with custom logo options."
         ctaPrimaryLabel="Get Wholesale Quote"
         ctaWhatsappLabel="WhatsApp"
         waMessage="I would like to get information about Turkish towel manufacturing."
         features={[
           {
             icon: Clock,
-            title: 'Since 1981',
-            desc: '40+ years of textile supply experience from Bursa, Turkey',
+            title: 'Since 1996',
+            desc: '25+ years of towel manufacturing experience in Bursa, Turkey',
           },
-          { icon: Globe, title: 'Export Ready', desc: 'Exporting to Arab countries and Greece' },
+          { icon: Globe, title: 'Export Ready', desc: 'Exporting to 13+ countries worldwide' },
           {
             icon: Pencil,
             title: 'Custom Production',

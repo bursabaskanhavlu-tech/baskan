@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans, DM_Serif_Display } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/organisms/Navbar'
@@ -23,22 +23,31 @@ const dmSerifDisplay = DM_Serif_Display({
   display: 'swap',
 })
 
+// viewport-fit=cover: iOS'ta çentik/ev tuşu göstergesi olan cihazlarda
+// env(safe-area-inset-*) değerlerinin sıfır dönmemesi için gereklidir
+// (bkz. StickyWhatsApp.tsx).
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.name} | Havlu ve Bornoz Tedarikçisi, Bursa`,
+    default: `${SITE_CONFIG.name} | Havlu ve Bornoz İmalatçısı, Bursa`,
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.seo.defaultDescription,
   keywords: [
-    'havlu tedarikçisi',
+    'havlu imalatçısı',
     'toptan havlu',
     'otel havlusu',
-    'bornoz tedarikçisi',
+    'bornoz imalatçısı',
     'promosyon havlu',
     'havlu üreticisi',
     'Bursa havlu',
-    'Turkish towel supplier',
+    'Turkish towel manufacturer',
     'wholesale towel Turkey',
   ],
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],

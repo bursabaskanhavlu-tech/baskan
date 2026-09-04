@@ -2,30 +2,31 @@ import { FAQSchema } from '@/components/schema/FAQSchema'
 import { BreadcrumbSchema } from '@/components/schema/BreadcrumbSchema'
 import { generatePageMetadata } from '@/lib/utils/metadata'
 import { LandingPage } from '@/components/templates/LandingPage'
-import { Shirt, Pencil, Gauge } from 'lucide-react'
+import { Shirt, Baby, Pencil } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Bornoz Üreticisi | Bornoz Tedarikçisi Bursa | Başkan Havlu Tekstil',
+  title: 'Bornoz Üreticisi | Bornoz İmalatçısı Bursa | Başkan Havlu Tekstil',
   description:
-    'Otel, SPA ve kurumsal kullanım için bornoz tedariki. Kimono, şal yaka ve waffle seçenekleri. Logo nakışı mevcut. Toptan bornoz siparişi için iletişime geçin.',
+    'Otel, SPA ve kurumsal kullanım için bornoz imalatı. Şal yaka, kimono yaka, çocuk, kapüşonlu ve özel üretim bornoz seçenekleri. Toptan bornoz siparişi için iletişime geçin.',
   path: '/bornoz-ureticisi',
+  alternatePath: '/en/bathrobe-manufacturer',
   keywords: [
     'bornoz üreticisi',
-    'bornoz tedarikçisi',
+    'bornoz imalatçısı',
     'otel bornozu',
     'toptan bornoz',
     'Bursa bornoz',
-    'kimono bornoz',
     'şal yaka bornoz',
+    'kapüşonlu bornoz',
   ],
 })
 
 const faqs = [
   {
-    question: 'Hangi tür bornozlar tedarik ediyorsunuz?',
+    question: 'Hangi bornoz modellerini üretiyorsunuz?',
     answer:
-      'Kimono, şal yaka ve waffle bornoz seçenekleri mevcuttur. Otel, SPA ve kurumsal kullanıma uygun modeller sunuyoruz.',
+      'Şal Yaka Bornoz, Kimono Yaka Bornoz, Çocuk Bornoz, Kapüşonlu Bornoz ve Özel Üretim Bornoz modellerini üretiyoruz. Otel, SPA ve kurumsal kullanıma uygun seçenekler sunuyoruz.',
   },
   {
     question: 'Bornozlara logo nakışı yapabiliyor musunuz?',
@@ -38,12 +39,12 @@ const faqs = [
   {
     question: 'Otel sektörü için özel bornoz koleksiyonunuz var mı?',
     answer:
-      'Evet. Otel standartlarına uygun, yüksek gramajlı ve dayanıklı bornoz seçenekleri sunuyoruz.',
+      'Evet. Otel standartlarına uygun, 250 g/m² ve üzeri gramajlarda dayanıklı bornoz seçenekleri sunuyoruz.',
   },
   {
     question: 'Bornoz gramajı nasıl seçilmeli?',
     answer:
-      'Otel kullanımı için 350-500 g/m² arası genellikle tercih edilir. Kullanım alanına göre farklı gramaj seçenekleri mevcuttur.',
+      'Ürettiğimiz bornozlar 250 g/m² ve üzeri gramajlarda sunulur. Kullanım alanına göre farklı gramaj seçenekleri mevcuttur.',
   },
 ]
 
@@ -67,18 +68,20 @@ export default function BornozUreticisiPage() {
 
       <LandingPage
         eyebrow="Bornoz & SPA Tekstili"
-        title="Otel ve SPA için Bornoz Tedarikçisi"
-        intro="Kimono, şal yaka ve waffle bornoz seçenekleri. Logo nakışı ve özel renk seçeneği mevcuttur."
+        title="Otel ve SPA için Bornoz İmalatçısı"
+        intro="Şal yaka, kimono yaka, çocuk, kapüşonlu ve özel üretim bornoz seçenekleri. Logo nakışı ve özel renk seçeneği mevcuttur."
         ctaPrimaryLabel="Bornoz Teklifi Al"
         ctaWhatsappLabel="WhatsApp ile Sor"
-        waMessage="Bornoz tedariki hakkında bilgi almak istiyorum."
+        waMessage="Bornoz imalatı hakkında bilgi almak istiyorum."
         features={[
-          { icon: Shirt, title: 'Kimono / Şal Yaka / Waffle', desc: 'Üç farklı model seçeneği' },
-          { icon: Pencil, title: 'Logo Nakışı', desc: 'Otel veya marka logonuz nakışla işlenir' },
+          { icon: Shirt, title: 'Şal Yaka Bornoz', desc: 'Klasik otel ve SPA tercihi' },
+          { icon: Shirt, title: 'Kimono Yaka Bornoz', desc: 'Zarif, hafif kesim' },
+          { icon: Baby, title: 'Çocuk Bornoz', desc: 'Küçük bedenlerde aynı kalite' },
+          { icon: Shirt, title: 'Kapüşonlu Bornoz', desc: 'SPA ve wellness için ideal' },
           {
-            icon: Gauge,
-            title: 'Otel Standardı Gramaj',
-            desc: '350–500 g/m² dayanıklı seçenekler',
+            icon: Pencil,
+            title: 'Özel Üretim Bornoz',
+            desc: 'Logo, renk ve gramaj kurumsal kimliğinize göre',
           },
         ]}
         faqs={faqs.map((f) => ({ question: f.question, answer: f.answer }))}
