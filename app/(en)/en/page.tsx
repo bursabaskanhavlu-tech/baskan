@@ -4,7 +4,8 @@ import { SITE_CONFIG } from '@/lib/config/site'
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema'
 import { WebSiteSchema } from '@/components/schema/WebSiteSchema'
 import { HeroSection } from '@/components/organisms/HeroSection'
-import { Marquee } from '@/components/organisms/Marquee'
+import { Manifesto } from '@/components/organisms/Manifesto'
+import { VelocityMarquee } from '@/components/effects/VelocityMarquee'
 import { ChannelSplit } from '@/components/organisms/ChannelSplit'
 import { ProductCategories } from '@/components/organisms/ProductCategories'
 import { ValueProposition } from '@/components/organisms/ValueProposition'
@@ -30,9 +31,13 @@ export default function EnglishHomePage() {
       <WebSiteSchema />
 
       <HeroSection locale="en" content={content.hero} facts={content.facts} />
-      <Marquee items={content.marquee} />
+      <VelocityMarquee
+        items={content.marquee}
+        className="border-b border-line py-6 font-display text-[3rem] italic sm:py-8 sm:text-[5.5rem]"
+      />
+      <Manifesto text={content.manifesto} />
+      <ProductCategories content={content.categories} locale="en" />
       <ChannelSplit locale="en" content={content.channels} />
-      <ProductCategories content={content.categories} />
       <ValueProposition content={content.why} />
       <InstagramBand content={content.instagram} />
       <CTABand locale="en" />

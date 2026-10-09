@@ -174,6 +174,13 @@ export function Footer({ locale = 'tr' }: { locale?: Locale }) {
           </div>
         </div>
 
+        {/* Dev marka imzası — dekoratif */}
+        <div aria-hidden="true" className="container-x overflow-hidden">
+          <p className="reveal select-none whitespace-nowrap font-display text-[24vw] leading-[0.8] tracking-tight text-outline lg:text-[21vw]">
+            Başkan<span className="italic text-orange-500 [-webkit-text-stroke:0]">.</span>
+          </p>
+        </div>
+
         <div className="container-x flex flex-col gap-4 border-t border-line-dark py-7 text-caption text-charcoal-300 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {SITE_CONFIG.name}. {t.footer.rights}

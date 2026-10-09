@@ -8,6 +8,7 @@ import { SITE_CONFIG } from '@/lib/config/site'
 import { TR_TO_EN_ROUTES, EN_TO_TR_ROUTES } from '@/lib/config/locale-routes'
 import { getDictionary, contactHref, homeHref, whatsappHref, type Locale } from '@/lib/i18n'
 import { ArrowIcon, WhatsAppIcon } from '@/components/atoms/Icons'
+import { TowelArt } from '@/components/atoms/TowelArt'
 import { trackCTAClick, trackWhatsAppClick } from '@/lib/utils/analytics'
 import { cn } from '@/lib/utils'
 
@@ -103,12 +104,13 @@ export function Navbar({ locale }: NavbarProps) {
   return (
     <>
       <header
+        style={{ viewTransitionName: 'site-header' }}
         className={cn(
-          'fixed inset-x-0 top-0 z-50 transition-[transform,background-color,box-shadow] duration-500 ease-out',
+          'on-dark fixed inset-x-0 top-0 z-50 text-paper transition-[transform,background-color,box-shadow] duration-500 ease-out',
           hidden && !menuOpen && !megaOpen ? '-translate-y-full' : 'translate-y-0',
           scrolled || megaOpen || menuOpen
-            ? 'bg-paper/92 shadow-[0_1px_0_rgb(26_26_26/0.08)] backdrop-blur-md'
-            : 'bg-paper'
+            ? 'bg-ink/85 shadow-[0_1px_0_rgb(250_248_245/0.08)] backdrop-blur-xl'
+            : 'bg-ink'
         )}
       >
         <div className="container-x flex h-[4.25rem] items-center justify-between gap-6 lg:h-[5.25rem]">
@@ -124,7 +126,7 @@ export function Navbar({ locale }: NavbarProps) {
               height={407}
               sizes="(min-width: 1024px) 120px, 100px"
               priority
-              className="h-auto w-[100px] lg:w-[120px]"
+              className="h-auto w-[100px] brightness-0 invert lg:w-[120px]"
             />
           </Link>
 
@@ -140,8 +142,8 @@ export function Navbar({ locale }: NavbarProps) {
                       aria-expanded={megaOpen}
                       aria-controls="mega-menu"
                       className={cn(
-                        'flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[0.9375rem] transition-colors hover:text-orange-700',
-                        isActive(pathname, link.href) && 'text-orange-700'
+                        'flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[0.9375rem] transition-colors hover:text-orange-400',
+                        isActive(pathname, link.href) && 'text-orange-400'
                       )}
                     >
                       {link.label}
@@ -164,8 +166,8 @@ export function Navbar({ locale }: NavbarProps) {
                       href={link.href}
                       aria-current={isActive(pathname, link.href) ? 'page' : undefined}
                       className={cn(
-                        'block rounded-full px-4 py-2.5 text-[0.9375rem] transition-colors hover:text-orange-700',
-                        isActive(pathname, link.href) && 'text-orange-700'
+                        'block rounded-full px-4 py-2.5 text-[0.9375rem] transition-colors hover:text-orange-400',
+                        isActive(pathname, link.href) && 'text-orange-400'
                       )}
                     >
                       {link.label}
@@ -181,7 +183,7 @@ export function Navbar({ locale }: NavbarProps) {
               href={switchHref}
               hrefLang={locale === 'en' ? 'tr' : 'en'}
               aria-label={t.switchLabel}
-              className="hidden h-11 min-w-11 items-center justify-center rounded-full px-3 text-[0.8125rem] font-semibold tracking-wide transition-colors hover:text-orange-700 sm:flex"
+              className="hidden h-11 min-w-11 items-center justify-center rounded-full px-3 text-[0.8125rem] font-semibold tracking-wide transition-colors hover:text-orange-400 sm:flex"
             >
               {t.switchShort}
             </Link>
@@ -191,7 +193,7 @@ export function Navbar({ locale }: NavbarProps) {
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick('navbar', pathname)}
               aria-label={t.whatsapp}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-line-strong transition-colors hover:border-whatsapp hover:bg-whatsapp hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-line-dark transition-colors hover:border-whatsapp hover:bg-whatsapp hover:text-white"
             >
               <WhatsAppIcon className="h-[1.125rem] w-[1.125rem]" />
             </a>
@@ -211,7 +213,7 @@ export function Navbar({ locale }: NavbarProps) {
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               aria-label={menuOpen ? t.closeMenu : t.openMenu}
-              className="relative flex h-11 w-11 items-center justify-center rounded-full bg-ink text-paper lg:hidden"
+              className="relative flex h-11 w-11 items-center justify-center rounded-full bg-orange-500 text-ink lg:hidden"
             >
               <span
                 className={cn(
@@ -236,7 +238,7 @@ export function Navbar({ locale }: NavbarProps) {
           onMouseLeave={closeMegaSoon}
           inert={!megaOpen}
           className={cn(
-            'absolute inset-x-0 top-full hidden border-y border-line bg-paper transition-[opacity,transform,visibility] duration-400 ease-out lg:block',
+            'absolute inset-x-0 top-full hidden border-y border-line-dark bg-ink/95 backdrop-blur-xl transition-[opacity,transform,visibility] duration-400 ease-out lg:block',
             megaOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
           )}
         >
@@ -250,7 +252,7 @@ export function Navbar({ locale }: NavbarProps) {
                       <Link
                         href={l.href}
                         onClick={() => setMegaOpen(false)}
-                        className="link-line text-[1.0625rem] transition-colors hover:text-orange-700"
+                        className="link-line text-[1.0625rem] transition-colors hover:text-orange-400"
                       >
                         {l.label}
                       </Link>
@@ -267,8 +269,14 @@ export function Navbar({ locale }: NavbarProps) {
                 t.productGroups.length > 2 ? 'col-span-3' : 'col-span-6'
               )}
             >
-              <div className="swatch swatch-stone absolute inset-0" aria-hidden="true" />
-              <div className="relative flex h-full min-h-44 flex-col justify-end bg-gradient-to-t from-ink/55 to-transparent p-6 text-paper">
+              <div className="absolute inset-0 bg-charcoal-800" aria-hidden="true" />
+              <TowelArt
+                variant="stack"
+                tone="cream"
+                accent="clay"
+                className="absolute -right-6 -top-4 h-52 w-52 transition-transform duration-700 group-hover:-rotate-6 group-hover:scale-105"
+              />
+              <div className="relative flex h-full min-h-48 flex-col justify-end bg-gradient-to-t from-ink/80 via-ink/20 to-transparent p-6 text-paper">
                 <span className="display-sm">{t.allProducts.label}</span>
                 <span className="mt-2 inline-flex items-center gap-2 text-sm">
                   {locale === 'en' ? 'View all' : 'Hepsini gör'}
@@ -285,7 +293,7 @@ export function Navbar({ locale }: NavbarProps) {
         id="mobile-menu"
         inert={!menuOpen}
         className={cn(
-          'fixed inset-0 z-40 flex flex-col overflow-y-auto bg-paper pt-[4.25rem] transition-[clip-path,visibility] duration-700 ease-[cubic-bezier(.76,0,.24,1)] lg:hidden',
+          'on-dark fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink pt-[4.25rem] text-paper transition-[clip-path,visibility] duration-700 ease-[cubic-bezier(.76,0,.24,1)] lg:hidden',
           menuOpen
             ? 'visible [clip-path:inset(0_0_0_0)]'
             : 'invisible [clip-path:inset(0_0_100%_0)]'
@@ -297,7 +305,7 @@ export function Navbar({ locale }: NavbarProps) {
               <li
                 key={link.href}
                 className={cn(
-                  'border-b border-line transition-[opacity,transform] duration-700 ease-[cubic-bezier(.2,.7,.2,1)]',
+                  'border-b border-line-dark transition-[opacity,transform] duration-700 ease-[cubic-bezier(.2,.7,.2,1)]',
                   menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 )}
                 style={{ transitionDelay: menuOpen ? `${180 + i * 60}ms` : '0ms' }}
@@ -308,7 +316,7 @@ export function Navbar({ locale }: NavbarProps) {
                   aria-current={isActive(pathname, link.href) ? 'page' : undefined}
                   className={cn(
                     'flex items-center justify-between py-4 font-display text-[2.25rem] leading-none sm:text-5xl',
-                    isActive(pathname, link.href) && 'text-orange-700'
+                    isActive(pathname, link.href) && 'text-orange-400'
                   )}
                 >
                   {link.label}
@@ -334,7 +342,7 @@ export function Navbar({ locale }: NavbarProps) {
                       <Link
                         href={l.href}
                         onClick={() => setMenuOpen(false)}
-                        className="block py-1 text-[0.9375rem] text-charcoal-700"
+                        className="block py-1 text-[0.9375rem] text-charcoal-300"
                       >
                         {l.label}
                       </Link>
@@ -348,7 +356,7 @@ export function Navbar({ locale }: NavbarProps) {
 
         <div
           className={cn(
-            'container-x border-t border-line py-6 transition-opacity duration-700',
+            'container-x border-t border-line-dark py-6 transition-opacity duration-700',
             menuOpen ? 'opacity-100' : 'opacity-0'
           )}
           style={{ transitionDelay: menuOpen ? '540ms' : '0ms' }}
@@ -372,7 +380,7 @@ export function Navbar({ locale }: NavbarProps) {
               {t.quote}
             </Link>
           </div>
-          <div className="mt-5 flex items-center justify-between text-sm text-charcoal-600">
+          <div className="mt-5 flex items-center justify-between text-sm text-charcoal-300">
             <a href={`tel:${SITE_CONFIG.contact.phoneRaw}`} className="py-2">
               {SITE_CONFIG.contact.phone}
             </a>
@@ -380,7 +388,7 @@ export function Navbar({ locale }: NavbarProps) {
               href={switchHref}
               hrefLang={locale === 'en' ? 'tr' : 'en'}
               onClick={() => setMenuOpen(false)}
-              className="py-2 font-semibold text-ink"
+              className="py-2 font-semibold text-paper"
             >
               {locale === 'en' ? 'Türkçe' : 'English'}
             </Link>

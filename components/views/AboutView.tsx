@@ -17,6 +17,7 @@ export function AboutView({ locale, content }: AboutViewProps) {
   return (
     <>
       <PageHero
+        art={{ variant: 'robe', tone: 'cream' }}
         breadcrumbs={[
           { label: dict.common.home, href: homeHref(locale) },
           { label: content.crumb },
@@ -33,6 +34,10 @@ export function AboutView({ locale, content }: AboutViewProps) {
             <MediaFrame
               slot="production"
               tone="stone"
+              art="stack"
+              artTone="stone"
+              artAccent="cream"
+              dark
               className="aspect-[4/5] w-full"
               sizes="(min-width: 1024px) 45vw, 100vw"
               animate={false}
@@ -107,6 +112,9 @@ export function AboutView({ locale, content }: AboutViewProps) {
               <li key={item.title} className="reveal">
                 <MediaFrame
                   slot={i === 0 ? 'embroidered' : i === 1 ? 'promotional' : 'wholesale'}
+                  art={i === 0 ? 'monogram' : i === 1 ? 'hanging' : 'stack'}
+                  artTone={i === 0 ? 'white' : i === 1 ? 'clay' : 'cream'}
+                  dark={i !== 2}
                   tone={i === 0 ? 'charcoal' : i === 1 ? 'clay' : 'cream'}
                   ratio="4 / 3"
                   sizes="(min-width: 640px) 33vw, 100vw"

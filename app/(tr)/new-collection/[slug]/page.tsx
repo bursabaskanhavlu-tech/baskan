@@ -6,7 +6,7 @@ import { productMediaSlot } from '@/content/media'
 import { BreadcrumbSchema } from '@/components/schema/BreadcrumbSchema'
 import { ProductSchema } from '@/components/schema/ProductSchema'
 import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
-import { ProductCard, productTone } from '@/components/molecules/ProductCard'
+import { ProductCard, productArt, productTone } from '@/components/molecules/ProductCard'
 import { MediaFrame } from '@/components/atoms/MediaFrame'
 import { ArrowIcon, WhatsAppIcon } from '@/components/atoms/Icons'
 import { CTABand } from '@/components/organisms/CTABand'
@@ -79,7 +79,10 @@ export default async function ProductDetailPage({ params }: Props) {
               <MediaFrame
                 slot={productMediaSlot(product.slug)}
                 tone={productTone(product.slug)}
-                className="aspect-4/5 w-full lg:sticky lg:top-28"
+                art={productArt(product.slug).art}
+                artTone={productArt(product.slug).tone}
+                artAccent={productArt(product.slug).accent}
+                className="aspect-4/5 w-full overflow-hidden rounded-[2rem] lg:sticky lg:top-28"
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 priority
                 animate={false}

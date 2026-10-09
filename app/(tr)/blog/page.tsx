@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { BLOG_POSTS } from '@/content/blog'
 import { BreadcrumbSchema } from '@/components/schema/BreadcrumbSchema'
 import { PageHero } from '@/components/molecules/PageHero'
-import { MediaFrame, type SwatchTone } from '@/components/atoms/MediaFrame'
+import { MediaFrame } from '@/components/atoms/MediaFrame'
+import type { ArtTone, TowelVariant } from '@/components/atoms/TowelArt'
 import { ArrowUpRightIcon } from '@/components/atoms/Icons'
 import { CTABand } from '@/components/organisms/CTABand'
 import { generatePageMetadata } from '@/lib/utils/metadata'
@@ -16,7 +17,14 @@ export const metadata: Metadata = generatePageMetadata({
   path: '/blog',
 })
 
-const TONES: SwatchTone[] = ['stone', 'cream', 'charcoal', 'sand', 'clay', 'white']
+const ARTS: { art: TowelVariant; tone: ArtTone; dark?: boolean }[] = [
+  { art: 'roll', tone: 'cream', dark: true },
+  { art: 'stack', tone: 'white' },
+  { art: 'robe', tone: 'clay', dark: true },
+  { art: 'hanging', tone: 'cream' },
+  { art: 'monogram', tone: 'sand', dark: true },
+  { art: 'stack', tone: 'stone' },
+]
 
 export default function BlogPage() {
   const posts = [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date))
@@ -32,6 +40,7 @@ export default function BlogPage() {
       />
 
       <PageHero
+        art={{ variant: 'roll', tone: 'cream', accent: 'stone' }}
         breadcrumbs={[{ label: 'Ana Sayfa', href: '/' }, { label: 'Blog' }]}
         kicker="Rehberler ve sektör notları"
         title="Blog"
@@ -47,7 +56,11 @@ export default function BlogPage() {
             >
               <MediaFrame
                 tone="stone"
-                className="aspect-16/10 w-full lg:col-span-7"
+                art="stack"
+                artTone="clay"
+                artAccent="cream"
+                dark
+                className="aspect-16/10 w-full overflow-hidden rounded-[2rem] lg:col-span-7"
                 sizes="(min-width: 1024px) 55vw, 100vw"
               />
               <div className="flex flex-col lg:col-span-5 lg:py-4">
@@ -71,9 +84,12 @@ export default function BlogPage() {
               <li key={post.slug} className="reveal">
                 <Link href={`/blog/${post.slug}`} className="group flex h-full flex-col">
                   <MediaFrame
-                    tone={TONES[i % TONES.length] ?? 'sand'}
+                    art={ARTS[i % ARTS.length]?.art ?? 'stack'}
+                    artTone={ARTS[i % ARTS.length]?.tone ?? 'cream'}
+                    dark={ARTS[i % ARTS.length]?.dark}
                     ratio="4 / 3"
                     plain
+                    className="overflow-hidden rounded-[1.75rem]"
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   />
                   <p className="mt-5 text-caption text-charcoal-600">

@@ -9,6 +9,21 @@ import { MediaFrame, type SwatchTone } from '@/components/atoms/MediaFrame'
 import { ArrowIcon, ArrowUpRightIcon, WhatsAppIcon } from '@/components/atoms/Icons'
 import { contactHref, homeHref, type Locale } from '@/lib/i18n'
 import type { MediaSlot } from '@/content/media'
+import type { ArtTone, TowelVariant } from '@/components/atoms/TowelArt'
+import { ThreadField } from '@/components/effects/ThreadField'
+import { SplitText } from '@/components/effects/SplitText'
+import { Magnetic, Tilt } from '@/components/effects/Interactive'
+
+/** Fotoğraf yokken her konuya uygun illüstrasyon. */
+const ART_BY_SLOT: Partial<
+  Record<MediaSlot, { art: TowelVariant; tone: ArtTone; accent?: ArtTone }>
+> = {
+  wholesale: { art: 'stack', tone: 'stone', accent: 'cream' },
+  hotel: { art: 'stack', tone: 'white', accent: 'cream' },
+  promotional: { art: 'hanging', tone: 'clay' },
+  embroidered: { art: 'monogram', tone: 'white' },
+  bathrobe: { art: 'robe', tone: 'cream' },
+}
 
 interface LandingFeature {
   icon: LucideIcon
@@ -80,10 +95,12 @@ export function LandingPage({
     <>
       <ServiceSchema name={title} description={intro} locale={locale} />
 
-      {/* HERO */}
-      <section className="pb-16 pt-10 sm:pb-24 sm:pt-14">
+      {/* HERO — koyu, iplik alanı, harf harf başlık */}
+      <section className="on-dark relative isolate overflow-hidden bg-ink pb-16 pt-10 text-paper sm:pb-24 sm:pt-14">
+        <ThreadField className="absolute inset-0 -z-10 h-full w-full opacity-70" />
         <div className="container-x">
           <Breadcrumbs
+            dark
             className="rise-fade"
             items={[{ label: en ? 'Home' : 'Ana Sayfa', href: homeHref(locale) }, { label: title }]}
           />
@@ -92,48 +109,63 @@ export function LandingPage({
               <p className="kicker rise-fade" style={d(0.05)}>
                 {eyebrow}
               </p>
-              <h1 className="display-lg rise mt-6">{title}</h1>
-              <p className="lead rise-fade mt-7 max-w-xl" style={d(0.12)}>
+              <h1 className="display-lg mt-6 text-paper">
+                <SplitText text={title} delay={0.1} />
+              </h1>
+              <p className="lead rise-fade mt-7 max-w-xl text-charcoal-300" style={d(0.45)}>
                 {intro}
               </p>
-              <div className="rise-fade mt-10 flex flex-col gap-3 sm:flex-row" style={d(0.18)}>
-                <Link href={contactHref(locale)} className="btn btn-primary">
-                  {ctaPrimaryLabel}
-                  <ArrowIcon />
-                </Link>
-                <a
-                  href={waUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                >
-                  <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
-                  {ctaWhatsappLabel}
-                </a>
+              <div className="rise-fade mt-10 flex flex-col gap-3 sm:flex-row" style={d(0.55)}>
+                <Magnetic className="w-full sm:w-auto">
+                  <Link href={contactHref(locale)} className="btn btn-primary w-full">
+                    {ctaPrimaryLabel}
+                    <ArrowIcon />
+                  </Link>
+                </Magnetic>
+                <Magnetic className="w-full sm:w-auto">
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline w-full"
+                  >
+                    <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
+                    {ctaWhatsappLabel}
+                  </a>
+                </Magnetic>
               </div>
               <dl
-                className="rise-fade mt-auto grid grid-cols-3 gap-px border-y border-line bg-line pt-0 lg:mt-14"
-                style={d(0.24)}
+                className="rise-fade mt-12 grid grid-cols-3 gap-4 border-t border-line-dark pt-6 lg:mt-auto"
+                style={d(0.65)}
               >
                 {trust.map((item) => (
-                  <div key={item.label} className="bg-paper py-5 pr-3 not-first:pl-4">
-                    <dt className="text-caption text-charcoal-600">{item.label}</dt>
-                    <dd className="mt-1 text-[0.9375rem] font-semibold leading-snug sm:text-base">
+                  <div key={item.label} className="flex flex-col-reverse gap-1">
+                    <dt className="text-caption text-charcoal-300">{item.label}</dt>
+                    <dd className="text-[0.9375rem] font-semibold leading-snug text-paper sm:text-base">
                       {item.value}
                     </dd>
                   </div>
                 ))}
               </dl>
             </div>
-            <div className="rise-fade lg:col-span-5" style={d(0.2)}>
-              <MediaFrame
-                slot={media.slot}
-                tone={media.tone}
-                className="aspect-4/3 w-full lg:aspect-4/5"
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                priority
-                animate={false}
-              />
+            <div className="rise-fade lg:col-span-5" style={d(0.3)}>
+              <Tilt>
+                <div className="relative overflow-hidden rounded-[2rem] border border-line-dark">
+                  <MediaFrame
+                    slot={media.slot}
+                    tone={media.tone}
+                    art={ART_BY_SLOT[media.slot]?.art ?? 'stack'}
+                    artTone={ART_BY_SLOT[media.slot]?.tone ?? 'cream'}
+                    artAccent={ART_BY_SLOT[media.slot]?.accent}
+                    dark
+                    className="aspect-4/3 w-full lg:aspect-4/5"
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    priority
+                    animate={false}
+                  />
+                  <span className="tilt-glare" aria-hidden="true" />
+                </div>
+              </Tilt>
             </div>
           </div>
         </div>
@@ -148,9 +180,11 @@ export function LandingPage({
               return (
                 <li
                   key={feature.title}
-                  className="reveal border-t border-line-strong py-8 sm:py-10"
+                  className="reveal group border-t border-line-strong py-8 sm:py-10"
                 >
-                  <Icon className="h-6 w-6 text-orange-600" strokeWidth={1.4} aria-hidden="true" />
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-ink text-orange-400 transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110">
+                    <Icon className="h-6 w-6" strokeWidth={1.4} aria-hidden="true" />
+                  </span>
                   <h2 className="mt-6 font-display text-[1.75rem] leading-tight">
                     {feature.title}
                   </h2>

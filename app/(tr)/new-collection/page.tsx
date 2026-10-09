@@ -59,6 +59,7 @@ export default function CollectionPage() {
       />
 
       <PageHero
+        art={{ variant: 'stack', tone: 'white', accent: 'clay' }}
         breadcrumbs={[{ label: 'Ana Sayfa', href: '/' }, { label: 'Koleksiyon' }]}
         kicker="Toptan ve perakende"
         title="Havlu Koleksiyonumuz"

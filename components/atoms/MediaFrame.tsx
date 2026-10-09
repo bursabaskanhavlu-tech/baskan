@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { MEDIA, type MediaSlot } from '@/content/media'
 import { cn } from '@/lib/utils'
+import { TowelArt, type ArtTone, type TowelVariant } from '@/components/atoms/TowelArt'
 
 export type SwatchTone = 'cream' | 'sand' | 'stone' | 'clay' | 'charcoal' | 'white'
 
@@ -20,6 +21,12 @@ interface MediaFrameProps {
   priority?: boolean
   className?: string
   children?: React.ReactNode
+  /** Fotoğraf yokken gösterilecek havlu illüstrasyonu (verilmezse düz kumaş dokusu). */
+  art?: TowelVariant
+  artTone?: ArtTone
+  artAccent?: ArtTone
+  /** İllüstrasyon zemini koyu mu? */
+  dark?: boolean
 }
 
 /**
@@ -37,6 +44,10 @@ export function MediaFrame({
   priority = false,
   className,
   children,
+  art,
+  artTone = 'cream',
+  artAccent,
+  dark = false,
 }: MediaFrameProps) {
   const asset = slot ? MEDIA[slot] : null
 
@@ -49,6 +60,27 @@ export function MediaFrame({
       priority={priority}
       className="object-cover"
     />
+  ) : art ? (
+    <div
+      className={cn(
+        'absolute inset-0 grid place-items-center',
+        dark ? 'bg-charcoal-800' : 'bg-beige-100'
+      )}
+      aria-hidden="true"
+    >
+      <div
+        className={cn(
+          'absolute left-1/2 top-1/2 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl',
+          dark ? 'bg-orange-500/15' : 'bg-white/70'
+        )}
+      />
+      <TowelArt
+        variant={art}
+        tone={artTone}
+        accent={artAccent}
+        className="relative h-[78%] w-[78%] transition-transform duration-700 ease-out-soft group-hover:scale-105 group-hover:-rotate-3"
+      />
+    </div>
   ) : (
     <div
       className={cn('swatch absolute inset-0', `swatch-${tone}`, plain && 'swatch-plain')}

@@ -3,6 +3,7 @@ import type { Product } from '@/content/products'
 import { productMediaSlot } from '@/content/media'
 import { MediaFrame, type SwatchTone } from '@/components/atoms/MediaFrame'
 import { ArrowUpRightIcon } from '@/components/atoms/Icons'
+import type { ArtTone, TowelVariant } from '@/components/atoms/TowelArt'
 
 const TONES: Record<string, SwatchTone> = {
   'el-havlusu': 'cream',
@@ -12,6 +13,21 @@ const TONES: Record<string, SwatchTone> = {
   'ayak-havlusu': 'cream',
   'promosyon-havlu': 'clay',
   bornoz: 'charcoal',
+}
+
+const ARTS: Record<string, { art: TowelVariant; tone: ArtTone; accent?: ArtTone }> = {
+  'el-havlusu': { art: 'stack', tone: 'cream', accent: 'white' },
+  'yuz-havlusu': { art: 'stack', tone: 'white', accent: 'sand' },
+  'banyo-havlusu': { art: 'stack', tone: 'stone', accent: 'cream' },
+  'kafa-havlusu': { art: 'roll', tone: 'sand', accent: 'white' },
+  'ayak-havlusu': { art: 'hanging', tone: 'white' },
+  'promosyon-havlu': { art: 'monogram', tone: 'clay' },
+  bornoz: { art: 'robe', tone: 'cream' },
+}
+
+/** Ürüne uygun illüstrasyon (fotoğraf eklenene kadar). */
+export function productArt(slug: string) {
+  return ARTS[slug] ?? { art: 'stack' as const, tone: 'cream' as const }
 }
 
 export function productTone(slug: string): SwatchTone {
@@ -26,13 +42,20 @@ interface ProductCardProps {
 /** Tüm kart tıklanabilir; görsel, ad, açıklama, kullanım alanları ve MOQ notu. */
 export function ProductCard({ product, compact = false }: ProductCardProps) {
   return (
-    <Link href={`/new-collection/${product.slug}`} className="group flex h-full flex-col">
+    <Link
+      href={`/new-collection/${product.slug}`}
+      data-cursor="İncele"
+      className="group flex h-full flex-col"
+    >
       <MediaFrame
         slot={productMediaSlot(product.slug)}
         tone={productTone(product.slug)}
+        art={productArt(product.slug).art}
+        artTone={productArt(product.slug).tone}
+        artAccent={productArt(product.slug).accent}
         ratio={compact ? '4 / 3' : '4 / 5'}
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-        className="transition-transform duration-700 ease-out-soft"
+        className="overflow-hidden rounded-[1.75rem]"
       >
         <span className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-paper/85 text-ink opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
           <ArrowUpRightIcon />

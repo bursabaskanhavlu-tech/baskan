@@ -60,20 +60,20 @@ Bu 8 madde ihlal edilirse, yapılan iş ne kadar "kaliteli" görünürse görün
 
 ### 3.1 Teknoloji Yığını (gerçek, doğrulanmış)
 
-| Katman         | Teknoloji                                                                                                                         | Not                                                                   |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Framework      | **Next.js 16.4.0**, App Router                                                                                                    | Bkz. §4 — bu, eğitim verinizdeki Next.js değildir                     |
-| Dil            | TypeScript, `strict: true`                                                                                                        | `tsconfig.json`                                                       |
-| UI kütüphanesi | React 19.2.4                                                                                                                      | Server Components varsayılan                                          |
-| Stil           | Tailwind CSS v4 (CSS-first, `@theme`) + Shadcn UI (`base-nova` stili) + Base UI                                                   | `tailwind.config.*` dosyası **yok**, her şey `app/globals.css` içinde |
-| Animasyon      | Saf CSS (scroll-driven `animation-timeline: view()`, keyframes); animasyon kütüphanesi yok                                        | Bkz. §10; `framer-motion` kaldırıldı (Ekim 2026)                      |
-| Form           | Yalnızca WhatsApp: `components/organisms/ContactForm.tsx` istemci tarafında doğrular, bilgileri hazır WhatsApp mesajı olarak açar | Sunucuya veri gönderilmez, saklanmaz                                  |
-| İkon           | `lucide-react`                                                                                                                    | Tek ikon kaynağı                                                      |
-| Analitik       | Google Analytics 4 — çerez onayına bağlı, elle yazılmış `components/organisms/GoogleAnalytics.tsx`                                | Vercel Analytics **kullanılmıyor** (bkz. §3.3)                        |
-| Deploy         | **Netlify** (`netlify.toml`)                                                                                                      | Vercel **değil** — bkz. §3.3                                          |
-| CI             | GitHub Actions (`.github/workflows/ci.yml`): format check → lint → type-check → `npm audit` → build                               | Deploy adımı yok, Netlify kendi CI'ında build alır                    |
-| Veri katmanı   | Veritabanı yok; `content/products/index.ts`, `content/blog/index.ts` tip güvenli statik TS modülleri                              | CMS entegrasyonu yok                                                  |
-| i18n           | Kütüphane yok. İki kök layout: `app/(tr)` (lang=tr) ve `app/(en)` (lang=en, sayfalar `/en/...`); arayüz metinleri `lib/i18n.ts`   | TR⇄EN eşleşmeleri `lib/config/locale-routes.ts`                       |
+| Katman         | Teknoloji                                                                                                                                                       | Not                                                                                             |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Framework      | **Next.js 16.4.0**, App Router                                                                                                                                  | Bkz. §4 — bu, eğitim verinizdeki Next.js değildir                                               |
+| Dil            | TypeScript, `strict: true`                                                                                                                                      | `tsconfig.json`                                                                                 |
+| UI kütüphanesi | React 19.2.4                                                                                                                                                    | Server Components varsayılan                                                                    |
+| Stil           | Tailwind CSS v4 (CSS-first, `@theme`) + Shadcn UI (`base-nova` stili) + Base UI                                                                                 | `tailwind.config.*` dosyası **yok**, her şey `app/globals.css` içinde                           |
+| Animasyon      | Saf CSS (scroll-driven, keyframes) + `components/effects/` (Lenis akıcı kaydırma, canvas ThreadField, özel imleç, yatay galeri, hız şeridi, mıknatıs/3B eğilme) | Hepsi reduced-motion ve dokunmatikte devre dışı; React 19.3 `<ViewTransition>` ile sayfa geçişi |
+| Form           | Yalnızca WhatsApp: `components/organisms/ContactForm.tsx` istemci tarafında doğrular, bilgileri hazır WhatsApp mesajı olarak açar                               | Sunucuya veri gönderilmez, saklanmaz                                                            |
+| İkon           | `lucide-react`                                                                                                                                                  | Tek ikon kaynağı                                                                                |
+| Analitik       | Google Analytics 4 — çerez onayına bağlı, elle yazılmış `components/organisms/GoogleAnalytics.tsx`                                                              | Vercel Analytics **kullanılmıyor** (bkz. §3.3)                                                  |
+| Deploy         | **Netlify** (`netlify.toml`)                                                                                                                                    | Vercel **değil** — bkz. §3.3                                                                    |
+| CI             | GitHub Actions (`.github/workflows/ci.yml`): format check → lint → type-check → `npm audit` → build                                                             | Deploy adımı yok, Netlify kendi CI'ında build alır                                              |
+| Veri katmanı   | Veritabanı yok; `content/products/index.ts`, `content/blog/index.ts` tip güvenli statik TS modülleri                                                            | CMS entegrasyonu yok                                                                            |
+| i18n           | Kütüphane yok. İki kök layout: `app/(tr)` (lang=tr) ve `app/(en)` (lang=en, sayfalar `/en/...`); arayüz metinleri `lib/i18n.ts`                                 | TR⇄EN eşleşmeleri `lib/config/locale-routes.ts`                                                 |
 
 ### 3.2 Dizin Yapısı
 
@@ -330,6 +330,9 @@ Geçmişte `useReducedMotion()` (Framer Motion) değerine göre farklı DOM rend
 ```
 
 - Giriş perdesi (`IntroCurtain`) oturum başına bir kez, yaklaşık 2 sn; tıklama/Escape ile atlanır; reduced-motion'da gösterilmez.
+- Etkileşim efektleri `components/effects/` altındadır ve yalnızca `(pointer: fine)` + hareket izni varken çalışır: `SmoothScroll` (Lenis), `Cursor` (`data-cursor="Etiket"` ile imleç etiketi), `Magnetic`, `Tilt` (+ `.tilt-glare`), `Spotlight`, `HorizontalGallery` (≥1024 px'te sabitlenip yatay akar, aksi halde yerel kaydırmalı şerit), `VelocityMarquee`, `ThreadField` (hero canvas; ekran dışında durur), `SplitText` (H1 metni HTML'de aynen kalır).
+- Fotoğraf yokken görseller `components/atoms/TowelArt.tsx` SVG illüstrasyonlarıdır (yığın, rulo, bornoz, peştemal, monogram); `MediaFrame` `art` prop'uyla kullanır.
+- Tema: koyu açılışlar (`bg-ink`, `.on-dark`) + açık içerik bölümleri. Navbar her zaman koyudur; logo koyu zeminde `brightness-0 invert` ile beyazdır (footer'daki kabul edilmiş yöntem).
 
 ### 10.4 Yasaklı
 

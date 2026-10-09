@@ -2,6 +2,7 @@ import { SITE_CONFIG } from '@/lib/config/site'
 import { yearsInBusiness, type Locale } from '@/lib/i18n'
 import type { MediaSlot } from '@/content/media'
 import type { SwatchTone } from '@/components/atoms/MediaFrame'
+import type { ArtTone, TowelVariant } from '@/components/atoms/TowelArt'
 
 /**
  * Ana sayfa içerikleri (TR / EN). Sayılar ve yıllar yalnızca SITE_CONFIG'den
@@ -14,6 +15,9 @@ export interface CategoryCard {
   href: string
   slot: MediaSlot
   tone: SwatchTone
+  art: TowelVariant
+  artTone: ArtTone
+  artAccent?: ArtTone
 }
 
 export interface HomeContent {
@@ -24,9 +28,10 @@ export interface HomeContent {
     intro: string
     primary: string
     whatsapp: string
-    panels: { label: string; href: string; slot: MediaSlot; tone: SwatchTone }[]
   }
   facts: { value: string; label: string }[]
+  /** Kaydırdıkça kelime kelime belirginleşen kısa manifesto (doğrulanmış bilgilerden). */
+  manifesto: string
   marquee: string[]
   channels: {
     wholesale: {
@@ -80,11 +85,6 @@ const tr: HomeContent = {
     intro: `${SITE_CONFIG.founded}'dan bu yana Bursa'da kendi tesisimizde havlu ve bornoz üretiyoruz. Oteller, kurumlar, kuaförler ve promosyon firmalarına toptan; mağazamızda ise perakende satış yapıyoruz.`,
     primary: 'Teklif Al',
     whatsapp: 'WhatsApp ile Yaz',
-    panels: [
-      { label: 'Otel Havlusu', href: '/otel-havlusu', slot: 'hero', tone: 'stone' },
-      { label: 'Bornoz', href: '/bornoz-ureticisi', slot: 'bathrobe', tone: 'cream' },
-      { label: 'Promosyon Havlu', href: '/promosyon-havlu', slot: 'promotional', tone: 'clay' },
-    ],
   },
   facts: [
     { value: String(SITE_CONFIG.founded), label: 'Kuruluş yılı' },
@@ -92,6 +92,7 @@ const tr: HomeContent = {
     { value: `${categoryCount}+`, label: 'Ürün grubu' },
     { value: '24 sa', label: 'Teklif yanıt süresi' },
   ],
+  manifesto: `${SITE_CONFIG.founded}’dan bu yana Bursa Havlucular Çarşısı’nda havlu ve bornoz üretiyoruz. Otelden kuaföre, promosyondan ihracata; toptan da perakende de aynı özenle.`,
   marquee: [...SITE_CONFIG.productCategories.tr],
   channels: {
     wholesale: {
@@ -130,6 +131,9 @@ const tr: HomeContent = {
         href: '/otel-havlusu',
         slot: 'hotel',
         tone: 'white',
+        art: 'stack',
+        artTone: 'white',
+        artAccent: 'cream',
       },
       {
         title: 'Promosyon Havlu',
@@ -137,6 +141,8 @@ const tr: HomeContent = {
         href: '/promosyon-havlu',
         slot: 'promotional',
         tone: 'clay',
+        art: 'hanging',
+        artTone: 'clay',
       },
       {
         title: 'Toptan Havlu',
@@ -144,6 +150,9 @@ const tr: HomeContent = {
         href: '/toptan-havlu',
         slot: 'wholesale',
         tone: 'stone',
+        art: 'stack',
+        artTone: 'stone',
+        artAccent: 'sand',
       },
       {
         title: 'Bornoz',
@@ -151,6 +160,8 @@ const tr: HomeContent = {
         href: '/toptan-bornoz',
         slot: 'bathrobe',
         tone: 'cream',
+        art: 'robe',
+        artTone: 'cream',
       },
       {
         title: 'Nakışlı Havlu',
@@ -158,6 +169,8 @@ const tr: HomeContent = {
         href: '/nakisli-havlu',
         slot: 'embroidered',
         tone: 'charcoal',
+        art: 'monogram',
+        artTone: 'white',
       },
       {
         title: 'Kuaför ve Salon',
@@ -165,6 +178,9 @@ const tr: HomeContent = {
         href: '/new-collection',
         slot: 'salon',
         tone: 'sand',
+        art: 'roll',
+        artTone: 'sand',
+        artAccent: 'white',
       },
     ],
   },
@@ -206,16 +222,6 @@ const en: HomeContent = {
     intro: `Başkan Havlu Tekstil has been manufacturing towels and bathrobes in Bursa, Turkey since ${SITE_CONFIG.founded}. We supply hotels, corporates, salons and promotional companies worldwide, and sell retail at our store.`,
     primary: 'Get a Quote',
     whatsapp: 'Message on WhatsApp',
-    panels: [
-      { label: 'Hotel Towels', href: '/en/hotel-towels', slot: 'hero', tone: 'stone' },
-      { label: 'Bathrobes', href: '/en/bathrobe-manufacturer', slot: 'bathrobe', tone: 'cream' },
-      {
-        label: 'Promotional Towels',
-        href: '/en/promotional-towels',
-        slot: 'promotional',
-        tone: 'clay',
-      },
-    ],
   },
   facts: [
     { value: String(SITE_CONFIG.founded), label: 'Founded' },
@@ -223,6 +229,7 @@ const en: HomeContent = {
     { value: `${SITE_CONFIG.productCategories.en.length}+`, label: 'Product categories' },
     { value: '24 h', label: 'Quote response time' },
   ],
+  manifesto: `Since ${SITE_CONFIG.founded}, we have been making towels and bathrobes in Bursa’s Havlucular Çarşısı. From hotels to salons, from promotional gifts to export orders; wholesale and retail with the same care.`,
   marquee: [...SITE_CONFIG.productCategories.en],
   channels: {
     wholesale: {
@@ -261,6 +268,9 @@ const en: HomeContent = {
         href: '/en/hotel-towels',
         slot: 'hotel',
         tone: 'white',
+        art: 'stack',
+        artTone: 'white',
+        artAccent: 'cream',
       },
       {
         title: 'Promotional Towels',
@@ -268,6 +278,8 @@ const en: HomeContent = {
         href: '/en/promotional-towels',
         slot: 'promotional',
         tone: 'clay',
+        art: 'hanging',
+        artTone: 'clay',
       },
       {
         title: 'Wholesale Towels',
@@ -275,6 +287,9 @@ const en: HomeContent = {
         href: '/en/wholesale-towel-supplier',
         slot: 'wholesale',
         tone: 'stone',
+        art: 'stack',
+        artTone: 'stone',
+        artAccent: 'sand',
       },
       {
         title: 'Bathrobes',
@@ -282,6 +297,8 @@ const en: HomeContent = {
         href: '/en/wholesale-bathrobes',
         slot: 'bathrobe',
         tone: 'cream',
+        art: 'robe',
+        artTone: 'cream',
       },
       {
         title: 'Embroidered Towels',
@@ -289,6 +306,8 @@ const en: HomeContent = {
         href: '/en/embroidered-towels',
         slot: 'embroidered',
         tone: 'charcoal',
+        art: 'monogram',
+        artTone: 'white',
       },
       {
         title: 'Hotel Bathrobes',
@@ -296,6 +315,8 @@ const en: HomeContent = {
         href: '/en/hotel-bathrobes',
         slot: 'salon',
         tone: 'sand',
+        art: 'robe',
+        artTone: 'white',
       },
     ],
   },

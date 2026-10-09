@@ -170,8 +170,11 @@
     color: var(--color-charcoal-300);
   }
 
-  /* Butonlar */
+  /* Butonlar — hover'da renk alttan yukarı "dolar" (::after katmanı) */
   .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -183,54 +186,74 @@
     font-weight: 600;
     letter-spacing: 0.005em;
     white-space: nowrap;
+    --fill: var(--color-ink);
     transition:
-      background-color 0.35s var(--ease-out-soft),
-      color 0.35s var(--ease-out-soft),
-      border-color 0.35s var(--ease-out-soft),
+      color 0.45s var(--ease-out-soft),
+      border-color 0.45s var(--ease-out-soft),
       transform 0.35s var(--ease-out-soft);
   }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--fill);
+    transform: translateY(102%);
+    transition: transform 0.55s var(--ease-out-soft);
+  }
+  .btn:hover::after,
+  .btn:focus-visible::after {
+    transform: none;
+  }
   .btn:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
   .btn svg {
     transition: transform 0.35s var(--ease-out-soft);
   }
   .btn:hover svg.btn-arrow {
-    transform: translateX(3px);
+    transform: translateX(4px);
   }
   /* Turuncu zemin + koyu metin: WCAG AA kontrast (6.6:1) */
   .btn-primary {
     background: var(--color-orange-500);
     color: var(--color-ink);
+    --fill: var(--color-ink);
   }
   .btn-primary:hover {
-    background: var(--color-ink);
     color: var(--color-paper);
+  }
+  .on-dark .btn-primary {
+    --fill: var(--color-paper);
+  }
+  .on-dark .btn-primary:hover {
+    color: var(--color-ink);
   }
   .btn-dark {
     background: var(--color-ink);
     color: var(--color-paper);
+    --fill: var(--color-orange-500);
   }
   .btn-dark:hover {
-    background: var(--color-orange-500);
     color: var(--color-ink);
   }
   .btn-outline {
     border: 1px solid var(--color-line-strong);
     color: var(--color-ink);
     background: transparent;
+    --fill: var(--color-ink);
   }
   .btn-outline:hover {
     border-color: var(--color-ink);
-    background: var(--color-ink);
     color: var(--color-paper);
   }
   .on-dark .btn-outline {
     border-color: var(--color-line-dark);
     color: var(--color-paper);
+    --fill: var(--color-paper);
   }
   .on-dark .btn-outline:hover {
-    background: var(--color-paper);
     color: var(--color-ink);
     border-color: var(--color-paper);
   }
@@ -731,5 +754,355 @@ html:has(.intro[data-show]) {
   }
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* ==========================================================================
+   Kinetik Tekstil — efekt katmanı
+   ========================================================================== */
+
+/* İnce film greni: koyu yüzeylere doku verir */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 85;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Özel imleç (yalnızca ince işaretçi + hareket izni) */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 130;
+  pointer-events: none;
+  display: none;
+}
+html.has-cursor .cursor-dot,
+html.has-cursor .cursor-ring {
+  display: block;
+}
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button,
+html.has-cursor summary,
+html.has-cursor label {
+  cursor: none;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 999px;
+  background: var(--color-orange-500);
+}
+.cursor-ring {
+  display: none;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1px solid rgb(232 119 34 / 0.55);
+  border-radius: 999px;
+  transition:
+    width 0.4s var(--ease-out-soft),
+    height 0.4s var(--ease-out-soft),
+    margin 0.4s var(--ease-out-soft),
+    background-color 0.4s var(--ease-out-soft),
+    border-color 0.4s var(--ease-out-soft),
+    scale 0.2s;
+}
+html.has-cursor .cursor-ring {
+  display: grid;
+  place-items: center;
+}
+.cursor-ring[data-state='hover'] {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-color: var(--color-orange-500);
+  background: rgb(232 119 34 / 0.08);
+}
+.cursor-ring[data-state='label'] {
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  border-color: transparent;
+  background: var(--color-orange-500);
+}
+.cursor-ring[data-press='true'] {
+  scale: 0.85;
+}
+.cursor-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-ink);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.cursor-ring[data-state='label'] .cursor-label {
+  opacity: 1;
+}
+
+/* Mıknatıs, 3B eğilme, ışık */
+.magnetic {
+  transition: transform 0.6s var(--ease-out-soft);
+}
+.tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.6s var(--ease-out-soft);
+  transform-style: preserve-3d;
+}
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--gx, 50%) var(--gy, 50%),
+    rgb(255 255 255 / 0.22),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.tilt:hover .tilt-glare {
+  opacity: 1;
+}
+.spotlight {
+  position: relative;
+  --sx: 50%;
+  --sy: 50%;
+}
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    560px circle at var(--sx) var(--sy),
+    rgb(232 119 34 / 0.18),
+    transparent 42%
+  );
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Yatay galeri: varsayılan yerel kaydırmalı şerit, geniş ekranda sabitlenir */
+.hgallery-sticky {
+  position: relative;
+}
+.hgallery-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem) 0.5rem;
+  scroll-padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+.hgallery-track::-webkit-scrollbar {
+  display: none;
+}
+.hgallery-track > * {
+  flex: none;
+  scroll-snap-align: start;
+}
+.hgallery.is-pinned .hgallery-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hgallery.is-pinned .hgallery-track {
+  overflow: visible;
+  width: max-content;
+  padding-right: 12vw;
+  will-change: transform;
+}
+.hgallery-progress {
+  display: none;
+}
+.hgallery.is-pinned .hgallery-progress {
+  display: block;
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 2.5rem);
+  right: clamp(1.25rem, 4vw, 2.5rem);
+  bottom: 2.5rem;
+  height: 1px;
+  background: var(--color-line);
+}
+.hgallery-bar {
+  display: block;
+  height: 100%;
+  background: var(--color-orange-500);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Kontur yazı */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--color-ink);
+}
+.on-dark .text-outline {
+  -webkit-text-stroke: 1.5px rgb(224 212 192 / 0.8);
+}
+
+/* Harf harf açılan başlık */
+/* Üst/alt pay: İ, Ş, Ç gibi harflerin nokta ve çengelleri maskede kesilmez */
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.16em 0.08em 0.18em;
+  margin: -0.16em -0.08em -0.18em;
+}
+.split-char {
+  display: inline-block;
+}
+
+/* Koyu yüzey turuncu ışıması */
+.glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(232 119 34 / 0.45), transparent 65%);
+  filter: blur(40px);
+}
+
+/* Yığılan kartlar (gerekçe listesi) */
+/* Yığılma yalnızca geniş ekranda; dar ekranda kartlar düz akar ve metin örtülmez */
+@media (min-width: 1024px) {
+  .stack-card {
+    position: sticky;
+    top: calc(6.5rem + var(--i, 0) * 1.1rem);
+  }
+}
+
+/* Dönen yazılı rozet */
+.spin-badge text {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+@keyframes char-up {
+  from {
+    transform: translateY(108%) rotate(4deg);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes scrub {
+  from {
+    opacity: 0.16;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes art-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3%, 2%);
+  }
+  40% {
+    transform: translate(2%, -4%);
+  }
+  60% {
+    transform: translate(-4%, -2%);
+  }
+  80% {
+    transform: translate(3%, 3%);
+  }
+}
+@keyframes drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-28px) scale(0.99);
+    filter: blur(6px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .split-char {
+    animation: char-up 1s var(--ease-out-soft) both;
+    animation-delay: calc(var(--intro-delay) + var(--d, 0s));
+  }
+  .art-float {
+    transform-box: fill-box;
+    animation: art-float 6s ease-in-out infinite;
+  }
+  .spin-slow {
+    animation: spin 22s linear infinite;
+  }
+  .grain {
+    animation: grain 7s steps(8) infinite;
+  }
+  .drift {
+    animation: drift 60s linear infinite;
+  }
+  .drift:hover {
+    animation-play-state: paused;
+  }
+  @supports (animation-timeline: view()) {
+    .scrub-word {
+      animation: scrub linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 42%;
+    }
+  }
+  /* Sayfa geçişi (React <ViewTransition>, app/(tr|en)/template.tsx) */
+  ::view-transition-old(.page-out) {
+    animation: page-out 0.32s var(--ease-in-out-strong) both;
+  }
+  ::view-transition-new(.page-in) {
+    animation: page-in 0.6s var(--ease-out-soft) 0.12s both;
+  }
+  ::view-transition-group(site-header) {
+    animation: none;
   }
 }

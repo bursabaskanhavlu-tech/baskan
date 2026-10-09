@@ -8,7 +8,7 @@ Tekstil'in kurumsal web sitesi. Toptan, özel üretim, ihracat ve mağazada pera
 - **Framework:** Next.js 16.4 (App Router, statik üretim) + React 19
 - **Dil:** TypeScript (strict mode)
 - **Stil:** Tailwind CSS v4 (CSS-first, `app/globals.css`)
-- **Animasyon:** Saf CSS (scroll-driven animations); animasyon kütüphanesi yok
+- **Animasyon:** Saf CSS + hafif efektler (Lenis akıcı kaydırma, canvas iplik alanı, sayfa geçişleri)
 - **Formlar:** Yalnızca WhatsApp'a hazır mesaj (sunucuya veri gönderilmez)
 - **Analitik:** GA4 (çerez onayı sonrası koşullu yüklenir)
 - **Deploy:** Netlify (`@netlify/plugin-nextjs`)

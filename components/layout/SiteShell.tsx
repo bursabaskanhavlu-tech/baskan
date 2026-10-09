@@ -7,6 +7,8 @@ import { CookieConsentProvider } from '@/components/providers/CookieConsentProvi
 import { CookieConsentBanner } from '@/components/organisms/CookieConsentBanner'
 import { GoogleAnalytics } from '@/components/organisms/GoogleAnalytics'
 import { IntroCurtain } from '@/components/layout/IntroCurtain'
+import { SmoothScroll } from '@/components/effects/SmoothScroll'
+import { Cursor } from '@/components/effects/Cursor'
 import type { Locale } from '@/lib/i18n'
 
 interface SiteShellProps {
@@ -31,6 +33,7 @@ export function SiteShell({ locale, children }: SiteShellProps) {
           {locale === 'en' ? 'Skip to content' : 'İçeriğe geç'}
         </a>
         <IntroCurtain />
+        <div className="grain" aria-hidden="true" />
         <CookieConsentProvider>
           <Navbar locale={locale} />
           <main id="main" data-site-region className="flex-1 pt-[4.25rem] lg:pt-[5.25rem]">
@@ -42,6 +45,8 @@ export function SiteShell({ locale, children }: SiteShellProps) {
           <StickyWhatsApp locale={locale} />
           <CookieConsentBanner locale={locale} />
           <GoogleAnalytics />
+          <SmoothScroll />
+          <Cursor />
         </CookieConsentProvider>
       </body>
     </html>
