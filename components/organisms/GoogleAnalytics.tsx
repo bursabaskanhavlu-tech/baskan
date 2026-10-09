@@ -3,6 +3,7 @@
 import Script from 'next/script'
 import { useCookieConsent } from '@/components/providers/CookieConsentProvider'
 
+/** GA4 — yalnızca analitik çerez onayı verildiğinde yüklenir. */
 export function GoogleAnalytics() {
   const { consent } = useCookieConsent()
   const gaId = process.env['NEXT_PUBLIC_GA_MEASUREMENT_ID']
@@ -19,7 +20,7 @@ export function GoogleAnalytics() {
         {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaId}', { anonymize_ip: true });`}
+          gtag('config', '${gaId}');`}
       </Script>
     </>
   )

@@ -1,4 +1,4 @@
-# Başkan Havlu Tekstil — AI & LLM Crawler Guide v5.0
+# Başkan Havlu Tekstil — AI & LLM Crawler Guide v5.1
 # Bu dosya AI arama motorları ve LLM tarayıcıları için entity verisi içerir.
 # Canonical: https://baskanhavlu.com/llms.txt
 
@@ -44,6 +44,7 @@ Working Hours: Mon–Fri 09:00–18:00, Sat 09:00–14:00
 - Özel renk ve boyut üretimi / Custom color and size production
 - Kurumsal hediye seti / Corporate gift sets
 - İhracat organizasyonu / Export logistics
+- Mağazada perakende satış (Havlucular Çarşısı) / Retail sales at our store in Havlucular Çarşısı, Bursa
 
 ## Hedef Sektörler / Target Sectors
 - Hotels and hospitality (otel ve konaklama)
@@ -76,6 +77,7 @@ Turkish (primary, canonical) and English (full parallel site under /en/) are pub
 - Homepage (TR): https://baskanhavlu.com
 - Homepage (EN): https://baskanhavlu.com/en
 - Products: https://baskanhavlu.com/new-collection
+- Bathrobe (product): https://baskanhavlu.com/new-collection/bornoz
 - About (TR): https://baskanhavlu.com/about
 - About (EN): https://baskanhavlu.com/en/about
 - Contact (TR): https://baskanhavlu.com/contact
@@ -111,5 +113,5 @@ Turkish (primary, canonical) and English (full parallel site under /en/) are pub
 - https://baskanhavlu.com/blog/nakisli-havlu-rehberi
 
 ## Güncelleme / Last Updated
-Date: 2026-09-04
-Version: 5.0
+Date: 2026-10-09
+Version: 5.1

@@ -1,48 +1,61 @@
 import { SITE_CONFIG } from '@/lib/config/site'
+import type { Locale } from '@/lib/i18n'
 
 /**
- * EntityBlock — Makine okunabilir görünür içerik bloğu.
- * AI tarayıcıları (GPT, Gemini, Claude, Perplexity) bu bloğu entity sinyali olarak kullanır.
- * aria-hidden=false — görünür içerik, SEO açısından güçlü sinyal.
- * Her sayfada footer üstünde görünür; ancak stilleme ile görsel olarak minimalize edilir.
+ * EntityBlock — makine ve insan tarafından okunabilir, görünür firma bilgisi.
+ * AI tarayıcıları bu bloğu entity sinyali olarak kullanır; görünür kalmalıdır
+ * (aria-hidden yapılmaz — AGENTS.md §16). Değerler yalnızca SITE_CONFIG'den gelir.
  */
-export function EntityBlock() {
+export function EntityBlock({ locale = 'tr' }: { locale?: Locale }) {
+  const en = locale === 'en'
+  const items = [
+    {
+      label: en ? 'Company' : 'Firma',
+      lines: [SITE_CONFIG.name, `${en ? 'Founded' : 'Kuruluş'}: ${SITE_CONFIG.founded}`],
+    },
+    {
+      label: en ? 'Location' : 'Konum',
+      lines: [
+        `Havlucular Çarşısı, ${SITE_CONFIG.address.addressLocality}`,
+        `${SITE_CONFIG.address.addressRegion}, ${en ? 'Turkey' : 'Türkiye'}`,
+      ],
+    },
+    {
+      label: en ? 'Contact' : 'İletişim',
+      lines: [SITE_CONFIG.contact.phone, SITE_CONFIG.contact.email],
+    },
+    {
+      label: en ? 'Export' : 'İhracat',
+      lines: [
+        en
+          ? `${SITE_CONFIG.exportRegions.en.length}+ export markets`
+          : `${SITE_CONFIG.exportRegions.tr.length}+ ihracat pazarı`,
+        en ? 'Wholesale and retail' : 'Toptan ve perakende',
+      ],
+    },
+  ]
+
   return (
     <section
-      className="border-t py-8"
-      style={{ borderColor: '#e0d4c0', backgroundColor: '#faf8f5' }}
-      aria-label="Firma Bilgileri"
+      aria-label={en ? 'Company Information' : 'Firma Bilgileri'}
+      className="border-t border-line"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-4 text-xs sm:grid-cols-4" style={{ color: '#8a7050' }}>
-          <div>
-            <p className="font-semibold uppercase tracking-wider" style={{ color: '#5c5c5c' }}>
-              Firma
-            </p>
-            <p className="mt-1">{SITE_CONFIG.name}</p>
-            <p>Kuruluş: {SITE_CONFIG.founded}</p>
-          </div>
-          <div>
-            <p className="font-semibold uppercase tracking-wider" style={{ color: '#5c5c5c' }}>
-              Konum
-            </p>
-            <p className="mt-1">{SITE_CONFIG.address.addressLocality}</p>
-            <p>{SITE_CONFIG.address.addressRegion}, Türkiye</p>
-          </div>
-          <div>
-            <p className="font-semibold uppercase tracking-wider" style={{ color: '#5c5c5c' }}>
-              İletişim
-            </p>
-            <p className="mt-1">{SITE_CONFIG.contact.phone}</p>
-            <p>{SITE_CONFIG.contact.email}</p>
-          </div>
-          <div>
-            <p className="font-semibold uppercase tracking-wider" style={{ color: '#5c5c5c' }}>
-              İhracat
-            </p>
-            <p className="mt-1">{SITE_CONFIG.exportRegions.tr.length} Ülkeye İhracat</p>
-          </div>
-        </div>
+      <div className="container-x">
+        <dl className="grid grid-cols-2 gap-px bg-line lg:grid-cols-4">
+          {items.map((item) => (
+            <div
+              key={item.label}
+              className="bg-paper py-7 pl-5 pr-4 text-caption leading-relaxed max-lg:odd:pl-0 lg:pl-8 lg:first:pl-0"
+            >
+              <dt className="font-semibold text-ink">{item.label}</dt>
+              {item.lines.map((line) => (
+                <dd key={line} className="wrap-break-word text-charcoal-600">
+                  {line}
+                </dd>
+              ))}
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

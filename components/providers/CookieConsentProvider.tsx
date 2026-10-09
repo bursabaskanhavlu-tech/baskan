@@ -10,6 +10,8 @@ type ConsentState = {
 
 type CookieConsentContextType = {
   consent: ConsentState | null
+  /** localStorage okundu mu? Okunmadan banner gösterilmez (geri dönen ziyaretçide yanıp sönmeyi önler). */
+  ready: boolean
   acceptAll: () => void
   acceptNecessary: () => void
   resetConsent: () => void
@@ -22,41 +24,55 @@ const VERSION = '1.0'
 
 export function CookieConsentProvider({ children }: { children: React.ReactNode }) {
   const [consent, setConsent] = useState<ConsentState | null>(null)
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
+    let stored: ConsentState | null = null
     try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        const parsed = JSON.parse(stored) as ConsentState & { version?: string }
+      const raw = localStorage.getItem(STORAGE_KEY)
+      if (raw) {
+        const parsed = JSON.parse(raw) as ConsentState & { version?: string }
         if (parsed.version === VERSION) {
-          startTransition(() => {
-            setConsent({
-              necessary: true,
-              analytics: parsed.analytics,
-              marketing: parsed.marketing,
-            })
-          })
+          stored = {
+            necessary: true,
+            analytics: parsed.analytics === true,
+            marketing: parsed.marketing === true,
+          }
         }
       }
     } catch {
-      // localStorage okuma hatası — banner tekrar gösterilir
+      // localStorage erişilemiyor — banner tekrar gösterilir
     }
+    startTransition(() => {
+      setConsent(stored)
+      setReady(true)
+    })
   }, [])
 
   const save = (state: ConsentState) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...state, version: VERSION }))
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...state, version: VERSION }))
+    } catch {
+      // Gizli sekme vb. — tercih yalnızca bu oturum için geçerli olur
+    }
     setConsent(state)
   }
 
   const acceptAll = () => save({ necessary: true, analytics: true, marketing: true })
   const acceptNecessary = () => save({ necessary: true, analytics: false, marketing: false })
   const resetConsent = () => {
-    localStorage.removeItem(STORAGE_KEY)
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+    } catch {
+      // yok say
+    }
     setConsent(null)
   }
 
   return (
-    <CookieConsentContext.Provider value={{ consent, acceptAll, acceptNecessary, resetConsent }}>
+    <CookieConsentContext.Provider
+      value={{ consent, ready, acceptAll, acceptNecessary, resetConsent }}
+    >
       {children}
     </CookieConsentContext.Provider>
   )

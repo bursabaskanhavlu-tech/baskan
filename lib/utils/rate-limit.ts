@@ -43,7 +43,13 @@ export async function checkRateLimit(
 ): Promise<boolean> {
   const ratelimit = limiters[kind]
   if (!ratelimit) return true
-  const ip = getClientIp(request)
-  const { success } = await ratelimit.limit(ip)
-  return success
+  try {
+    const { success } = await ratelimit.limit(getClientIp(request))
+    return success
+  } catch (error) {
+    // Upstash erişilemezse form çalışmaya devam eder (fail-open); koruma
+    // geçici olarak devre dışı kalır ama hiçbir lead bu yüzden kaybolmaz.
+    console.error('[rate-limit] Upstash erişilemedi, istek sınırlanmadan geçiriliyor:', error)
+    return true
+  }
 }

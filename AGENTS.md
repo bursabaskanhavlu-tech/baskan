@@ -8,7 +8,7 @@ Bu dosya bir şablon değildir — projenin gerçek, doğrulanmış mevcut durum
 
 ## 0. Tek Cümlede Görev Tanımı
 
-**Bu proje sıfırdan yeniden yazılmıyor.** 1981'den beri faaliyet gösteren gerçek bir Bursa firmasının, çalışan ve büyümekte olan bir SEO/GEO altyapısı var. Görev: bu altyapıyı **asla kırmadan**, üzerine kurumsal seviyede tasarım, kullanıcı deneyimi, performans ve güven inşa etmek.
+**Bu proje sıfırdan yeniden yazılmıyor.** 1996'dan beri faaliyet gösteren gerçek bir Bursa firmasının, çalışan ve büyümekte olan bir SEO/GEO altyapısı var. Görev: bu altyapıyı **asla kırmadan**, üzerine kurumsal seviyede tasarım, kullanıcı deneyimi, performans ve güven inşa etmek.
 
 > **Önce koru. Sonra geliştir.** Bu iki kelime, bu dosyadaki her kuralın üst kuralıdır.
 
@@ -18,15 +18,15 @@ Bu dosya bir şablon değildir — projenin gerçek, doğrulanmış mevcut durum
 
 ### 1.1 Kim bu firma?
 
-- **Başkan Havlu Tekstil** — 1981'den bu yana Bursa Osmangazi, Havlucular Çarşısı'nda faaliyet gösteren bir **tekstil tedarik ve özel/fason üretim koordinasyon** firmasıdır.
-- **Doğrudan fabrika değildir.** Güvenilir üreticilerle koordineli çalışarak havlu, bornoz ve promosyon tekstili tedarik eder. Bu ayrım hukuki ve stratejik olarak kritiktir (bkz. §14).
+- **Başkan Havlu Tekstil** — 1996'dan bu yana Bursa Osmangazi, Havlucular Çarşısı'nda faaliyet gösteren bir **havlu ve bornoz imalatçısıdır (doğrudan üretici)**. Toptan (otel, kurum, promosyon, ihracat) ve mağazada perakende satış yapar.
+- Kuruluş yılı ve iş modeli firma sahibi tarafından doğrulanmış ve `SITE_CONFIG` içinde güncellenmiştir (commit `8589a60`, Eylül 2026; önceki sürümde 1981 / "tedarik koordinatörü" yazıyordu). Bu bilgiler yalnızca `SITE_CONFIG.founded` ve `SITE_CONFIG.businessModel` üzerinden okunur.
 - Hedef kitle: oteller, kurumlar, kuaförler/güzellik salonları, promosyon/reklam ajansları, perakende mağazaları ve **Arap Ülkeleri + Yunanistan** pazarlarına ihracat alıcıları.
 - Tüm gerçek NAP (Ad/Adres/Telefon) verisi tek kaynaktan okunur: **`lib/config/site.ts` → `SITE_CONFIG`**. Hiçbir bileşen, sayfa veya metin bu değerleri elle tekrar yazmaz.
 
 ### 1.2 Platformun amacı
 
 1. **SEO otoritesi** — Google'da "Bursa havlu tedarikçisi", "toptan havlu", "otel havlusu" gibi sorgularda üst sıra.
-2. **GEO otoritesi (Generative Engine Optimization)** — ChatGPT, Gemini, Claude, Perplexity gibi AI arama sistemleri bir kullanıcı "Bursa'da havlu tedarikçisi" diye sorduğunda bu siteyi kaynak göstersin. *Bu hedefe zaten kısmen ulaşılmış durumda — bu, korunması gereken canlı bir varlıktır, deneysel bir hedef değil.*
+2. **GEO otoritesi (Generative Engine Optimization)** — ChatGPT, Gemini, Claude, Perplexity gibi AI arama sistemleri bir kullanıcı "Bursa'da havlu tedarikçisi" diye sorduğunda bu siteyi kaynak göstersin. _Bu hedefe zaten kısmen ulaşılmış durumda — bu, korunması gereken canlı bir varlıktır, deneysel bir hedef değil._
 3. **Lead üretimi** — Teklif formu + WhatsApp üzerinden gerçek satış fırsatı.
 4. **Marka otoritesi** — "Pazarcı/bayi" değil, "kurumsal, güvenilir tedarik koordinatörü" algısı.
 
@@ -45,9 +45,9 @@ Bu bölüm, kullanıcının doğrudan talimatıdır ve her şeyden önceliklidir
 
 1. **Mevcut çalışan SEO yapısını asla bozma.** `generatePageMetadata()` (`lib/utils/metadata.ts`), her sayfadaki `title`/`description`/`canonical`/`openGraph`/`twitter` alanları, mevcut URL slug'ları — hiçbiri "daha iyi olur" diye yeniden tasarlanmaz.
 2. **Mevcut GEO başarısını asla bozma.** `/public/llms.txt`, `/public/ai.txt`, `app/robots.ts` içindeki AI bot izinleri (`GPTBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`, `anthropic-ai`, `Applebot-Extended`, `cohere-ai`, `CCBot`, `Omgilibot`) — bunlar bilinçli GEO kararlarıdır, "temizlik" bahanesiyle daraltılmaz.
-3. **Mevcut URL yapısını gereksiz yere değiştirme.** 11 landing page rotası (`/havlu-ureticisi`, `/toptan-havlu`, `/otel-havlusu`, `/promosyon-havlu`, `/bornoz-ureticisi`, `/toptan-bornoz`, `/otel-bornozu`, `/nakisli-havlu`, `/turkish-towel-manufacturer`, `/bathrobe-manufacturer`, `/wholesale-towel-supplier`) + `/new-collection`, `/new-collection/[slug]`, `/about`, `/contact`, `/blog`, `/blog/[slug]` — bunlar aylarca indekslenmiş, backlink toplamış URL'ler olabilir. Bir URL değişmesi **zorunluysa**, `next.config.ts` içindeki `redirects()` bloğuna 301 kaydı eklenmeden asla yapılmaz.
+3. **Mevcut URL yapısını gereksiz yere değiştirme.** 11 landing page rotası (`/havlu-ureticisi`, `/toptan-havlu`, `/otel-havlusu`, `/promosyon-havlu`, `/bornoz-ureticisi`, `/toptan-bornoz`, `/otel-bornozu`, `/nakisli-havlu`) ve bunların 8 İngilizce eşi `/en/...` altında (`/en/turkish-towel-manufacturer`, `/en/wholesale-towel-supplier`, `/en/bathrobe-manufacturer`, `/en/hotel-towels`, `/en/promotional-towels`, `/en/embroidered-towels`, `/en/wholesale-bathrobes`, `/en/hotel-bathrobes`) + `/en`, `/en/about`, `/en/contact`, `/new-collection`, `/new-collection/[slug]`, `/about`, `/contact`, `/blog`, `/blog/[slug]` — bunlar aylarca indekslenmiş, backlink toplamış URL'ler olabilir. Bir URL değişmesi **zorunluysa**, `next.config.ts` içindeki `redirects()` bloğuna 301 kaydı eklenmeden asla yapılmaz.
 4. **Metadata sistemini gereksiz yere yeniden yazma.** `generatePageMetadata()` fonksiyonunun imzasını değiştirmeden önce onu çağıran **tüm** sayfaları (30+ dosya) etkileyeceğini unutma.
-5. **JSON-LD yapılarını yalnızca geliştir, çalışanları bozma.** `components/schema/` altındaki 8 şema bileşeni (`OrganizationSchema`, `LocalBusinessSchema`, `WebSiteSchema`, `ProductSchema`, `FAQSchema`, `BreadcrumbSchema`, `ReviewSchema`, `ArticleSchema`) zaten Google Rich Results ile uyumlu tasarlanmış. Yeni alan eklenebilir, mevcut zorunlu alan (`@type`, `name`, `address` vb.) kaldırılamaz.
+5. **JSON-LD yapılarını yalnızca geliştir, çalışanları bozma.** `components/schema/` altındaki şema bileşenleri (`OrganizationSchema`, `WebSiteSchema`, `ProductSchema`, `FAQSchema`, `BreadcrumbSchema`, `ReviewSchema`, `ArticleSchema`, `CollectionPageSchema`) zaten Google Rich Results ile uyumlu tasarlanmış. Yeni alan eklenebilir, mevcut zorunlu alan (`@type`, `name`, `address` vb.) kaldırılamaz.
 6. **`llms.txt`, `ai.txt`, `robots.txt`, `sitemap.ts` içeriğini koru.** Bu dosyalara madde eklenebilir (yeni ürün, yeni sayfa, yeni pazar); mevcut satırlar yalnızca **gerçek veri değiştiğinde** güncellenir.
 7. **"Çalışan sistemi 'daha iyi olur' diye yeniden yazma."** Bir bileşen çalışıyor, test edilmiş, canlıda ise; onu yeniden yazmak için gerekçe "daha temiz kod" değil, **somut bir bug, somut bir eksik özellik veya somut bir kullanıcı talebi** olmalıdır.
 8. **Marka renklerine ve logoya dokunma.** Turuncu `#E87722` ailesi, bej/krem tonları, koyu kömür `#1A1A1A`, WhatsApp yeşili `#25D366` — bunlar sabittir (tam palet için bkz. §7.1). `public/images/logo-icon.png` ve `public/images/logo-text.png` değiştirilmez, kırpılmaz, renk değiştirilmez.
@@ -60,40 +60,43 @@ Bu 8 madde ihlal edilirse, yapılan iş ne kadar "kaliteli" görünürse görün
 
 ### 3.1 Teknoloji Yığını (gerçek, doğrulanmış)
 
-| Katman | Teknoloji | Not |
-|---|---|---|
-| Framework | **Next.js 16.2.11**, App Router | Bkz. §4 — bu, eğitim verinizdeki Next.js değildir |
-| Dil | TypeScript, `strict: true` | `tsconfig.json` |
-| UI kütüphanesi | React 19.2.4 | Server Components varsayılan |
-| Stil | Tailwind CSS v4 (CSS-first, `@theme`) + Shadcn UI (`base-nova` stili) + Base UI | `tailwind.config.*` dosyası **yok**, her şey `app/globals.css` içinde |
-| Animasyon | Framer Motion (`framer-motion`) | Sadece `components/motion-primitives/` üzerinden kullanılır |
-| Form | React Hook Form + Zod | `lib/validations/lead.schema.ts` |
-| İkon | `lucide-react` | Tek ikon kaynağı |
-| E-posta | Resend — **REST API'ye doğrudan `fetch`**, npm paketi yüklü değil | API route'larda inline |
-| Analitik | Google Analytics 4 — çerez onayına bağlı, elle yazılmış `components/organisms/GoogleAnalytics.tsx` | Vercel Analytics **kullanılmıyor** (bkz. §3.3) |
-| Deploy | **Netlify** (`netlify.toml`) | Vercel **değil** — bkz. §3.3 |
-| CI | GitHub Actions (`.github/workflows/ci.yml`): format check → lint → type-check → `npm audit` → build | Deploy adımı yok, Netlify kendi CI'ında build alır |
-| Veri katmanı | Veritabanı yok; `content/products/index.ts`, `content/blog/index.ts` tip güvenli statik TS modülleri | CMS entegrasyonu yok |
-| i18n | Yok. `next-intl` kaldırıldı. İngilizce sayfalar ayrı statik route (`/turkish-towel-manufacturer` vb.), gerçek `/en/` prefix routing yok | Bkz. §26 |
+| Katman         | Teknoloji                                                                                                                       | Not                                                                   |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Framework      | **Next.js 16.4.0**, App Router                                                                                                  | Bkz. §4 — bu, eğitim verinizdeki Next.js değildir                     |
+| Dil            | TypeScript, `strict: true`                                                                                                      | `tsconfig.json`                                                       |
+| UI kütüphanesi | React 19.2.4                                                                                                                    | Server Components varsayılan                                          |
+| Stil           | Tailwind CSS v4 (CSS-first, `@theme`) + Shadcn UI (`base-nova` stili) + Base UI                                                 | `tailwind.config.*` dosyası **yok**, her şey `app/globals.css` içinde |
+| Animasyon      | Saf CSS (scroll-driven `animation-timeline: view()`, keyframes); animasyon kütüphanesi yok                                      | Bkz. §10; `framer-motion` kaldırıldı (Ekim 2026)                      |
+| Form           | React Hook Form + Zod                                                                                                           | `lib/validations/lead.schema.ts`                                      |
+| İkon           | `lucide-react`                                                                                                                  | Tek ikon kaynağı                                                      |
+| E-posta        | Resend — **REST API'ye doğrudan `fetch`**, npm paketi yüklü değil                                                               | API route'larda inline                                                |
+| Analitik       | Google Analytics 4 — çerez onayına bağlı, elle yazılmış `components/organisms/GoogleAnalytics.tsx`                              | Vercel Analytics **kullanılmıyor** (bkz. §3.3)                        |
+| Deploy         | **Netlify** (`netlify.toml`)                                                                                                    | Vercel **değil** — bkz. §3.3                                          |
+| CI             | GitHub Actions (`.github/workflows/ci.yml`): format check → lint → type-check → `npm audit` → build                             | Deploy adımı yok, Netlify kendi CI'ında build alır                    |
+| Veri katmanı   | Veritabanı yok; `content/products/index.ts`, `content/blog/index.ts` tip güvenli statik TS modülleri                            | CMS entegrasyonu yok                                                  |
+| i18n           | Kütüphane yok. İki kök layout: `app/(tr)` (lang=tr) ve `app/(en)` (lang=en, sayfalar `/en/...`); arayüz metinleri `lib/i18n.ts` | TR⇄EN eşleşmeleri `lib/config/locale-routes.ts`                       |
 
 ### 3.2 Dizin Yapısı
 
 ```
 app/                      → App Router sayfaları (her klasör bir route)
-  api/lead/{quote,sample,export}/route.ts, api/contact/route.ts → Edge runtime lead API'leri
+  api/lead/{quote,sample,export}/route.ts, api/contact/route.ts → lead API'leri (Node.js runtime, ortak akış lib/services/lead-handler.ts)
+  (tr)/layout.tsx, (en)/layout.tsx → iki kök layout (ortak iskelet components/layout/SiteShell.tsx)
+  global-not-found.tsx    → eşleşmeyen URL'ler için 404 (experimental.globalNotFound)
   [slug]/                 → dinamik rotalar (blog, new-collection ürün detayı)
   layout.tsx              → root layout: font, Navbar, Footer, StickyWhatsApp, CookieConsent, GA4
   robots.ts, sitemap.ts   → otomatik üretilen SEO dosyaları
   globals.css             → TÜM tasarım tokenları burada (@theme)
 components/
-  atoms/                  → en küçük, saf görsel birimler (örn. BrandPatternPanel)
+  atoms/                  → en küçük, saf görsel birimler (MediaFrame, Icons)
+  layout/                 → SiteShell, IntroCurtain, NotFoundView, ErrorView, LegalPage
+  views/                  → TR/EN ortak sayfa görünümleri (AboutView, ContactView)
   molecules/              → birden fazla atom'un bileşimi (örn. FAQAccordion)
   organisms/              → sayfa bölümleri (HeroSection, Navbar, Footer, ContactForm...)
   templates/              → çok sayfa paylaşan tam düzenler (örn. LandingPage — 11 sayfa bunu kullanır)
   schema/                 → JSON-LD üreten bileşenler (görsel çıktısı yok, sadece <script>)
-  motion-primitives/      → Framer Motion sarmalayıcıları (FadeIn, motion re-export)
+  motion-primitives/      → FadeIn (saf CSS scroll-reveal, sunucu bileşeni)
   providers/              → React context sağlayıcıları (CookieConsentProvider)
-  ui/                     → Shadcn tabanlı temel UI kit (button, input, select, dialog...)
 content/
   products/index.ts       → PRODUCTS: Product[] — 6 kategori
   blog/index.ts           → BLOG_POSTS: BlogPost[]
@@ -117,7 +120,7 @@ Site **Netlify**'da yayınlanıyor (`netlify.toml` mevcut, `@netlify/plugin-next
 
 - Statik sayfalar (ana sayfa, landing page'ler, hakkımızda, iletişim) → **Server Component**, varsayılan statik render.
 - `app/new-collection/[slug]/page.tsx`, `app/blog/[slug]/page.tsx` → `generateStaticParams()` ile SSG.
-- API rotaları → `export const runtime = 'edge'`.
+- API rotaları → varsayılan Node.js runtime (Edge runtime Next 16.4'te deprecated olduğu için kaldırıldı).
 - `'use client'` yalnızca gerçekten etkileşim gerektiren yaprak bileşenlere yazılır (form, accordion, mobil menü, animasyon sarmalayıcı). Sayfa (`page.tsx`) ve layout dosyaları asla `'use client'` olmaz.
 
 ---
@@ -126,7 +129,8 @@ Site **Netlify**'da yayınlanıyor (`netlify.toml` mevcut, `@netlify/plugin-next
 
 ### 4.1 "Bu, eğitim verinizdeki Next.js değil"
 
-Proje **Next.js 16.2.11** kullanıyor. Bu, çoğu AI modelinin eğitim kesim tarihinden sonra çıkmış olabilir ve API'ler, konvansiyonlar, dosya yapısı ezberden bildiğinizden farklı olabilir. **Herhangi bir Next.js API'si hakkında emin değilseniz, kod yazmadan önce `node_modules/next/dist/docs/` altındaki güncel dokümantasyonu okuyun.** Özellikle:
+Proje **Next.js 16.4.0** kullanıyor. Bu, çoğu AI modelinin eğitim kesim tarihinden sonra çıkmış olabilir ve API'ler, konvansiyonlar, dosya yapısı ezberden bildiğinizden farklı olabilir. **Herhangi bir Next.js API'si hakkında emin değilseniz, kod yazmadan önce `node_modules/next/dist/docs/` altındaki güncel dokümantasyonu okuyun.** Özellikle:
+
 - `app/01-getting-started/18-upgrading.md`
 - `app/02-guides/upgrading/` (versiyon geçiş notları)
 - `app/02-guides/migrating-to-cache-components.md`
@@ -135,7 +139,7 @@ Deprecation uyarılarına her zaman uyulur; "eskiden böyleydi" varsayımıyla k
 
 ### 4.2 Server/Client Component disiplini
 
-- Varsayılan: **Server Component**. `'use client'` yalnızca `useState`, `useEffect`, event handler, tarayıcı API'si (localStorage, window) veya Framer Motion hook'u gerektiğinde eklenir.
+- Varsayılan: **Server Component**. `'use client'` yalnızca `useState`, `useEffect`, event handler, tarayıcı API'si (localStorage, window) gerektiğinde eklenir. Animasyon için client bileşen gerekmez (§10).
 - Bir bileşeni client yapmak zorunda kaldığınızda, mümkünse **en yaprak (leaf) seviyede** yapın — örn. `ContactForm.tsx` client'tır ama onu içeren `app/contact/page.tsx` server component olarak kalır ve `generateMetadata` üretebilir.
 - Şema bileşenleri (`components/schema/*`) her zaman server component'tır (sadece `<script type="application/ld+json">` render eder, hiçbir interaktivite yoktur).
 
@@ -195,31 +199,31 @@ Tailwind v4, tamamen CSS-first (`@theme inline` bloğu `app/globals.css` içinde
 
 ### 7.1 Renk Paleti (SABİT — değiştirilemez)
 
-| Grup | Token | Hex | Kullanım |
-|---|---|---|---|
-| Turuncu (ana marka) | `orange-50` | `#FFF7F0` | açık vurgu zemini |
-| | `orange-100` | `#FFE8CC` | hover zemini |
-| | `orange-200` | `#FFD0A3` | devre dışı |
-| | `orange-400` | `#FF9F52` | açık vurgu |
-| | **`orange-500`** | **`#E87722`** | **ana marka rengi — birincil CTA** |
-| | `orange-600` | `#CC6419` | hover |
-| | `orange-700` | `#A85210` | basılı |
-| | `orange-900` | `#6B2F08` | koyu aksan |
-| Bej/Krem | `beige-50` | `#FAF8F5` | sayfa zemini |
-| | `beige-100` | `#F5F0EA` | kart zemini |
-| | `beige-200` | `#EDE5D8` | bölücüler |
-| | `beige-300` | `#E0D4C0` | kenarlıklar |
-| | `beige-500` | `#C4A882` | taş bej vurgu |
-| | `beige-600` | `#A88C64` | ikincil metin |
-| | `beige-700` | `#8A7050` | koyu bej metin |
-| Kömür (nötr) | `charcoal-900` | `#1A1A1A` | birincil metin, koyu bölüm zemini |
-| | `charcoal-800` | `#2D2D2D` | ikincil koyu ton |
-| | `charcoal-700` | `#404040` | üçüncül metin |
-| | `charcoal-600` | `#5C5C5C` | gövde metni |
-| | `charcoal-300` | `#B3B3B3` | koyu zeminde ikincil metin |
-| | `charcoal-100` | `#F0F0F0` | açık bölücü |
-| Anlamsal | `whatsapp` | `#25D366` | yalnızca WhatsApp CTA/ikonları |
-| | success/error/warning | `#16A34A` / `#DC2626` / `#D97706` | form durumları |
+| Grup                | Token                 | Hex                               | Kullanım                           |
+| ------------------- | --------------------- | --------------------------------- | ---------------------------------- |
+| Turuncu (ana marka) | `orange-50`           | `#FFF7F0`                         | açık vurgu zemini                  |
+|                     | `orange-100`          | `#FFE8CC`                         | hover zemini                       |
+|                     | `orange-200`          | `#FFD0A3`                         | devre dışı                         |
+|                     | `orange-400`          | `#FF9F52`                         | açık vurgu                         |
+|                     | **`orange-500`**      | **`#E87722`**                     | **ana marka rengi — birincil CTA** |
+|                     | `orange-600`          | `#CC6419`                         | hover                              |
+|                     | `orange-700`          | `#A85210`                         | basılı                             |
+|                     | `orange-900`          | `#6B2F08`                         | koyu aksan                         |
+| Bej/Krem            | `beige-50`            | `#FAF8F5`                         | sayfa zemini                       |
+|                     | `beige-100`           | `#F5F0EA`                         | kart zemini                        |
+|                     | `beige-200`           | `#EDE5D8`                         | bölücüler                          |
+|                     | `beige-300`           | `#E0D4C0`                         | kenarlıklar                        |
+|                     | `beige-500`           | `#C4A882`                         | taş bej vurgu                      |
+|                     | `beige-600`           | `#A88C64`                         | ikincil metin                      |
+|                     | `beige-700`           | `#8A7050`                         | koyu bej metin                     |
+| Kömür (nötr)        | `charcoal-900`        | `#1A1A1A`                         | birincil metin, koyu bölüm zemini  |
+|                     | `charcoal-800`        | `#2D2D2D`                         | ikincil koyu ton                   |
+|                     | `charcoal-700`        | `#404040`                         | üçüncül metin                      |
+|                     | `charcoal-600`        | `#5C5C5C`                         | gövde metni                        |
+|                     | `charcoal-300`        | `#B3B3B3`                         | koyu zeminde ikincil metin         |
+|                     | `charcoal-100`        | `#F0F0F0`                         | açık bölücü                        |
+| Anlamsal            | `whatsapp`            | `#25D366`                         | yalnızca WhatsApp CTA/ikonları     |
+|                     | success/error/warning | `#16A34A` / `#DC2626` / `#D97706` | form durumları                     |
 
 **Kural:** Turuncu yalnızca birincil eylem (CTA) ve marka vurgusu için kullanılır; sayfanın her yerine serpiştirilmez. WhatsApp yeşili yalnızca WhatsApp bağlamında kullanılır, genel "başarı" rengi olarak kullanılmaz.
 
@@ -227,16 +231,17 @@ Tonal varyasyon (gradyan, opacity katmanı) **aynı palet içinde** serbesttir �
 
 ### 7.2 Tipografi
 
-- Başlıklar: `DM Serif Display` (`--font-heading`) — premium, editoryal bir vurgu için, genelde H1'lerde `fontFamily: 'var(--font-heading, serif)'`.
+- Başlıklar: `Instrument Serif` (`--font-display`, `font-display` sınıfı; `--font-heading` aynı fonta işaret eder), `display-xl/lg/md/sm` sınıflarıyla (app/globals.css). Tanımlar `lib/fonts.ts`; `latin` + `latin-ext` alt kümeleri yüklenir (Türkçe karakterler).
 - Gövde: `Plus Jakarta Sans` (`--font-sans`), ağırlıklar 400–800.
 - İki font ailesi de `next/font/google` ile `display: 'swap'` olarak yüklenir (CLS koruması).
 - Ölçek: `--text-display: 4.5rem`, `h1: 3.5rem`, `h2: 2.5rem`, `h3: 1.75rem`, `h4: 1.375rem`, `body-lg: 1.125rem`, `body: 1rem`, `caption: 0.8125rem`.
 
 ### 7.3 Görsel/Fotoğraf politikası
 
-**Gerçek fabrika/ürün fotoğrafı yok.** Bu bilinen ve kabul edilmiş bir durumdur — sahte/stok fotoğraf ile doldurulmaz (E-E-A-T ve dürüstlük ilkesi, bkz. §14). Geçici çözüm: `components/atoms/BrandPatternPanel.tsx` — marka renkleriyle desenli, kasıtlı görünen bir dolgu paneli. Yeni bir görsel alanı gerektiğinde:
+**Gerçek fabrika/ürün fotoğrafı yok.** Bu bilinen ve kabul edilmiş bir durumdur — sahte/stok fotoğraf ile doldurulmaz (E-E-A-T ve dürüstlük ilkesi, bkz. §14). Çözüm: tüm görsel alanları `components/atoms/MediaFrame.tsx` üzerinden çizilir ve `content/media.ts` içindeki bir **fotoğraf yuvasına** bağlıdır. Yuva boşsa marka tonlarında havlu dokusu (`.swatch`, app/globals.css) gösterilir; fotoğraf eklemek için yalnızca `content/media.ts` güncellenir. Yeni bir görsel alanı gerektiğinde:
+
 1. Önce gerçek fotoğraf olup olmadığını sor.
-2. Yoksa `BrandPatternPanel`'i (veya aynı desenli/tutarlı yeni bir varyantını) kullan.
+2. Yoksa `MediaFrame`'i ilgili yuva ve uygun `tone` ile kullan (yuva boş kalır, doku gösterilir).
 3. **Asla** "görsel buraya gelecek", dosya yolu, `TODO` gibi ziyaretçiye görünen debug metni bırakma — bu daha önce sitede gerçek bir profesyonellik sorunu yaratmıştı.
 
 ### 7.4 Logo
@@ -251,20 +256,21 @@ Tonal varyasyon (gradyan, opacity katmanı) **aynı palet içinde** serbesttir �
 ### 8.1 B2B dönüşüm önceliği
 
 Bu bir e-ticaret sitesi **değildir** — ziyaretçi doğrudan sipariş veremez, önce teklif ister. Her sayfa tasarımı şu hiyerarşiyi izler:
+
 1. **Birincil CTA:** "Teklif Al" / "Teklif İste" → `/contact` formuna götürür.
 2. **İkincil CTA:** WhatsApp — anında, düşük sürtünmeli iletişim kanalı. `SITE_CONFIG.contact.whatsappUrl` + önceden doldurulmuş mesaj her zaman kullanılır.
 3. `StickyWhatsApp` bileşeni her sayfada, her ekran boyutunda sabit görünür kalır — kaldırılmaz veya gizlenmez.
 
 ### 8.2 Form sürtünmesi
 
-- Formlar kısa tutulur (mevcut `ContactForm` 6-7 alan). Yeni zorunlu alan eklemeden önce gerçekten gerekli mi diye sorgulanır.
+- Formlar kısa tutulur (mevcut `ContactForm`: yalnızca ad soyad ve telefon zorunlu). Gönderimde bilgiler **hazır bir WhatsApp mesajı olarak açılır**; aynı anda `/api/lead/quote` ile e-posta kopyası gönderilir (`keepalive`). Yeni zorunlu alan eklemeden önce gerçekten gerekli mi diye sorgulanır.
 - Her formda honeypot alanı zorunludur (spam koruması — bkz. §18).
 - Başarı durumu formu **temizlemeli** ve görünür bir onay mesajı göstermelidir (mevcut `ContactForm` deseni).
 - Form başarısızlığında kullanıcıya her zaman bir WhatsApp fallback bağlantısı sunulur — mevcut desen korunur.
 
 ### 8.3 Güven sinyalleri
 
-- Kuruluş yılı (1981), ihracat pazarları (Arap Ülkeleri, Yunanistan), sektör deneyimi — her önemli sayfada (hero, landing page trust strip) tutarlı şekilde tekrar edilir.
+- Kuruluş yılı (`SITE_CONFIG.founded`), ihracat pazarları (Arap Ülkeleri, Yunanistan), sektör deneyimi — her önemli sayfada (hero, landing page trust strip) tutarlı şekilde tekrar edilir.
 - Güven sinyalleri **her zaman doğrulanabilir olmalı** (bkz. §14.2) — sayı, tarih, coğrafya gibi somut veriler; "en iyi", "eşsiz", "mükemmel" gibi muğlak süperlatifler kullanılmaz.
 
 ### 8.4 İçerik hiyerarşisi (landing page şablonu)
@@ -279,7 +285,8 @@ Hero (eyebrow + H1 + intro + 2 CTA + güven şeridi) → Özellik kartları (iko
 ### 9.1 Katman kuralı
 
 `atoms → molecules → organisms → templates` hiyerarşisine uyulur:
-- **Atom:** Bağımsız, en küçük görsel birim, iş mantığı yok (`BrandPatternPanel`).
+
+- **Atom:** Bağımsız, en küçük görsel birim, iş mantığı yok (`MediaFrame`, `Icons`).
 - **Molecule:** Birkaç atomun/ikonun bileşimi, sınırlı state olabilir (`FAQAccordion`).
 - **Organism:** Bir sayfa bölümü, kendi verisini/mantığını taşıyabilir (`HeroSection`, `Navbar`, `Footer`, `ContactForm`).
 - **Template:** Birden fazla sayfanın paylaştığı tam iskelet, prop'larla içerik alır (`LandingPage`).
@@ -305,30 +312,32 @@ Yeni bir bileşen yazmadan önce şu klasörlere bakılır: `components/ui/` (te
 
 ### 10.1 Tek giriş noktası
 
-Tüm scroll-reveal animasyonu `components/motion-primitives/fade-in.tsx` → `<FadeIn>` üzerinden yapılır. Sayfa içinde doğrudan `motion.div` yazılmaz; `FadeIn` sarmalayıcısı kullanılır (tutarlılık + reduced-motion güvenliği tek yerden yönetilir).
+Tüm scroll-reveal animasyonu `components/motion-primitives/fade-in.tsx` → `<FadeIn>` (veya doğrudan `reveal` / `reveal-media` sınıfları) üzerinden yapılır. Hero girişleri `rise` / `rise-fade` sınıflarıyla (`--d` CSS değişkeniyle gecikme) yapılır. Tanımların hepsi `app/globals.css` içindedir.
 
-### 10.2 KRİTİK KURAL — Reduced motion, SSR/CSR tutarlılığı
+### 10.2 KRİTİK KURAL — Animasyon JS'e ve hydration'a bağlı olamaz
 
-`useReducedMotion()` (Framer Motion) sunucuda her zaman `null`, tarayıcıda gerçek işletim sistemi tercihini döndürür. **Bu değere göre farklı bir DOM/element ağacı render etmek (`if (reduceMotion) return <div>... else return <motion.div>...`) hydration mismatch'e ve sitenin tamamen boş görünmesine yol açar** — bu proje tarihinde gerçekleşmiş, teşhis edilmiş ve düzeltilmiş bir olaydır.
+Geçmişte `useReducedMotion()` (Framer Motion) değerine göre farklı DOM render etmek hydration mismatch'e ve sitenin boş görünmesine yol açmıştı. Ekim 2026'da hareket sistemi **tamamen CSS'e** taşındı:
 
-**Kural:** `reduceMotion` değeri yalnızca **aynı elemanın prop değerlerini** (transition süresi, offset miktarı) etkilemek için kullanılır; elemanın kendisini veya component ağacının yapısını asla değiştirmez. `FadeIn`'in güncel implementasyonu bu kuralın referans örneğidir — her koşulda `motion.div` render eder, sadece `duration`/`y` değerini `reduceMotion ? 0 : ...` ile ayarlar.
+- `FadeIn` bir **sunucu bileşenidir**; sunucu ve istemci her koşulda aynı DOM'u üretir.
+- İçerik SSR HTML'inde **asla `opacity:0` ile gizlenmez** (JS gelmeden görünür; LCP animasyona bağlı değildir). Hero H1 yalnızca `transform` ile kayar.
+- Tüm animasyon tanımları `@media (prefers-reduced-motion: no-preference)` içindedir; `!important` gerekmez.
+- Durum sınıfları `<html>`/`<body>` üzerine **yazılmaz**: React 19 hydration sırasında bu "singleton" öğelerin niteliklerini sıfırlar. Giriş perdesi bu yüzden durumunu kendi öğesinde `data-show` ile tutar (bkz. `components/layout/IntroCurtain.tsx`).
 
 ### 10.3 Kullanım deseni
 
 ```tsx
-<FadeIn delay={0.1}>{...}</FadeIn>          // tekil blok
-<FadeIn delay={i * 0.06} key={item.id}>...</FadeIn>  // liste/grid stagger, index bazlı artan gecikme
-<FadeIn aria-hidden={true} className="...">...</FadeIn>  // dekoratif/görsel-only bloklar
+<FadeIn className="...">...</FadeIn>                 // kaydırınca beliren blok
+<li className="reveal">...</li>                       // liste öğesi
+<h1 className="display-lg rise">...</h1>             // hero başlığı (yalnızca kayar)
+<p className="lead rise-fade" style={{ '--d': '0.12s' } as React.CSSProperties}>...</p>
 ```
 
-- Dekoratif/salt görsel bloklar (`BrandPatternPanel` sarmalayan `FadeIn`) `aria-hidden={true}` alır.
-- Gecikme (`delay`) değerleri 0.05–0.2 aralığında tutulur; büyük gecikmeler algılanan performansı düşürür.
-- Above-the-fold (hero) içerik için bile `FadeIn` kullanılır — `useInView` marjı (`-15% 0px`) bunu ilk yüklemede de tetikler.
+- Giriş perdesi (`IntroCurtain`) oturum başına bir kez, yaklaşık 2 sn; tıklama/Escape ile atlanır; reduced-motion'da gösterilmez.
 
 ### 10.4 Yasaklı
 
 - `prefers-reduced-motion` kontrolünü göz ardı eden yeni animasyon kütüphanesi/deseni eklemek.
-- Sayfa geçiş animasyonu (`AnimatePresence` ile route transition) — şu an **yok**; eklenecekse önce LCP/INP etkisi ölçülür, App Router navigasyon davranışıyla çakışmadığından emin olunur.
+- Sayfa geçiş animasyonu (route transition) — şu an **yok**; eklenecekse önce LCP/INP etkisi ölçülür, App Router navigasyon davranışıyla çakışmadığından emin olunur.
 - Layout shift'e yol açan animasyon (yükseklik/genişlik animasyonu yerine `opacity`/`transform` tercih edilir — CLS bütçesi §13'te).
 
 ---
@@ -360,15 +369,16 @@ Tüm scroll-reveal animasyonu `components/motion-primitives/fade-in.tsx` → `<F
 
 `.kiro/specs/baskan-havlu-tekstil-platform/requirements.md` dosyasındaki Requirement 2 ve Requirement 24'te tanımlanan hedefler bağlayıcıdır:
 
-| Metrik | Hedef |
-|---|---|
-| Google PageSpeed (mobil + masaüstü) | ≥ 95 |
-| LCP (Largest Contentful Paint) | < 1.5s |
-| CLS (Cumulative Layout Shift) | < 0.05 |
-| INP (Interaction to Next Paint) | < 150ms |
-| Sayfa başına JS bundle (gzip) | < 200 KB |
+| Metrik                              | Hedef    |
+| ----------------------------------- | -------- |
+| Google PageSpeed (mobil + masaüstü) | ≥ 95     |
+| LCP (Largest Contentful Paint)      | < 1.5s   |
+| CLS (Cumulative Layout Shift)       | < 0.05   |
+| INP (Interaction to Next Paint)     | < 150ms  |
+| Sayfa başına JS bundle (gzip)       | < 200 KB |
 
 Pratik kurallar:
+
 - Her `<Image>` çağrısında `width`/`height` veya `fill` + `sizes` zorunlu; hero görseli varsa `priority`.
 - Üçüncü taraf script'ler (`next/script`) `strategy="afterInteractive"` veya `"lazyOnload"` ile yüklenir, asla `beforeInteractive` ile bloklanmaz (GA4 zaten bu deseni izliyor, bkz. `GoogleAnalytics.tsx`).
 - `@next/bundle-analyzer` kurulu — büyük bir bağımlılık eklenmeden önce bundle etkisi göz önüne alınır.
@@ -382,13 +392,14 @@ Pratik kurallar:
 
 Kurumsal, B2B odaklı, somut veriye dayalı, lüks-ama-mütevazı bir üretim-koordinatörü otoritesi. **Pazaryeri/bayi tonu (ünlem işareti dolu, "KAÇIRMAYIN", abartılı büyük harf) kesinlikle kullanılmaz.**
 
-Standart CTA metinleri: *"Toptan Teklif Al"*, *"Numune İste"*, *"Teklif İste"*, *"WhatsApp ile Sor/Yaz"*. Jenerik *"Gönder"*, *"Tıklayın"*, *"Buraya"* gibi zayıf/anlamsız anchor text kullanılmaz.
+Standart CTA metinleri: _"Toptan Teklif Al"_, _"Numune İste"_, _"Teklif İste"_, _"WhatsApp ile Sor/Yaz"_. Jenerik _"Gönder"_, _"Tıklayın"_, _"Buraya"_ gibi zayıf/anlamsız anchor text kullanılmaz.
 
 ### 14.2 Doğrulanabilirlik kuralı — EN KRİTİK İÇERİK KURALI
 
-Bu firma için geçmişte **bilinçli olarak temizlenmiş** iddialar var: *"Günlük 10.000+ üretim"*, *"40+ ülkeye ihracat"*, *"ISO/Oeko-Tex sertifikalı"*, *"20.000 m² fabrika"*, *"Fabrikamız"* — bunların hepsi doğrulanamadığı için kaldırıldı ve yerine doğrulanabilir ifadeler (*"Arap Ülkeleri ve Yunanistan"*, *"tedarikçimiz"*, *"üretim koordinasyonu"*) kondu.
+Bu firma için geçmişte **bilinçli olarak temizlenmiş** iddialar var: _"Günlük 10.000+ üretim"_, _"40+ ülkeye ihracat"_, _"ISO/Oeko-Tex sertifikalı"_, _"20.000 m² fabrika"_, _"Fabrikamız"_ — bunların hepsi doğrulanamadığı için kaldırıldı. Eylül 2026'da firma sahibi kuruluş yılını (1996), doğrudan üretici olduğunu ve ihracat pazarlarını doğrulayarak `SITE_CONFIG`'e işledi; bu bilgiler artık doğrulanmış veridir. Kapasite, sertifika ve metrekare gibi iddialar hâlâ **doğrulanmamıştır** ve kullanılmaz.
 
 **Kural:** Hiçbir yeni içerik, sayı, istatistik veya iddia; `SITE_CONFIG`'de olmayan veya kullanıcı tarafından doğrulanmamış bir veriye dayanamaz. Şüphe durumunda:
+
 - Sahte fotoğraf, sahte müşteri yorumu, sahte sertifika **asla üretilmez.**
 - "Muhtemelen doğrudur" mantığıyla rakam icat edilmez.
 - Eksik veri varsa, içerik o veriyi atlar veya kullanıcıdan ister — asla tahmin doldurmaz.
@@ -431,16 +442,15 @@ Adres, telefon, e-posta, WhatsApp numarası, kuruluş yılı — **hiçbir zaman
 
 - Mevcut şema bileşenleri ve kullanıldıkları sayfalar:
 
-| Bileşen | Nerede kullanılır |
-|---|---|
-| `OrganizationSchema` | Ana sayfa, Hakkımızda — `@type: ["Organization","LocalBusiness"]` birleşik, tek `@id` |
-| `LocalBusinessSchema` | Yalnızca İletişim — Ana sayfa/Hakkımızda'da `OrganizationSchema` ile birlikte KULLANILMAZ (aynı entity için farklı `@id`'li ikinci beyan, GEO entity tutarlılığını zayıflatırdı; FAZ 11 Görev 62'de düzeltildi) |
-| `WebSiteSchema` | Ana sayfa (`SearchAction` **kasıtlı olarak kaldırılmış** — site içi arama yok, bkz. yorum satırı) |
-| `ProductSchema` | Ürün detay sayfaları |
-| `FAQSchema` | Hakkımızda, tüm landing page'ler |
-| `BreadcrumbSchema` | Hemen hemen tüm iç sayfalar |
-| `ArticleSchema` | Blog yazı sayfaları |
-| `ReviewSchema` | Tanımlı, gerçek müşteri verisi geldiğinde kullanılacak |
+| Bileşen              | Nerede kullanılır                                                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OrganizationSchema` | Ana sayfa, Hakkımızda — `@type: ["Organization","LocalBusiness"]` birleşik, tek `@id`                                                                          |
+| `WebSiteSchema`      | Ana sayfa (`SearchAction` **kasıtlı olarak kaldırılmış** — site içi arama yok, bkz. yorum satırı)                                                              |
+| `ProductSchema`      | Ürün detay sayfaları                                                                                                                                           |
+| `FAQSchema`          | Hakkımızda, tüm landing page'ler                                                                                                                               |
+| `BreadcrumbSchema`   | Hemen hemen tüm iç sayfalar                                                                                                                                    |
+| `ArticleSchema`      | Blog yazı sayfaları                                                                                                                                            |
+| `ReviewSchema`       | Ana sayfa: `content/reviews.ts`'teki gerçek Google yorumları; sayfada da görünür; `#organization` @id'sine bağlıdır; puan bilinmiyorsa `reviewRating` yazılmaz |
 
 - **Yeni şema eklerken** önce Google Rich Results Test ile geçerliliği doğrulanır (zihinsel olarak: zorunlu alanlar eksiksiz mi?).
 - Şemaya **doğrulanmamış veri koyulmaz** (§14.2 ile aynı kural — sertifika, rakam, review şeması boşsa render edilmez, sahte veriyle doldurulmaz).
@@ -455,7 +465,7 @@ Adres, telefon, e-posta, WhatsApp numarası, kuruluş yılı — **hiçbir zaman
 - Tüm form girdileri Zod ile sunucu tarafında doğrulanır (istemci doğrulaması **tek başına yeterli değildir**).
 - Her formda honeypot alanı zorunludur (mevcut desen: gizli `honeypot` input, dolu gelirse "sessizce" `{success:true}` dönülür — saldırgana bilgi sızdırılmaz).
 - **Rate limiting** `lib/utils/rate-limit.ts`'te implemente edildi ve tüm 4 API route'unda (`contact`, `lead/quote`, `lead/sample`, `lead/export`) `checkRateLimit()` çağrısıyla aktif (V2 roadmap FAZ 0/13). Upstash env değişkenleri (`UPSTASH_REDIS_REST_URL/TOKEN`) tanımlı değilse sessizce no-op'a düşer (form hiçbir zaman bu yüzden kırılmaz) — prod'da gerçek koruma için Netlify ortam değişkenlerinin ayarlanması gerekir.
-- API rotaları yalnızca `POST` kabul eder, `export const runtime = 'edge'` ile çalışır.
+- API rotaları yalnızca `POST` kabul eder ve varsayılan Node.js runtime'ında çalışır. Ortak akış `lib/services/lead-handler.ts`; e-posta gönderilemezse 502 döner ve loglanır (sessiz lead kaybı yoktur).
 - Bilinmeyen/beklenmeyen API hatalarında istemciye asla stack trace veya iç detay döndürülmez — genel hata mesajı (mevcut desen).
 
 ---
@@ -574,8 +584,9 @@ Bu bölüm, sıfırdan keşif yapmayı önlemek için, kod tabanı okunarak doğ
 - Gerçek fotoğraf, gerçek müşteri referansı, gerçek sertifika **yok** — bunlar sahte veriyle doldurulmaz, kullanıcıdan istenir.
 - Ürün kataloğu 6 genel kategoriden ibaret; gerçek SKU/gramaj/renk verisi yok.
 - Blog'da 10 makale var (`content/blog/index.ts`) — hedef karşılandı.
-- `lib/services/` soyutlama katmanı yok; e-posta gönderim mantığı 4 API route dosyasında (`quote`, `sample`, `export`, `contact`) benzer şekilde tekrarlanıyor — bu, ileride gerçek bir "3+ tekrar" refactor adayıdır (§20 kriterini karşılar), ama kullanıcı onayı olmadan başlatılmaz.
-- `i18n/` ve `messages/` dizinleri disk üzerinde boş halde duruyor (içerikleri silinmiş, dizinler kalmış) — zararsız ama temizlenebilir.
+- Lead e-posta akışı `lib/services/lead-handler.ts`'te tek yerde (Ekim 2026). `/api/contact`, `/api/lead/sample`, `/api/lead/export` şu an hiçbir arayüz tarafından çağrılmıyor; ileride kullanılmayacaksa kaldırılabilir.
+- Gerçek fotoğraflar henüz eklenmedi: `content/media.ts` yuvaları boş; site marka dokulu görsellerle çalışıyor (§7.3).
+- `ai.txt` "AI Training: No" derken `robots.ts` eğitim botlarına (GPTBot, CCBot) izin veriyor; bu bir politika kararıdır ve firma sahibi netleştirmelidir.
 
 ---
 
@@ -583,14 +594,14 @@ Bu bölüm, sıfırdan keşif yapmayı önlemek için, kod tabanı okunarak doğ
 
 Bu dosya, aşağıdaki dokümanların **özeti değil**, onlardan damıtılmış operasyonel kurallardır. Derinlemesine bağlam gerektiğinde asıl kaynağa gidilir:
 
-| Doküman | İçerik | Güvenilirlik notu |
-|---|---|---|
-| `.kiro/specs/baskan-havlu-tekstil-platform/requirements.md` | 50 gereksinim, 8 faz, EARS formatında kabul kriterleri | Niyet/hedef olarak güvenilir |
-| `.kiro/specs/baskan-havlu-tekstil-platform/design.md` | Tasarım tokenları, sayfa UX mimarisi, SEO/GEO/CONV/TECH/LAUNCH teknik planları | Tasarım niyeti güvenilir; bazı bölümler (Vercel varsayımı, test altyapısı) gerçek koddan sapmış |
-| `.kiro/specs/baskan-havlu-tekstil-platform/tasks.md` | ~90 atomik görev, öncelik sıralı | **Durum işaretleri (`[x]`) doğrulanmadan güvenilmez** — bkz. §26 |
-| `.kiro/specs/baskan-havlu-tekstil-platform/audit-report.md` | Faz 6-8 denetim geçmişi, kaldırılan yanıltıcı iddialar, üretim hazırlık skoru | Tarihsel karar gerekçesi olarak değerli (özellikle §14.2'nin kökeni) |
-| `README.md` | Kısa proje özeti, teknoloji yığını, başlangıç komutları | Genel bakış için güncel tutulmalı |
-| `CLAUDE.md` | `@AGENTS.md` içe aktarır | Bu dosyaya işaret eder, ayrıca düzenlenmez |
+| Doküman                                                     | İçerik                                                                         | Güvenilirlik notu                                                                               |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `.kiro/specs/baskan-havlu-tekstil-platform/requirements.md` | 50 gereksinim, 8 faz, EARS formatında kabul kriterleri                         | Niyet/hedef olarak güvenilir                                                                    |
+| `.kiro/specs/baskan-havlu-tekstil-platform/design.md`       | Tasarım tokenları, sayfa UX mimarisi, SEO/GEO/CONV/TECH/LAUNCH teknik planları | Tasarım niyeti güvenilir; bazı bölümler (Vercel varsayımı, test altyapısı) gerçek koddan sapmış |
+| `.kiro/specs/baskan-havlu-tekstil-platform/tasks.md`        | ~90 atomik görev, öncelik sıralı                                               | **Durum işaretleri (`[x]`) doğrulanmadan güvenilmez** — bkz. §26                                |
+| `.kiro/specs/baskan-havlu-tekstil-platform/audit-report.md` | Faz 6-8 denetim geçmişi, kaldırılan yanıltıcı iddialar, üretim hazırlık skoru  | Tarihsel karar gerekçesi olarak değerli (özellikle §14.2'nin kökeni)                            |
+| `README.md`                                                 | Kısa proje özeti, teknoloji yığını, başlangıç komutları                        | Genel bakış için güncel tutulmalı                                                               |
+| `CLAUDE.md`                                                 | `@AGENTS.md` içe aktarır                                                       | Bu dosyaya işaret eder, ayrıca düzenlenmez                                                      |
 
 ---
 

@@ -6,6 +6,8 @@ export interface BlogPost {
   category: string
   readTime: number
   content: string
+  /** İçerik dili; verilmezse Türkçe kabul edilir. */
+  language?: 'tr' | 'en'
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -292,6 +294,7 @@ Kuru ve iyi havalandırılmış alanlarda depolayın.
   },
   {
     slug: 'turkish-bath-towel-guide',
+    language: 'en',
     title: 'Turkish Bath Towels: Why Hotels Choose Turkey as Their Supplier',
     description:
       'Why do international hotels prefer Turkish bath towels? Quality, durability and competitive pricing explained.',

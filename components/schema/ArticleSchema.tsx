@@ -7,6 +7,7 @@ interface ArticleSchemaProps {
   datePublished: string
   dateModified?: string
   category: string
+  inLanguage?: 'tr' | 'en'
 }
 
 /**
@@ -20,6 +21,7 @@ export function ArticleSchema({
   datePublished,
   dateModified,
   category,
+  inLanguage = 'tr',
 }: ArticleSchemaProps) {
   const url = `${SITE_CONFIG.url}/blog/${slug}`
 
@@ -29,6 +31,7 @@ export function ArticleSchema({
     headline: title,
     description,
     url,
+    image: `${SITE_CONFIG.url}/og?title=${encodeURIComponent(title)}`,
     datePublished,
     dateModified: dateModified ?? datePublished,
     author: {
@@ -50,7 +53,7 @@ export function ArticleSchema({
       '@id': url,
     },
     articleSection: category,
-    inLanguage: 'tr',
+    inLanguage,
     isPartOf: {
       '@type': 'WebSite',
       '@id': `${SITE_CONFIG.url}/#website`,

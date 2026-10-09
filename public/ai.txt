@@ -30,6 +30,7 @@ Email: tekstil@baskanhavlu.com
 - Custom logo embroidery
 - Wholesale / bulk orders
 - Export to Arab countries and Greece
+- Retail sales at the store in Havlucular Çarşısı, Bursa
 
 ### Geographic Scope
 Primary market: Turkey
@@ -51,5 +52,5 @@ Secondary: English (en) — full parallel site under /en/
 Target export markets without localized content yet: Russian-speaking (ru), Arabic-speaking (ar) buyers — served today via the English pages; native-language content is planned but not yet published.
 
 ## Last Updated
-Date: 2026-09-03
-Version: 4.0
+Date: 2026-10-09
+Version: 4.1

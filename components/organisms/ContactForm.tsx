@@ -1,7 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { SITE_CONFIG } from '@/lib/config/site'
+import { WhatsAppIcon } from '@/components/atoms/Icons'
+import { trackFormSubmit, trackWhatsAppClick } from '@/lib/utils/analytics'
+import type { Locale } from '@/lib/i18n'
 
 type FormState = {
   fullName: string
@@ -14,6 +18,8 @@ type FormState = {
   honeypot: string
 }
 
+type FieldErrors = Partial<Record<keyof FormState, string>>
+
 const initialForm: FormState = {
   fullName: '',
   company: '',
@@ -25,11 +31,7 @@ const initialForm: FormState = {
   honeypot: '',
 }
 
-interface ContactFormProps {
-  locale?: 'tr' | 'en'
-}
-
-const productOptionsByLocale = {
+const productOptions: Record<Locale, string[]> = {
   tr: [
     'El Havlusu',
     'Yüz Havlusu',
@@ -37,6 +39,7 @@ const productOptionsByLocale = {
     'Baş Havlusu',
     'Promosyon Havlu',
     'Bornoz',
+    'Nevresim / Yatak Tekstili',
     'Diğer',
   ],
   en: [
@@ -46,228 +49,270 @@ const productOptionsByLocale = {
     'Head Towel',
     'Promotional Towel',
     'Bathrobe',
+    'Bed Linen',
     'Other',
   ],
 }
 
-export function ContactForm({ locale = 'tr' }: ContactFormProps) {
-  const isEn = locale === 'en'
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [form, setForm] = useState<FormState>(initialForm)
+const copy = {
+  tr: {
+    fullName: 'Ad Soyad',
+    company: 'Firma Adı',
+    email: 'E-posta',
+    phone: 'Telefon',
+    productType: 'Ürün Türü',
+    quantity: 'Adet / Miktar',
+    message: 'Mesajınız',
+    select: 'Seçiniz',
+    optional: 'opsiyonel',
+    submit: "WhatsApp'tan Teklif Gönder",
+    note: 'Gönder dediğinizde bilgileriniz hazır bir mesaj olarak WhatsApp’ta açılır; tek dokunuşla iletebilirsiniz. Bilgileriniz yalnızca teklif için kullanılır.',
+    errName: 'Lütfen adınızı ve soyadınızı yazın.',
+    errPhone: 'Lütfen geçerli bir telefon numarası yazın.',
+    errEmail: 'E-posta adresi geçerli görünmüyor.',
+    sentTitle: 'Mesajınız hazır',
+    sentText:
+      'Bilgileriniz WhatsApp’ta hazır mesaj olarak açıldı; göndermeyi unutmayın. WhatsApp açılmadıysa aşağıdaki düğmeye dokunun.',
+    reopen: "WhatsApp'ı Aç",
+    newMessage: 'Yeni form doldur',
+    waIntro: 'Merhaba, web sitesi üzerinden teklif almak istiyorum.',
+  },
+  en: {
+    fullName: 'Full Name',
+    company: 'Company',
+    email: 'Email',
+    phone: 'Phone',
+    productType: 'Product Type',
+    quantity: 'Quantity',
+    message: 'Your message',
+    select: 'Select',
+    optional: 'optional',
+    submit: 'Send Quote Request via WhatsApp',
+    note: 'When you press send, your details open as a ready message in WhatsApp, so you can send it with one tap. Your information is only used for your quote.',
+    errName: 'Please enter your full name.',
+    errPhone: 'Please enter a valid phone number.',
+    errEmail: 'This email address does not look valid.',
+    sentTitle: 'Your message is ready',
+    sentText:
+      'Your details opened as a ready message in WhatsApp; don’t forget to send it. If WhatsApp did not open, tap the button below.',
+    reopen: 'Open WhatsApp',
+    newMessage: 'Fill in a new form',
+    waIntro: 'Hello, I would like to request a quote via your website.',
+  },
+} as const
 
-  const handleChange =
+function validate(form: FormState, t: (typeof copy)[Locale]): FieldErrors {
+  const errors: FieldErrors = {}
+  if (form.fullName.trim().length < 2) errors.fullName = t.errName
+  if (!/^[+()\d\s.-]{7,25}$/.test(form.phone.trim())) errors.phone = t.errPhone
+  if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+    errors.email = t.errEmail
+  return errors
+}
+
+function buildWhatsappMessage(form: FormState, locale: Locale): string {
+  const t = copy[locale]
+  const lines: string[] = [t.waIntro, '']
+  const add = (label: string, value: string) => {
+    if (value.trim()) lines.push(`${label}: ${value.trim()}`)
+  }
+  add(t.fullName, form.fullName)
+  add(t.company, form.company)
+  add(t.phone, form.phone)
+  add(t.email, form.email)
+  add(t.productType, form.productType)
+  add(t.quantity, form.quantity)
+  if (form.message.trim()) lines.push('', form.message.trim())
+  return lines.join('\n')
+}
+
+interface ContactFormProps {
+  locale?: Locale
+}
+
+export function ContactForm({ locale = 'tr' }: ContactFormProps) {
+  const t = copy[locale]
+  const pathname = usePathname()
+  const [form, setForm] = useState<FormState>(initialForm)
+  const [errors, setErrors] = useState<FieldErrors>({})
+  const [sentUrl, setSentUrl] = useState<string | null>(null)
+
+  const update =
     (field: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-      setForm((f) => ({ ...f, [field]: e.target.value }))
+      const value = e.target.value
+      setForm((f) => ({ ...f, [field]: value }))
+      if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }))
     }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (form.honeypot) return
-    setStatus('loading')
-    try {
-      const res = await fetch('/api/lead/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      if (res.ok) {
-        setStatus('success')
-        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-          window.gtag('event', 'form_submit', {
-            form_type: 'quote',
-            source_page: window.location.pathname,
-          })
-        }
-        setForm(initialForm)
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
+
+    const found = validate(form, t)
+    setErrors(found)
+    if (Object.keys(found).length > 0) {
+      const first = Object.keys(found)[0]
+      if (first) document.getElementById(`cf-${first}`)?.focus()
+      return
     }
+
+    const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${encodeURIComponent(
+      buildWhatsappMessage(form, locale)
+    )}`
+
+    // E-posta kopyası arka planda; sayfa WhatsApp'a geçse bile `keepalive` ile tamamlanır.
+    void fetch('/api/lead/quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+      keepalive: true,
+    }).catch(() => {
+      // E-posta kopyası başarısız olsa da talep WhatsApp üzerinden iletilir.
+    })
+
+    trackFormSubmit('quote_whatsapp', pathname)
+    trackWhatsAppClick('contact_form', pathname)
+
+    // Kullanıcı etkileşimi içinde senkron açılır; açılır pencere engellenirse
+    // aşağıdaki onay ekranındaki "WhatsApp'ı Aç" düğmesi aynı mesajı açar.
+    const win = window.open(waUrl, '_blank')
+    if (win) win.opener = null
+
+    setSentUrl(waUrl)
+    setForm(initialForm)
   }
 
-  if (status === 'success') {
+  if (sentUrl) {
     return (
-      <div className="rounded-xl p-6 text-center" style={{ backgroundColor: '#f0fdf4' }}>
-        <p className="text-lg font-semibold text-green-700">
-          {isEn ? 'Your message has been sent!' : 'Mesajınız iletildi!'}
-        </p>
-        <p className="mt-2 text-sm text-green-600">
-          {isEn
-            ? "We'll get back to you as soon as possible."
-            : 'En kısa sürede size geri döneceğiz.'}
-        </p>
-        <button
-          onClick={() => setStatus('idle')}
-          className="mt-4 text-sm underline"
-          style={{ color: '#e87722' }}
-        >
-          {isEn ? 'Send a new message' : 'Yeni mesaj gönder'}
-        </button>
+      <div role="status" className="border-t-2 border-whatsapp pt-8">
+        <p className="font-display text-[2rem] leading-tight">{t.sentTitle}</p>
+        <p className="mt-3 max-w-md leading-relaxed text-charcoal-600">{t.sentText}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a href={sentUrl} target="_blank" rel="noopener noreferrer" className="btn btn-dark">
+            <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
+            {t.reopen}
+          </a>
+          <button type="button" onClick={() => setSentUrl(null)} className="btn btn-outline">
+            {t.newMessage}
+          </button>
+        </div>
       </div>
     )
   }
 
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      {/* Honeypot — spam koruması */}
+  const field = (
+    name: keyof FormState,
+    label: string,
+    opts: {
+      type?: string
+      required?: boolean
+      autoComplete?: string
+      inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode']
+    } = {}
+  ) => (
+    <div>
+      <label htmlFor={`cf-${name}`} className="field-label">
+        {label}
+        {opts.required ? (
+          <span aria-hidden="true" className="text-orange-600">
+            {' '}
+            *
+          </span>
+        ) : (
+          <span className="text-charcoal-300"> ({t.optional})</span>
+        )}
+      </label>
       <input
-        type="text"
-        name="honeypot"
-        value={form.honeypot}
-        onChange={handleChange('honeypot')}
-        className="hidden"
-        tabIndex={-1}
-        aria-hidden="true"
+        id={`cf-${name}`}
+        name={name}
+        type={opts.type ?? 'text'}
+        required={opts.required}
+        autoComplete={opts.autoComplete}
+        inputMode={opts.inputMode}
+        value={form[name]}
+        onChange={update(name)}
+        aria-invalid={errors[name] ? true : undefined}
+        aria-describedby={errors[name] ? `cf-${name}-error` : undefined}
+        className="field"
       />
+      {errors[name] && (
+        <p id={`cf-${name}-error`} className="mt-2 text-sm text-[#dc2626]">
+          {errors[name]}
+        </p>
+      )}
+    </div>
+  )
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="fullName" className="text-sm font-medium" style={{ color: '#1a1a1a' }}>
-            {isEn ? 'Full Name *' : 'Ad Soyad *'}
-          </label>
-          <input
-            id="fullName"
-            required
-            value={form.fullName}
-            onChange={handleChange('fullName')}
-            className="h-12 rounded-md border px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#e87722]/40 focus-visible:ring-offset-1 focus:border-[#e87722]"
-            style={{ borderColor: '#e0d4c0', color: '#1a1a1a' }}
-          />
-        </div>
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="company" className="text-sm font-medium" style={{ color: '#1a1a1a' }}>
-            {isEn ? 'Company Name' : 'Firma Adı'}
-          </label>
-          <input
-            id="company"
-            value={form.company}
-            onChange={handleChange('company')}
-            className="h-12 rounded-md border px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#e87722]/40 focus-visible:ring-offset-1 focus:border-[#e87722]"
-            style={{ borderColor: '#e0d4c0', color: '#1a1a1a' }}
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-sm font-medium" style={{ color: '#1a1a1a' }}>
-            {isEn ? 'Email *' : 'E-posta *'}
-          </label>
-          <input
-            id="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={handleChange('email')}
-            className="h-12 rounded-md border px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#e87722]/40 focus-visible:ring-offset-1 focus:border-[#e87722]"
-            style={{ borderColor: '#e0d4c0', color: '#1a1a1a' }}
-          />
-        </div>
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="phone" className="text-sm font-medium" style={{ color: '#1a1a1a' }}>
-            {isEn ? 'Phone *' : 'Telefon *'}
-          </label>
-          <input
-            id="phone"
-            type="tel"
-            required
-            value={form.phone}
-            onChange={handleChange('phone')}
-            className="h-12 rounded-md border px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#e87722]/40 focus-visible:ring-offset-1 focus:border-[#e87722]"
-            style={{ borderColor: '#e0d4c0', color: '#1a1a1a' }}
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="productType" className="text-sm font-medium" style={{ color: '#1a1a1a' }}>
-          {isEn ? 'Product Type' : 'Ürün Türü'}
-        </label>
-        <select
-          id="productType"
-          value={form.productType}
-          onChange={handleChange('productType')}
-          className="h-12 rounded-md border px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#e87722]/40 focus-visible:ring-offset-1 focus:border-[#e87722]"
-          style={{ borderColor: '#e0d4c0', color: '#1a1a1a' }}
-        >
-          <option value="">{isEn ? 'Select' : 'Seçiniz'}</option>
-          {productOptionsByLocale[locale].map((opt) => (
-            <option key={opt}>{opt}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="message" className="text-sm font-medium" style={{ color: '#1a1a1a' }}>
-          {isEn ? 'Message' : 'Mesaj'}
-        </label>
-        <textarea
-          id="message"
-          rows={4}
-          value={form.message}
-          onChange={handleChange('message')}
-          className="rounded-md border px-3 py-2 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#e87722]/40 focus-visible:ring-offset-1 focus:border-[#e87722]"
-          style={{ borderColor: '#e0d4c0', color: '#1a1a1a', minHeight: '120px' }}
+  return (
+    <form onSubmit={handleSubmit} noValidate className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+      {/* Honeypot — spam koruması (ekran okuyucu ve klavyeden gizli) */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor="cf-website">Website</label>
+        <input
+          id="cf-website"
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form.honeypot}
+          onChange={update('honeypot')}
         />
       </div>
 
-      {status === 'error' && (
-        <p className="text-sm text-red-600">
-          {isEn ? (
-            <>
-              Something went wrong. Please contact us via{' '}
-              <a
-                href={`${SITE_CONFIG.contact.whatsappUrl}?text=${SITE_CONFIG.contact.whatsappMessageEn}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-                style={{ color: '#25d366' }}
-              >
-                WhatsApp
-              </a>
-              .
-            </>
-          ) : (
-            <>
-              Bir hata oluştu. Lütfen{' '}
-              <a
-                href={`${SITE_CONFIG.contact.whatsappUrl}?text=${SITE_CONFIG.contact.whatsappMessageTr}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-                style={{ color: '#25d366' }}
-              >
-                WhatsApp
-              </a>{' '}
-              ile bize yazın.
-            </>
-          )}
-        </p>
-      )}
+      {field('fullName', t.fullName, { required: true, autoComplete: 'name' })}
+      {field('company', t.company, { autoComplete: 'organization' })}
+      {field('phone', t.phone, {
+        type: 'tel',
+        required: true,
+        autoComplete: 'tel',
+        inputMode: 'tel',
+      })}
+      {field('email', t.email, { type: 'email', autoComplete: 'email', inputMode: 'email' })}
 
-      <button
-        type="submit"
-        disabled={status === 'loading'}
-        className="flex h-12 items-center justify-center rounded-md text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-60 disabled:active:scale-100"
-        style={{ backgroundColor: '#e87722' }}
-      >
-        {status === 'loading'
-          ? isEn
-            ? 'Sending...'
-            : 'Gönderiliyor...'
-          : isEn
-            ? 'Send Quote Request'
-            : 'Teklif Gönder'}
-      </button>
+      <div>
+        <label htmlFor="cf-productType" className="field-label">
+          {t.productType} <span className="text-charcoal-300">({t.optional})</span>
+        </label>
+        <select
+          id="cf-productType"
+          name="productType"
+          value={form.productType}
+          onChange={update('productType')}
+          className="field"
+        >
+          <option value="">{t.select}</option>
+          {productOptions[locale].map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+      {field('quantity', t.quantity, { inputMode: 'text' })}
 
-      <p className="text-center text-xs" style={{ color: '#8a7050' }}>
-        {isEn
-          ? 'Your information is safe. We do not send spam.'
-          : 'Bilgileriniz güvendedir. Spam göndermiyoruz.'}
-      </p>
+      <div className="sm:col-span-2">
+        <label htmlFor="cf-message" className="field-label">
+          {t.message} <span className="text-charcoal-300">({t.optional})</span>
+        </label>
+        <textarea
+          id="cf-message"
+          name="message"
+          rows={4}
+          maxLength={2000}
+          value={form.message}
+          onChange={update('message')}
+          className="field"
+        />
+      </div>
+
+      <div className="flex flex-col gap-5 sm:col-span-2">
+        <button type="submit" className="btn btn-primary w-full sm:w-auto sm:self-start">
+          <WhatsAppIcon className="h-4 w-4" />
+          {t.submit}
+        </button>
+        <p className="max-w-xl text-caption leading-relaxed text-charcoal-600">{t.note}</p>
+      </div>
     </form>
   )
 }

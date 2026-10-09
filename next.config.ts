@@ -49,18 +49,17 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizePackageImports: ['lucide-react'],
+    // İki kök layout (app/(tr), app/(en)) olduğu için eşleşmeyen URL'lerde
+    // app/global-not-found.tsx kullanılır.
+    globalNotFound: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 86400,
-    qualities: [75, 100],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    qualities: [75, 90],
+    // Uzak görsel kullanılmıyor — `remotePatterns: '**'` görsel optimizasyon
+    // uç noktasını açık bir proxy'ye (SSRF/maliyet suistimali) çeviriyordu.
   },
   async headers() {
     return [

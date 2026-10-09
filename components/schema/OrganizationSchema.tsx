@@ -4,7 +4,7 @@ import { SITE_CONFIG } from '@/lib/config/site'
  * Organization + LocalBusiness birleşik Schema.
  * Ana sayfaya eklenir (layout değil — duplicate önleme).
  */
-export function OrganizationSchema() {
+export function OrganizationSchema({ locale = 'tr' }: { locale?: 'tr' | 'en' }) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': ['Organization', 'LocalBusiness'],
@@ -14,18 +14,18 @@ export function OrganizationSchema() {
     logo: {
       '@type': 'ImageObject',
       url: `${SITE_CONFIG.url}/images/logo-icon.png`,
-      width: 200,
-      height: 200,
+      width: 2000,
+      height: 2000,
     },
     image: `${SITE_CONFIG.url}/images/logo-icon.png`,
     foundingDate: String(SITE_CONFIG.founded),
-    description: SITE_CONFIG.description.tr,
+    description: locale === 'en' ? SITE_CONFIG.description.en : SITE_CONFIG.description.tr,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE_CONFIG.address.streetAddress,
       addressLocality: SITE_CONFIG.address.addressLocality,
       addressRegion: SITE_CONFIG.address.addressRegion,
-      postalCode: '16010',
+      postalCode: SITE_CONFIG.address.postalCode,
       addressCountry: SITE_CONFIG.address.addressCountry,
     },
     geo: {
@@ -41,13 +41,13 @@ export function OrganizationSchema() {
         telephone: SITE_CONFIG.contact.phone,
         contactType: 'customer service',
         availableLanguage: ['Turkish', 'Arabic', 'English'],
-        contactOption: 'TollFree',
       },
     ],
     email: SITE_CONFIG.contact.email,
     telephone: SITE_CONFIG.contact.phone,
     sameAs: [
       SITE_CONFIG.social.instagram,
+      SITE_CONFIG.googleBusinessUrl,
       `https://api.whatsapp.com/send?phone=${SITE_CONFIG.contact.whatsappNumber}`,
     ],
     areaServed: [

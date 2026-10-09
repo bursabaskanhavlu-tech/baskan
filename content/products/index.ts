@@ -95,4 +95,18 @@ export const PRODUCTS: Product[] = [
     leadTime: 'Sipariş sonrası belirlenir',
     category: 'promosyon',
   },
+  {
+    id: 'bornoz',
+    slug: 'bornoz',
+    name: { tr: 'Bornoz', en: 'Bathrobe' },
+    description: {
+      tr: 'Otel, SPA ve kurumsal kullanım için bornoz. Şal yaka, kimono yaka ve kapüşonlu model seçenekleri; logo nakışı uygulanabilir.',
+      en: 'Bathrobes for hotel, spa and corporate use. Shawl collar, kimono collar and hooded models; logo embroidery available.',
+    },
+    useCases: ['Otel', 'SPA', 'Wellness', 'Kurumsal', 'Perakende'],
+    customization: ['Logo nakışı', 'Renk seçimi', 'Model seçimi'],
+    moq: 'Stok ve ürüne göre değişir',
+    leadTime: 'Sipariş sonrası belirlenir',
+    category: 'bornoz',
+  },
 ]

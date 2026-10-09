@@ -2,47 +2,40 @@
 
 import Link from 'next/link'
 import { useCookieConsent } from '@/components/providers/CookieConsentProvider'
+import { getDictionary, type Locale } from '@/lib/i18n'
 
-export function CookieConsentBanner() {
-  const { consent, acceptAll, acceptNecessary } = useCookieConsent()
+export function CookieConsentBanner({ locale = 'tr' }: { locale?: Locale }) {
+  const { consent, ready, acceptAll, acceptNecessary } = useCookieConsent()
+  const t = getDictionary(locale).cookie
 
-  // Onay verilmişse banner gösterme
-  if (consent !== null) return null
+  if (!ready || consent !== null) return null
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-[60] px-4 py-4 shadow-xl sm:px-6"
-      style={{ backgroundColor: '#1a1a1a' }}
       role="region"
-      aria-label="Çerez bildirimi"
+      aria-label={t.label}
+      className="rise-fade fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-60 rounded-2xl bg-ink p-5 text-paper shadow-[0_20px_60px_-20px_rgb(0_0_0/0.5)] sm:inset-x-auto sm:left-6 sm:max-w-md sm:p-6"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm" style={{ color: '#e0d4c0' }}>
-          Bu sitede deneyiminizi iyileştirmek için çerezler kullanılmaktadır.{' '}
-          <Link
-            href="/cerez-politikasi"
-            className="underline transition-colors hover:text-white"
-            style={{ color: '#e87722' }}
-          >
-            Çerez Politikası
-          </Link>
-        </p>
-        <div className="flex shrink-0 gap-3">
-          <button
-            onClick={acceptNecessary}
-            className="rounded-md border px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10"
-            style={{ borderColor: '#5c5c5c', color: '#b3b3b3' }}
-          >
-            Yalnızca Zorunlu
-          </button>
-          <button
-            onClick={acceptAll}
-            className="rounded-md px-4 py-2 text-sm font-medium text-white transition-colors hover:opacity-90"
-            style={{ backgroundColor: '#e87722' }}
-          >
-            Kabul Et
-          </button>
-        </div>
+      <p className="text-[0.9375rem] leading-relaxed text-charcoal-300">
+        {t.text}{' '}
+        <Link
+          href="/cerez-politikasi"
+          className="link-line-static text-paper transition-colors hover:text-orange-400"
+        >
+          {t.policy}
+        </Link>
+      </p>
+      <div className="mt-5 grid grid-cols-2 gap-2.5">
+        <button
+          type="button"
+          onClick={acceptNecessary}
+          className="btn btn-sm border border-line-dark text-paper hover:bg-paper hover:text-ink"
+        >
+          {t.necessary}
+        </button>
+        <button type="button" onClick={acceptAll} className="btn btn-sm btn-primary">
+          {t.accept}
+        </button>
       </div>
     </div>
   )

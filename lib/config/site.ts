@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
     tr: "1996'dan bu yana Bursa'da havlu ve bornoz üreten bir imalatçı firma. Oteller, kurumlar ve perakende sektörüne kendi üretimimiz havlu ve tekstil çözümleri.",
     en: 'Başkan Havlu Tekstil is a towel and bathrobe manufacturer based in Bursa, Turkey, producing since 1996.',
   },
-  businessModel: 'Havlu ve bornoz imalatı — doğrudan üretici',
+  businessModel: 'Havlu ve bornoz imalatı, doğrudan üretici',
 
   // İletişim — NAP (tüm sayfalarda birebir aynı kullanılacak)
   contact: {
@@ -26,6 +26,7 @@ export const SITE_CONFIG = {
     addressLocality: 'Osmangazi',
     addressRegion: 'Bursa',
     addressCountry: 'TR',
+    postalCode: '16010',
     fullDisplay:
       'Ulucamii Batısı Köfüncüler Sk. Havlucular Çarşısı No:26, Osmangazi / Bursa, Türkiye',
   },
@@ -44,6 +45,7 @@ export const SITE_CONFIG = {
   // Google Maps
   googleMapsUrl: 'https://share.google/eu6S69JKkWPwql7Pi',
   googlePlaceId: 'ChIJhyX53cA-yhQRlmKIkucXAV8',
+  googleBusinessUrl: 'https://www.google.com/maps/place/?q=place_id:ChIJhyX53cA-yhQRlmKIkucXAV8',
   googleReviewUrl:
     'https://search.google.com/local/writereview?placeid=ChIJhyX53cA-yhQRlmKIkucXAV8',
 

@@ -1,140 +1,74 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { FadeIn } from '@/components/motion-primitives/fade-in'
+import { MediaFrame } from '@/components/atoms/MediaFrame'
+import { ArrowIcon, ArrowUpRightIcon } from '@/components/atoms/Icons'
+import { SectionHeader } from '@/components/molecules/SectionHeader'
+import type { HomeContent } from '@/content/home'
+import { cn } from '@/lib/utils'
 
-const categories = [
-  {
-    title: 'Otel Havlusu',
-    desc: 'Oteller için yüksek gramajlı, dayanıklı havlu çözümleri',
-    href: '/otel-havlusu',
-    bg: '#e87722',
-    color: 'white',
-    large: true,
-  },
-  {
-    title: 'Promosyon Havlu',
-    desc: 'Logo nakışlı kurumsal havlular',
-    href: '/promosyon-havlu',
-    bg: '#1a1a1a',
-    color: 'white',
-    large: false,
-  },
-  {
-    title: 'Toptan Havlu',
-    desc: 'Esnek MOQ ile toplu sipariş',
-    href: '/toptan-havlu',
-    bg: '#c4a882',
-    color: 'white',
-    large: false,
-  },
-  {
-    title: 'El & Yüz Havlusu',
-    desc: 'Otel ve kurum için set çözümleri',
-    href: '/otel-havlusu',
-    bg: '#2d2d2d',
-    color: 'white',
-    large: false,
-  },
-  {
-    title: 'Bornoz',
-    desc: 'Otel ve SPA için toptan bornoz',
-    href: '/toptan-bornoz',
-    bg: '#4a3728',
-    color: 'white',
-    large: false,
-  },
-  {
-    title: 'Nakışlı Havlu',
-    desc: 'Kişiselleştirilmiş tasarımlar',
-    href: '/nakisli-havlu',
-    bg: '#faf8f5',
-    color: '#1a1a1a',
-    large: false,
-  },
-  {
-    title: 'Kuaför & Salon',
-    desc: 'Güzellik sektörüne özel',
-    href: '/new-collection',
-    bg: '#fff7f0',
-    color: '#1a1a1a',
-    large: false,
-  },
-]
+interface ProductCategoriesProps {
+  content: HomeContent['categories']
+}
 
-export function ProductCategories() {
+/** Asimetrik editoryal kategori ızgarası; ilk kart iki satır boyunca büyür. */
+export function ProductCategories({ content }: ProductCategoriesProps) {
+  const last = content.items.length - 1
   return (
-    <section className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Başlık */}
-        <FadeIn className="mb-12 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <span
-              className="mb-2 block text-xs font-semibold uppercase tracking-widest"
-              style={{ color: '#e87722' }}
-            >
-              Ürün Kategorileri
-            </span>
-            <h2 className="text-3xl font-bold sm:text-4xl" style={{ color: '#1a1a1a' }}>
-              Her Sektöre Özel Çözüm
-            </h2>
-          </div>
-          <Link
-            href="/new-collection"
-            className="flex items-center gap-1 text-sm font-medium transition-colors hover:opacity-70"
-            style={{ color: '#e87722' }}
-          >
-            Tüm Ürünler <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </FadeIn>
+    <section className="py-20 sm:py-28">
+      <div className="container-x">
+        <SectionHeader
+          kicker={content.kicker}
+          title={content.title}
+          text={content.text}
+          action={
+            <Link href="/new-collection" className="btn btn-outline btn-sm">
+              {content.all}
+              <ArrowIcon />
+            </Link>
+          }
+        />
 
-        {/* Izgara — ilk kart (large) bento düzeninde 2 sütun kaplar */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat, i) => (
-            <FadeIn
-              key={cat.title}
-              delay={i * 0.05}
-              className={cat.large ? 'sm:col-span-2' : undefined}
+        <ul className="mt-12 grid grid-cols-2 gap-x-2.5 gap-y-8 sm:gap-x-3 sm:gap-y-10 lg:mt-20 lg:grid-cols-3">
+          {content.items.map((cat, i) => (
+            <li
+              key={cat.title + cat.href}
+              className={cn(
+                'reveal',
+                i === 0 && 'col-span-2 lg:col-span-1 lg:row-span-2',
+                i === last && i !== 0 && 'col-span-2 lg:col-span-3'
+              )}
             >
-              <Link
-                href={cat.href}
-                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
-                  cat.large ? 'min-h-55 sm:min-h-60 sm:p-8' : 'min-h-40'
-                }`}
-                style={{
-                  background: `radial-gradient(circle at 88% 12%, rgba(255,255,255,0.12), transparent 55%), ${cat.bg}`,
-                }}
-              >
-                <div>
-                  <h3
-                    className={cat.large ? 'text-2xl font-bold' : 'text-lg font-bold'}
-                    style={{ color: cat.color }}
-                  >
-                    {cat.title}
-                  </h3>
-                  <p
-                    className={cat.large ? 'mt-2 max-w-sm text-sm' : 'mt-1 text-sm'}
-                    style={{ color: cat.color, opacity: 0.75 }}
-                  >
-                    {cat.desc}
-                  </p>
-                </div>
-                <div className="mt-4 flex items-center gap-1">
-                  <span
-                    className="text-xs font-semibold"
-                    style={{ color: cat.color, opacity: 0.9 }}
-                  >
-                    İncele
+              <Link href={cat.href} className="group flex h-full flex-col">
+                <MediaFrame
+                  slot={cat.slot}
+                  tone={cat.tone}
+                  className={cn(
+                    'w-full',
+                    i === 0
+                      ? 'aspect-4/3 sm:aspect-video lg:aspect-auto lg:min-h-[28rem] lg:flex-1'
+                      : i === last
+                        ? 'aspect-video sm:aspect-[21/8]'
+                        : 'aspect-4/5 sm:aspect-4/3'
+                  )}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                >
+                  <span className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-paper/85 text-ink opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
+                    <ArrowUpRightIcon />
                   </span>
-                  <ArrowRight
-                    className="h-3 w-3 transition-transform group-hover:translate-x-1"
-                    style={{ color: cat.color, opacity: 0.9 }}
-                    aria-hidden="true"
-                  />
+                </MediaFrame>
+                <div className="flex items-start justify-between gap-4 pt-4 sm:pt-5">
+                  <div>
+                    <h3 className="font-display text-[1.375rem] leading-tight transition-colors group-hover:text-orange-700 sm:text-[1.75rem]">
+                      {cat.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-charcoal-600 sm:text-[0.9375rem]">
+                      {cat.desc}
+                    </p>
+                  </div>
                 </div>
               </Link>
-            </FadeIn>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

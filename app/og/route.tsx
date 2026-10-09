@@ -2,14 +2,14 @@ import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 import { SITE_CONFIG } from '@/lib/config/site'
 
-export const runtime = 'edge'
-
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const rawTitle = searchParams.get('title') ?? SITE_CONFIG.name
   // "Sayfa Başlığı | Başkan Havlu Tekstil" şeklindeki title'lardan yalnızca
   // sayfaya özgü kısmı alıp görsel üzerinde tekrarı önler.
-  const title = rawTitle.split('|')[0]?.trim() || SITE_CONFIG.name
+  // Uzunluk sınırı: uç nokta herkese açık olduğundan keyfi uzun metinle
+  // kötüye kullanım ve gereksiz CPU tüketimi engellenir.
+  const title = (rawTitle.split('|')[0]?.trim() || SITE_CONFIG.name).slice(0, 90)
 
   try {
     return new ImageResponse(

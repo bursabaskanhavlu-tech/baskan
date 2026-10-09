@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import type { LucideIcon } from 'lucide-react'
-import { Calendar, Globe2 } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/config/site'
-import { FAQAccordion } from '@/components/molecules/FAQAccordion'
-import { FadeIn } from '@/components/motion-primitives/fade-in'
+import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
+import { FAQSection } from '@/components/organisms/FAQPreview'
 import { CTABand } from '@/components/organisms/CTABand'
+import { MediaFrame, type SwatchTone } from '@/components/atoms/MediaFrame'
+import { ArrowIcon, ArrowUpRightIcon, WhatsAppIcon } from '@/components/atoms/Icons'
+import { contactHref, homeHref, type Locale } from '@/lib/i18n'
+import type { MediaSlot } from '@/content/media'
 
 interface LandingFeature {
   icon: LucideIcon
@@ -23,7 +26,7 @@ interface LandingRelatedLink {
 }
 
 interface LandingPageProps {
-  locale?: 'tr' | 'en'
+  locale?: Locale
   eyebrow: string
   title: string
   intro: string
@@ -35,8 +38,17 @@ interface LandingPageProps {
   faqHeading?: string
   relatedLinks?: LandingRelatedLink[]
   relatedHeading?: string
+  /** Hero görseli — content/media.ts yuvası ve fotoğraf yokken kullanılacak kumaş tonu. */
+  media?: { slot: MediaSlot; tone: SwatchTone }
 }
 
+const d = (s: number) => ({ '--d': `${s}s` }) as React.CSSProperties
+
+/**
+ * 16 landing sayfasının ortak şablonu. Bölüm sırası AGENTS.md §8.4 ile aynıdır:
+ * Hero (eyebrow + H1 + intro + 2 CTA + güven şeridi) → özellikler → SSS →
+ * ilgili sayfalar → CTA bandı. FAQSchema ve BreadcrumbSchema sayfada üretilir.
+ */
 export function LandingPage({
   locale = 'tr',
   eyebrow,
@@ -50,164 +62,135 @@ export function LandingPage({
   faqHeading,
   relatedLinks,
   relatedHeading,
+  media = { slot: 'wholesale', tone: 'stone' },
 }: LandingPageProps) {
+  const en = locale === 'en'
   const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${encodeURIComponent(waMessage)}`
-  const exportRegionCount = SITE_CONFIG.exportRegions.tr.length
-  const exportRegion =
-    locale === 'en'
-      ? `${exportRegionCount}+ Export Markets`
-      : `${exportRegionCount}+ Ülkeye İhracat`
+  const trust = [
+    { label: en ? 'Founded' : 'Kuruluş', value: String(SITE_CONFIG.founded) },
+    {
+      label: en ? 'Export markets' : 'İhracat pazarı',
+      value: `${SITE_CONFIG.exportRegions.tr.length}+`,
+    },
+    { label: en ? 'Sales' : 'Satış', value: en ? 'Wholesale & retail' : 'Toptan ve perakende' },
+  ]
 
   return (
     <>
       {/* HERO */}
-      <section
-        className="py-20"
-        style={{
-          background:
-            'radial-gradient(circle at 20% 15%, rgba(232,119,34,0.08), transparent 55%), radial-gradient(circle at 85% 85%, rgba(196,168,130,0.10), transparent 50%), #faf8f5',
-        }}
-      >
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <FadeIn>
-            <span
-              className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest"
-              style={{ color: '#e87722' }}
-            >
-              {eyebrow}
-            </span>
-            <h1 className="text-4xl font-bold sm:text-5xl" style={{ color: '#1a1a1a' }}>
-              {title}
-            </h1>
-            <p
-              className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed"
-              style={{ color: '#5c5c5c' }}
-            >
-              {intro}
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="flex h-12 items-center justify-center rounded-md px-8 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                style={{ backgroundColor: '#e87722' }}
+      <section className="pb-16 pt-10 sm:pb-24 sm:pt-14">
+        <div className="container-x">
+          <Breadcrumbs
+            className="rise-fade"
+            items={[{ label: en ? 'Home' : 'Ana Sayfa', href: homeHref(locale) }, { label: title }]}
+          />
+          <div className="mt-10 grid gap-12 sm:mt-14 lg:grid-cols-12 lg:gap-16">
+            <div className="flex flex-col lg:col-span-7">
+              <p className="kicker rise-fade" style={d(0.05)}>
+                {eyebrow}
+              </p>
+              <h1 className="display-lg rise mt-6">{title}</h1>
+              <p className="lead rise-fade mt-7 max-w-xl" style={d(0.12)}>
+                {intro}
+              </p>
+              <div className="rise-fade mt-10 flex flex-col gap-3 sm:flex-row" style={d(0.18)}>
+                <Link href={contactHref(locale)} className="btn btn-primary">
+                  {ctaPrimaryLabel}
+                  <ArrowIcon />
+                </Link>
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                >
+                  <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
+                  {ctaWhatsappLabel}
+                </a>
+              </div>
+              <dl
+                className="rise-fade mt-auto grid grid-cols-3 gap-px border-y border-line bg-line pt-0 lg:mt-14"
+                style={d(0.24)}
               >
-                {ctaPrimaryLabel}
-              </Link>
-              <a
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-12 items-center justify-center rounded-md border px-8 text-sm font-semibold transition-colors hover:opacity-80"
-                style={{ borderColor: '#25d366', color: '#25d366' }}
-              >
-                {ctaWhatsappLabel}
-              </a>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.18}>
-            <div className="mx-auto mt-10 flex w-fit flex-wrap items-center justify-center gap-3">
-              <span
-                className="flex items-center gap-2 rounded-full px-4 py-2 text-sm shadow-sm"
-                style={{
-                  backgroundColor: '#ffffff',
-                  border: '1px solid #e0d4c0',
-                  color: '#5c5c5c',
-                }}
-              >
-                <Calendar className="h-4 w-4" style={{ color: '#e87722' }} aria-hidden="true" />
-                {locale === 'en' ? 'Since' : 'Kuruluş'} {SITE_CONFIG.founded}
-              </span>
-              <span
-                className="flex items-center gap-2 rounded-full px-4 py-2 text-sm shadow-sm"
-                style={{
-                  backgroundColor: '#ffffff',
-                  border: '1px solid #e0d4c0',
-                  color: '#5c5c5c',
-                }}
-              >
-                <Globe2 className="h-4 w-4" style={{ color: '#e87722' }} aria-hidden="true" />
-                {exportRegion}
-              </span>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ÖZELLİKLER */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {features.map((feature, i) => {
-              const Icon = feature.icon
-              return (
-                <FadeIn key={feature.title} delay={i * 0.08}>
-                  <div
-                    className="h-full rounded-2xl p-7 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-                    style={{ backgroundColor: '#faf8f5', border: '1px solid #e0d4c0' }}
-                  >
-                    <div
-                      className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl"
-                      style={{
-                        background: 'linear-gradient(135deg, #fff7f0, #ffe8cc)',
-                        border: '1px solid #ffd0a3',
-                      }}
-                    >
-                      <Icon className="h-6 w-6" style={{ color: '#e87722' }} aria-hidden="true" />
-                    </div>
-                    <h3 className="font-semibold" style={{ color: '#1a1a1a' }}>
-                      {feature.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed" style={{ color: '#5c5c5c' }}>
-                      {feature.desc}
-                    </p>
+                {trust.map((item) => (
+                  <div key={item.label} className="bg-paper py-5 pr-3 not-first:pl-4">
+                    <dt className="text-caption text-charcoal-600">{item.label}</dt>
+                    <dd className="mt-1 text-[0.9375rem] font-semibold leading-snug sm:text-base">
+                      {item.value}
+                    </dd>
                   </div>
-                </FadeIn>
-              )
-            })}
+                ))}
+              </dl>
+            </div>
+            <div className="rise-fade lg:col-span-5" style={d(0.2)}>
+              <MediaFrame
+                slot={media.slot}
+                tone={media.tone}
+                className="aspect-4/3 w-full lg:aspect-4/5"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                priority
+                animate={false}
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SSS */}
-      <section className="py-16" style={{ backgroundColor: '#faf8f5' }}>
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <h2 className="mb-8 text-center text-2xl font-bold" style={{ color: '#1a1a1a' }}>
-              {faqHeading ??
-                (locale === 'en' ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular')}
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <FAQAccordion items={faqs} />
-          </FadeIn>
+      {/* ÖZELLİKLER */}
+      <section className="bg-beige-100 py-20 sm:py-24">
+        <div className="container-x">
+          <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => {
+              const Icon = feature.icon
+              return (
+                <li
+                  key={feature.title}
+                  className="reveal border-t border-line-strong py-8 sm:py-10"
+                >
+                  <Icon className="h-6 w-6 text-orange-600" strokeWidth={1.4} aria-hidden="true" />
+                  <h2 className="mt-6 font-display text-[1.75rem] leading-tight">
+                    {feature.title}
+                  </h2>
+                  <p className="mt-3 leading-relaxed text-charcoal-600">{feature.desc}</p>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </section>
 
-      {/* İlgili Sayfalar */}
+      {/* SSS — şema sayfada ayrıca üretildiği için burada tekrar edilmez */}
+      <FAQSection
+        items={faqs}
+        withSchema={false}
+        kicker={en ? 'FAQ' : 'SSS'}
+        title={faqHeading ?? (en ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular')}
+        contactText={
+          en ? 'Have another question? Contact us' : 'Başka bir sorunuz mu var? İletişime geçin'
+        }
+        contactHref={contactHref(locale)}
+      />
+
+      {/* İlgili sayfalar — iç bağlantı */}
       {relatedLinks && relatedLinks.length > 0 && (
-        <section className="py-12 bg-white">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <FadeIn>
-              <h2 className="mb-6 text-center text-lg font-semibold" style={{ color: '#1a1a1a' }}>
-                {relatedHeading ?? (locale === 'en' ? 'Related Categories' : 'İlgili Kategoriler')}
-              </h2>
-              <div className="flex flex-wrap justify-center gap-3">
-                {relatedLinks.map((link) => (
+        <section className="pb-20 sm:pb-28">
+          <div className="container-x">
+            <h2 className="reveal display-sm">
+              {relatedHeading ?? (en ? 'Related Categories' : 'İlgili Kategoriler')}
+            </h2>
+            <ul className="reveal mt-8 grid border-t border-line sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3">
+              {relatedLinks.map((link) => (
+                <li key={link.href} className="border-b border-line">
                   <Link
-                    key={link.href}
                     href={link.href}
-                    className="rounded-full border px-4 py-2 text-sm shadow-sm transition-all hover:-translate-y-0.5 hover:border-orange-500 hover:text-orange-500 hover:shadow-md"
-                    style={{ borderColor: '#e0d4c0', color: '#5c5c5c', backgroundColor: '#ffffff' }}
+                    className="group flex items-center justify-between py-5 text-[1.0625rem] transition-colors hover:text-orange-700"
                   >
                     {link.label}
+                    <ArrowUpRightIcon className="h-4 w-4 opacity-40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
                   </Link>
-                ))}
-              </div>
-            </FadeIn>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

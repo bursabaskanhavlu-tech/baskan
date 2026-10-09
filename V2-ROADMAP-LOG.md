@@ -41,14 +41,14 @@ edilmiştir (tahmini değil, ölçülmüştür).
 
 ### Görev 1 — Kod Tekrarı Analizi
 
-| # | Tekrar Eden Desen | Nerede | Sayı | Öneri (uygulanmadı) |
-|---|---|---|---|---|
-| 1 | Koyu (`#1a1a1a`) zeminli sayfa başlığı + görünür breadcrumb (`<nav aria-label="Breadcrumb"><ol>...`) | `about`, `contact`, `new-collection`, `new-collection/[slug]`, `blog` sayfaları | 5 dosya, satır satır neredeyse birebir aynı JSX | Ortak bir `PageHeroBreadcrumb`/`Breadcrumb` bileşenine çıkarılabilir (AGENTS.md §9.2 eşiğini aşıyor — 3+ dosya) |
-| 2 | "Eyebrow" etiketi (`text-xs font-semibold uppercase tracking-widest`, turuncu) | `about`, `LandingPage`, `FAQPreview`, `ProductCategories`, `ValueProposition` | 5 dosya, 8 kullanım | Küçük bir `Eyebrow` atomu adayı |
-| 3 | Kategori/etiket "pill" rozeti (`rounded-full px-.. py-.. text-xs font-medium`, `#fff7f0`/`#cc6419`) | `blog`, `blog/[slug]`, `new-collection`, `new-collection/[slug]` | 4 dosya | Küçük bir `Tag`/`Chip` atomu adayı |
-| 4 | WhatsApp URL inşası (`${SITE_CONFIG.contact.whatsappUrl}?text=${...}`) | 11 dosya | 12 kullanım | Zaten `SITE_CONFIG` tek kaynaktan besleniyor — abartılı soyutlama gerektirmiyor, düşük öncelik |
-| 5 | CTA buton temel class'ı (`flex h-12 items-center justify-center rounded-md ...`) | `LandingPage`, `ContactForm`, `CTABand`, `HeroSection` | 7 kullanım | Zaten kısmen `components/ui/button.tsx` ile örtüşüyor ama bu 4 dosya onu kullanmıyor, kendi class string'lerini yazıyor |
-| 6 | Inline `style={{ ... }}` renk ataması | Proje genelinde | **269 kullanım / 27 dosya** | AGENTS.md §26'da zaten bilinen teknik borç; büyük çaplı dönüşüm yalnızca kullanıcı açık isterse yapılır (AGENTS.md §6.2, §20) |
+| #   | Tekrar Eden Desen                                                                                    | Nerede                                                                          | Sayı                                            | Öneri (uygulanmadı)                                                                                                           |
+| --- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Koyu (`#1a1a1a`) zeminli sayfa başlığı + görünür breadcrumb (`<nav aria-label="Breadcrumb"><ol>...`) | `about`, `contact`, `new-collection`, `new-collection/[slug]`, `blog` sayfaları | 5 dosya, satır satır neredeyse birebir aynı JSX | Ortak bir `PageHeroBreadcrumb`/`Breadcrumb` bileşenine çıkarılabilir (AGENTS.md §9.2 eşiğini aşıyor — 3+ dosya)               |
+| 2   | "Eyebrow" etiketi (`text-xs font-semibold uppercase tracking-widest`, turuncu)                       | `about`, `LandingPage`, `FAQPreview`, `ProductCategories`, `ValueProposition`   | 5 dosya, 8 kullanım                             | Küçük bir `Eyebrow` atomu adayı                                                                                               |
+| 3   | Kategori/etiket "pill" rozeti (`rounded-full px-.. py-.. text-xs font-medium`, `#fff7f0`/`#cc6419`)  | `blog`, `blog/[slug]`, `new-collection`, `new-collection/[slug]`                | 4 dosya                                         | Küçük bir `Tag`/`Chip` atomu adayı                                                                                            |
+| 4   | WhatsApp URL inşası (`${SITE_CONFIG.contact.whatsappUrl}?text=${...}`)                               | 11 dosya                                                                        | 12 kullanım                                     | Zaten `SITE_CONFIG` tek kaynaktan besleniyor — abartılı soyutlama gerektirmiyor, düşük öncelik                                |
+| 5   | CTA buton temel class'ı (`flex h-12 items-center justify-center rounded-md ...`)                     | `LandingPage`, `ContactForm`, `CTABand`, `HeroSection`                          | 7 kullanım                                      | Zaten kısmen `components/ui/button.tsx` ile örtüşüyor ama bu 4 dosya onu kullanmıyor, kendi class string'lerini yazıyor       |
+| 6   | Inline `style={{ ... }}` renk ataması                                                                | Proje genelinde                                                                 | **269 kullanım / 27 dosya**                     | AGENTS.md §26'da zaten bilinen teknik borç; büyük çaplı dönüşüm yalnızca kullanıcı açık isterse yapılır (AGENTS.md §6.2, §20) |
 
 **Not:** E-posta gönderim tekrarı (4 API route) ve honeypot tutarsızlığı bu
 roadmap başlamadan **önceki oturumda zaten giderilmişti** (`lib/services/email.service.ts`,
@@ -89,14 +89,15 @@ sorumluluk taşıyor, önceki oturumda zaten (email/rate-limit/honeypot)
 tekilleştirilmişti. Tek gözlem:
 
 - WhatsApp mesaj metni URL-encode işlemi (`encodeURIComponent(\`Merhaba, "${...}" hakkında...\`)`)
-  ürün sayfalarında (`new-collection`, `new-collection/[slug]`) neredeyse aynı
-  şablonla 2 kez yazılmış. Küçük bir `buildProductWhatsAppUrl(productName)`
+ürün sayfalarında (`new-collection`, `new-collection/[slug]`) neredeyse aynı
+şablonla 2 kez yazılmış. Küçük bir `buildProductWhatsAppUrl(productName)`
   helper'ı çıkarılabilir ama etkisi düşük (2 dosya, tek satır) — AGENTS.md §9.2
   eşiğinin (3+) altında, şu an gerekçesi zayıf.
 
 ### Görev 4 — Performans Darboğazları Raporu
 
 **Ölçülebilen:**
+
 - `npm run build` (Turbopack) artık klasik Webpack rota-bazlı boyut tablosunu
   basmıyor — bu Next.js 16 Turbopack build'inin çıktı formatı farkı, bir
   regresyon değil. Gerçek KB rakamları için `@next/bundle-analyzer` zaten
@@ -227,12 +228,14 @@ Menü 3 sütun halinde **11 landing page'in tamamını** kategorize ediyor:
 Alt kısımda `/new-collection`'a giden "Tüm Koleksiyon" vurgulu bağlantısı var.
 
 **Uygulanan etkileşim/erişilebilirlik temeli** (tam a11y cilası Görev 10'da):
+
 - `aria-expanded` + `aria-haspopup="true"` buton üzerinde.
 - Dışarı tıklayınca kapanır (`mousedown` + ref kontrolü).
 - `Escape` tuşuyla kapanır.
 - Link'e tıklanınca menü otomatik kapanır (`onClick={() => setProductsOpen(false)}`).
 
 **Doğrulama:**
+
 - `tsc` ✅ · `lint` ✅ · `build` ✅ (40 sayfa + `/og`).
 - **Gerçek dev server'da canlı test edildi** — sadece "derlendi" denmedi:
   çalışan `localhost:3000` sürecine `curl` ile istek atılıp `aria-haspopup`,
@@ -260,7 +263,7 @@ görevi olduğu için (Görev 9) kapsam dışında tutuldu.
   içerik viewport'u taşıp alttaki WhatsApp/Teklif Al butonlarını erişilemez
   hale getirebilirdi. `overflow-y-auto` eklendi.
 - Link'e tıklanınca hem mobil menü hem akordeon kapanıyor (`setMobileOpen(false)`
-  + `setProductsOpen(false)` birlikte).
+  - `setProductsOpen(false)` birlikte).
 
 **Doğrulama:** `tsc` ✅ · `lint` ✅ · `build` ✅ (40 sayfa + `/og`).
 
@@ -292,6 +295,7 @@ içinde bir değişkene kopyalanıp cleanup'ta o değişken kullanıldı (React'
 önerdiği doğru desen).
 
 **Doğrulama:**
+
 - `tsc` ✅ · `lint` ✅ (0 hata, 0 uyarı) · `build` ✅ (40 sayfa + `/og`).
 - Canlı test: `/about` sayfası `curl` ile çekildi, `aria-current="page"`
   gerçekten HTML çıktısında bulundu; hydration hatası yok.
@@ -424,6 +428,7 @@ hatayı en çok siz görürsünüz.
 **Durum:** Tamamlandı. Dosya: `app/new-collection/page.tsx`.
 
 **Analiz bulguları (uygulanmadan önce):**
+
 1. **Gerçek bug:** "WhatsApp ile sor" `aria-label`'ına sahip buton, görsel
    olarak bir `ArrowRight` (sağ ok) ikonu gösteriyordu — WhatsApp/telefon ile
    hiçbir ilgisi olmayan yanlış bir ikon. Screen reader kullanıcısı doğru
@@ -438,6 +443,7 @@ hatayı en çok siz görürsünüz.
    modeline sahipken, sayfa hepsini tek, kategorisiz bir ızgarada gösteriyordu.
 
 **Uygulanan değişiklikler:**
+
 - WhatsApp butonu artık `lucide-react`'in `Phone` ikonunu kullanıyor.
 - Kart hover'ına `hover:-translate-y-1` eklendi (transform-only, CLS'e etkisi yok).
 - Kart JSX'i tekrarı önlemek için dosya-içi (yalnızca bu dosyada kullanılan,
@@ -453,6 +459,7 @@ hatayı en çok siz görürsünüz.
   dengeli seçenek.
 
 **Doğrulama:**
+
 - `tsc` ✅ · `lint` ✅ · `build` ✅ (40 sayfa + `/og`).
 - Canlı test: `/new-collection` `curl` ile çekildi — sunucu tarafında hata
   yok, 3 kategori başlığı ve 6 ürünün tamamı (El Havlusu, Banyo Havlusu,
@@ -467,9 +474,10 @@ hatayı en çok siz görürsünüz.
 
 "Benzer Ürünler" (related products) kartları yalnızca metindi, ana ızgaradaki
 kartlarla görsel tutarlılığı yoktu. Küçük bir `BrandPatternPanel` thumbnail'i
-+ `hover:-translate-y-1` eklendi — artık ana koleksiyon ızgarasıyla aynı
-görsel dile sahip. Breadcrumb JSX tekrarına (Görev 1/5'te not edilmiş bilinen
-bulgu) bilinçli olarak dokunulmadı — o, ayrı, çok dosyalı bir refactor konusu.
+
+- `hover:-translate-y-1` eklendi — artık ana koleksiyon ızgarasıyla aynı
+  görsel dile sahip. Breadcrumb JSX tekrarına (Görev 1/5'te not edilmiş bilinen
+  bulgu) bilinçli olarak dokunulmadı — o, ayrı, çok dosyalı bir refactor konusu.
 
 ### Görev 23 — Schema
 
@@ -494,6 +502,7 @@ bulgu) bilinçli olarak dokunulmadı — o, ayrı, çok dosyalı bir refactor ko
    kararı, eksiklik değil.
 
 **Doğrulama:**
+
 - `tsc` ✅ · `lint` ✅ · `build` ✅ (40 sayfa + `/og`).
 - **Canlı JSON-LD doğrulaması** (yalnızca "derlendi" denmedi): `curl` ile
   hem `/new-collection` hem `/new-collection/el-havlusu` çekildi;
@@ -520,9 +529,9 @@ artık ürüne özel).
 **Durum:** Tamamlandı. Dosya: `app/about/page.tsx`.
 
 **Önce analiz:** `requirements.md` Requirement 6.1, `/about` sayfasının şu alt
-bölümleri içermesini istiyor: *Firma Hakkında, Üretim Süreci, Kalite Kontrol,
+bölümleri içermesini istiyor: _Firma Hakkında, Üretim Süreci, Kalite Kontrol,
 Üretim Kapasitesi, İhracat Hizmetleri, Özel Üretim (Private Label),
-Sertifikalar, Referanslar*. Mevcut sayfada **"Kalite Kontrol" ve "Özel Üretim
+Sertifikalar, Referanslar_. Mevcut sayfada **"Kalite Kontrol" ve "Özel Üretim
 (Private Label)" hiç yoktu** — Kalite Kontrol sadece 5 adımlık üretim
 sürecinin içinde tek bir madde olarak geçiyordu, Özel Üretim ise hiç
 bahsedilmiyordu.
@@ -533,6 +542,7 @@ ve Referanslar — bunlar için gerçek rakam/belge/müşteri verisi yok; AGENTS
 işaretlenmiş durumda kalmaya devam ediyor.
 
 **Uygulanan değişiklikler:**
+
 - **Görev 25 (Hikaye):** "Kim Biz?" paragrafına Havlucular Çarşısı'nın
   Türkiye'nin en köklü havlu ticaret merkezlerinden biri olduğu (zaten
   `llms.txt`'de kullanılan bir konumlandırma) eklendi — anlatıyı biraz daha
@@ -559,6 +569,7 @@ işaretlenmiş durumda kalmaya devam ediyor.
   organizasyonu" hizmeti, ihracat bölümüne küçük bir rozet olarak eklendi.
 
 **Doğrulama:**
+
 - `tsc` ✅ · `lint` ✅ · `build` ✅ (40 sayfa + `/og`).
 - Canlı test: `/about` `curl` ile çekildi — "Özel Üretim", "Kalite Kontrol
   Yaklaşımımız" ve "İhracat organizasyonu tedarik sürecine dahildir" metinleri
@@ -602,6 +613,7 @@ Ayrıca **ana sayfada** `FAQPreview` (6 soru) görünür olarak render ediliyord
 ama hiç `FAQSchema`'sı yoktu — kayıp bir fırsat.
 
 **Düzeltme:**
+
 - `FAQPreview` artık kendi verisiyle **kendi `FAQSchema`'sını da render
   ediyor** — bileşen nerede kullanılırsa kullanılsın şema/görünür içerik
   otomatik olarak eşleşiyor.
@@ -615,6 +627,7 @@ ama hiç `FAQSchema`'sı yoktu — kayıp bir fırsat.
   olarak güncelledim.
 
 **Doğrulama:**
+
 - `tsc` ✅ · `lint` ✅ · `build` ✅ (40 sayfa + `/og`).
 - **Canlı JSON-LD doğrulaması:** Hem `/` hem `/about` `curl` ile çekildi;
   her iki sayfada da `FAQPage` şemasının içeriğinin sayfada görünen
@@ -639,6 +652,7 @@ linkler. Düzeltildi: artık 8 Türkçe landing page'in tamamı ayrı bir
 "Ürün Kategorileri" kolonunda, 3 İngilizce (export) landing page ise yeni
 bir "Export" kolonunda listeleniyor. Footer artık **11 landing page'in
 tamamına + Blog'a** gerçek, doğru linkler içeriyor.
+
 - Grid `lg:grid-cols-4`'ten `lg:grid-cols-3 xl:grid-cols-5`'e çıkarıldı
   (5. kolon eklendiği için), kademeli artış korunarak (AGENTS.md §11: tek
   adımda büyük sıçrama yapılmaz).
@@ -655,6 +669,7 @@ tutarlılığı ilkesine daha uygun).
 eklendi (sitenin geri kalanıyla tutarlı motion dili).
 
 **Doğrulama:**
+
 - `tsc` ✅ · `lint` ✅ · `build` ✅ (40 sayfa + `/og`).
 - Canlı test: Ana sayfa `curl` ile çekildi; "Bornoz Üreticisi", "Nakışlı
   Havlu", "Wholesale Towel Supplier", "Bathrobe Manufacturer" linkleri ve
@@ -767,7 +782,7 @@ bilinen ve kabul edilmiş bir durum. Aksiyon gerekmiyor.
 Router zaten route bazlı otomatik code-splitting yapıyor (her `page.tsx`
 kendi chunk'ı). `'use client'` sınırları zaten en yaprak seviyede (13 dosya:
 StickyWhatsApp, ContactForm, FadeIn, Navbar, FAQAccordion, GoogleAnalytics,
-CookieConsent*, birkaç `ui/` primitive'i) — server component ağacının geri
+CookieConsent\*, birkaç `ui/` primitive'i) — server component ağacının geri
 kalanı hiç client JS'e dahil olmuyor. Manuel `next/dynamic` ile ayrılacak
 büyük/nadir kullanılan bir bileşen (harita, grafik, ağır modal) yok —
 `grep "next/dynamic"` sıfır sonuç verdi çünkü henüz buna ihtiyaç duyacak
@@ -986,9 +1001,8 @@ düzeltilen `FAQPreview` kendi kendine yeten hale getirilmişti). Ek bulgu yok.
 `WebSiteSchema` (ana sayfada render edilen) hiç `@id` alanı
 **tanımlamıyordu** — yani referans, var olmayan bir düğüme işaret eden
 "asılı" (dangling) bir bağlantıydı. **Düzeltme:** `WebSiteSchema`'ya
-`'@id': `${SITE_CONFIG.url}/#website`` eklendi (yalnızca alan eklendi,
-mevcut zorunlu alan kaldırılmadı — red line #5 ile uyumlu). Canlı `curl`
-ile ana sayfada `"@type":"WebSite","@id":"https://baskanhavlu.com/#website"`
+`'@id': `${SITE_CONFIG.url}/#website``eklendi (yalnızca alan eklendi,
+mevcut zorunlu alan kaldırılmadı — red line #5 ile uyumlu). Canlı`curl`ile ana sayfada`"@type":"WebSite","@id":"https://baskanhavlu.com/#website"`
 render edildiği doğrulandı.
 
 **Görev 79 (LocalBusiness) — bkz. FAZ 11 Görev 62:** Aynı düzeltme
@@ -1019,11 +1033,12 @@ edildi, Upstash env yoksa sessizce no-op, prod'da gerçek koruma için
 Netlify env değişkeni gerekiyor notuyla).
 
 **Görev 82 (Spam) — kod denetimi, değişiklik yok:** `lib/utils/honeypot.ts`
-+ tüm 4 route'ta kullanımı doğrulandı. `ContactForm.tsx`'te honeypot input
-`className="hidden"` + `tabIndex={-1}` + `aria-hidden="true"` ile hem
-görsel olarak hem ekran okuyucudan doğru şekilde gizlenmiş (erişilebilirlik
-tuzağı yok). Canlı `curl` testiyle honeypot dolu istek `{"success":true}`
-(sessiz red) döndürdüğü doğrulandı.
+
+- tüm 4 route'ta kullanımı doğrulandı. `ContactForm.tsx`'te honeypot input
+  `className="hidden"` + `tabIndex={-1}` + `aria-hidden="true"` ile hem
+  görsel olarak hem ekran okuyucudan doğru şekilde gizlenmiş (erişilebilirlik
+  tuzağı yok). Canlı `curl` testiyle honeypot dolu istek `{"success":true}`
+  (sessiz red) döndürdüğü doğrulandı.
 
 **Görev 83 (CORS) — kod denetimi, değişiklik yok:** `grep -i "cors"` /
 `Access-Control-Allow-Origin` sıfır sonuç verdi — API rotalarında hiçbir
@@ -1064,6 +1079,7 @@ Canlı testler: honeypot dolu istek sessizce kabul edildi, geçersiz payload
 §14.2):** `grep -rniE "favori|mükemmel|eşsiz|en iyi|lider|garantili"` ile
 tüm `content/`, `app/`, `components/` tarandı. `content/blog/index.ts`'te
 3 gerçek ihlal bulundu:
+
 1. Satır 36: "Otel sektörünün **favori** seçeneği" (doğrulanamayan
    popülerlik iddiası) → "Otel sektöründe sıkça tercih edilir."
 2. Satır 132: "5 yıldızlı otellerin **favorisi**" (doğrulanamayan,
@@ -1072,11 +1088,11 @@ tüm `content/`, `app/`, `components/` tarandı. `content/blog/index.ts`'te
 3. Satır 135: "...plaj tesisleri için **mükemmel**" (AGENTS.md §14.1'de
    açıkça yasaklanan muğlak süperlatif) → "...plaj tesislerinde tercih
    edilir."
-Bunlar önceki bir oturumdan kalma, o zaman fark edilmemiş gerçek içerik
-ihlalleriydi — bu roadmap'in kendi denetim adımı sayesinde yakalandı.
-Ayrıca AGENTS.md §26'daki "Blog'da 3 makale var (hedef: en az 10)" notu da
-**stale** çıktı — gerçekte `content/blog/index.ts`'te **10** makale var;
-not güncellendi.
+   Bunlar önceki bir oturumdan kalma, o zaman fark edilmemiş gerçek içerik
+   ihlalleriydi — bu roadmap'in kendi denetim adımı sayesinde yakalandı.
+   Ayrıca AGENTS.md §26'daki "Blog'da 3 makale var (hedef: en az 10)" notu da
+   **stale** çıktı — gerçekte `content/blog/index.ts`'te **10** makale var;
+   not güncellendi.
 
 **Görev 88 (Landing) / Görev 89 (Category) — kod denetimi, değişiklik
 yok:** Aynı süperlatif/fabrikasyon taraması 11 landing page + `content/
@@ -1198,9 +1214,11 @@ hiyerarşisi/rozet stili tutarlı şekilde yükseltildi.
 **Uygulanan tutarlı "kart dili":** `rounded-xl` → `rounded-2xl`,
 `shadow-sm` taban + `hover:-translate-y-1 hover:shadow-lg/xl`, ikon
 konteynerleri düz `#fff7f0` yerine `linear-gradient(135deg,#fff7f0,#ffe8cc)`
-+ `#ffd0a3` kenarlık ile daha premium bir görünüm.
+
+- `#ffd0a3` kenarlık ile daha premium bir görünüm.
 
 **Değiştirilen dosyalar:**
+
 - `FAQAccordion.tsx` — düz `divide-y` liste → her soru ayrı kart
   (`rounded-xl border`), açık durumda `#fff7f0` zemin + turuncu kenarlık,
   +/× ikonu artık dairesel bir rozet içinde. Bu bileşen `LandingPage`,
@@ -1230,7 +1248,7 @@ konteynerleri düz `#fff7f0` yerine `linear-gradient(135deg,#fff7f0,#ffe8cc)`
   ilgili makale kartlarına gölge + güçlü hover lift.
 - `app/new-collection/page.tsx`, `app/new-collection/[slug]/page.tsx` —
   ürün kartlarına, "Hızlı Bilgi" kutusuna ve benzer ürün kartlarına gölge
-  + hover lift; alt CTA bloğuna ince radyal gradyan vurgusu.
+  - hover lift; alt CTA bloğuna ince radyal gradyan vurgusu.
 
 **Doğrulama:** Her adımdan sonra `tsc --noEmit` ✅ ve `npm run lint` ✅
 çalıştırıldı (birkaç yerde IDE'nin önerdiği kanonik Tailwind class'ları —

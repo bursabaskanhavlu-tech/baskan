@@ -1,79 +1,93 @@
 import Link from 'next/link'
 import { FAQAccordion } from '@/components/molecules/FAQAccordion'
 import { FAQSchema } from '@/components/schema/FAQSchema'
-import { FadeIn } from '@/components/motion-primitives/fade-in'
+import { ArrowIcon } from '@/components/atoms/Icons'
 
-const faqs = [
+interface FAQItem {
+  question: string
+  answer: string
+}
+
+interface FAQSectionProps {
+  items: FAQItem[]
+  kicker?: string
+  title?: string
+  contactText?: string
+  contactHref?: string
+  /** Şema ayrıca sayfada üretiliyorsa false verilir (çift FAQPage olmaması için). */
+  withSchema?: boolean
+  className?: string
+}
+
+/**
+ * SSS bölümü. Görünür içerik ve FAQSchema aynı diziden beslenir —
+ * şema/içerik uyuşmazlığı oluşamaz.
+ */
+export function FAQSection({
+  items,
+  kicker = 'Sık Sorulan Sorular',
+  title = 'Aklınızdaki sorular',
+  contactText = 'Başka bir sorunuz mu var? İletişime geçin',
+  contactHref = '/contact',
+  withSchema = true,
+  className = '',
+}: FAQSectionProps) {
+  return (
+    <section className={`py-20 sm:py-28 ${className}`}>
+      {withSchema && <FAQSchema items={items} />}
+      <div className="container-x grid gap-12 lg:grid-cols-12">
+        <div className="reveal lg:col-span-4">
+          <p className="kicker">{kicker}</p>
+          <h2 className="display-md mt-6">{title}</h2>
+          <Link
+            href={contactHref}
+            className="mt-6 inline-flex min-h-11 items-center gap-2 text-[0.9375rem] font-medium"
+          >
+            <span className="link-line-static">{contactText}</span>
+            <ArrowIcon />
+          </Link>
+        </div>
+        <div className="reveal lg:col-span-8">
+          <FAQAccordion items={items} />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const homeFaqs: FAQItem[] = [
   {
-    q: 'Minimum sipariş miktarı (MOQ) nedir?',
-    a: 'Minimum sipariş miktarı ürüne ve stok durumuna göre değişmektedir. Teklif almak için bizimle iletişime geçin.',
+    question: 'Minimum sipariş miktarı (MOQ) nedir?',
+    answer:
+      'Minimum sipariş miktarı ürüne ve stok durumuna göre değişmektedir. Teklif almak için bizimle iletişime geçin.',
   },
   {
-    q: 'Ürünlerinize özel logo nakışı yapabiliyor musunuz?',
-    a: 'Evet, logo nakışı ve özel renk seçenekleriyle kişiselleştirilmiş üretim sağlıyoruz.',
+    question: 'Ürünlerinize özel logo nakışı yapabiliyor musunuz?',
+    answer: 'Evet, logo nakışı ve özel renk seçenekleriyle kişiselleştirilmiş üretim sağlıyoruz.',
   },
   {
-    q: 'Numune sipariş edebilir miyim?',
-    a: 'Numune talebinizi iletişim formu veya WhatsApp üzerinden iletebilirsiniz. Numune süreç ve ücretleri teklif aşamasında netleştirilir.',
+    question: 'Numune sipariş edebilir miyim?',
+    answer:
+      'Numune talebinizi iletişim formu veya WhatsApp üzerinden iletebilirsiniz. Numune süreç ve ücretleri teklif aşamasında netleştirilir.',
   },
   {
-    q: 'Yurt dışına ihracat yapıyor musunuz?',
-    a: 'Evet. Başta Arap ülkeleri ve Yunanistan olmak üzere uluslararası müşterilerimize ihracat hizmeti sunuyoruz.',
+    question: 'Yurt dışına ihracat yapıyor musunuz?',
+    answer:
+      'Evet. Başta Arap ülkeleri ve Yunanistan olmak üzere uluslararası müşterilerimize ihracat hizmeti sunuyoruz.',
   },
   {
-    q: 'Teslimat süresi ne kadar?',
-    a: 'Sipariş büyüklüğüne ve ürün tipine göre değişmektedir. Kesin teslimat süresi teklif aşamasında belirtilir.',
+    question: 'Teslimat süresi ne kadar?',
+    answer:
+      'Sipariş büyüklüğüne ve ürün tipine göre değişmektedir. Kesin teslimat süresi teklif aşamasında belirtilir.',
   },
   {
-    q: 'Oteller için özel koleksiyonunuz var mı?',
-    a: 'Evet. Otel sektörüne özel yüksek gramajlı, dayanıklı ve logo nakışlı havlu koleksiyonumuz mevcuttur.',
+    question: 'Oteller için özel koleksiyonunuz var mı?',
+    answer:
+      'Evet. Otel sektörüne özel yüksek gramajlı, dayanıklı ve logo nakışlı havlu koleksiyonumuz mevcuttur.',
   },
 ]
 
+/** Ana sayfa SSS'si — içerik değişmeden korunmuştur. */
 export function FAQPreview() {
-  return (
-    <>
-      {/* Görünür SSS içeriğiyle birebir eşleşen şema — schema/görsel içerik
-          uyuşmazlığı Google Rich Results için risklidir, bu yüzden veri
-          burada tek kaynaktan (faqs dizisi) besleniyor. */}
-      <FAQSchema items={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
-      <section
-        className="py-24"
-        style={{
-          background:
-            'radial-gradient(circle at 15% 0%, rgba(232,119,34,0.05), transparent 55%), #faf8f5',
-        }}
-      >
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          {/* Başlık */}
-          <FadeIn className="mb-12 text-center">
-            <span
-              className="mb-2 block text-xs font-semibold uppercase tracking-widest"
-              style={{ color: '#e87722' }}
-            >
-              Sık Sorulan Sorular
-            </span>
-            <h2 className="text-3xl font-bold sm:text-4xl" style={{ color: '#1a1a1a' }}>
-              Aklınızdaki Sorular
-            </h2>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <FAQAccordion items={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
-          </FadeIn>
-
-          {/* Başka soru için iletişim CTA'sı */}
-          <div className="mt-10 text-center">
-            <Link
-              href="/contact"
-              className="text-sm font-medium underline underline-offset-4 transition-colors hover:opacity-70"
-              style={{ color: '#e87722' }}
-            >
-              Başka bir sorunuz mu var? İletişime geçin →
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
-  )
+  return <FAQSection items={homeFaqs} />
 }

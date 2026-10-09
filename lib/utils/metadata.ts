@@ -11,12 +11,10 @@ interface PageMetadataInput {
   keywords?: string[]
   datePublished?: string
   /**
-   * Bu sayfanın gerçek karşı-dil eşleniğinin path'i (ör. TR sayfası için
-   * '/turkish-towel-manufacturer', EN sayfası için '/toptan-havlu').
-   * Projede gerçek /en/ prefix routing yoktur (bkz. AGENTS.md §3.1, §26) —
-   * bu yüzden karşı dil linki asla `/en${path}` formülüyle üretilmez, yalnızca
-   * burada açıkça verilen gerçek bir sayfaya işaret eder. Verilmezse o dil
-   * için hreflang eklenmez (var olmayan bir sayfaya link vermektense).
+   * Bu sayfanın gerçek karşı-dil eşleniğinin path'i (ör. TR '/havlu-ureticisi'
+   * için '/en/turkish-towel-manufacturer'). Eşleşmeler lib/config/locale-routes.ts
+   * ile tutarlı tutulur. Verilmezse o dil için hreflang eklenmez (var olmayan
+   * bir sayfaya link vermektense).
    */
   alternatePath?: string
   /**
@@ -42,8 +40,14 @@ export function generatePageMetadata(input: PageMetadataInput): Metadata {
   const locale = input.locale ?? 'tr'
   const alternateUrl = input.alternatePath ? `${SITE_CONFIG.url}${input.alternatePath}` : undefined
 
+  // Başlık marka adını zaten içeriyorsa layout'taki `%s | Marka` şablonu
+  // uygulanmaz (aksi halde "… | Başkan Havlu Tekstil | Başkan Havlu Tekstil"
+  // oluşuyordu). Marka içermeyen başlıklar (ör. blog yazıları) şablonla
+  // tamamlanmaya devam eder.
+  const title = input.title.includes(SITE_CONFIG.name) ? { absolute: input.title } : input.title
+
   return {
-    title: input.title,
+    title,
     description,
     ...(input.keywords && { keywords: input.keywords }),
     alternates: {
@@ -97,5 +101,58 @@ export function generatePageMetadata(input: PageMetadataInput): Metadata {
             'max-video-preview': -1,
           },
         },
+  }
+}
+
+/**
+ * Kök layout metadata'sı — TR ve EN kök layout'ları tarafından paylaşılır.
+ * Favicon / apple-touch-icon dosya kuralıyla (app/icon.png, app/apple-icon.png)
+ * sağlanır.
+ */
+export function rootMetadata(locale: 'tr' | 'en'): Metadata {
+  const en = locale === 'en'
+  return {
+    metadataBase: new URL(SITE_CONFIG.url),
+    title: {
+      default: en
+        ? `${SITE_CONFIG.name} | Towel and Bathrobe Manufacturer, Bursa`
+        : `${SITE_CONFIG.name} | Havlu ve Bornoz İmalatçısı, Bursa`,
+      template: `%s | ${SITE_CONFIG.name}`,
+    },
+    description: en ? SITE_CONFIG.description.en : SITE_CONFIG.seo.defaultDescription,
+    keywords: [
+      'havlu imalatçısı',
+      'toptan havlu',
+      'otel havlusu',
+      'bornoz imalatçısı',
+      'promosyon havlu',
+      'havlu üreticisi',
+      'Bursa havlu',
+      'Turkish towel manufacturer',
+      'wholesale towel Turkey',
+    ],
+    authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
+    creator: SITE_CONFIG.name,
+    publisher: SITE_CONFIG.name,
+    formatDetection: { telephone: true, email: true, address: true },
+    openGraph: {
+      type: 'website',
+      locale: en ? 'en_US' : 'tr_TR',
+      siteName: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@bursahavlusu',
+    },
+    ...(process.env['NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION'] && {
+      verification: {
+        google: process.env['NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION'],
+      },
+    }),
+    // Bing Webmaster doğrulaması
+    ...(process.env['NEXT_PUBLIC_BING_SITE_VERIFICATION'] && {
+      other: { 'msvalidate.01': process.env['NEXT_PUBLIC_BING_SITE_VERIFICATION'] },
+    }),
   }
 }

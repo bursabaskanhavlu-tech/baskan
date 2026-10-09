@@ -4,3 +4,7 @@ out/
 build/
 public/
 *.lock
+
+# Yerel / takip edilmeyen araç klasörleri
+.21st/
+seo-geo-kit/

@@ -1,59 +1,51 @@
 import Link from 'next/link'
 import { SITE_CONFIG } from '@/lib/config/site'
-import { FadeIn } from '@/components/motion-primitives/fade-in'
-import { TextReveal } from '@/components/motion-primitives/text-reveal'
-import { MagneticButton } from '@/components/motion-primitives/magnetic-button'
+import { getDictionary, contactHref, whatsappHref, type Locale } from '@/lib/i18n'
+import { ArrowIcon, WhatsAppIcon } from '@/components/atoms/Icons'
 
 interface CTABandProps {
-  locale?: 'tr' | 'en'
+  locale?: Locale
 }
 
+/** Sayfa sonu teklif çağrısı — turuncu zemin, koyu metin (yüksek kontrast). */
 export function CTABand({ locale = 'tr' }: CTABandProps) {
-  const isEn = locale === 'en'
-  const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${isEn ? SITE_CONFIG.contact.whatsappMessageEn : SITE_CONFIG.contact.whatsappMessageTr}`
-  const contactHref = isEn ? '/en/contact' : '/contact'
+  const t = getDictionary(locale).cta
+  const en = locale === 'en'
 
   return (
-    <section
-      className="py-24"
-      style={{
-        background:
-          'radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 45%), #e87722',
-      }}
-    >
-      <FadeIn className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <h2
-          className="text-3xl font-bold text-white sm:text-4xl"
-          style={{ fontFamily: 'var(--font-heading, serif)' }}
-        >
-          <TextReveal text={isEn ? 'Get a Quote Now' : 'Hemen Teklif Alın'} wordDelay={0.08} />
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-lg" style={{ color: 'rgba(255,255,255,0.85)' }}>
-          {isEn
-            ? 'Want to learn more about our hotel, corporate or promotional towel manufacturing?'
-            : 'Otel, kurum veya promosyon sektörü için havlu imalatımız hakkında bilgi almak ister misiniz?'}
-        </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <MagneticButton>
-            <Link
-              href={contactHref}
-              className="flex h-14 items-center justify-center rounded-full bg-white px-9 text-sm font-semibold text-orange-500 shadow-lg transition-colors hover:bg-beige-50"
-            >
-              {isEn ? 'Quote Form' : 'Teklif Formu'}
+    <section className="bg-orange-500 text-ink">
+      <div className="container-x grid gap-10 py-20 sm:py-28 lg:grid-cols-12 lg:items-end">
+        <div className="reveal lg:col-span-7">
+          <h2 className="display-lg">{t.title}</h2>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/80">{t.text}</p>
+        </div>
+        <div className="reveal flex flex-col gap-6 lg:col-span-5 lg:items-end">
+          <div className="flex w-full flex-col gap-3 sm:flex-row lg:justify-end">
+            <Link href={contactHref(locale)} className="btn btn-dark">
+              {t.primary}
+              <ArrowIcon />
             </Link>
-          </MagneticButton>
-          <MagneticButton>
             <a
-              href={waUrl}
+              href={whatsappHref(locale)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-14 items-center justify-center rounded-full border-2 border-white px-9 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="btn border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-paper"
             >
-              {isEn ? 'Contact via WhatsApp' : 'WhatsApp ile Ulaş'}
+              <WhatsAppIcon className="h-4 w-4" />
+              {t.whatsapp}
             </a>
-          </MagneticButton>
+          </div>
+          <a
+            href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
+            className="inline-flex min-h-11 items-center gap-1 text-sm text-ink/75 transition-colors hover:text-ink"
+          >
+            {en ? 'or call' : 'ya da arayın'}{' '}
+            <span className="link-line-static font-semibold text-ink">
+              {SITE_CONFIG.contact.phone}
+            </span>
+          </a>
         </div>
-      </FadeIn>
+      </div>
     </section>
   )
 }

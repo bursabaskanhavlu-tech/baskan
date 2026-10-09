@@ -4,11 +4,13 @@ import { SITE_CONFIG } from '@/lib/config/site'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Tüm botlar — ana içerik açık, yönetim ve API gizli
+      // Tüm botlar — ana içerik açık, yönetim ve API gizli.
+      // `/_next/` bilinçli olarak engellenmez: Google sayfayı doğru render
+      // edebilmek için CSS/JS/görsel kaynaklarına erişebilmelidir.
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/tesekkurler/'],
+        disallow: ['/api/', '/admin/', '/tesekkurler/'],
       },
       // AI içerik tarayıcıları — tam erişim (GEO için kritik)
       { userAgent: 'GPTBot', allow: '/' },
