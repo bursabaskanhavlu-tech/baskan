@@ -20,9 +20,9 @@ export default function GizlilikPolitikasiPage() {
 
       <h2>2. Toplanan veriler</h2>
       <p>
-        Teklif formu aracılığıyla ad soyad, telefon ve isteğe bağlı olarak firma adı, e-posta, ürün
-        türü, adet ve mesaj bilgileri toplanır. Ayrıca kötüye kullanımı önlemek amacıyla IP
-        adresiniz kısa süreli olarak işlenir.
+        Teklif formuna yazdığınız bilgiler (ad soyad, telefon ve isteğe bağlı olarak firma adı,
+        e-posta, ürün türü, adet ve mesaj) sitemizde saklanmaz ve sunucumuza gönderilmez. Bu
+        bilgiler yalnızca sizin WhatsApp üzerinden bize gönderdiğiniz mesajla tarafımıza ulaşır.
       </p>
 
       <h2>3. Verilerin kullanım amacı</h2>
@@ -40,13 +40,7 @@ export default function GizlilikPolitikasiPage() {
           açar; mesajı göndermek sizin onayınızla gerçekleşir.
         </li>
         <li>
-          <strong>Resend:</strong> Form bilgilerinin satış ekibimize e-posta ile iletilmesi.
-        </li>
-        <li>
           <strong>Netlify:</strong> Sitenin barındırılması.
-        </li>
-        <li>
-          <strong>Upstash:</strong> Form kötüye kullanımına karşı IP tabanlı istek sınırlama.
         </li>
         <li>
           <strong>Google Analytics:</strong> Yalnızca çerez onayı verilirse ziyaret istatistikleri.

@@ -2,8 +2,29 @@ import type { MetadataRoute } from 'next'
 import { SITE_CONFIG } from '@/lib/config/site'
 import { BLOG_POSTS } from '@/content/blog'
 import { PRODUCTS } from '@/content/products'
+import { TR_TO_EN_ROUTES, EN_TO_TR_ROUTES } from '@/lib/config/locale-routes'
 
 const BASE_URL = SITE_CONFIG.url
+
+/**
+ * TR⇄EN eşleniği olan sayfalara sitemap içinde hreflang (xhtml:link) ekler.
+ * Sayfalardaki <link rel="alternate" hreflang> etiketleriyle birebir aynı
+ * eşleşmeyi (lib/config/locale-routes.ts) kullanır; eşleniği olmayan
+ * sayfalarda hiçbir şey eklenmez.
+ */
+function withAlternates(entry: MetadataRoute.Sitemap[number]): MetadataRoute.Sitemap[number] {
+  const path = entry.url.replace(BASE_URL, '') || '/'
+  const tr = EN_TO_TR_ROUTES[path] ? EN_TO_TR_ROUTES[path] : TR_TO_EN_ROUTES[path] ? path : null
+  const en = TR_TO_EN_ROUTES[path] ?? (EN_TO_TR_ROUTES[path] ? path : null)
+  if (!tr || !en) return entry
+  const abs = (p: string) => (p === '/' ? BASE_URL : `${BASE_URL}${p}`)
+  return {
+    ...entry,
+    alternates: {
+      languages: { tr: abs(tr), en: abs(en), 'x-default': abs(tr) },
+    },
+  }
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // `lastModified` yalnızca gerçek bir içerik tarihimiz olduğunda (blog
@@ -78,5 +99,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...landingPagesTR, ...enPages, ...blogPages, ...productPages]
+  return [...staticPages, ...landingPagesTR, ...enPages, ...blogPages, ...productPages].map(
+    withAlternates
+  )
 }

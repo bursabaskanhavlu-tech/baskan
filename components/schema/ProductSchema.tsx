@@ -20,12 +20,14 @@ export function ProductSchema({ name, description, image, url, category }: Produ
       '@type': 'Brand',
       name: SITE_CONFIG.name,
     },
+    manufacturer: { '@id': `${SITE_CONFIG.url}/#organization` },
     category: category ?? 'Tekstil / Havlu',
     offers: {
       '@type': 'Offer',
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',
+        '@id': `${SITE_CONFIG.url}/#organization`,
         name: SITE_CONFIG.name,
       },
       description: 'Fiyat için iletişime geçin — toplu sipariş fiyatlandırması',

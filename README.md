@@ -9,7 +9,7 @@ Tekstil'in kurumsal web sitesi. Toptan, özel üretim, ihracat ve mağazada pera
 - **Dil:** TypeScript (strict mode)
 - **Stil:** Tailwind CSS v4 (CSS-first, `app/globals.css`)
 - **Animasyon:** Saf CSS (scroll-driven animations); animasyon kütüphanesi yok
-- **Formlar:** WhatsApp'a hazır mesaj + Resend ile e-posta kopyası, Zod doğrulama, Upstash rate limit
+- **Formlar:** Yalnızca WhatsApp'a hazır mesaj (sunucuya veri gönderilmez)
 - **Analitik:** GA4 (çerez onayı sonrası koşullu yüklenir)
 - **Deploy:** Netlify (`@netlify/plugin-nextjs`)
 
@@ -32,10 +32,9 @@ npm run type-check && npm run lint && npm run format:check && npm run build
 ```
 app/(tr)/      → Türkçe sayfalar (kök layout, lang="tr")
 app/(en)/en/   → İngilizce sayfalar (/en/..., kök layout, lang="en")
-app/api/       → Lead API'leri (teklif, numune, ihracat, iletişim)
 components/    → atoms / molecules / organisms / templates / views / layout / schema
 content/       → Ürün, blog, ana sayfa, hakkımızda, yorum ve fotoğraf yuvası verileri
-lib/           → SITE_CONFIG, i18n, metadata, servisler, doğrulama şemaları
+lib/           → SITE_CONFIG, i18n, metadata, fontlar, yardımcılar
 public/        → llms.txt, ai.txt, logolar, fotoğraflar
 ```
 

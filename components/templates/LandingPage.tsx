@@ -4,6 +4,7 @@ import { SITE_CONFIG } from '@/lib/config/site'
 import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
 import { FAQSection } from '@/components/organisms/FAQPreview'
 import { CTABand } from '@/components/organisms/CTABand'
+import { ServiceSchema } from '@/components/schema/ServiceSchema'
 import { MediaFrame, type SwatchTone } from '@/components/atoms/MediaFrame'
 import { ArrowIcon, ArrowUpRightIcon, WhatsAppIcon } from '@/components/atoms/Icons'
 import { contactHref, homeHref, type Locale } from '@/lib/i18n'
@@ -77,6 +78,8 @@ export function LandingPage({
 
   return (
     <>
+      <ServiceSchema name={title} description={intro} locale={locale} />
+
       {/* HERO */}
       <section className="pb-16 pt-10 sm:pb-24 sm:pt-14">
         <div className="container-x">

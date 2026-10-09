@@ -41,6 +41,3 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          EMAIL_TO_SALES: ${{ secrets.EMAIL_TO_SALES }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}

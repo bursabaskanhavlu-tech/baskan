@@ -36,11 +36,13 @@ export function ArticleSchema({
     dateModified: dateModified ?? datePublished,
     author: {
       '@type': 'Organization',
+      '@id': `${SITE_CONFIG.url}/#organization`,
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
     },
     publisher: {
       '@type': 'Organization',
+      '@id': `${SITE_CONFIG.url}/#organization`,
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
       logo: {

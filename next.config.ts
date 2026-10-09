@@ -36,7 +36,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://elfsightcdn.com https://*.elfsightcdn.com",
       "img-src 'self' data: blob: https:",
       "font-src 'self' https://fonts.gstatic.com https://elfsightcdn.com https://*.elfsightcdn.com",
-      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.upstash.io https://elfsight.com https://*.elfsight.com https://elfsightcdn.com https://*.elfsightcdn.com",
+      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://elfsight.com https://*.elfsight.com https://elfsightcdn.com https://*.elfsightcdn.com",
       "frame-src 'self' https://elfsightcdn.com https://*.elfsightcdn.com https://elfsight.com https://*.elfsight.com",
       "object-src 'none'",
       "base-uri 'self'",

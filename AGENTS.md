@@ -60,27 +60,25 @@ Bu 8 madde ihlal edilirse, yapılan iş ne kadar "kaliteli" görünürse görün
 
 ### 3.1 Teknoloji Yığını (gerçek, doğrulanmış)
 
-| Katman         | Teknoloji                                                                                                                       | Not                                                                   |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Framework      | **Next.js 16.4.0**, App Router                                                                                                  | Bkz. §4 — bu, eğitim verinizdeki Next.js değildir                     |
-| Dil            | TypeScript, `strict: true`                                                                                                      | `tsconfig.json`                                                       |
-| UI kütüphanesi | React 19.2.4                                                                                                                    | Server Components varsayılan                                          |
-| Stil           | Tailwind CSS v4 (CSS-first, `@theme`) + Shadcn UI (`base-nova` stili) + Base UI                                                 | `tailwind.config.*` dosyası **yok**, her şey `app/globals.css` içinde |
-| Animasyon      | Saf CSS (scroll-driven `animation-timeline: view()`, keyframes); animasyon kütüphanesi yok                                      | Bkz. §10; `framer-motion` kaldırıldı (Ekim 2026)                      |
-| Form           | React Hook Form + Zod                                                                                                           | `lib/validations/lead.schema.ts`                                      |
-| İkon           | `lucide-react`                                                                                                                  | Tek ikon kaynağı                                                      |
-| E-posta        | Resend — **REST API'ye doğrudan `fetch`**, npm paketi yüklü değil                                                               | API route'larda inline                                                |
-| Analitik       | Google Analytics 4 — çerez onayına bağlı, elle yazılmış `components/organisms/GoogleAnalytics.tsx`                              | Vercel Analytics **kullanılmıyor** (bkz. §3.3)                        |
-| Deploy         | **Netlify** (`netlify.toml`)                                                                                                    | Vercel **değil** — bkz. §3.3                                          |
-| CI             | GitHub Actions (`.github/workflows/ci.yml`): format check → lint → type-check → `npm audit` → build                             | Deploy adımı yok, Netlify kendi CI'ında build alır                    |
-| Veri katmanı   | Veritabanı yok; `content/products/index.ts`, `content/blog/index.ts` tip güvenli statik TS modülleri                            | CMS entegrasyonu yok                                                  |
-| i18n           | Kütüphane yok. İki kök layout: `app/(tr)` (lang=tr) ve `app/(en)` (lang=en, sayfalar `/en/...`); arayüz metinleri `lib/i18n.ts` | TR⇄EN eşleşmeleri `lib/config/locale-routes.ts`                       |
+| Katman         | Teknoloji                                                                                                                         | Not                                                                   |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Framework      | **Next.js 16.4.0**, App Router                                                                                                    | Bkz. §4 — bu, eğitim verinizdeki Next.js değildir                     |
+| Dil            | TypeScript, `strict: true`                                                                                                        | `tsconfig.json`                                                       |
+| UI kütüphanesi | React 19.2.4                                                                                                                      | Server Components varsayılan                                          |
+| Stil           | Tailwind CSS v4 (CSS-first, `@theme`) + Shadcn UI (`base-nova` stili) + Base UI                                                   | `tailwind.config.*` dosyası **yok**, her şey `app/globals.css` içinde |
+| Animasyon      | Saf CSS (scroll-driven `animation-timeline: view()`, keyframes); animasyon kütüphanesi yok                                        | Bkz. §10; `framer-motion` kaldırıldı (Ekim 2026)                      |
+| Form           | Yalnızca WhatsApp: `components/organisms/ContactForm.tsx` istemci tarafında doğrular, bilgileri hazır WhatsApp mesajı olarak açar | Sunucuya veri gönderilmez, saklanmaz                                  |
+| İkon           | `lucide-react`                                                                                                                    | Tek ikon kaynağı                                                      |
+| Analitik       | Google Analytics 4 — çerez onayına bağlı, elle yazılmış `components/organisms/GoogleAnalytics.tsx`                                | Vercel Analytics **kullanılmıyor** (bkz. §3.3)                        |
+| Deploy         | **Netlify** (`netlify.toml`)                                                                                                      | Vercel **değil** — bkz. §3.3                                          |
+| CI             | GitHub Actions (`.github/workflows/ci.yml`): format check → lint → type-check → `npm audit` → build                               | Deploy adımı yok, Netlify kendi CI'ında build alır                    |
+| Veri katmanı   | Veritabanı yok; `content/products/index.ts`, `content/blog/index.ts` tip güvenli statik TS modülleri                              | CMS entegrasyonu yok                                                  |
+| i18n           | Kütüphane yok. İki kök layout: `app/(tr)` (lang=tr) ve `app/(en)` (lang=en, sayfalar `/en/...`); arayüz metinleri `lib/i18n.ts`   | TR⇄EN eşleşmeleri `lib/config/locale-routes.ts`                       |
 
 ### 3.2 Dizin Yapısı
 
 ```
 app/                      → App Router sayfaları (her klasör bir route)
-  api/lead/{quote,sample,export}/route.ts, api/contact/route.ts → lead API'leri (Node.js runtime, ortak akış lib/services/lead-handler.ts)
   (tr)/layout.tsx, (en)/layout.tsx → iki kök layout (ortak iskelet components/layout/SiteShell.tsx)
   global-not-found.tsx    → eşleşmeyen URL'ler için 404 (experimental.globalNotFound)
   [slug]/                 → dinamik rotalar (blog, new-collection ürün detayı)
@@ -105,7 +103,6 @@ lib/
   utils/metadata.ts        → generatePageMetadata() — TÜM sayfa metadata'sı buradan geçer
   utils/analytics.ts       → trackEvent/trackFormSubmit/trackWhatsAppClick/trackCTAClick/trackProductView
   utils.ts                 → genel yardımcılar (cn() vb.)
-  validations/lead.schema.ts → Zod şemaları
 types/global.d.ts          → window.gtag global tip tanımı
 .kiro/specs/baskan-havlu-tekstil-platform/ → requirements.md, design.md, tasks.md, audit-report.md
 ```
@@ -167,7 +164,7 @@ Deprecation uyarılarına her zaman uyulur; "eskiden böyleydi" varsayımıyla k
 - `tsconfig.json` → `strict: true`, `noUncheckedIndexedAccess: true`, `noImplicitReturns: true`, `noFallthroughCasesInSwitch: true`. Bu ayarları gevşetmek (`// @ts-ignore`, `as any`) **yasaktır**; tip hatası varsa kök nedeni çözülür.
 - `@/*` path alias'ı `tsconfig.json` içinde tanımlı — relative import (`../../../lib/...`) yerine her zaman `@/lib/...`, `@/components/...` kullanılır.
 - Her yeni veri modeli (`Product`, `BlogPost`, lead form tipi vb.) `interface` ile tanımlanır ve ilgili `content/` veya `lib/validations/` dosyasında tutulur — dağınık, sayfa içi tip tanımı yapılmaz.
-- Zod şeması olan her form için TypeScript tipi Zod'dan türetilir (`z.infer<typeof schema>`), iki kez elle yazılmaz.
+- İleride sunucuya veri gönderen bir form eklenirse doğrulama şeması (ör. Zod) yeniden eklenir ve TypeScript tipi şemadan türetilir (`z.infer<typeof schema>`).
 - `process.env['KEY']` erişim biçimi (köşeli parantez) korunur — `noUncheckedIndexedAccess` bunu zorunlu kılıyor.
 
 ---
@@ -263,8 +260,8 @@ Bu bir e-ticaret sitesi **değildir** — ziyaretçi doğrudan sipariş veremez,
 
 ### 8.2 Form sürtünmesi
 
-- Formlar kısa tutulur (mevcut `ContactForm`: yalnızca ad soyad ve telefon zorunlu). Gönderimde bilgiler **hazır bir WhatsApp mesajı olarak açılır**; aynı anda `/api/lead/quote` ile e-posta kopyası gönderilir (`keepalive`). Yeni zorunlu alan eklemeden önce gerçekten gerekli mi diye sorgulanır.
-- Her formda honeypot alanı zorunludur (spam koruması — bkz. §18).
+- Formlar kısa tutulur (mevcut `ContactForm`: yalnızca ad soyad ve telefon zorunlu). Gönderimde bilgiler **yalnızca hazır bir WhatsApp mesajı olarak açılır**; e-posta gönderilmez, sunucuya istek atılmaz (firma sahibinin Ekim 2026 kararı).
+- Sunucuya veri gönderen bir form eklenirse honeypot alanı zorunludur (bkz. §18).
 - Başarı durumu formu **temizlemeli** ve görünür bir onay mesajı göstermelidir (mevcut `ContactForm` deseni).
 - Form başarısızlığında kullanıcıya her zaman bir WhatsApp fallback bağlantısı sunulur — mevcut desen korunur.
 
@@ -462,10 +459,9 @@ Adres, telefon, e-posta, WhatsApp numarası, kuruluş yılı — **hiçbir zaman
 
 - HTTP güvenlik başlıkları (`next.config.ts` `securityHeaders`): CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy — daraltılmadan genişletilir. Yeni bir üçüncü taraf servis eklenirse (ör. yeni bir analytics), CSP'ye ilgili domain eklenir; **kullanılmayan domain CSP'de bırakılmaz** (bkz. geçmişteki Vercel/Sentry domain temizliği).
 - Hiçbir API anahtarı, webhook URL'si veya gizli değer kaynak kodda sabit yazılmaz; `.env.local` / hosting ortam değişkeni olarak tutulur. `.env.example` şablon olarak güncel tutulur ama gerçek değer içermez.
-- Tüm form girdileri Zod ile sunucu tarafında doğrulanır (istemci doğrulaması **tek başına yeterli değildir**).
-- Her formda honeypot alanı zorunludur (mevcut desen: gizli `honeypot` input, dolu gelirse "sessizce" `{success:true}` dönülür — saldırgana bilgi sızdırılmaz).
-- **Rate limiting** `lib/utils/rate-limit.ts`'te implemente edildi ve tüm 4 API route'unda (`contact`, `lead/quote`, `lead/sample`, `lead/export`) `checkRateLimit()` çağrısıyla aktif (V2 roadmap FAZ 0/13). Upstash env değişkenleri (`UPSTASH_REDIS_REST_URL/TOKEN`) tanımlı değilse sessizce no-op'a düşer (form hiçbir zaman bu yüzden kırılmaz) — prod'da gerçek koruma için Netlify ortam değişkenlerinin ayarlanması gerekir.
-- API rotaları yalnızca `POST` kabul eder ve varsayılan Node.js runtime'ında çalışır. Ortak akış `lib/services/lead-handler.ts`; e-posta gönderilemezse 502 döner ve loglanır (sessiz lead kaybı yoktur).
+- Sitede şu an sunucuya veri gönderen form veya API rotası **yoktur** (Ekim 2026'da e-posta/API katmanı kaldırıldı; saldırı yüzeyi sıfırlandı). İleride eklenirse tüm girdiler sunucuda doğrulanır (istemci doğrulaması tek başına yeterli değildir).
+- Sunucuya veri gönderen her yeni formda honeypot alanı ve rate limiting zorunludur; hata yanıtlarında iç detay döndürülmez.
+- `app/api/` dizini yoktur; `robots.ts` içindeki `/api/` yasağı ileride eklenecek rotalar için korunur.
 - Bilinmeyen/beklenmeyen API hatalarında istemciye asla stack trace veya iç detay döndürülmez — genel hata mesajı (mevcut desen).
 
 ---
@@ -534,7 +530,7 @@ Lighthouse CI veya axe-core eklenmesi değerli bir geliştirmedir ama **mevcut C
 
 - Hedef platform **Netlify**'dır (bkz. §3.3) — Vercel'e özgü hiçbir paket veya konfigürasyon eklenmez.
 - Yayına almadan önce kullanıcı **localde** test eder (`npm run dev` / `npm run build && npm run start`) — bu projenin mevcut iş akışı budur, otomatik deploy tetiklenmez.
-- Ortam değişkenleri (`RESEND_API_KEY`, `NEXT_PUBLIC_GA_MEASUREMENT_ID`, doğrulama meta etiketleri vb.) `.env.example`'da şablon olarak belgelenir, gerçek değerler yalnızca Netlify ortam değişkenlerinde ve `.env.local`'de tutulur.
+- Ortam değişkenleri (`NEXT_PUBLIC_GA_MEASUREMENT_ID`, doğrulama meta etiketleri) `.env.example`'da şablon olarak belgelenir, gerçek değerler yalnızca Netlify ortam değişkenlerinde ve `.env.local`'de tutulur.
 - Yayın öncesi kontrol listesi (`tasks.md` "Lansman Kontrol Listesi" bölümü) referans alınabilir, ama §26'daki uyarıyı unutmadan — bazı maddeler gerçekte tamamlanmamış olabilir, kod kontrol edilmeden işaretlere güvenilmez.
 
 ---
@@ -553,7 +549,7 @@ Lighthouse CI veya axe-core eklenmesi değerli bir geliştirmedir ama **mevcut C
 10. `tsconfig.json`'daki strict ayarları gevşetmek, `as any` / `@ts-ignore` ile tip hatası bastırmak.
 11. `tasks.md`/`audit-report.md`'deki "✅ tamamlandı" işaretlerine kod okumadan güvenmek (bkz. §23, bilinen doküman-kod sapması).
 12. Kullanıcı istemeden commit/push/deploy yapmak.
-13. Form/API güvenlik katmanını (Zod doğrulama, honeypot) zayıflatmak veya kaldırmak.
+13. Sunucuya veri gönderen bir form/API eklenirken doğrulama, honeypot ve rate limiting olmadan yayına almak.
 14. Yeni bir "geçici" çözümü kalıcı hale getirip belgelemeden bırakmak.
 
 ---
@@ -584,7 +580,7 @@ Bu bölüm, sıfırdan keşif yapmayı önlemek için, kod tabanı okunarak doğ
 - Gerçek fotoğraf, gerçek müşteri referansı, gerçek sertifika **yok** — bunlar sahte veriyle doldurulmaz, kullanıcıdan istenir.
 - Ürün kataloğu 6 genel kategoriden ibaret; gerçek SKU/gramaj/renk verisi yok.
 - Blog'da 10 makale var (`content/blog/index.ts`) — hedef karşılandı.
-- Lead e-posta akışı `lib/services/lead-handler.ts`'te tek yerde (Ekim 2026). `/api/contact`, `/api/lead/sample`, `/api/lead/export` şu an hiçbir arayüz tarafından çağrılmıyor; ileride kullanılmayacaksa kaldırılabilir.
+- Formlar yalnızca WhatsApp'a yönlendirir; e-posta kopyası ve lead API'leri bilinçli olarak yoktur. Talepler WhatsApp Business üzerinden takip edilir.
 - Gerçek fotoğraflar henüz eklenmedi: `content/media.ts` yuvaları boş; site marka dokulu görsellerle çalışıyor (§7.3).
 - `ai.txt` "AI Training: No" derken `robots.ts` eğitim botlarına (GPTBot, CCBot) izin veriyor; bu bir politika kararıdır ve firma sahibi netleştirmelidir.
 

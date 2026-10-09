@@ -15,7 +15,6 @@ type FormState = {
   productType: string
   quantity: string
   message: string
-  honeypot: string
 }
 
 type FieldErrors = Partial<Record<keyof FormState, string>>
@@ -28,7 +27,6 @@ const initialForm: FormState = {
   productType: '',
   quantity: '',
   message: '',
-  honeypot: '',
 }
 
 const productOptions: Record<Locale, string[]> = {
@@ -66,7 +64,7 @@ const copy = {
     select: 'Seçiniz',
     optional: 'opsiyonel',
     submit: "WhatsApp'tan Teklif Gönder",
-    note: 'Gönder dediğinizde bilgileriniz hazır bir mesaj olarak WhatsApp’ta açılır; tek dokunuşla iletebilirsiniz. Bilgileriniz yalnızca teklif için kullanılır.',
+    note: 'Gönder dediğinizde bilgileriniz hazır bir mesaj olarak WhatsApp’ta açılır; tek dokunuşla iletebilirsiniz. Bilgileriniz sitede saklanmaz, yalnızca WhatsApp mesajıyla bize ulaşır.',
     errName: 'Lütfen adınızı ve soyadınızı yazın.',
     errPhone: 'Lütfen geçerli bir telefon numarası yazın.',
     errEmail: 'E-posta adresi geçerli görünmüyor.',
@@ -88,7 +86,7 @@ const copy = {
     select: 'Select',
     optional: 'optional',
     submit: 'Send Quote Request via WhatsApp',
-    note: 'When you press send, your details open as a ready message in WhatsApp, so you can send it with one tap. Your information is only used for your quote.',
+    note: 'When you press send, your details open as a ready message in WhatsApp, so you can send it with one tap. Nothing is stored on this site; your details reach us only through your WhatsApp message.',
     errName: 'Please enter your full name.',
     errPhone: 'Please enter a valid phone number.',
     errEmail: 'This email address does not look valid.',
@@ -147,8 +145,6 @@ export function ContactForm({ locale = 'tr' }: ContactFormProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (form.honeypot) return
-
     const found = validate(form, t)
     setErrors(found)
     if (Object.keys(found).length > 0) {
@@ -160,16 +156,6 @@ export function ContactForm({ locale = 'tr' }: ContactFormProps) {
     const waUrl = `${SITE_CONFIG.contact.whatsappUrl}?text=${encodeURIComponent(
       buildWhatsappMessage(form, locale)
     )}`
-
-    // E-posta kopyası arka planda; sayfa WhatsApp'a geçse bile `keepalive` ile tamamlanır.
-    void fetch('/api/lead/quote', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-      keepalive: true,
-    }).catch(() => {
-      // E-posta kopyası başarısız olsa da talep WhatsApp üzerinden iletilir.
-    })
 
     trackFormSubmit('quote_whatsapp', pathname)
     trackWhatsAppClick('contact_form', pathname)
@@ -246,20 +232,6 @@ export function ContactForm({ locale = 'tr' }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
-      {/* Honeypot — spam koruması (ekran okuyucu ve klavyeden gizli) */}
-      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
-        <label htmlFor="cf-website">Website</label>
-        <input
-          id="cf-website"
-          type="text"
-          name="website"
-          tabIndex={-1}
-          autoComplete="off"
-          value={form.honeypot}
-          onChange={update('honeypot')}
-        />
-      </div>
-
       {field('fullName', t.fullName, { required: true, autoComplete: 'name' })}
       {field('company', t.company, { autoComplete: 'organization' })}
       {field('phone', t.phone, {

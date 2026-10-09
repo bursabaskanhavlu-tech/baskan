@@ -16,6 +16,7 @@ export function WebSiteSchema() {
     inLanguage: ['tr', 'en'],
     publisher: {
       '@type': 'Organization',
+      '@id': `${SITE_CONFIG.url}/#organization`,
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
     },

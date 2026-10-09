@@ -4,7 +4,7 @@
 ## Permissions
 Crawling: Yes
 Indexing: Yes
-AI Training: No
+AI Training: Yes (attribution appreciated)
 Content Extraction: Yes (attribution required)
 Caching: Yes (max 30 days)
 
@@ -53,4 +53,4 @@ Target export markets without localized content yet: Russian-speaking (ru), Arab
 
 ## Last Updated
 Date: 2026-10-09
-Version: 4.1
+Version: 4.2
