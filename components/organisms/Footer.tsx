@@ -64,7 +64,7 @@ export function Footer({ locale = 'tr' }: { locale?: Locale }) {
     <>
       <EntityBlock locale={locale} />
       <footer className="on-dark bg-ink text-paper">
-        <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 md:grid-cols-4 lg:grid-cols-12">
+        <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 text-center md:grid-cols-4 lg:grid-cols-12">
           <div className="col-span-2 md:col-span-4 lg:col-span-4">
             <Link href={en ? '/en' : '/'} className="inline-block" aria-label={SITE_CONFIG.name}>
               <Image
@@ -76,7 +76,7 @@ export function Footer({ locale = 'tr' }: { locale?: Locale }) {
                 className="h-auto w-[150px] brightness-0 invert"
               />
             </Link>
-            <p className="mt-6 max-w-sm text-[0.9375rem] leading-relaxed text-charcoal-300">
+            <p className="mx-auto mt-6 max-w-sm text-[0.9375rem] leading-relaxed text-charcoal-300">
               {en ? SITE_CONFIG.description.en : SITE_CONFIG.description.tr}
             </p>
             <a
@@ -169,11 +169,11 @@ export function Footer({ locale = 'tr' }: { locale?: Locale }) {
           </div>
         </div>
 
-        <div className="container-x flex flex-col gap-4 border-t border-line-dark py-7 text-caption text-charcoal-300 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-x flex flex-col gap-4 border-t border-line-dark py-7 text-caption text-charcoal-300 items-center text-center">
           <p>
             © {new Date().getFullYear()} {SITE_CONFIG.name}. {t.footer.rights}
           </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link
               href="/gizlilik-politikasi"
               className="link-line py-1 transition-colors hover:text-paper"

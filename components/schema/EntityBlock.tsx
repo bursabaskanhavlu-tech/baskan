@@ -45,7 +45,7 @@ export function EntityBlock({ locale = 'tr' }: { locale?: Locale }) {
           {items.map((item) => (
             <div
               key={item.label}
-              className="bg-paper py-7 pl-5 pr-4 text-caption leading-relaxed max-lg:odd:pl-0 lg:pl-8 lg:first:pl-0"
+              className="bg-paper px-1 py-7 text-center sm:px-4 text-caption leading-relaxed"
             >
               <dt className="font-semibold text-ink">{item.label}</dt>
               {item.lines.map((line) => (
