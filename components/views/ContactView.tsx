@@ -43,7 +43,7 @@ export function ContactView({ locale }: { locale: Locale }) {
   return (
     <>
       <PageHero
-        art={{ variant: 'hanging', tone: 'clay' }}
+        photo="store"
         breadcrumbs={[{ label: dict.common.home, href: homeHref(locale) }, { label: t.crumb }]}
         kicker={t.kicker}
         title={t.title}

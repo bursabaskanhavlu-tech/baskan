@@ -17,7 +17,7 @@ export function AboutView({ locale, content }: AboutViewProps) {
   return (
     <>
       <PageHero
-        art={{ variant: 'robe', tone: 'cream' }}
+        photo="production"
         breadcrumbs={[
           { label: dict.common.home, href: homeHref(locale) },
           { label: content.crumb },

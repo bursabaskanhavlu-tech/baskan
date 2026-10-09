@@ -7,9 +7,9 @@
 
 @theme inline {
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display), ui-serif, Georgia, serif;
-  /* Eski bileşenlerle uyum: `var(--font-heading)` başlık fontuna işaret eder */
-  --font-heading: var(--font-display), ui-serif, Georgia, serif;
+  /* Başlıklar gövdeyle aynı aile (Plus Jakarta Sans) — sade, modern */
+  --font-display: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* Marka Renkleri — Turuncu */
   --color-orange-50: #fff7f0;
@@ -107,39 +107,46 @@
     margin-inline: auto;
     padding-inline: clamp(1.25rem, 4vw, 2.5rem);
   }
+  /* Tam genişlik ızgarada sol sütunu .container-x ile aynı hizaya getirir */
+  .pl-container {
+    padding-left: max(
+      clamp(1.25rem, 4vw, 2.5rem),
+      calc((100vw - 82.5rem) / 2 + clamp(1.25rem, 4vw, 2.5rem))
+    );
+  }
 
-  /* Editoryal başlıklar — Instrument Serif */
+  /* Başlıklar — Plus Jakarta Sans, sıkı aralık */
   .display-xl,
   .display-lg,
   .display-md,
   .display-sm {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    letter-spacing: -0.04em;
     text-wrap: balance;
   }
   .display-xl {
-    font-size: clamp(3rem, 10.5vw, 9.5rem);
-    line-height: 0.92;
+    font-size: clamp(2.75rem, 7vw, 6.25rem);
+    line-height: 1;
   }
   .display-lg {
-    font-size: clamp(2.5rem, 6.4vw, 5.75rem);
-    line-height: 0.98;
-  }
-  .display-md {
-    font-size: clamp(2.125rem, 4.4vw, 3.75rem);
+    font-size: clamp(2.375rem, 5vw, 4.5rem);
     line-height: 1.02;
   }
+  .display-md {
+    font-size: clamp(2rem, 3.6vw, 3.25rem);
+    line-height: 1.06;
+  }
   .display-sm {
-    font-size: clamp(1.625rem, 2.6vw, 2.25rem);
-    line-height: 1.1;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    line-height: 1.15;
   }
   .display-xl em,
   .display-lg em,
   .display-md em,
   .display-sm em {
-    font-style: italic;
-    color: var(--color-orange-600);
+    font-style: normal;
+    color: var(--color-orange-500);
   }
 
   .lead {
@@ -154,17 +161,11 @@
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: var(--color-charcoal-600);
-  }
-  .kicker::before {
-    content: '';
-    width: 1.75rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.6;
   }
   .on-dark .kicker {
     color: var(--color-charcoal-300);
@@ -630,28 +631,31 @@
     transform: none;
   }
 }
-@keyframes intro-out {
+@keyframes intro-panel {
   to {
-    transform: translateY(-100%);
-    visibility: hidden;
+    transform: translateY(-101%);
   }
 }
-@keyframes intro-logo {
-  from {
+@keyframes intro-content-out {
+  to {
     opacity: 0;
-    transform: translateY(0.75rem);
-  }
-  to {
-    opacity: 1;
-    transform: none;
+    transform: translateY(-1.5rem);
   }
 }
-@keyframes intro-thread {
+@keyframes intro-bar {
   from {
     transform: scaleX(0);
   }
   to {
     transform: scaleX(1);
+  }
+}
+@keyframes intro-count {
+  from {
+    --intro-n: 0;
+  }
+  to {
+    --intro-n: 100;
   }
 }
 @keyframes fade {
@@ -669,42 +673,104 @@
   --intro-delay: 0s;
 }
 html:has(.intro[data-show]) {
-  --intro-delay: 1.45s;
+  --intro-delay: 1.75s;
 }
 
 /* Giriş perdesi — oturum başına bir kez (bkz. components/layout/IntroCurtain.tsx).
    Yalnızca betik perdeye `data-show` eklediğinde görünür; JS çalıştırmayan
    tarayıcı ve botlar perdeyi hiç görmez. */
+@property --intro-n {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 100;
+}
 .intro {
   position: fixed;
   inset: 0;
   z-index: 100;
   display: none;
-  place-items: center;
-  background: var(--color-paper);
   cursor: pointer;
 }
 .intro[data-show] {
-  display: grid;
-}
-.intro-logo {
-  width: min(13rem, 52vw);
-  height: auto;
-}
-.intro-thread {
   display: block;
-  width: min(13rem, 52vw);
+}
+/* İki kat "kumaş" paneli: önce koyu paneller, ardından turuncu paneller kalkar */
+.intro-panels {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.intro-panels span {
+  display: block;
+  margin-right: -1px;
+}
+.intro-panels.is-back span {
+  background: var(--color-orange-500);
+}
+.intro-panels.is-back span:nth-child(even) {
+  background: var(--color-orange-600);
+}
+.intro-panels.is-front span {
+  background: var(--color-charcoal-900);
+}
+.intro-panels.is-front span:nth-child(even) {
+  background: #202020;
+}
+.intro-content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.5rem;
+  color: var(--color-paper);
+  text-align: center;
+  padding: 1.5rem;
+}
+.intro-kicker {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-charcoal-300);
+}
+.intro-word {
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.intro-word em {
+  font-style: normal;
+  color: var(--color-orange-500);
+}
+.intro-meter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: min(20rem, 70vw);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-charcoal-300);
+}
+.intro-bar {
+  position: relative;
+  flex: 1;
   height: 1px;
-  margin-top: 1.25rem;
+  background: rgb(250 248 245 / 0.18);
+  overflow: hidden;
+}
+.intro-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--color-orange-500);
   transform-origin: left center;
 }
-.intro-caption {
-  margin-top: 1rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--color-charcoal-600);
+.intro-count::after {
+  counter-reset: intro var(--intro-n);
+  content: counter(intro) '%';
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -722,17 +788,30 @@ html:has(.intro[data-show]) {
   .marquee:hover .marquee-track {
     animation-play-state: paused;
   }
-  .intro {
-    animation: intro-out 0.95s var(--ease-in-out-strong) 1.3s forwards;
+  .intro-panels.is-front span {
+    animation: intro-panel 0.8s var(--ease-in-out-strong) both;
+    animation-delay: calc(1.25s + var(--i) * 0.07s);
   }
-  .intro-logo {
-    animation: intro-logo 0.9s var(--ease-out-soft) 0.1s both;
+  .intro-panels.is-back span {
+    animation: intro-panel 0.8s var(--ease-in-out-strong) both;
+    animation-delay: calc(1.45s + var(--i) * 0.07s);
   }
-  .intro-thread {
-    animation: intro-thread 0.9s var(--ease-in-out-strong) 0.35s both;
+  .intro-content {
+    animation: intro-content-out 0.45s var(--ease-in-out-strong) 1.05s forwards;
   }
-  .intro-caption {
-    animation: fade 0.8s ease 0.6s both;
+  .intro-word .split-char {
+    animation: char-up 0.9s var(--ease-out-soft) both;
+    animation-delay: calc(0.1s + var(--d, 0s));
+  }
+  .intro-kicker,
+  .intro-meter {
+    animation: fade 0.6s ease 0.15s both;
+  }
+  .intro-bar::after {
+    animation: intro-bar 0.95s cubic-bezier(0.65, 0, 0.35, 1) 0.1s both;
+  }
+  .intro-count {
+    animation: intro-count 0.95s cubic-bezier(0.65, 0, 0.35, 1) 0.1s both;
   }
   @supports (animation-timeline: view()) {
     .reveal {

@@ -7,6 +7,8 @@ const withBundleAnalyzer = withBundleAnalyzerInit({
   enabled: process.env['ANALYZE'] === 'true',
 })
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 const securityHeaders = [
   {
     key: 'X-Frame-Options',
@@ -32,14 +34,16 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://elfsightcdn.com https://*.elfsightcdn.com https://elfsight.com https://*.elfsight.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://elfsightcdn.com https://*.elfsightcdn.com",
+      // 'unsafe-eval' yalnızca geliştirme sunucusu (React Refresh) içindir
+      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://www.googletagmanager.com`,
+      "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
-      "font-src 'self' https://fonts.gstatic.com https://elfsightcdn.com https://*.elfsightcdn.com",
-      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://elfsight.com https://*.elfsight.com https://elfsightcdn.com https://*.elfsightcdn.com",
-      "frame-src 'self' https://elfsightcdn.com https://*.elfsightcdn.com https://elfsight.com https://*.elfsight.com",
+      "font-src 'self'",
+      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
+      "frame-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",
+      "form-action 'self'",
     ].join('; '),
   },
 ]
@@ -75,53 +79,55 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  // Kalıcı yönlendirmeler açıkça 301 döner (Next'in `permanent: true` varsayılanı 308'dir;
+  // ikisi de kalıcıdır, 301 eski araç ve tarayıcılarla en geniş uyumu sağlar).
   async redirects() {
     return [
       {
         source: '/urunler',
         destination: '/new-collection',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/products',
         destination: '/new-collection',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/katalog',
         destination: '/about',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/hakkimizda',
         destination: '/about',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/iletisim',
         destination: '/contact',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/en/products',
         destination: '/new-collection',
-        permanent: true,
+        statusCode: 301,
       },
       // Eski düz-slug İngilizce sayfalar artık /en/ önekiyle sunuluyor.
       {
         source: '/turkish-towel-manufacturer',
         destination: '/en/turkish-towel-manufacturer',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/wholesale-towel-supplier',
         destination: '/en/wholesale-towel-supplier',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/bathrobe-manufacturer',
         destination: '/en/bathrobe-manufacturer',
-        permanent: true,
+        statusCode: 301,
       },
     ]
   },

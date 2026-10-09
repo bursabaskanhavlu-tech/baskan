@@ -40,7 +40,7 @@ export default function BlogPage() {
       />
 
       <PageHero
-        art={{ variant: 'roll', tone: 'cream', accent: 'stone' }}
+        photo="wholesale"
         breadcrumbs={[{ label: 'Ana Sayfa', href: '/' }, { label: 'Blog' }]}
         kicker="Rehberler ve sektör notları"
         title="Blog"

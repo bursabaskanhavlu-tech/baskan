@@ -31,12 +31,6 @@ export default function CerezPolitikasiPage() {
         kullanılmaktadır.
       </p>
 
-      <h2>Üçüncü taraf içerik</h2>
-      <p>
-        Google yorumlarını gösteren Elfsight bileşeni yalnızca tüm çerezleri kabul ettiğinizde
-        yüklenir ve kendi gizlilik politikasına tabidir.
-      </p>
-
       <h2>Çerez tercihlerinizi değiştirme</h2>
       <p>
         Tercihinizi istediğiniz zaman sayfanın alt kısmındaki “Çerez Tercihleri” bağlantısından veya

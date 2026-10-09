@@ -64,11 +64,6 @@ export function Footer({ locale = 'tr' }: { locale?: Locale }) {
     <>
       <EntityBlock locale={locale} />
       <footer className="on-dark bg-ink text-paper">
-        {/* Kapanış cümlesi */}
-        <div className="container-x border-b border-line-dark py-16 sm:py-24">
-          <p className="display-lg reveal max-w-5xl text-paper">{t.footer.statement}</p>
-        </div>
-
         <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 md:grid-cols-4 lg:grid-cols-12">
           <div className="col-span-2 md:col-span-4 lg:col-span-4">
             <Link href={en ? '/en' : '/'} className="inline-block" aria-label={SITE_CONFIG.name}>
@@ -172,13 +167,6 @@ export function Footer({ locale = 'tr' }: { locale?: Locale }) {
               </a>
             </address>
           </div>
-        </div>
-
-        {/* Dev marka imzası — dekoratif */}
-        <div aria-hidden="true" className="container-x overflow-hidden">
-          <p className="reveal select-none whitespace-nowrap font-display text-[24vw] leading-[0.8] tracking-tight text-outline lg:text-[21vw]">
-            Başkan<span className="italic text-orange-500 [-webkit-text-stroke:0]">.</span>
-          </p>
         </div>
 
         <div className="container-x flex flex-col gap-4 border-t border-line-dark py-7 text-caption text-charcoal-300 sm:flex-row sm:items-center sm:justify-between">

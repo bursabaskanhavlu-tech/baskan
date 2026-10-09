@@ -45,9 +45,6 @@ export default function GizlilikPolitikasiPage() {
         <li>
           <strong>Google Analytics:</strong> Yalnızca çerez onayı verilirse ziyaret istatistikleri.
         </li>
-        <li>
-          <strong>Elfsight:</strong> Yalnızca tüm çerezler kabul edilirse Google yorumları bileşeni.
-        </li>
       </ul>
       <p>
         Bu hizmet sağlayıcıların sunucuları yurt dışında bulunabilir; veriler yalnızca yukarıda

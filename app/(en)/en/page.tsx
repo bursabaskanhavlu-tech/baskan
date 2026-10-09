@@ -1,17 +1,14 @@
 import type { Metadata } from 'next'
-import { generatePageMetadata } from '@/lib/utils/metadata'
-import { SITE_CONFIG } from '@/lib/config/site'
+import { HomeHero } from '@/components/home/HomeHero'
+import { CategoryStrip } from '@/components/home/CategoryStrip'
+import { SectorSolutions } from '@/components/home/SectorSolutions'
+import { CustomProduction } from '@/components/home/CustomProduction'
+import { TrustRow } from '@/components/home/TrustRow'
+import { CTABand } from '@/components/organisms/CTABand'
 import { OrganizationSchema } from '@/components/schema/OrganizationSchema'
 import { WebSiteSchema } from '@/components/schema/WebSiteSchema'
-import { HeroSection } from '@/components/organisms/HeroSection'
-import { Manifesto } from '@/components/organisms/Manifesto'
-import { VelocityMarquee } from '@/components/effects/VelocityMarquee'
-import { ChannelSplit } from '@/components/organisms/ChannelSplit'
-import { ProductCategories } from '@/components/organisms/ProductCategories'
-import { ValueProposition } from '@/components/organisms/ValueProposition'
-import { InstagramBand } from '@/components/organisms/InstagramBand'
-import { CTABand } from '@/components/organisms/CTABand'
-import { getHomeContent } from '@/content/home'
+import { generatePageMetadata } from '@/lib/utils/metadata'
+import { SITE_CONFIG } from '@/lib/config/site'
 
 export const metadata: Metadata = generatePageMetadata({
   title: `${SITE_CONFIG.name} | Towel and Bathrobe Manufacturer, Bursa`,
@@ -23,23 +20,17 @@ export const metadata: Metadata = generatePageMetadata({
 })
 
 export default function EnglishHomePage() {
-  const content = getHomeContent('en')
-
   return (
     <>
+      {/* Tek birleşik #organization entity'si (Organization + LocalBusiness) */}
       <OrganizationSchema locale="en" />
       <WebSiteSchema />
 
-      <HeroSection locale="en" content={content.hero} facts={content.facts} />
-      <VelocityMarquee
-        items={content.marquee}
-        className="border-b border-line py-6 font-display text-[3rem] italic sm:py-8 sm:text-[5.5rem]"
-      />
-      <Manifesto text={content.manifesto} />
-      <ProductCategories content={content.categories} locale="en" />
-      <ChannelSplit locale="en" content={content.channels} />
-      <ValueProposition content={content.why} />
-      <InstagramBand content={content.instagram} />
+      <HomeHero locale="en" />
+      <CategoryStrip locale="en" />
+      <SectorSolutions locale="en" />
+      <CustomProduction locale="en" />
+      <TrustRow locale="en" />
       <CTABand locale="en" />
     </>
   )

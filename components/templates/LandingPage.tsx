@@ -10,9 +10,7 @@ import { ArrowIcon, ArrowUpRightIcon, WhatsAppIcon } from '@/components/atoms/Ic
 import { contactHref, homeHref, type Locale } from '@/lib/i18n'
 import type { MediaSlot } from '@/content/media'
 import type { ArtTone, TowelVariant } from '@/components/atoms/TowelArt'
-import { ThreadField } from '@/components/effects/ThreadField'
 import { SplitText } from '@/components/effects/SplitText'
-import { Magnetic, Tilt } from '@/components/effects/Interactive'
 
 /** Fotoğraf yokken her konuya uygun illüstrasyon. */
 const ART_BY_SLOT: Partial<
@@ -95,78 +93,65 @@ export function LandingPage({
     <>
       <ServiceSchema name={title} description={intro} locale={locale} />
 
-      {/* HERO — koyu, iplik alanı, harf harf başlık */}
-      <section className="on-dark relative isolate overflow-hidden bg-ink pb-16 pt-10 text-paper sm:pb-24 sm:pt-14">
-        <ThreadField className="absolute inset-0 -z-10 h-full w-full opacity-70" />
-        <div className="container-x">
-          <Breadcrumbs
-            dark
-            className="rise-fade"
-            items={[{ label: en ? 'Home' : 'Ana Sayfa', href: homeHref(locale) }, { label: title }]}
-          />
-          <div className="mt-10 grid gap-12 sm:mt-14 lg:grid-cols-12 lg:gap-16">
-            <div className="flex flex-col lg:col-span-7">
-              <p className="kicker rise-fade" style={d(0.05)}>
-                {eyebrow}
-              </p>
-              <h1 className="display-lg mt-6 text-paper">
-                <SplitText text={title} delay={0.1} />
-              </h1>
-              <p className="lead rise-fade mt-7 max-w-xl text-charcoal-300" style={d(0.45)}>
-                {intro}
-              </p>
-              <div className="rise-fade mt-10 flex flex-col gap-3 sm:flex-row" style={d(0.55)}>
-                <Magnetic className="w-full sm:w-auto">
-                  <Link href={contactHref(locale)} className="btn btn-primary w-full">
-                    {ctaPrimaryLabel}
-                    <ArrowIcon />
-                  </Link>
-                </Magnetic>
-                <Magnetic className="w-full sm:w-auto">
-                  <a
-                    href={waUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-outline w-full"
-                  >
-                    <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
-                    {ctaWhatsappLabel}
-                  </a>
-                </Magnetic>
-              </div>
-              <dl
-                className="rise-fade mt-12 grid grid-cols-3 gap-4 border-t border-line-dark pt-6 lg:mt-auto"
-                style={d(0.65)}
-              >
-                {trust.map((item) => (
-                  <div key={item.label} className="flex flex-col-reverse gap-1">
-                    <dt className="text-caption text-charcoal-300">{item.label}</dt>
-                    <dd className="text-[0.9375rem] font-semibold leading-snug text-paper sm:text-base">
-                      {item.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+      {/* HERO — aydınlık; solda başlık, sağda konuya uygun fotoğraf */}
+      <section className="relative">
+        <div className="grid lg:grid-cols-2">
+          <div className="pl-container flex flex-col justify-center pb-14 pr-5 pt-8 sm:pb-20 sm:pr-10">
+            <Breadcrumbs
+              className="rise-fade"
+              items={[
+                { label: en ? 'Home' : 'Ana Sayfa', href: homeHref(locale) },
+                { label: title },
+              ]}
+            />
+            <p className="kicker rise-fade mt-10 sm:mt-16" style={d(0.05)}>
+              {eyebrow}
+            </p>
+            <h1 className="display-lg mt-5 max-w-2xl">
+              <SplitText text={title} delay={0.1} />
+            </h1>
+            <p className="lead rise-fade mt-6 max-w-xl" style={d(0.4)}>
+              {intro}
+            </p>
+            <div className="rise-fade mt-9 flex flex-col gap-3 sm:flex-row" style={d(0.5)}>
+              <Link href={contactHref(locale)} className="btn btn-primary">
+                {ctaPrimaryLabel}
+                <ArrowIcon />
+              </Link>
+              <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
+                {ctaWhatsappLabel}
+              </a>
             </div>
-            <div className="rise-fade lg:col-span-5" style={d(0.3)}>
-              <Tilt>
-                <div className="relative overflow-hidden rounded-[2rem] border border-line-dark">
-                  <MediaFrame
-                    slot={media.slot}
-                    tone={media.tone}
-                    art={ART_BY_SLOT[media.slot]?.art ?? 'stack'}
-                    artTone={ART_BY_SLOT[media.slot]?.tone ?? 'cream'}
-                    artAccent={ART_BY_SLOT[media.slot]?.accent}
-                    dark
-                    className="aspect-4/3 w-full lg:aspect-4/5"
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    priority
-                    animate={false}
-                  />
-                  <span className="tilt-glare" aria-hidden="true" />
+            <dl
+              className="rise-fade mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-line pt-6"
+              style={d(0.6)}
+            >
+              {trust.map((item) => (
+                <div key={item.label} className="flex flex-col-reverse gap-1">
+                  <dt className="text-caption text-charcoal-600">{item.label}</dt>
+                  <dd className="text-[0.9375rem] font-semibold leading-snug sm:text-base">
+                    {item.value}
+                  </dd>
                 </div>
-              </Tilt>
-            </div>
+              ))}
+            </dl>
+          </div>
+          <div
+            className="rise-fade relative min-h-[18rem] overflow-hidden sm:min-h-[24rem]"
+            style={d(0.15)}
+          >
+            <MediaFrame
+              slot={media.slot}
+              tone={media.tone}
+              art={ART_BY_SLOT[media.slot]?.art ?? 'stack'}
+              artTone={ART_BY_SLOT[media.slot]?.tone ?? 'cream'}
+              artAccent={ART_BY_SLOT[media.slot]?.accent}
+              className="absolute inset-0 h-full w-full"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              priority
+              animate={false}
+            />
           </div>
         </div>
       </section>
@@ -182,7 +167,7 @@ export function LandingPage({
                   key={feature.title}
                   className="reveal group border-t border-line-strong py-8 sm:py-10"
                 >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-ink text-orange-400 transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-50 text-orange-600 transition-colors duration-300 group-hover:bg-orange-500 group-hover:text-ink">
                     <Icon className="h-6 w-6" strokeWidth={1.4} aria-hidden="true" />
                   </span>
                   <h2 className="mt-6 font-display text-[1.75rem] leading-tight">

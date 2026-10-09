@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
-import { ThreadField } from '@/components/effects/ThreadField'
 import { SplitText } from '@/components/effects/SplitText'
-import { TowelArt, type ArtTone, type TowelVariant } from '@/components/atoms/TowelArt'
+import { MEDIA, type MediaSlot } from '@/content/media'
 import { cn } from '@/lib/utils'
 
 interface PageHeroProps {
@@ -10,18 +10,17 @@ interface PageHeroProps {
   /** Metin verilirse harf harf açılır; JSX verilirse olduğu gibi gösterilir. */
   title: React.ReactNode
   lead?: React.ReactNode
-  /** Başlığın sağında yer alan ek içerik (CTA, filtre vb.). */
+  /** Başlığın altında yer alan ek içerik (CTA, filtre vb.). */
   aside?: React.ReactNode
-  /** Sağ üstte gösterilecek havlu illüstrasyonu. */
-  art?: { variant: TowelVariant; tone: ArtTone; accent?: ArtTone }
+  /** Sağda gösterilecek fotoğraf (content/media.ts yuvası). */
+  photo?: MediaSlot
   size?: 'lg' | 'md'
   className?: string
 }
 
 /**
- * İç sayfaların ortak açılışı: koyu zemin, imlece tepki veren iplik alanı,
- * harf harf açılan başlık. Sayfanın tek <h1>'i burada üretilir; metin SSR
- * HTML'de tam olarak bulunur.
+ * İç sayfaların ortak açılışı: aydınlık zemin, solda başlık, sağda fotoğraf.
+ * Sayfanın tek <h1>'i burada üretilir; metin SSR HTML'de tam olarak bulunur.
  */
 export function PageHero({
   breadcrumbs,
@@ -29,56 +28,61 @@ export function PageHero({
   title,
   lead,
   aside,
-  art,
+  photo,
   size = 'lg',
   className,
 }: PageHeroProps) {
+  const asset = photo ? MEDIA[photo] : null
+
   return (
-    <section
-      className={cn(
-        'on-dark relative isolate overflow-hidden bg-ink pb-16 pt-10 text-paper sm:pb-24 sm:pt-14',
-        className
-      )}
-    >
-      <ThreadField className="absolute inset-0 -z-10 h-full w-full opacity-70" />
-      {art && (
-        <TowelArt
-          variant={art.variant}
-          tone={art.tone}
-          accent={art.accent}
-          className="pointer-events-none absolute -right-10 top-8 -z-10 hidden h-80 w-80 opacity-90 md:block lg:right-6 lg:h-[26rem] lg:w-[26rem]"
-        />
-      )}
-      <div className="container-x">
-        <Breadcrumbs items={breadcrumbs} dark className="rise-fade" />
-        <div className="mt-12 grid gap-10 sm:mt-20 lg:grid-cols-12 lg:items-end">
-          <div className={aside ? 'lg:col-span-8' : 'lg:col-span-9'}>
+    <section className={cn('relative', className)}>
+      <div className={cn('grid', asset && 'lg:grid-cols-2')}>
+        <div
+          className={cn(
+            'flex flex-col justify-center pb-14 pt-8 sm:pb-20',
+            asset ? 'pl-container pr-5 sm:pr-10' : 'container-x'
+          )}
+        >
+          <Breadcrumbs items={breadcrumbs} className="rise-fade" />
+          <div className="mt-10 sm:mt-16">
             {kicker && (
               <p className="kicker rise-fade" style={{ '--d': '0.05s' } as React.CSSProperties}>
                 {kicker}
               </p>
             )}
-            <h1 className={cn(size === 'lg' ? 'display-lg' : 'display-md', 'mt-5 text-paper')}>
+            <h1 className={cn(size === 'lg' ? 'display-lg' : 'display-md', 'mt-5 max-w-3xl')}>
               {typeof title === 'string' ? <SplitText text={title} delay={0.08} /> : title}
             </h1>
             {lead && (
               <div
-                className="lead rise-fade mt-6 max-w-2xl text-charcoal-300"
-                style={{ '--d': '0.4s' } as React.CSSProperties}
+                className="lead rise-fade mt-6 max-w-xl"
+                style={{ '--d': '0.35s' } as React.CSSProperties}
               >
                 {lead}
               </div>
             )}
+            {aside && (
+              <div className="rise-fade mt-8" style={{ '--d': '0.45s' } as React.CSSProperties}>
+                {aside}
+              </div>
+            )}
           </div>
-          {aside && (
-            <div
-              className="rise-fade lg:col-span-4 lg:justify-self-end"
-              style={{ '--d': '0.5s' } as React.CSSProperties}
-            >
-              {aside}
-            </div>
-          )}
         </div>
+        {asset && (
+          <div
+            className="rise-fade relative min-h-[16rem] overflow-hidden sm:min-h-[22rem]"
+            style={{ '--d': '0.15s' } as React.CSSProperties}
+          >
+            <Image
+              src={asset.src}
+              alt={asset.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        )}
       </div>
     </section>
   )
