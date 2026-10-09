@@ -26,15 +26,15 @@ const copy = {
   },
 } as const
 
-/** Sayfa sonu teklif çağrısı — solda metin, sağda kenara taşan fotoğraf. */
+/** Sayfa sonu teklif çağrısı — solda metin, sağda çerçeveli fotoğraf. */
 export function CTABand({ locale = 'tr' }: CTABandProps) {
   const t = copy[locale]
   const photo = MEDIA.store
 
   return (
     <section className="relative overflow-hidden bg-beige-100">
-      <div className="grid lg:grid-cols-2">
-        <div className="pl-container reveal flex flex-col justify-center py-16 pr-5 sm:py-24 sm:pr-10">
+      <div className="container-x grid gap-10 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="reveal flex flex-col justify-center">
           <h2 className="display-md">
             {t.title[0]}
             <br />
@@ -63,13 +63,13 @@ export function CTABand({ locale = 'tr' }: CTABandProps) {
             {SITE_CONFIG.contact.phone}
           </a>
         </div>
-        <div className="relative min-h-[18rem] sm:min-h-[22rem]">
+        <div className="reveal relative aspect-[16/10] overflow-hidden rounded-2xl">
           {photo && (
             <Image
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1320px) 620px, (min-width: 1024px) 46vw, 100vw"
               className="object-cover"
             />
           )}

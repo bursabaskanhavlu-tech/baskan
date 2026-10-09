@@ -49,7 +49,7 @@ export function SectorSolutions({ locale }: { locale: Locale }) {
   return (
     <section className="py-20 sm:py-28">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
-        <div className="reveal relative aspect-[4/5] overflow-hidden sm:aspect-[16/11] lg:col-span-4 lg:aspect-[4/5]">
+        <div className="reveal relative aspect-[16/10] overflow-hidden rounded-2xl lg:col-span-4 lg:aspect-[4/5]">
           {photo && (
             <Image
               src={photo.src}
@@ -75,7 +75,7 @@ export function SectorSolutions({ locale }: { locale: Locale }) {
 
         <div className="reveal lg:col-span-4 lg:pl-6">
           <p className="kicker">{t.kicker}</p>
-          <h2 className="display-md mt-5 lg:text-[2.5rem] xl:text-[2.75rem]">
+          <h2 className="display-md mt-5">
             {t.title[0]}
             <br />
             {t.title[1]}

@@ -36,11 +36,16 @@ export function PageHero({
 
   return (
     <section className={cn('relative', className)}>
-      <div className={cn('grid', asset && 'lg:grid-cols-2')}>
+      <div
+        className={cn(
+          'container-x',
+          asset && 'grid gap-10 pb-14 sm:pb-20 lg:grid-cols-12 lg:items-center lg:gap-14'
+        )}
+      >
         <div
           className={cn(
             'flex flex-col justify-center pb-14 pt-8 sm:pb-20',
-            asset ? 'pl-container pr-5 sm:pr-10' : 'container-x'
+            asset ? 'lg:col-span-7 lg:pb-0' : ''
           )}
         >
           <Breadcrumbs items={breadcrumbs} className="rise-fade" />
@@ -70,7 +75,7 @@ export function PageHero({
         </div>
         {asset && (
           <div
-            className="rise-fade relative min-h-[16rem] overflow-hidden sm:min-h-[22rem]"
+            className="rise-fade relative aspect-[4/3] overflow-hidden rounded-2xl lg:col-span-5 lg:aspect-[5/4]"
             style={{ '--d': '0.15s' } as React.CSSProperties}
           >
             <Image
@@ -78,7 +83,7 @@ export function PageHero({
               alt={asset.alt}
               fill
               priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1320px) 520px, (min-width: 1024px) 40vw, 100vw"
               className="object-cover"
             />
           </div>

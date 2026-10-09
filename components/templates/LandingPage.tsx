@@ -95,8 +95,8 @@ export function LandingPage({
 
       {/* HERO — aydınlık; solda başlık, sağda konuya uygun fotoğraf */}
       <section className="relative">
-        <div className="grid lg:grid-cols-2">
-          <div className="pl-container flex flex-col justify-center pb-14 pr-5 pt-8 sm:pb-20 sm:pr-10">
+        <div className="container-x grid gap-10 pb-14 pt-8 sm:pb-20 lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div className="flex flex-col justify-center lg:col-span-7">
             <Breadcrumbs
               className="rise-fade"
               items={[
@@ -138,7 +138,7 @@ export function LandingPage({
             </dl>
           </div>
           <div
-            className="rise-fade relative min-h-[18rem] overflow-hidden sm:min-h-[24rem]"
+            className="rise-fade relative aspect-[4/3] overflow-hidden rounded-2xl lg:col-span-5 lg:aspect-[4/5]"
             style={d(0.15)}
           >
             <MediaFrame
@@ -148,7 +148,7 @@ export function LandingPage({
               artTone={ART_BY_SLOT[media.slot]?.tone ?? 'cream'}
               artAccent={ART_BY_SLOT[media.slot]?.accent}
               className="absolute inset-0 h-full w-full"
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1320px) 520px, (min-width: 1024px) 40vw, 100vw"
               priority
               animate={false}
             />

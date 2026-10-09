@@ -34,8 +34,8 @@ export function CustomProduction({ locale }: { locale: Locale }) {
 
   return (
     <section className="pb-20 sm:pb-28">
-      <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-        <div className="reveal relative aspect-[16/9] overflow-hidden lg:col-span-4 lg:aspect-[4/3]">
+      <div className="container-x grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
+        <div className="reveal relative aspect-[16/10] overflow-hidden rounded-2xl lg:col-span-4 lg:aspect-[4/3]">
           {detail && (
             <Image
               src={detail.src}
@@ -54,7 +54,7 @@ export function CustomProduction({ locale }: { locale: Locale }) {
           </p>
         </div>
 
-        <div className="reveal px-5 sm:px-10 lg:col-span-3 lg:px-0 lg:pl-4">
+        <div className="reveal lg:col-span-3">
           <h2 className="display-sm">{t.title}</h2>
           <p className="mt-4 leading-relaxed text-charcoal-600">{t.text}</p>
           <Link
@@ -66,7 +66,7 @@ export function CustomProduction({ locale }: { locale: Locale }) {
           </Link>
         </div>
 
-        <div className="reveal relative mx-5 aspect-[4/3] overflow-hidden sm:mx-10 lg:col-span-3 lg:mx-0">
+        <div className="reveal relative aspect-[16/10] overflow-hidden rounded-2xl lg:col-span-3 lg:aspect-[4/3]">
           {emb && (
             <Image
               src={emb.src}
@@ -78,7 +78,7 @@ export function CustomProduction({ locale }: { locale: Locale }) {
           )}
         </div>
 
-        <ul className="reveal space-y-3 px-5 text-[0.9375rem] text-charcoal-700 sm:px-10 lg:col-span-2 lg:px-0">
+        <ul className="reveal space-y-3 text-[0.9375rem] text-charcoal-700 lg:col-span-2">
           {t.list.map((item) => (
             <li key={item} className="flex items-center gap-3">
               <span

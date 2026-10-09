@@ -19,26 +19,30 @@ const items: Record<Locale, { title: string[]; href: string; slot: MediaSlot }[]
   ],
 }
 
-/** Kenardan kenara dört kategori fotoğrafı. */
+/** Dört kategori kartı — içerik genişliğinde, yuvarlak köşeli. */
 export function CategoryStrip({ locale }: { locale: Locale }) {
   const explore = locale === 'en' ? 'Explore' : 'Keşfet'
   return (
-    <section id="kategoriler" aria-label={locale === 'en' ? 'Categories' : 'Kategoriler'}>
-      <ul className="grid grid-cols-2 gap-1.5 lg:grid-cols-4">
+    <section
+      id="kategoriler"
+      aria-label={locale === 'en' ? 'Categories' : 'Kategoriler'}
+      className="container-x scroll-mt-24"
+    >
+      <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
         {items[locale].map((item) => {
           const photo = MEDIA[item.slot]
           return (
             <li key={item.href + item.title.join()} className="reveal">
               <Link
                 href={item.href}
-                className="group relative block aspect-[4/5] overflow-hidden bg-beige-200 sm:aspect-[4/3]"
+                className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-beige-200 sm:aspect-[5/4] lg:aspect-[4/5]"
               >
                 {photo && (
                   <Image
                     src={photo.src}
                     alt={photo.alt}
                     fill
-                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    sizes="(min-width: 1320px) 310px, (min-width: 1024px) 24vw, 50vw"
                     className="object-cover transition-transform duration-[1.2s] ease-out-soft group-hover:scale-105"
                   />
                 )}
@@ -47,7 +51,7 @@ export function CategoryStrip({ locale }: { locale: Locale }) {
                   className="absolute inset-0 bg-gradient-to-r from-paper/85 via-paper/35 to-transparent"
                 />
                 <span className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
-                  <span className="block text-[1.375rem] font-medium leading-[1.1] tracking-tight text-ink sm:text-[1.75rem]">
+                  <span className="block text-[1.125rem] font-medium leading-[1.15] tracking-tight text-ink sm:text-[1.375rem]">
                     {item.title.map((line) => (
                       <span key={line} className="block">
                         {line}

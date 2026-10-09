@@ -34,7 +34,7 @@ const copy = {
 const d = (s: number) => ({ '--d': `${s}s` }) as React.CSSProperties
 
 /**
- * Ana sayfa açılışı — solda başlık, sağda kenara taşan büyük fotoğraf.
+ * Ana sayfa açılışı — solda başlık, sağda içerik alanında kalan çerçeveli fotoğraf.
  * H1 metni SSR HTML'de tam olarak bulunur (SEO).
  */
 export function HomeHero({ locale }: { locale: Locale }) {
@@ -43,8 +43,8 @@ export function HomeHero({ locale }: { locale: Locale }) {
 
   return (
     <section className="relative">
-      <div className="grid lg:min-h-[calc(100svh-5.25rem)] lg:grid-cols-2">
-        <div className="pl-container flex flex-col justify-center pb-14 pr-5 pt-10 sm:pr-10 lg:py-20">
+      <div className="container-x grid gap-10 pb-14 pt-8 sm:pb-20 lg:grid-cols-12 lg:items-center lg:gap-14 lg:py-20">
+        <div className="flex flex-col justify-center lg:col-span-6">
           <p className="kicker rise-fade">{t.kicker}</p>
           <h1 className="display-xl mt-6 max-w-[11ch]">
             <span className="block">
@@ -69,7 +69,7 @@ export function HomeHero({ locale }: { locale: Locale }) {
           <a
             href="#kategoriler"
             aria-label={t.scroll}
-            className="rise-fade mt-14 hidden h-12 w-12 items-center justify-center rounded-full border border-orange-500 text-orange-500 transition-colors hover:bg-orange-500 hover:text-ink lg:flex"
+            className="rise-fade mt-12 hidden h-12 w-12 items-center justify-center rounded-full border border-orange-500 text-orange-500 transition-colors hover:bg-orange-500 hover:text-ink lg:flex"
             style={d(0.7)}
           >
             <ArrowIcon className="h-4 w-4 rotate-90" />
@@ -77,7 +77,7 @@ export function HomeHero({ locale }: { locale: Locale }) {
         </div>
 
         <div
-          className="rise-fade relative min-h-[22rem] overflow-hidden sm:min-h-[28rem]"
+          className="rise-fade relative aspect-[4/3] overflow-hidden rounded-2xl bg-beige-200 lg:col-span-6 lg:aspect-[5/4]"
           style={d(0.15)}
         >
           {photo && (
@@ -86,11 +86,11 @@ export function HomeHero({ locale }: { locale: Locale }) {
               alt={photo.alt}
               fill
               priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1320px) 640px, (min-width: 1024px) 48vw, 100vw"
               className="object-cover object-[60%_center]"
             />
           )}
-          <div className="absolute right-6 top-6 flex items-start gap-3 text-paper sm:right-10 sm:top-10">
+          <div className="absolute right-7 top-7 hidden items-start gap-3 text-paper sm:flex">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-paper/70">
               <ArrowIcon className="h-4 w-4" />
             </span>
